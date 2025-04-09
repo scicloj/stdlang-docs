@@ -1,3 +1,6 @@
 .cpcache
 .nrepl-port
 temp
+.calva
+.clj-kondo
+.lsp
