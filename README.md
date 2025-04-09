@@ -15,4 +15,4 @@ This is the documentation for Std.lang, the standard transpiler.
 
 ## License
 
-Copyright © 2023 Scicloj , MIT License
+Copyright © 2025 Scicloj , MIT License
