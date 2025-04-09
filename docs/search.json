@@ -14,7 +14,7 @@
     "href": "index.html#general-info",
     "title": "Std.lang documentation",
     "section": "1.1 General info",
-    "text": "1.1 General info\n\n\n\nWebsite\nhttps://scicloj.github.io/stdlang-docs/\n\n\nSource\n\n\n\nDeps\n \n\n\nLicense\nMIT\n\n\nChat\n#std.lang-dev at Clojurians Zulip",
+    "text": "1.1 General info\n\n\n\nWebsite\nhttps://scicloj.github.io/stdlang-docs/\n\n\nSource\n\n\n\nDeps\n \n\n\nLicense\nMIT\n\n\nChat\n#std.lang-dev at Clojurians Zulip\n\n\nContributing\nCONTRIBUTING.md",
     "crumbs": [
       "<span class='chapter-number'>1</span>  <span class='chapter-title'>Preface</span>"
     ]
