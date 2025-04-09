@@ -1,0 +1,127 @@
+---
+format:
+  html:
+    toc: true
+    toc-depth: 4
+    theme: [cosmo, notebooks/custom.scss]
+    output-file: stdlang_book.walkthrough.html
+code-block-background: true
+fontsize: 0.9em
+
+---
+<style></style><style>.printedClojure .sourceCode {
+  background-color: transparent;
+  border-style: none;
+}
+</style><style>.clay-limit-image-width .clay-image {max-width: 100%}
+.clay-side-by-side .sourceCode {margin: 0}
+.clay-side-by-side {margin: 1em 0}
+</style>
+<script src="stdlang_book.walkthrough_files/md-default0.js" type="text/javascript"></script><script src="stdlang_book.walkthrough_files/md-default1.js" type="text/javascript"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.js" type="text/javascript"></script><script src="https://cdn.jsdelivr.net/npm/leaflet-providers@2.0.0/leaflet-providers.min.js" type="text/javascript"></script><link href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.css" rel="stylesheet" type="text/css" />
+
+# Walkthrough 👣
+
+Let us briefly explore the Std.lang transpiler.
+
+
+## Setup
+
+
+::: {.sourceClojure}
+```clojure
+(ns stdlang-book.walkthrough
+  (:require [std.lang :as l]
+            [scicloj.kindly.v4.kind :as kind]
+            [scicloj.kindly.v4.api :as kindly]))
+```
+:::
+
+
+
+::: {.sourceClojure}
+```clojure
+(l/script :js)
+```
+:::
+
+
+
+::: {.printedClojure}
+```clojure
+{:lang :js,
+ :runtime :default,
+ :bootstrap false,
+ :context :lang/js,
+ :module stdlang-book.walkthrough,
+ :module/internal {stdlang-book.walkthrough -},
+ :module/primary #{}}
+
+```
+:::
+
+
+
+## Basic examples
+
+
+::: {.sourceClojure}
+```clojure
+(!.js (+ 1 2))
+```
+:::
+
+
+
+::: {.printedClojure}
+```clojure
+"1 + 2;"
+
+```
+:::
+
+
+
+## Data visualization with Javascript
+
+
+::: {.sourceClojure}
+```clojure
+(kind/hiccup
+ [:div
+  [:script
+   (!.js
+    (do (var m (L.map document.currentScript.parentElement))
+        (m.setView [-37.84 144.95]
+                   11)
+        (-> (L.tileLayer.provider "OpenStreetMap.Mapnik")
+            (. (addTo m)))
+        (-> [-37.9 144.8]
+            L.marker
+            (. (addTo m))
+            (. (bindPopup "<i style='color:purple'>Have you been here?</i>"))
+            (. (openPopup)))))]]
+ {:html/deps [:leaflet]
+  :style {:height "400px"}})
+```
+:::
+
+
+
+```{=html}
+<div style="height:400px;"><script>let m = L.map(document.currentScript.parentElement);
+m.setView([-37.84,144.95],11);
+L.tileLayer.provider("OpenStreetMap.Mapnik").addTo(m);
+L.marker([-37.9,144.8]).addTo(m).bindPopup("<i style='color:purple'>Have you been here?</i>").openPopup();</script></div>
+```
+
+
+
+```{=html}
+<div style="background-color:grey;height:2px;width:100%;"></div>
+```
+
+
+
+```{=html}
+<div><pre><small><small>source: <a href="https://github.com/scicloj/stdlang-docs/blob/main/notebooks/stdlang_book/walkthrough.clj">notebooks/stdlang_book/walkthrough.clj</a></small></small></pre></div>
+```

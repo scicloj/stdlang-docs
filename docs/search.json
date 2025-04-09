@@ -1,0 +1,82 @@
+[
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Std.lang documentation",
+    "section": "",
+    "text": "1 Preface\nThis is the documentation for Std.lang, the standard transpiler.",
+    "crumbs": [
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Preface</span>"
+    ]
+  },
+  {
+    "objectID": "index.html#general-info",
+    "href": "index.html#general-info",
+    "title": "Std.lang documentation",
+    "section": "1.1 General info",
+    "text": "1.1 General info\n\n\n\nWebsite\nhttps://scicloj.github.io/stdlang-docs/\n\n\nSource\n\n\n\nDeps\n \n\n\nLicense\nMIT\n\n\nChat\n#std.lang-dev at Clojurians Zulip",
+    "crumbs": [
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Preface</span>"
+    ]
+  },
+  {
+    "objectID": "index.html#license",
+    "href": "index.html#license",
+    "title": "Std.lang documentation",
+    "section": "1.2 License",
+    "text": "1.2 License\nCopyright © 2023 Scicloj , MIT License",
+    "crumbs": [
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Preface</span>"
+    ]
+  },
+  {
+    "objectID": "index.html#chapters-in-this-book",
+    "href": "index.html#chapters-in-this-book",
+    "title": "Std.lang documentation",
+    "section": "1.3 Chapters in this book",
+    "text": "1.3 Chapters in this book\n\nWalkthrough 👣\n\n\nsource: notebooks/index.clj",
+    "crumbs": [
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Preface</span>"
+    ]
+  },
+  {
+    "objectID": "stdlang_book.walkthrough.html",
+    "href": "stdlang_book.walkthrough.html",
+    "title": "2  Walkthrough 👣",
+    "section": "",
+    "text": "2.1 Setup\nLet us briefly explore the Std.lang transpiler.",
+    "crumbs": [
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Walkthrough 👣</span>"
+    ]
+  },
+  {
+    "objectID": "stdlang_book.walkthrough.html#setup",
+    "href": "stdlang_book.walkthrough.html#setup",
+    "title": "2  Walkthrough 👣",
+    "section": "",
+    "text": "(ns stdlang-book.walkthrough\n  (:require [std.lang :as l]\n            [scicloj.kindly.v4.kind :as kind]\n            [scicloj.kindly.v4.api :as kindly]))\n\n\n(l/script :js)\n\n\n{:lang :js,\n :runtime :default,\n :bootstrap false,\n :context :lang/js,\n :module stdlang-book.walkthrough,\n :module/internal {stdlang-book.walkthrough -},\n :module/primary #{}}",
+    "crumbs": [
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Walkthrough 👣</span>"
+    ]
+  },
+  {
+    "objectID": "stdlang_book.walkthrough.html#basic-examples",
+    "href": "stdlang_book.walkthrough.html#basic-examples",
+    "title": "2  Walkthrough 👣",
+    "section": "2.2 Basic examples",
+    "text": "2.2 Basic examples\n\n(!.js (+ 1 2))\n\n\n\"1 + 2;\"",
+    "crumbs": [
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Walkthrough 👣</span>"
+    ]
+  },
+  {
+    "objectID": "stdlang_book.walkthrough.html#data-visualization-with-javascript",
+    "href": "stdlang_book.walkthrough.html#data-visualization-with-javascript",
+    "title": "2  Walkthrough 👣",
+    "section": "2.3 Data visualization with Javascript",
+    "text": "2.3 Data visualization with Javascript\n\n(kind/hiccup\n [:div\n  [:script\n   (!.js\n    (do (var m (L.map document.currentScript.parentElement))\n        (m.setView [-37.84 144.95]\n                   11)\n        (-&gt; (L.tileLayer.provider \"OpenStreetMap.Mapnik\")\n            (. (addTo m)))\n        (-&gt; [-37.9 144.8]\n            L.marker\n            (. (addTo m))\n            (. (bindPopup \"&lt;i style='color:purple'&gt;Have you been here?&lt;/i&gt;\"))\n            (. (openPopup)))))]]\n {:html/deps [:leaflet]\n  :style {:height \"400px\"}})\n\n\n\nsource: notebooks/stdlang_book/walkthrough.clj",
+    "crumbs": [
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Walkthrough 👣</span>"
+    ]
+  }
+]
