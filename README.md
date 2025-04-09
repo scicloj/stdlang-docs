@@ -1,4 +1,4 @@
-# stdlang-docs
+# Std.lang documentation
 
 This is the documentation for Std.lang, the standard transpiler.
 
