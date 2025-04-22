@@ -7,21 +7,31 @@
   [clojure.test :refer [deftest is]]))
 
 
-(def var2_line12 (l/script :js))
+(def var3_line18 (l/script :js {:runtime :basic}))
 
 
-(def var4_line16 (!.js (+ 1 2)))
+(def var4_line24 (l/script+ [:code :js]))
 
 
-(deftest test5_line18 (is (= var4_line16 "1 + 2;")))
+(def var5_line28 (l/script+ [:code :js]))
+
+
+(def var7_line32 (!.js (+ 1 2)))
+
+
+(def var8_line35 (l/! [:code] (+ 1 2 3)))
+
+
+(deftest test9_line38 (is (= var8_line35 "1 + 2;")))
 
 
 (def
- var7_line22
+ var11_line42
  (kind/hiccup
   [:div
    [:script
-    (!.js
+    (l/!
+     [:code]
      (do
       (var m (L.map document.currentScript.parentElement))
       (m.setView [-37.84 144.95] 11)
