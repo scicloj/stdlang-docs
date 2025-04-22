@@ -21,7 +21,7 @@ fontsize: 0.9em
 
 # Walkthrough 👣
 
-Let us briefly explore the Std.lang transpiler.
+Let us briefly explore the std.lang transpiler. 
 
 
 ## Setup
@@ -32,15 +32,30 @@ Let us briefly explore the Std.lang transpiler.
 (ns stdlang-book.walkthrough
   (:require [std.lang :as l]
             [scicloj.kindly.v4.kind :as kind]
-            [scicloj.kindly.v4.api :as kindly]))
+            [scicloj.kindly.v4.api :as kindly]
+            [charred.api :as charred]
+            [clojure.string :as str]))
 ```
 :::
 
 
+Stdlang can be used in different ways:
+- generate code for different languages
+- run the code in different runtimes of those languages
+
+To specify a way to use it, we use `l/script`.
+
+For example, let us define the following two ways,
+named `:code` and `:node`.
+
+Here we define `:code` as a way to use the transpiler
+to generate Javascript code, but not use it in any runtime.
+
 
 ::: {.sourceClojure}
 ```clojure
-(l/script :js)
+^:kind/println ; just so the return value of this call is displayed nicely
+(l/script+ [:code :js])
 ```
 :::
 
@@ -48,25 +63,21 @@ Let us briefly explore the Std.lang transpiler.
 
 ::: {.printedClojure}
 ```clojure
-{:lang :js,
- :runtime :default,
- :bootstrap false,
- :context :lang/js,
- :module stdlang-book.walkthrough,
- :module/internal {stdlang-book.walkthrough -},
- :module/primary #{}}
+[#rt:lang[:js]]
 
 ```
 :::
 
 
-
-## Basic examples
+Here we define `:node` as a way to use the transpiler
+go generate Javascript code, and run it in a Node.js runtime.
 
 
 ::: {.sourceClojure}
 ```clojure
-(!.js (+ 1 2))
+^:kind/println
+(l/script+ [:node :js]
+           {:runtime :basic})
 ```
 :::
 
@@ -74,9 +85,95 @@ Let us briefly explore the Std.lang transpiler.
 
 ::: {.printedClojure}
 ```clojure
-"1 + 2;"
+[#rt.basic[:server/basic :js urp4zq42sdo4 45493 1]]
 
 ```
+:::
+
+
+Let us now use these two ways for basic arithmetic.
+
+
+::: {.sourceClojure}
+```clojure
+[;; No runtime, just generating code:
+ (l/! [:code] (+ 1 2))
+ ;; Generating, running in Node.js:
+ (l/! [:node] (+ 1 2))]
+```
+:::
+
+
+
+::: {.printedClojure}
+```clojure
+["1 + 2;" 3]
+
+```
+:::
+
+
+
+## Language
+Let us see how to generate some common Javascript idioms.
+We will follow examples from the
+[Learn X in Y minutes](https://learnxinyminutes.com/) tutorial
+[Where X=Javascript](https://learnxinyminutes.com/javascript).
+
+
+### Numbers, Strings, and Operators
+
+Number types:
+
+::: {.clay-table}
+
+```{=html}
+<table class="table table-hover table-responsive clay-table"><thead><tr><th>form</th><th>code</th><th>node</th></tr></thead><tbody><tr><td><span data-qmd="```clj
+3
+```"></span></td><td><span data-qmd="```js
+3;
+```"></span></td><td>3</td></tr><tr><td><span data-qmd="```clj
+1.5
+```"></span></td><td><span data-qmd="```js
+1.5;
+```"></span></td><td>1.5</td></tr></tbody></table>
+```
+
+:::
+
+
+Basic arithmetic:
+
+::: {.clay-table}
+
+```{=html}
+<table class="table table-hover table-responsive clay-table"><thead><tr><th>form</th><th>code</th><th>node</th></tr></thead><tbody><tr><td><span data-qmd="```clj
+(+ 1 1)
+```"></span></td><td><span data-qmd="```js
+1 + 1;
+```"></span></td><td>2</td></tr><tr><td><span data-qmd="```clj
+(+ 0.1 0.2)
+```"></span></td><td><span data-qmd="```js
+0.1 + 0.2;
+```"></span></td><td>0.30000000000000004</td></tr><tr><td><span data-qmd="```clj
+(- 8 1)
+```"></span></td><td><span data-qmd="```js
+8 - 1;
+```"></span></td><td>7</td></tr><tr><td><span data-qmd="```clj
+(* 10 2)
+```"></span></td><td><span data-qmd="```js
+10 * 2;
+```"></span></td><td>20</td></tr><tr><td><span data-qmd="```clj
+(/ 35 5)
+```"></span></td><td><span data-qmd="```js
+35 / 5;
+```"></span></td><td>7</td></tr><tr><td><span data-qmd="```clj
+(/ 5 2)
+```"></span></td><td><span data-qmd="```js
+5 / 2;
+```"></span></td><td>2.5</td></tr></tbody></table>
+```
+
 :::
 
 
@@ -89,17 +186,17 @@ Let us briefly explore the Std.lang transpiler.
 (kind/hiccup
  [:div
   [:script
-   (!.js
-    (do (var m (L.map document.currentScript.parentElement))
-        (m.setView [-37.84 144.95]
-                   11)
-        (-> (L.tileLayer.provider "OpenStreetMap.Mapnik")
-            (. (addTo m)))
-        (-> [-37.9 144.8]
-            L.marker
-            (. (addTo m))
-            (. (bindPopup "<i style='color:purple'>Have you been here?</i>"))
-            (. (openPopup)))))]]
+   (l/! [:code]
+        (do (var m (L.map document.currentScript.parentElement))
+            (m.setView [-37.84 144.95]
+                       11)
+            (-> (L.tileLayer.provider "OpenStreetMap.Mapnik")
+                (. (addTo m)))
+            (-> [-37.9 144.8]
+                L.marker
+                (. (addTo m))
+                (. (bindPopup "<i style='color:purple'>Have you been here?</i>"))
+                (. (openPopup)))))]]
  {:html/deps [:leaflet]
   :style {:height "400px"}})
 ```

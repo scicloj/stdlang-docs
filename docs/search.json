@@ -44,7 +44,7 @@
     "href": "stdlang_book.walkthrough.html",
     "title": "2  Walkthrough 👣",
     "section": "",
-    "text": "2.1 Setup\nLet us briefly explore the Std.lang transpiler.",
+    "text": "2.1 Setup\nLet us briefly explore the std.lang transpiler.\nStdlang can be used in different ways: - generate code for different languages - run the code in different runtimes of those languages\nTo specify a way to use it, we use l/script.\nFor example, let us define the following two ways, named :code and :node.\nHere we define :code as a way to use the transpiler to generate Javascript code, but not use it in any runtime.\nHere we define :node as a way to use the transpiler go generate Javascript code, and run it in a Node.js runtime.\nLet us now use these two ways for basic arithmetic.",
     "crumbs": [
       "<span class='chapter-number'>2</span>  <span class='chapter-title'>Walkthrough 👣</span>"
     ]
@@ -54,17 +54,17 @@
     "href": "stdlang_book.walkthrough.html#setup",
     "title": "2  Walkthrough 👣",
     "section": "",
-    "text": "(ns stdlang-book.walkthrough\n  (:require [std.lang :as l]\n            [scicloj.kindly.v4.kind :as kind]\n            [scicloj.kindly.v4.api :as kindly]))\n\n\n(l/script :js)\n\n\n{:lang :js,\n :runtime :default,\n :bootstrap false,\n :context :lang/js,\n :module stdlang-book.walkthrough,\n :module/internal {stdlang-book.walkthrough -},\n :module/primary #{}}",
+    "text": "(ns stdlang-book.walkthrough\n  (:require [std.lang :as l]\n            [scicloj.kindly.v4.kind :as kind]\n            [scicloj.kindly.v4.api :as kindly]\n            [charred.api :as charred]\n            [clojure.string :as str]))\n\n\n\n\n\n\n^:kind/println ; just so the return value of this call is displayed nicely\n(l/script+ [:code :js])\n\n\n[#rt:lang[:js]]\n\n\n\n^:kind/println\n(l/script+ [:node :js]\n           {:runtime :basic})\n\n\n[#rt.basic[:server/basic :js urp4zq42sdo4 45493 1]]\n\n\n\n[;; No runtime, just generating code:\n (l/! [:code] (+ 1 2))\n ;; Generating, running in Node.js:\n (l/! [:node] (+ 1 2))]\n\n\n[\"1 + 2;\" 3]",
     "crumbs": [
       "<span class='chapter-number'>2</span>  <span class='chapter-title'>Walkthrough 👣</span>"
     ]
   },
   {
-    "objectID": "stdlang_book.walkthrough.html#basic-examples",
-    "href": "stdlang_book.walkthrough.html#basic-examples",
+    "objectID": "stdlang_book.walkthrough.html#language",
+    "href": "stdlang_book.walkthrough.html#language",
     "title": "2  Walkthrough 👣",
-    "section": "2.2 Basic examples",
-    "text": "2.2 Basic examples\n\n(!.js (+ 1 2))\n\n\n\"1 + 2;\"",
+    "section": "2.2 Language",
+    "text": "2.2 Language\nLet us see how to generate some common Javascript idioms. We will follow examples from the Learn X in Y minutes tutorial Where X=Javascript.\n\n2.2.1 Numbers, Strings, and Operators\nNumber types:\n\n\n\n\n\nform\ncode\nnode\n\n\n\n\n3\n3;\n3\n\n\n1.5\n1.5;\n1.5\n\n\n\n\n\nBasic arithmetic:\n\n\n\n\n\nform\ncode\nnode\n\n\n\n\n(+ 1 1)\n1 + 1;\n2\n\n\n(+ 0.1 0.2)\n0.1 + 0.2;\n0.30000000000000004\n\n\n(- 8 1)\n8 - 1;\n7\n\n\n(* 10 2)\n10 * 2;\n20\n\n\n(/ 35 5)\n35 / 5;\n7\n\n\n(/ 5 2)\n5 / 2;\n2.5",
     "crumbs": [
       "<span class='chapter-number'>2</span>  <span class='chapter-title'>Walkthrough 👣</span>"
     ]
@@ -74,7 +74,7 @@
     "href": "stdlang_book.walkthrough.html#data-visualization-with-javascript",
     "title": "2  Walkthrough 👣",
     "section": "2.3 Data visualization with Javascript",
-    "text": "2.3 Data visualization with Javascript\n\n(kind/hiccup\n [:div\n  [:script\n   (!.js\n    (do (var m (L.map document.currentScript.parentElement))\n        (m.setView [-37.84 144.95]\n                   11)\n        (-&gt; (L.tileLayer.provider \"OpenStreetMap.Mapnik\")\n            (. (addTo m)))\n        (-&gt; [-37.9 144.8]\n            L.marker\n            (. (addTo m))\n            (. (bindPopup \"&lt;i style='color:purple'&gt;Have you been here?&lt;/i&gt;\"))\n            (. (openPopup)))))]]\n {:html/deps [:leaflet]\n  :style {:height \"400px\"}})\n\n\n\nsource: notebooks/stdlang_book/walkthrough.clj",
+    "text": "2.3 Data visualization with Javascript\n\n(kind/hiccup\n [:div\n  [:script\n   (l/! [:code]\n        (do (var m (L.map document.currentScript.parentElement))\n            (m.setView [-37.84 144.95]\n                       11)\n            (-&gt; (L.tileLayer.provider \"OpenStreetMap.Mapnik\")\n                (. (addTo m)))\n            (-&gt; [-37.9 144.8]\n                L.marker\n                (. (addTo m))\n                (. (bindPopup \"&lt;i style='color:purple'&gt;Have you been here?&lt;/i&gt;\"))\n                (. (openPopup)))))]]\n {:html/deps [:leaflet]\n  :style {:height \"400px\"}})\n\n\n\nsource: notebooks/stdlang_book/walkthrough.clj",
     "crumbs": [
       "<span class='chapter-number'>2</span>  <span class='chapter-title'>Walkthrough 👣</span>"
     ]
