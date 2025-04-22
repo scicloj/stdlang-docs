@@ -4,55 +4,89 @@
 
 ;; ## Setup
 
-^:kindly/hide-code
 (ns stdlang-book.walkthrough
   (:require [std.lang :as l]
             [scicloj.kindly.v4.kind :as kind]
-            [scicloj.kindly.v4.api :as kindly]))
+            [scicloj.kindly.v4.api :as kindly]
+            [charred.api :as charred]
+            [clojure.string :as str]))
 
-;;
-;; First lets see what the script
-;;
+;; Stdlang can be used in different ways:
+;; - generate code for different languages
+;; - run the code in different runtimes of those languages
 
+;; To specify a way to use it, we use `l/script`.
 
-^:kind/hidden
-(l/script :js
-  {:runtime :basic})
+;; For example, let us define the following two ways,
+;; named `:code` and `:node`.
 
+;; Here we define `:code` as a way to use the transpiler
+;; to generate Javascript code, but not use it in any runtime.
 
-
+^:kind/println ; just so the return value of this call is displayed nicely
 (l/script+ [:code :js])
 
+;; Here we define `:node` as a way to use the transpiler
+;; go generate Javascript code, and run it in a Node.js runtime.
 
+^:kind/println
+(l/script+ [:node :js]
+           {:runtime :basic})
 
-(l/script+ [:code :js])
+;; Let us now use these two ways for basic arithmetic.
 
-;; ## Basic examples
+[;; No runtime, just generating code:
+ (l/! [:code] (+ 1 2))
+ ;; Generating, running in Node.js:
+ (l/! [:node] (+ 1 2))]
 
-(!.js
-  (+ 1 2))
+^:kindly/hide-code
+(defn show-js-code [code]
+  (kind/md
+   (format "```js\n%s\n```" code)))
 
-(l/! [:code]
-  (+ 1 2 3))
+^:kindly/hide-code
+(defn show-clj-code [code]
+  (kind/md
+   (format "```clj\n%s\n```" code)))
 
-(kindly/check = "1 + 2;")
+^:kindly/hide-code
+(defmacro show-code-and-node [form]
+  `(kindly/hide-code
+    (kind/table
+     [['form :code :node]
+      [(show-clj-code
+        (pr-str (quote ~form)))
+       (show-js-code
+        (l/! [:code] ~form))
+       (l/! [:node] ~form)]])))
+
+;; ## Language
+
+;; Let us see how to generate some common Javascript idioms.
+;; We will follow examples from the
+;; [Learn X in Y minutes](https://learnxinyminutes.com/) tutorial
+;; [Where X=Javascript](https://learnxinyminutes.com/javascript).
+
+;; ### Numbers, Strings, and Operators
+
+(show-code-and-node (+ 1 2))
 
 ;; ## Data visualization with Javascript
-
 (kind/hiccup
  [:div
   [:script
    (l/! [:code]
-     (do (var m (L.map document.currentScript.parentElement))
-         (m.setView [-37.84 144.95]
-                    11)
-         (-> (L.tileLayer.provider "OpenStreetMap.Mapnik")
-             (. (addTo m)))
-         (-> [-37.9 144.8]
-             L.marker
-             (. (addTo m))
-             (. (bindPopup "<i style='color:purple'>Have you been here?</i>"))
-             (. (openPopup)))))]]
+        (do (var m (L.map document.currentScript.parentElement))
+            (m.setView [-37.84 144.95]
+                       11)
+            (-> (L.tileLayer.provider "OpenStreetMap.Mapnik")
+                (. (addTo m)))
+            (-> [-37.9 144.8]
+                L.marker
+                (. (addTo m))
+                (. (bindPopup "<i style='color:purple'>Have you been here?</i>"))
+                (. (openPopup)))))]]
  {:html/deps [:leaflet]
   :style {:height "400px"}})
 
