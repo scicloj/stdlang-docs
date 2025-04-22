@@ -51,18 +51,18 @@
    (format "```clj\n%s\n```" code)))
 
 ^:kindly/hide-code
-(defmacro show-code-and-node [form]
-  `(kindly/hide-code
-    (kind/table
-     [['form :code :node]
-      [(show-clj-code
-        (pr-str (quote ~form)))
-       (show-js-code
-        (l/! [:code] ~form))
-       (l/! [:node] ~form)]])))
+(defmacro show-code-and-node [& forms]
+  (with-meta
+    {:column-names [:form :code :node]
+     :row-vectors (->> forms
+                       (mapv (fn [form]
+                               `[(show-clj-code (pr-str (quote ~form)))
+                                 (show-js-code (l/! [:code] ~form))
+                                 (l/! [:node] ~form)])))}
+    {:kind/table true
+     :kindly/hide-code true}))
 
 ;; ## Language
-
 ;; Let us see how to generate some common Javascript idioms.
 ;; We will follow examples from the
 ;; [Learn X in Y minutes](https://learnxinyminutes.com/) tutorial
@@ -70,7 +70,21 @@
 
 ;; ### Numbers, Strings, and Operators
 
-(show-code-and-node (+ 1 2))
+;; Number types:
+
+(show-code-and-node
+ 3
+ 1.5)
+
+;; Basic arithmetic:
+
+(show-code-and-node
+ (+ 1 1)
+ (+ 0.1 0.2)
+ (- 8 1)
+ (* 10 2)
+ (/ 35 5)
+ (/ 5 2))
 
 ;; ## Data visualization with Javascript
 (kind/hiccup
