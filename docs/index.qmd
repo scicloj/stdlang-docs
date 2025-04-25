@@ -42,7 +42,7 @@ Copyright © 2025 Scicloj , MIT License
 ## Chapters in this book
 
 
-- [Walkthrough 👣](tableplot_book.walkthrough.html)
+- [Introduction](tableplot_book.walkthrough.html)
 
 
 

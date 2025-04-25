@@ -17,36 +17,80 @@ fontsize: 0.9em
 .clay-side-by-side .sourceCode {margin: 0}
 .clay-side-by-side {margin: 1em 0}
 </style>
-<script src="stdlang_book.walkthrough_files/md-default0.js" type="text/javascript"></script><script src="stdlang_book.walkthrough_files/md-default1.js" type="text/javascript"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.js" type="text/javascript"></script><script src="https://cdn.jsdelivr.net/npm/leaflet-providers@2.0.0/leaflet-providers.min.js" type="text/javascript"></script><link href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.css" rel="stylesheet" type="text/css" />
+<script src="stdlang_book.walkthrough_files/md-default0.js" type="text/javascript"></script><script src="stdlang_book.walkthrough_files/md-default1.js" type="text/javascript"></script>
 
-# Walkthrough 👣
+# Introduction
 
-Let us briefly explore the std.lang transpiler. 
+Welcome to the walkthrough of std.lang and it's interaction with the javascript runtime.
+Ideally, the reader should have at least some experience with both clojure and javascript
+in order to get the most out of the tutorial as the library allows for seamless interop between
+a clojure runtime and a javascript one - whether it is on the server side - node, quickjs, osascript - as well as on the browser and other embedded js environments.
+
 
 
 ## Setup
+
+Let us briefly explore the std.lang transpiler.
 
 
 ::: {.sourceClojure}
 ```clojure
 (ns stdlang-book.walkthrough
-  (:require [std.lang :as l]
-            [scicloj.kindly.v4.kind :as kind]
-            [scicloj.kindly.v4.api :as kindly]
-            [charred.api :as charred]
-            [clojure.string :as str]))
+  (:require [std.lang :as l]))
 ```
 :::
 
 
-Stdlang can be used in different ways:
+std.lang can be used in different ways:
 - generate code for different languages
 - run the code in different runtimes of those languages
 
-To specify a way to use it, we use `l/script`.
+To specify a way to use it, we use `l/script`. This will create a runtime
+for evaluation.
 
-For example, let us define the following two ways,
-named `:code` and `:node`.
+
+::: {.sourceClojure}
+```clojure
+^:kind/println
+(l/script :js
+  {:require [[xt.lang.base-lib :as k]]})
+```
+:::
+
+
+
+::: {.printedClojure}
+```clojure
+#rt:lang[:js]
+
+```
+:::
+
+
+It is now possible to transpile lisp forms to code:
+
+
+::: {.sourceClojure}
+```clojure
+(!.js
+  (+ 1 2 3))
+```
+:::
+
+
+
+::: {.printedClojure}
+```clojure
+"1 + 2 + 3;"
+
+```
+:::
+
+
+If more than one environment is required, `l/script+` is a way to create an annex
+that 
+
+In For example, let us define the following two annexes, named `:code` and `:live`.
 
 Here we define `:code` as a way to use the transpiler
 to generate Javascript code, but not use it in any runtime.
@@ -54,8 +98,9 @@ to generate Javascript code, but not use it in any runtime.
 
 ::: {.sourceClojure}
 ```clojure
-^:kind/println ; just so the return value of this call is displayed nicely
-(l/script+ [:code :js])
+^:kind/println
+(l/script+ [:code :js]
+  {:require [[xt.lang.base-lib :as k]]})
 ```
 :::
 
@@ -69,15 +114,16 @@ to generate Javascript code, but not use it in any runtime.
 :::
 
 
-Here we define `:node` as a way to use the transpiler
+Here we define `:live` as a way to use the transpiler
 go generate Javascript code, and run it in a Node.js runtime.
 
 
 ::: {.sourceClojure}
 ```clojure
 ^:kind/println
-(l/script+ [:node :js]
-           {:runtime :basic})
+(l/script+ [:live :js]
+  {:runtime :basic
+   :require [[xt.lang.base-lib :as k]]})
 ```
 :::
 
@@ -85,7 +131,7 @@ go generate Javascript code, and run it in a Node.js runtime.
 
 ::: {.printedClojure}
 ```clojure
-[#rt.basic[:server/basic :js urp4zq42sdo4 45493 1]]
+[#rt.basic[:server/basic :js 1jiajs4x0l277 64658 1]]
 
 ```
 :::
@@ -96,10 +142,10 @@ Let us now use these two ways for basic arithmetic.
 
 ::: {.sourceClojure}
 ```clojure
-[;; No runtime, just generating code:
+[ ;; No runtime, just generating code:
  (l/! [:code] (+ 1 2))
  ;; Generating, running in Node.js:
- (l/! [:node] (+ 1 2))]
+ (l/! [:live] (+ 1 2))]
 ```
 :::
 
@@ -114,29 +160,326 @@ Let us now use these two ways for basic arithmetic.
 
 
 
-## Language
-Let us see how to generate some common Javascript idioms.
-We will follow examples from the
-[Learn X in Y minutes](https://learnxinyminutes.com/) tutorial
-[Where X=Javascript](https://learnxinyminutes.com/javascript).
+# Primitives
+
+The seven primitive data types in JavaScript are string, number, bigint, boolean, undefined, symbol, and null.
+We work with examples from: https://www.w3docs.com/learn-javascript/methods-of-primitives.html
+
+From the Javascript Runtime perspective, primitives are extremely important to understand for designing fast programs. They offer the following traits:
+
+1. Immutability: Once a primitive value is created, it cannot be altered. For instance, when you create a string, you cannot change its individual characters. Any operation that seems to change a primitive actually creates a new primitive. Example:
+2. Memory Efficiency: Primitives are stored directly in the stack memory where the variable is located. This direct storage makes access to primitive values faster and more memory-efficient than objects. Example:
+3. Simple and Fast: Primitives are straightforward in their representation, making them simpler and faster to process compared to objects. They don't have the overhead of object properties and methods. Example:
 
 
-### Numbers, Strings, and Operators
 
-Number types:
+### Null
 
 ::: {.clay-table}
 
 ```{=html}
-<table class="table table-hover table-responsive clay-table"><thead><tr><th>form</th><th>code</th><th>node</th></tr></thead><tbody><tr><td><span data-qmd="```clj
+<table class="table table-hover table-responsive clay-table"><thead><tr><th>form</th><th>code</th><th>live</th></tr></thead><tbody><tr><td><span data-qmd="```clj
+nil
+```"></span></td><td><span data-qmd="```js
+&quot;null;&quot;
+```"></span></td><td><span data-qmd="```clj
+nil
+```"></span></td></tr></tbody></table>
+```
+
+:::
+
+
+
+### Undefined
+
+::: {.clay-table}
+
+```{=html}
+<table class="table table-hover table-responsive clay-table"><thead><tr><th>form</th><th>code</th><th>live</th></tr></thead><tbody><tr><td><span data-qmd="```clj
+undefined
+```"></span></td><td><span data-qmd="```js
+&quot;undefined;&quot;
+```"></span></td><td><span data-qmd="```clj
+nil
+```"></span></td></tr><tr><td><span data-qmd="```clj
+NaN
+```"></span></td><td><span data-qmd="```js
+&quot;NaN;&quot;
+```"></span></td><td><span data-qmd="```clj
+nil
+```"></span></td></tr><tr><td><span data-qmd="```clj
+Infinity
+```"></span></td><td><span data-qmd="```js
+&quot;Infinity;&quot;
+```"></span></td><td><span data-qmd="```clj
+nil
+```"></span></td></tr><tr><td><span data-qmd="```clj
+(- Infinity)
+```"></span></td><td><span data-qmd="```js
+&quot;-Infinity;&quot;
+```"></span></td><td><span data-qmd="```clj
+&quot;-Infinity&quot;
+```"></span></td></tr></tbody></table>
+```
+
+:::
+
+
+
+### Boolean
+
+::: {.clay-table}
+
+```{=html}
+<table class="table table-hover table-responsive clay-table"><thead><tr><th>form</th><th>code</th><th>live</th></tr></thead><tbody><tr><td><span data-qmd="```clj
+true
+```"></span></td><td><span data-qmd="```js
+&quot;true;&quot;
+```"></span></td><td><span data-qmd="```clj
+true
+```"></span></td></tr><tr><td><span data-qmd="```clj
+false
+```"></span></td><td><span data-qmd="```js
+&quot;false;&quot;
+```"></span></td><td><span data-qmd="```clj
+false
+```"></span></td></tr></tbody></table>
+```
+
+:::
+
+
+
+### Strings
+
+::: {.clay-table}
+
+```{=html}
+<table class="table table-hover table-responsive clay-table"><thead><tr><th>form</th><th>code</th><th>live</th></tr></thead><tbody><tr><td><span data-qmd="```clj
+&quot;3&quot;
+```"></span></td><td><span data-qmd="```js
+&quot;\&quot;3\&quot;;&quot;
+```"></span></td><td><span data-qmd="```clj
+&quot;3&quot;
+```"></span></td></tr><tr><td><span data-qmd="```clj
+&quot;Hello World&quot;
+```"></span></td><td><span data-qmd="```js
+&quot;\&quot;Hello World\&quot;;&quot;
+```"></span></td><td><span data-qmd="```clj
+&quot;Hello World&quot;
+```"></span></td></tr></tbody></table>
+```
+
+:::
+
+
+
+### Numbers
+
+::: {.clay-table}
+
+```{=html}
+<table class="table table-hover table-responsive clay-table"><thead><tr><th>form</th><th>code</th><th>live</th></tr></thead><tbody><tr><td><span data-qmd="```clj
 3
 ```"></span></td><td><span data-qmd="```js
-3;
-```"></span></td><td>3</td></tr><tr><td><span data-qmd="```clj
+&quot;3;&quot;
+```"></span></td><td><span data-qmd="```clj
+3
+```"></span></td></tr><tr><td><span data-qmd="```clj
 1.5
 ```"></span></td><td><span data-qmd="```js
-1.5;
-```"></span></td><td>1.5</td></tr></tbody></table>
+&quot;1.5;&quot;
+```"></span></td><td><span data-qmd="```clj
+1.5
+```"></span></td></tr><tr><td><span data-qmd="```clj
+1.54444444444444
+```"></span></td><td><span data-qmd="```js
+&quot;1.54444444444444;&quot;
+```"></span></td><td><span data-qmd="```clj
+1.54444444444444
+```"></span></td></tr></tbody></table>
+```
+
+:::
+
+
+
+### Bigint
+
+::: {.clay-table}
+
+```{=html}
+<table class="table table-hover table-responsive clay-table"><thead><tr><th>form</th><th>code</th><th>live</th></tr></thead><tbody><tr><td><span data-qmd="```clj
+(. (BigInt &quot;0x1fffffffffffff&quot;) (toString))
+```"></span></td><td><span data-qmd="```js
+&quot;BigInt(\&quot;0x1fffffffffffff\&quot;).toString();&quot;
+```"></span></td><td><span data-qmd="```clj
+&quot;9007199254740991&quot;
+```"></span></td></tr></tbody></table>
+```
+
+:::
+
+
+
+### Symbol
+
+::: {.clay-table}
+
+```{=html}
+<table class="table table-hover table-responsive clay-table"><thead><tr><th>form</th><th>code</th><th>live</th></tr></thead><tbody><tr><td><span data-qmd="```clj
+(. (Symbol &quot;hello&quot;) (toString))
+```"></span></td><td><span data-qmd="```js
+&quot;Symbol(\&quot;hello\&quot;).toString();&quot;
+```"></span></td><td><span data-qmd="```clj
+&quot;Symbol(hello)&quot;
+```"></span></td></tr></tbody></table>
+```
+
+:::
+
+
+
+### Regex
+
+::: {.clay-table}
+
+```{=html}
+<table class="table table-hover table-responsive clay-table"><thead><tr><th>form</th><th>code</th><th>live</th></tr></thead><tbody><tr><td><span data-qmd="```clj
+#&quot;^[Hh]ello d$&quot;
+```"></span></td><td><span data-qmd="```js
+&quot;/^[Hh]ello d$/;&quot;
+```"></span></td><td><span data-qmd="```clj
+&lt;RegExp&gt;
+/^[Hh]ello d$/
+```"></span></td></tr></tbody></table>
+```
+
+:::
+
+
+
+# Operations - Math
+
+
+### Addition
+
+::: {.clay-table}
+
+```{=html}
+<table class="table table-hover table-responsive clay-table"><thead><tr><th>form</th><th>code</th><th>live</th></tr></thead><tbody><tr><td><span data-qmd="```clj
+(+ 1 2 3)
+```"></span></td><td><span data-qmd="```js
+&quot;1 + 2 + 3;&quot;
+```"></span></td><td><span data-qmd="```clj
+6
+```"></span></td></tr><tr><td><span data-qmd="```clj
+(+ 1 10)
+```"></span></td><td><span data-qmd="```js
+&quot;1 + 10;&quot;
+```"></span></td><td><span data-qmd="```clj
+11
+```"></span></td></tr></tbody></table>
+```
+
+:::
+
+
+
+### Subtraction 
+
+::: {.clay-table}
+
+```{=html}
+<table class="table table-hover table-responsive clay-table"><thead><tr><th>form</th><th>code</th><th>live</th></tr></thead><tbody><tr><td><span data-qmd="```clj
+(- 10)
+```"></span></td><td><span data-qmd="```js
+&quot;-10;&quot;
+```"></span></td><td><span data-qmd="```clj
+-10
+```"></span></td></tr><tr><td><span data-qmd="```clj
+(- 10 1.1)
+```"></span></td><td><span data-qmd="```js
+&quot;10 - 1.1;&quot;
+```"></span></td><td><span data-qmd="```clj
+8.9
+```"></span></td></tr><tr><td><span data-qmd="```clj
+(- 4 3 2 1.1)
+```"></span></td><td><span data-qmd="```js
+&quot;4 - 3 - 2 - 1.1;&quot;
+```"></span></td><td><span data-qmd="```clj
+-2.1
+```"></span></td></tr></tbody></table>
+```
+
+:::
+
+
+
+### Multiplication
+
+::: {.clay-table}
+
+```{=html}
+<table class="table table-hover table-responsive clay-table"><thead><tr><th>form</th><th>code</th><th>live</th></tr></thead><tbody><tr><td><span data-qmd="```clj
+(* 10 20)
+```"></span></td><td><span data-qmd="```js
+&quot;10 * 20;&quot;
+```"></span></td><td><span data-qmd="```clj
+200
+```"></span></td></tr><tr><td><span data-qmd="```clj
+(* 4 3.3 2.2 1.1)
+```"></span></td><td><span data-qmd="```js
+&quot;4 * 3.3 * 2.2 * 1.1;&quot;
+```"></span></td><td><span data-qmd="```clj
+31.944000000000003
+```"></span></td></tr></tbody></table>
+```
+
+:::
+
+
+
+### Division
+
+::: {.clay-table}
+
+```{=html}
+<table class="table table-hover table-responsive clay-table"><thead><tr><th>form</th><th>code</th><th>live</th></tr></thead><tbody><tr><td><span data-qmd="```clj
+(/ 10)
+```"></span></td><td><span data-qmd="```js
+&quot;1 / 10;&quot;
+```"></span></td><td><span data-qmd="```clj
+0.1
+```"></span></td></tr><tr><td><span data-qmd="```clj
+(/ 10 20)
+```"></span></td><td><span data-qmd="```js
+&quot;10 / 20;&quot;
+```"></span></td><td><span data-qmd="```clj
+0.5
+```"></span></td></tr><tr><td><span data-qmd="```clj
+(/ 4 3.3 2.2 1.1)
+```"></span></td><td><span data-qmd="```js
+&quot;4 / 3.3 / 2.2 / 1.1;&quot;
+```"></span></td><td><span data-qmd="```clj
+0.5008765339343851
+```"></span></td></tr></tbody></table>
+```
+
+:::
+
+
+::: {.clay-table}
+
+```{=html}
+<table class="table table-hover table-responsive clay-table"><thead><tr><th>form</th><th>code</th><th>live</th></tr></thead><tbody><tr><td><span data-qmd="```clj
+(do (var out := []) (k/for:array [e [1 2 3 4]] (if (&gt; e 3) (break)) (x:arr-push out e)) out)
+```"></span></td><td><span data-qmd="```js
+&quot;let out = [];\nfor(let e of [1,2,3,4]){\n  if(e &gt; 3){\n    break;\n  }\n  out.push(e);\n};\nout;&quot;
+```"></span></td><td><span data-qmd="```clj
+[1 2 3]
+```"></span></td></tr></tbody></table>
 ```
 
 :::
@@ -147,69 +490,34 @@ Basic arithmetic:
 ::: {.clay-table}
 
 ```{=html}
-<table class="table table-hover table-responsive clay-table"><thead><tr><th>form</th><th>code</th><th>node</th></tr></thead><tbody><tr><td><span data-qmd="```clj
+<table class="table table-hover table-responsive clay-table"><thead><tr><th>form</th><th>code</th><th>live</th></tr></thead><tbody><tr><td><span data-qmd="```clj
 (+ 1 1)
 ```"></span></td><td><span data-qmd="```js
-1 + 1;
+&quot;1 + 1;&quot;
 ```"></span></td><td>2</td></tr><tr><td><span data-qmd="```clj
 (+ 0.1 0.2)
 ```"></span></td><td><span data-qmd="```js
-0.1 + 0.2;
+&quot;0.1 + 0.2;&quot;
 ```"></span></td><td>0.30000000000000004</td></tr><tr><td><span data-qmd="```clj
 (- 8 1)
 ```"></span></td><td><span data-qmd="```js
-8 - 1;
+&quot;8 - 1;&quot;
 ```"></span></td><td>7</td></tr><tr><td><span data-qmd="```clj
 (* 10 2)
 ```"></span></td><td><span data-qmd="```js
-10 * 2;
+&quot;10 * 2;&quot;
 ```"></span></td><td>20</td></tr><tr><td><span data-qmd="```clj
 (/ 35 5)
 ```"></span></td><td><span data-qmd="```js
-35 / 5;
+&quot;35 / 5;&quot;
 ```"></span></td><td>7</td></tr><tr><td><span data-qmd="```clj
 (/ 5 2)
 ```"></span></td><td><span data-qmd="```js
-5 / 2;
+&quot;5 / 2;&quot;
 ```"></span></td><td>2.5</td></tr></tbody></table>
 ```
 
 :::
-
-
-
-## Data visualization with Javascript
-
-
-::: {.sourceClojure}
-```clojure
-(kind/hiccup
- [:div
-  [:script
-   (l/! [:code]
-        (do (var m (L.map document.currentScript.parentElement))
-            (m.setView [-37.84 144.95]
-                       11)
-            (-> (L.tileLayer.provider "OpenStreetMap.Mapnik")
-                (. (addTo m)))
-            (-> [-37.9 144.8]
-                L.marker
-                (. (addTo m))
-                (. (bindPopup "<i style='color:purple'>Have you been here?</i>"))
-                (. (openPopup)))))]]
- {:html/deps [:leaflet]
-  :style {:height "400px"}})
-```
-:::
-
-
-
-```{=html}
-<div style="height:400px;"><script>let m = L.map(document.currentScript.parentElement);
-m.setView([-37.84,144.95],11);
-L.tileLayer.provider("OpenStreetMap.Mapnik").addTo(m);
-L.marker([-37.9,144.8]).addTo(m).bindPopup("<i style='color:purple'>Have you been here?</i>").openPopup();</script></div>
-```
 
 
 

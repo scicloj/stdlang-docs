@@ -34,7 +34,7 @@
     "href": "index.html#chapters-in-this-book",
     "title": "Std.lang documentation",
     "section": "1.3 Chapters in this book",
-    "text": "1.3 Chapters in this book\n\nWalkthrough 👣\n\n\nsource: notebooks/index.clj",
+    "text": "1.3 Chapters in this book\n\nIntroduction\n\n\nsource: notebooks/index.clj",
     "crumbs": [
       "<span class='chapter-number'>1</span>  <span class='chapter-title'>Preface</span>"
     ]
@@ -42,41 +42,21 @@
   {
     "objectID": "stdlang_book.walkthrough.html",
     "href": "stdlang_book.walkthrough.html",
-    "title": "2  Walkthrough 👣",
+    "title": "2  Introduction",
     "section": "",
-    "text": "2.1 Setup\nLet us briefly explore the std.lang transpiler.\nStdlang can be used in different ways: - generate code for different languages - run the code in different runtimes of those languages\nTo specify a way to use it, we use l/script.\nFor example, let us define the following two ways, named :code and :node.\nHere we define :code as a way to use the transpiler to generate Javascript code, but not use it in any runtime.\nHere we define :node as a way to use the transpiler go generate Javascript code, and run it in a Node.js runtime.\nLet us now use these two ways for basic arithmetic.",
+    "text": "2.1 Setup\nWelcome to the walkthrough of std.lang and it’s interaction with the javascript runtime. Ideally, the reader should have at least some experience with both clojure and javascript in order to get the most out of the tutorial as the library allows for seamless interop between a clojure runtime and a javascript one - whether it is on the server side - node, quickjs, osascript - as well as on the browser and other embedded js environments.\nLet us briefly explore the std.lang transpiler.\nstd.lang can be used in different ways: - generate code for different languages - run the code in different runtimes of those languages\nTo specify a way to use it, we use l/script. This will create a runtime for evaluation.\nIt is now possible to transpile lisp forms to code:\nIf more than one environment is required, l/script+ is a way to create an annex that\nIn For example, let us define the following two annexes, named :code and :live.\nHere we define :code as a way to use the transpiler to generate Javascript code, but not use it in any runtime.\nHere we define :live as a way to use the transpiler go generate Javascript code, and run it in a Node.js runtime.\nLet us now use these two ways for basic arithmetic.",
     "crumbs": [
-      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Walkthrough 👣</span>"
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Introduction</span>"
     ]
   },
   {
     "objectID": "stdlang_book.walkthrough.html#setup",
     "href": "stdlang_book.walkthrough.html#setup",
-    "title": "2  Walkthrough 👣",
+    "title": "2  Introduction",
     "section": "",
-    "text": "(ns stdlang-book.walkthrough\n  (:require [std.lang :as l]\n            [scicloj.kindly.v4.kind :as kind]\n            [scicloj.kindly.v4.api :as kindly]\n            [charred.api :as charred]\n            [clojure.string :as str]))\n\n\n\n\n\n\n^:kind/println ; just so the return value of this call is displayed nicely\n(l/script+ [:code :js])\n\n\n[#rt:lang[:js]]\n\n\n\n^:kind/println\n(l/script+ [:node :js]\n           {:runtime :basic})\n\n\n[#rt.basic[:server/basic :js urp4zq42sdo4 45493 1]]\n\n\n\n[;; No runtime, just generating code:\n (l/! [:code] (+ 1 2))\n ;; Generating, running in Node.js:\n (l/! [:node] (+ 1 2))]\n\n\n[\"1 + 2;\" 3]",
+    "text": "(ns stdlang-book.walkthrough\n  (:require [std.lang :as l]))\n\n\n\n\n^:kind/println\n(l/script :js\n  {:require [[xt.lang.base-lib :as k]]})\n\n\n#rt:lang[:js]\n\n\n\n(!.js\n  (+ 1 2 3))\n\n\n\"1 + 2 + 3;\"\n\n\n\n\n\n^:kind/println\n(l/script+ [:code :js]\n  {:require [[xt.lang.base-lib :as k]]})\n\n\n[#rt:lang[:js]]\n\n\n\n^:kind/println\n(l/script+ [:live :js]\n  {:runtime :basic\n   :require [[xt.lang.base-lib :as k]]})\n\n\n[#rt.basic[:server/basic :js 1jiajs4x0l277 64658 1]]\n\n\n\n[ ;; No runtime, just generating code:\n (l/! [:code] (+ 1 2))\n ;; Generating, running in Node.js:\n (l/! [:live] (+ 1 2))]\n\n\n[\"1 + 2;\" 3]",
     "crumbs": [
-      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Walkthrough 👣</span>"
-    ]
-  },
-  {
-    "objectID": "stdlang_book.walkthrough.html#language",
-    "href": "stdlang_book.walkthrough.html#language",
-    "title": "2  Walkthrough 👣",
-    "section": "2.2 Language",
-    "text": "2.2 Language\nLet us see how to generate some common Javascript idioms. We will follow examples from the Learn X in Y minutes tutorial Where X=Javascript.\n\n2.2.1 Numbers, Strings, and Operators\nNumber types:\n\n\n\n\n\nform\ncode\nnode\n\n\n\n\n3\n3;\n3\n\n\n1.5\n1.5;\n1.5\n\n\n\n\n\nBasic arithmetic:\n\n\n\n\n\nform\ncode\nnode\n\n\n\n\n(+ 1 1)\n1 + 1;\n2\n\n\n(+ 0.1 0.2)\n0.1 + 0.2;\n0.30000000000000004\n\n\n(- 8 1)\n8 - 1;\n7\n\n\n(* 10 2)\n10 * 2;\n20\n\n\n(/ 35 5)\n35 / 5;\n7\n\n\n(/ 5 2)\n5 / 2;\n2.5",
-    "crumbs": [
-      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Walkthrough 👣</span>"
-    ]
-  },
-  {
-    "objectID": "stdlang_book.walkthrough.html#data-visualization-with-javascript",
-    "href": "stdlang_book.walkthrough.html#data-visualization-with-javascript",
-    "title": "2  Walkthrough 👣",
-    "section": "2.3 Data visualization with Javascript",
-    "text": "2.3 Data visualization with Javascript\n\n(kind/hiccup\n [:div\n  [:script\n   (l/! [:code]\n        (do (var m (L.map document.currentScript.parentElement))\n            (m.setView [-37.84 144.95]\n                       11)\n            (-&gt; (L.tileLayer.provider \"OpenStreetMap.Mapnik\")\n                (. (addTo m)))\n            (-&gt; [-37.9 144.8]\n                L.marker\n                (. (addTo m))\n                (. (bindPopup \"&lt;i style='color:purple'&gt;Have you been here?&lt;/i&gt;\"))\n                (. (openPopup)))))]]\n {:html/deps [:leaflet]\n  :style {:height \"400px\"}})\n\n\n\nsource: notebooks/stdlang_book/walkthrough.clj",
-    "crumbs": [
-      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Walkthrough 👣</span>"
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Introduction</span>"
     ]
   }
 ]

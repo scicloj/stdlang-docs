@@ -25,13 +25,25 @@
 ;; To specify a way to use it, we use `l/script`. This will create a runtime
 ;; for evaluation.
 
-;; In For example, let us define the following two ways,
-;; named `:code` and `:live`.
+^:kind/println
+(l/script :js
+  {:require [[xt.lang.base-lib :as k]]})
+
+;; It is now possible to transpile lisp forms to code:
+
+(!.js
+  (+ 1 2 3))
+
+
+;; If more than one environment is required, `l/script+` is a way to create an annex
+;; that 
+
+;; In For example, let us define the following two annexes, named `:code` and `:live`.
 
 ;; Here we define `:code` as a way to use the transpiler
 ;; to generate Javascript code, but not use it in any runtime.
 
-^:kind/println ; just so the return value of this call is displayed nicely
+^:kind/println
 (l/script+ [:code :js]
   {:require [[xt.lang.base-lib :as k]]})
 
@@ -42,13 +54,6 @@
 (l/script+ [:live :js]
   {:runtime :basic
    :require [[xt.lang.base-lib :as k]]})
-
-(l/script+ [:live :js]
-  {:runtime :basic
-   :require [[xt.lang.base-lib :as k]]})
-
-(l/! [:live]
-  (k/abs 1))
 
 ;; Let us now use these two ways for basic arithmetic.
 
@@ -124,7 +129,17 @@
 (display-output-format
  ['undefined
   (l/! [:code] undefined)
-  (l/! [:live] undefined)])
+  (l/! [:live] undefined)]
+ ['NaN
+  (l/! [:code] NaN)
+  (l/! [:live] NaN)]
+ ['Infinity
+  (l/! [:code] Infinity)
+  (l/! [:live] Infinity)]
+ ['(- Infinity)
+  (l/! [:code] (- Infinity))
+  (l/! [:live] (. (- Infinity)
+                  (toString)))])
 
 ;; ### Boolean
 
@@ -200,12 +215,42 @@
   (l/! [:code] (+ 1 10))
   (l/! [:live] (+ 1 10))])
 
+;; ### Subtraction 
+
+(display-output-format
+ ['(- 10)
+  (l/! [:code] (- 10))
+  (l/! [:live] (- 10))]
+ ['(- 10 1.1)
+  (l/! [:code] (- 10 1.1))
+  (l/! [:live] (- 10 1.1))]
+ ['(- 4 3 2 1.1)
+  (l/! [:code] (- 4 3 2 1.1))
+  (l/! [:live] (- 4 3 2 1.1))])
 
 
+;; ### Multiplication
 
-;; # 
+(display-output-format
+ ['(* 10 20)
+  (l/! [:code] (* 10 20))
+  (l/! [:live] (* 10 20))]
+ ['(* 4 3.3 2.2 1.1)
+  (l/! [:code] (* 4 3.3 2.2 1.1))
+  (l/! [:live] (* 4 3.3 2.2 1.1))])
 
+;; ### Division
 
+(display-output-format
+ ['(/ 10)
+  (l/! [:code] (/ 10))
+  (l/! [:live] (/ 10))]
+ ['(/ 10 20)
+  (l/! [:code] (/ 10 20))
+  (l/! [:live] (/ 10 20))]
+ ['(/ 4 3.3 2.2 1.1)
+  (l/! [:code] (/ 4 3.3 2.2 1.1))
+  (l/! [:live] (/ 4 3.3 2.2 1.1))])
 
 
 (display-output-format
