@@ -131,7 +131,7 @@ go generate Javascript code, and run it in a Node.js runtime.
 
 ::: {.printedClojure}
 ```clojure
-[#rt.basic[:server/basic :js 1jiajs4x0l277 64658 1]]
+[#rt.basic[:server/basic :js t8cfjkhmrm1t 45527 1]]
 
 ```
 :::
