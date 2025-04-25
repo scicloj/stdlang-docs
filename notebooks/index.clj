@@ -32,7 +32,7 @@
      clojure.edn/read-string
      (map (fn [chapter]
             (prn [chapter (chapter->title chapter)])
-            (format "\n- [%s](tableplot_book.%s.html)\n"
+            (format "\n- [%s](stdlang_book.%s.html)\n"
                     (chapter->title chapter)
                     chapter)))
      (str/join "\n")
