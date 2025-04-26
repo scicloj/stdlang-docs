@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>2&nbsp; Introduction – Std.lang documentation</title>
+<title>2&nbsp; Walkthrough Javascript – Std.lang documentation</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -116,7 +116,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./stdlang_book.walkthrough.html"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Introduction</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./stdlang_book.walkthrough_js.html"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Walkthrough Javascript</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -149,8 +149,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./stdlang_book.walkthrough.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Introduction</span></span></a>
+  <a href="./stdlang_book.walkthrough_js.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Walkthrough Javascript</span></span></a>
   </div>
 </li>
     </ul>
@@ -259,7 +259,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Introduction</span></h1>
+<h1 class="title"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Walkthrough Javascript</span></h1>
 </div>
 
 
@@ -286,14 +286,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 .clay-side-by-side .sourceCode {margin: 0}
 .clay-side-by-side {margin: 1em 0}
 </style>
-<script src="stdlang_book.walkthrough_files/md-default0.js" type="text/javascript"></script>
-<script src="stdlang_book.walkthrough_files/md-default1.js" type="text/javascript"></script>
+<script src="stdlang_book.walkthrough_js_files/md-default0.js" type="text/javascript"></script>
+<script src="stdlang_book.walkthrough_js_files/md-default1.js" type="text/javascript"></script>
 <p>Welcome to the walkthrough of std.lang and it’s interaction with the javascript runtime. Ideally, the reader should have at least some experience with both clojure and javascript in order to get the most out of the tutorial as the library allows for seamless interop between a clojure runtime and a javascript one - whether it is on the server side - node, quickjs, osascript - as well as on the browser and other embedded js environments.</p>
 <section id="setup" class="level2" data-number="2.1">
 <h2 data-number="2.1" class="anchored" data-anchor-id="setup"><span class="header-section-number">2.1</span> Setup</h2>
 <p>Let us briefly explore the std.lang transpiler.</p>
 <div class="sourceClojure">
-<div class="sourceCode" id="cb1"><pre class="sourceCode clojure code-with-copy"><code class="sourceCode clojure"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>(<span class="kw">ns</span> stdlang-book.walkthrough</span>
+<div class="sourceCode" id="cb1"><pre class="sourceCode clojure code-with-copy"><code class="sourceCode clojure"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>(<span class="kw">ns</span> stdlang-book.walkthrough-js</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>  (<span class="at">:require</span> [std.lang <span class="at">:as</span> l]))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>std.lang can be used in different ways: - generate code for different languages - run the code in different runtimes of those languages</p>
@@ -323,7 +323,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>  {<span class="at">:require</span> [[xt.lang.base-lib <span class="at">:as</span> k]]})</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="printedClojure">
-<div class="sourceCode" id="cb7"><pre class="sourceCode clojure code-with-copy"><code class="sourceCode clojure"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>[#rt<span class="at">:lang</span>[<span class="at">:js</span>]]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb7"><pre class="sourceCode clojure code-with-copy"><code class="sourceCode clojure"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>[<span class="va">nil</span> #rt<span class="at">:lang</span>[<span class="at">:js</span>]]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Here we define <code>:live</code> as a way to use the transpiler go generate Javascript code, and run it in a Node.js runtime.</p>
 <div class="sourceClojure">
@@ -333,7 +333,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>   <span class="at">:require</span> [[xt.lang.base-lib <span class="at">:as</span> k]]})</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="printedClojure">
-<div class="sourceCode" id="cb9"><pre class="sourceCode clojure code-with-copy"><code class="sourceCode clojure"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>[#rt.basic[<span class="at">:server/basic</span> <span class="at">:js</span> <span class="dv">1</span>jiajs4x0l277 <span class="dv">64658</span> <span class="dv">1</span>]]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb9"><pre class="sourceCode clojure code-with-copy"><code class="sourceCode clojure"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>[<span class="va">nil</span> #rt.basic[<span class="at">:server/basic</span> <span class="at">:js</span> soppqzj6q3c4 <span class="dv">50026</span> <span class="dv">1</span>]]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Let us now use these two ways for basic arithmetic.</p>
 <div class="sourceClojure">
@@ -1918,7 +1918,7 @@ out<span class="op">;</span></code></td>
 </div>
 </div>
 <div style="background-color:grey;height:2px;width:100%;"></div>
-<div><pre><small><small>source: <a href="https://github.com/scicloj/stdlang-docs/blob/main/notebooks/stdlang_book/walkthrough.clj">notebooks/stdlang_book/walkthrough.clj</a></small></small></pre></div>
+<div><pre><small><small>source: <a href="https://github.com/scicloj/stdlang-docs/blob/main/notebooks/stdlang_book/walkthrough_js.clj">notebooks/stdlang_book/walkthrough_js.clj</a></small></small></pre></div>
 
 
 </section>

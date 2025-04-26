@@ -34,29 +34,29 @@
     "href": "index.html#chapters-in-this-book",
     "title": "Std.lang documentation",
     "section": "1.3 Chapters in this book",
-    "text": "1.3 Chapters in this book\n\nIntroduction\n\n\nsource: notebooks/index.clj",
+    "text": "1.3 Chapters in this book\n\nWalkthrough Javascript\n\n\nsource: notebooks/index.clj",
     "crumbs": [
       "<span class='chapter-number'>1</span>  <span class='chapter-title'>Preface</span>"
     ]
   },
   {
-    "objectID": "stdlang_book.walkthrough.html",
-    "href": "stdlang_book.walkthrough.html",
-    "title": "2  Introduction",
+    "objectID": "stdlang_book.walkthrough_js.html",
+    "href": "stdlang_book.walkthrough_js.html",
+    "title": "2  Walkthrough Javascript",
     "section": "",
     "text": "2.1 Setup\nWelcome to the walkthrough of std.lang and it’s interaction with the javascript runtime. Ideally, the reader should have at least some experience with both clojure and javascript in order to get the most out of the tutorial as the library allows for seamless interop between a clojure runtime and a javascript one - whether it is on the server side - node, quickjs, osascript - as well as on the browser and other embedded js environments.\nLet us briefly explore the std.lang transpiler.\nstd.lang can be used in different ways: - generate code for different languages - run the code in different runtimes of those languages\nTo specify a way to use it, we use l/script. This will create a runtime for evaluation.\nIt is now possible to transpile lisp forms to code:\nIf more than one environment is required, l/script+ is a way to create an annex that\nIn For example, let us define the following two annexes, named :code and :live.\nHere we define :code as a way to use the transpiler to generate Javascript code, but not use it in any runtime.\nHere we define :live as a way to use the transpiler go generate Javascript code, and run it in a Node.js runtime.\nLet us now use these two ways for basic arithmetic.",
     "crumbs": [
-      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Introduction</span>"
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Walkthrough Javascript</span>"
     ]
   },
   {
-    "objectID": "stdlang_book.walkthrough.html#setup",
-    "href": "stdlang_book.walkthrough.html#setup",
-    "title": "2  Introduction",
+    "objectID": "stdlang_book.walkthrough_js.html#setup",
+    "href": "stdlang_book.walkthrough_js.html#setup",
+    "title": "2  Walkthrough Javascript",
     "section": "",
-    "text": "(ns stdlang-book.walkthrough\n  (:require [std.lang :as l]))\n\n\n\n\n^:kind/println\n(l/script :js\n  {:require [[xt.lang.base-lib :as k]]})\n\n\n#rt:lang[:js]\n\n\n\n(!.js\n  (+ 1 2 3))\n\n\n\"1 + 2 + 3;\"\n\n\n\n\n\n^:kind/println\n(l/script+ [:code :js]\n  {:require [[xt.lang.base-lib :as k]]})\n\n\n[#rt:lang[:js]]\n\n\n\n^:kind/println\n(l/script+ [:live :js]\n  {:runtime :basic\n   :require [[xt.lang.base-lib :as k]]})\n\n\n[#rt.basic[:server/basic :js 1jiajs4x0l277 64658 1]]\n\n\n\n[ ;; No runtime, just generating code:\n (l/! [:code] (+ 1 2))\n ;; Generating, running in Node.js:\n (l/! [:live] (+ 1 2))]\n\n\n[\"1 + 2;\" 3]",
+    "text": "(ns stdlang-book.walkthrough-js\n  (:require [std.lang :as l]))\n\n\n\n\n^:kind/println\n(l/script :js\n  {:require [[xt.lang.base-lib :as k]]})\n\n\n#rt:lang[:js]\n\n\n\n(!.js\n  (+ 1 2 3))\n\n\n\"1 + 2 + 3;\"\n\n\n\n\n\n^:kind/println\n(l/script+ [:code :js]\n  {:require [[xt.lang.base-lib :as k]]})\n\n\n[nil #rt:lang[:js]]\n\n\n\n^:kind/println\n(l/script+ [:live :js]\n  {:runtime :basic\n   :require [[xt.lang.base-lib :as k]]})\n\n\n[nil #rt.basic[:server/basic :js soppqzj6q3c4 50026 1]]\n\n\n\n[ ;; No runtime, just generating code:\n (l/! [:code] (+ 1 2))\n ;; Generating, running in Node.js:\n (l/! [:live] (+ 1 2))]\n\n\n[\"1 + 2;\" 3]",
     "crumbs": [
-      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Introduction</span>"
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Walkthrough Javascript</span>"
     ]
   }
 ]

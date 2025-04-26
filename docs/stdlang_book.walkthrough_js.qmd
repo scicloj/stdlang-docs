@@ -4,7 +4,7 @@ format:
     toc: true
     toc-depth: 4
     theme: [cosmo, notebooks/custom.scss]
-    output-file: stdlang_book.walkthrough.html
+    output-file: stdlang_book.walkthrough_js.html
 code-block-background: true
 fontsize: 0.9em
 
@@ -17,9 +17,9 @@ fontsize: 0.9em
 .clay-side-by-side .sourceCode {margin: 0}
 .clay-side-by-side {margin: 1em 0}
 </style>
-<script src="stdlang_book.walkthrough_files/md-default0.js" type="text/javascript"></script><script src="stdlang_book.walkthrough_files/md-default1.js" type="text/javascript"></script>
+<script src="stdlang_book.walkthrough_js_files/md-default0.js" type="text/javascript"></script><script src="stdlang_book.walkthrough_js_files/md-default1.js" type="text/javascript"></script>
 
-# Introduction
+# Walkthrough Javascript
 
 Welcome to the walkthrough of std.lang and it's interaction with the javascript runtime.
 Ideally, the reader should have at least some experience with both clojure and javascript
@@ -35,7 +35,7 @@ Let us briefly explore the std.lang transpiler.
 
 ::: {.sourceClojure}
 ```clojure
-(ns stdlang-book.walkthrough
+(ns stdlang-book.walkthrough-js
   (:require [std.lang :as l]))
 ```
 :::
@@ -108,7 +108,7 @@ to generate Javascript code, but not use it in any runtime.
 
 ::: {.printedClojure}
 ```clojure
-[#rt:lang[:js]]
+[nil #rt:lang[:js]]
 
 ```
 :::
@@ -131,7 +131,7 @@ go generate Javascript code, and run it in a Node.js runtime.
 
 ::: {.printedClojure}
 ```clojure
-[#rt.basic[:server/basic :js 1jiajs4x0l277 64658 1]]
+[nil #rt.basic[:server/basic :js soppqzj6q3c4 50026 1]]
 
 ```
 :::
@@ -1544,5 +1544,5 @@ out;
 
 
 ```{=html}
-<div><pre><small><small>source: <a href="https://github.com/scicloj/stdlang-docs/blob/main/notebooks/stdlang_book/walkthrough.clj">notebooks/stdlang_book/walkthrough.clj</a></small></small></pre></div>
+<div><pre><small><small>source: <a href="https://github.com/scicloj/stdlang-docs/blob/main/notebooks/stdlang_book/walkthrough_js.clj">notebooks/stdlang_book/walkthrough_js.clj</a></small></small></pre></div>
 ```

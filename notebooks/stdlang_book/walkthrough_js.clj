@@ -1,4 +1,4 @@
-;; # Introduction
+;; # Walkthrough Javascript
 
 ;; Welcome to the walkthrough of std.lang and it's interaction with the javascript runtime.
 ;; Ideally, the reader should have at least some experience with both clojure and javascript
@@ -10,7 +10,7 @@
 
 ;; Let us briefly explore the std.lang transpiler.
 
-(ns stdlang-book.walkthrough
+(ns stdlang-book.walkthrough-js
   (:require [std.lang :as l]))
 
 ;; std.lang can be used in different ways:
