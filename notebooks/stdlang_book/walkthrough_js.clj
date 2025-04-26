@@ -874,7 +874,7 @@
          (catch e (:= out "world")))
        out))])
 
-;; # Lib - Helpers
+;; # Base Lib - For 
 
 ;; ### for:array
 
@@ -900,6 +900,717 @@
           (x:arr-push out e))
         out))])
 
+;; ### for:object
+
+(display-output-format
+ ['(do
+     (var out := [])
+     (var obj := {:a 1 :b 2})
+     (k/for:object [[k v] obj]
+       (x:arr-push out [k v]))
+     out)
+  (l/! [:code]
+    (do
+     (var out := [])
+     (var obj := {:a 1 :b 2})
+     (k/for:object [[k v] obj]
+       (x:arr-push out [k v]))
+     out))
+  (l/! [:live]
+    (do
+     (var out := [])
+     (var obj := {:a 1 :b 2})
+     (k/for:object [[k v] obj]
+       (x:arr-push out [k v]))
+     out))])
+
+
+;; ### for:index
+
+(display-output-format
+ ['(do
+     (var out := [])
+     (k/for:index [i [0 10 2]]
+       (x:arr-push out i))
+     out)
+  (l/! [:code]
+    (do
+     (var out := [])
+     (k/for:index [i [0 10 2]]
+       (x:arr-push out i))
+     out))
+  (l/! [:live]
+    (do
+     (var out := [])
+     (k/for:index [i [0 10 2]]
+       (x:arr-push out i))
+     out))])
+
+
+;; ### for:return
+
+(display-output-format
+ ['(do
+    (var out)
+    (var success (fn [cb]
+                   (cb nil "OK")))
+    (k/for:return [[ret err] (success (x:callback))]
+      {:success (:= out ret)
+       :error   (:= out err)})
+    out)
+  (l/! [:code]
+    (do
+    (var out)
+    (var success (fn [cb]
+                   (cb nil "OK")))
+    (k/for:return [[ret err] (success (x:callback))]
+      {:success (:= out ret)
+       :error   (:= out err)})
+    out))
+  (l/! [:live]
+    (do
+    (var out)
+    (var success (fn [cb]
+                   (cb nil "OK")))
+    (k/for:return [[ret err] (success (x:callback))]
+      {:success (:= out ret)
+       :error   (:= out err)})
+    out))])
+
+
+;; ### for:try
+
+(display-output-format
+ ['(do
+     (var out := nil)
+     (k/for:try [[ret err] (do:> (x:err "hello"))]
+       {:success (:= out ret)
+        :error   (:= out err)})
+     out)
+  (l/! [:code]
+    (do
+     (var out := nil)
+     (k/for:try [[ret err] (do:> (x:err "hello"))]
+       {:success (:= out ret)
+        :error   (:= out err)})
+     out))
+  (l/! [:live]
+    (do
+     (var out := nil)
+     (k/for:try [[ret err] (do:> (x:err "hello"))]
+       {:success (:= out ret)
+        :error   (:= out err)})
+     out))])
+
+
+;; ### for:async
+
+(display-output-format
+ ['(do
+     (var out := nil)
+     (k/for:async [[ret err] (+ 1 2 3)]
+       {:success (:= out ret)
+        :error (:= out err)}))
+  (l/! [:code]
+    (do
+      (var out := nil)
+      (k/for:async [[ret err] (+ 1 2 3)]
+        {:success (:= out ret)
+         :error (:= out err)})))
+  (l/! [:live]
+    (do
+      (var out := nil)
+      (k/for:async [[ret err] (+ 1 2 3)]
+        {:success (:= out ret)
+         :error (:= out err)})))])
+
+
+;; # Base Lib - Util
+
+
+;; ### invoke
+
+(display-output-format
+ ['(k/invoke k/add 1 2)
+  (l/! [:code]
+    (k/invoke k/add 1 2))
+  (l/! [:live]
+    (k/invoke k/add 1 2))])
+
+;; ### apply
+
+(display-output-format
+ ['(k/apply (fn:> [a b] (+ a b))
+            [1 2])
+  (l/! [:code]
+    (k/apply (fn:> [a b] (+ a b))
+             [1 2]))
+  (l/! [:live]
+    (k/apply (fn:> [a b] (+ a b))
+             [1 2]))])
+
+;; ### eval
+
+(display-output-format
+ ['(k/eval "1+2")
+  (l/! [:code]
+    (k/eval "1+2"))
+  (l/! [:live]
+    (k/eval "1+2"))]
+ ['(k/apply k/eval ["1+2"])
+  (l/! [:code]
+    (k/apply k/eval ["1+2"]))
+  (l/! [:live]
+    (k/apply k/eval ["1+2"]))])
+
+;; # Base Lib - Math
+
+;; ### eq
+
+(display-output-format
+ ['[(k/eq 2 2) (k/eq 2 1)]
+  (l/! [:code]
+    [(k/eq 2 2) (k/eq 2 1)])
+  (l/! [:live]
+    [(k/eq 2 2) (k/eq 2 1)])]
+ ['(k/apply k/eq [1 1])
+  (l/! [:code]
+    (k/apply k/eq [1 1]))
+  (l/! [:live]
+    (k/apply k/eq [1 1]))])
+
+;; ### neq
+
+(display-output-format
+ ['[(k/neq 2 2) (k/neq 2 1)]
+  (l/! [:code]
+    [(k/neq 2 2) (k/neq 2 1)])
+  (l/! [:live]
+    [(k/neq 2 2) (k/neq 2 1)])]
+ ['(k/apply k/neq [1 1])
+  (l/! [:code]
+    (k/apply k/neq [1 1]))
+  (l/! [:live]
+    (k/apply k/neq [1 1]))])
+
+;; ### add
+
+(display-output-format
+ ['(k/add 1 2)
+  (l/! [:code]
+    (k/add 1 2))
+  (l/! [:live]
+    (k/add 1 2))]
+ ['(k/apply k/add [1 2])
+  (l/! [:code]
+    (k/apply k/add [1 2]))
+  (l/! [:live]
+    (k/apply k/add [1 3]))])
+
+;; ### sub 
+
+(display-output-format
+ ['(k/sub 1 2)
+  (l/! [:code]
+    (k/sub 1 2))
+  (l/! [:live]
+    (k/sub 1 2))]
+ ['(k/apply k/sub [1 2])
+  (l/! [:code]
+    (k/apply k/sub [1 2]))
+  (l/! [:live]
+    (k/apply k/sub [1 3]))])
+
+;; ### mul
+
+(display-output-format
+ ['(k/mul 10 10)
+  (l/! [:code]
+    (k/mul 10 10))
+  (l/! [:live]
+    (k/mul 10 10))]
+ ['(k/apply k/mul [1 2])
+  (l/! [:code]
+    (k/apply k/mul [1 2]))
+  (l/! [:live]
+    (k/apply k/mul [1 3]))])
+
+;; ### div
+
+(display-output-format
+ ['(k/div 10 2)
+  (l/! [:code]
+    (k/div 10 2))
+  (l/! [:live]
+    (k/div 10 2))]
+ )
+
+;; ### greater than
+
+(display-output-format
+ ['[(k/gt 2 2) (k/gt 2 1)]
+  (l/! [:code]
+    [(k/gt 2 2) (k/gt 2 1)])
+  (l/! [:live]
+    [(k/gt 2 2) (k/gt 2 1)])]
+ ['(k/arr-sort [1 2 3 4 5 6] k/identity k/gt)
+  (l/! [:code]
+    (k/arr-sort [1 2 3 4 5 6] k/identity k/gt))
+  (l/! [:live]
+    (k/arr-sort [1 2 3 4 5 6] k/identity k/gt))])
+
+;; ### less than
+
+(display-output-format
+ ['[(k/lt 2 2)  (k/lt 1 2)]
+  (l/! [:code]
+    [(k/lt 2 2)  (k/lt 1 2)])
+  (l/! [:live]
+    [(k/lt 2 2)  (k/lt 1 2)])]
+ ['(k/arr-sort [6 5 4 3 2 1] k/identity k/lt)
+  (l/! [:code]
+    (k/arr-sort [6 5 4 3 2 1] k/identity k/lt))
+  (l/! [:live]
+    (k/arr-sort [6 5 4 3 2 1] k/identity k/lt))])
+
+;; ### greater than equals
+
+(display-output-format
+ ['[(k/gte 2 2) (k/gte 2 1)]
+  (l/! [:code]
+    [(k/gte 2 2) (k/gte 2 1)])
+  (l/! [:live]
+    [(k/gte 2 2) (k/gte 2 1)])]
+ ['(k/arr-sort [1 2 3 4 5 6] k/identity k/gte)
+  (l/! [:code]
+    (k/arr-sort [1 2 3 4 5 6] k/identity k/gte))
+  (l/! [:live]
+    (k/arr-sort [1 2 3 4 5 6] k/identity k/gte))])
+
+
+;; ### less than equals
+
+(display-output-format
+ ['[(k/lte 2 2)  (k/lte 1 2)]
+  (l/! [:code]
+    [(k/lte 2 2)  (k/lte 1 2)])
+  (l/! [:live]
+    [(k/lte 2 2)  (k/lte 1 2)])]
+ ['(k/arr-sort [6 5 4 3 2 1] k/identity k/lte)
+  (l/! [:code]
+    (k/arr-sort [6 5 4 3 2 1] k/identity k/lte))
+  (l/! [:live]
+    (k/arr-sort [6 5 4 3 2 1] k/identity k/lte))])
+
+;; ### neg
+
+(display-output-format
+ ['[(k/neg 1) (k/neg 0) (k/neg -1)]
+  (l/! [:code]
+    [(k/neg 1) (k/neg 0) (k/neg -1)])
+  (l/! [:live]
+    [(k/neg 1) (k/neg 0) (k/neg -1)])]
+ ['(k/arr-map [1 2 3 4 5] k/neg)
+  (l/! [:code]
+    (k/arr-map [1 2 3 4 5] k/neg))
+  (l/! [:live]
+    (k/arr-map [1 2 3 4 5] k/neg))])
+
+;; ### inc
+
+(display-output-format
+ ['(k/inc 1)
+  (l/! [:code]
+    (k/inc 1))
+  (l/! [:live]
+    (k/inc 1))]
+ ['(k/arr-map [1 2 3 4 5] k/inc)
+  (l/! [:code]
+    (k/arr-map [1 2 3 4 5] k/inc))
+  (l/! [:live]
+    (k/arr-map [1 2 3 4 5] k/inc))])
+
+;; ### dec
+
+(display-output-format
+ ['(k/dec 1)
+  (l/! [:code]
+    (k/dec 1))
+  (l/! [:live]
+    (k/dec 1))]
+ ['(k/arr-map [1 2 3 4 5] k/dec)
+  (l/! [:code]
+    (k/arr-map [1 2 3 4 5] k/dec))
+  (l/! [:live]
+    (k/arr-map [1 2 3 4 5] k/dec))])
+
+;; ### zero?
+
+(display-output-format
+ ['[(k/zero? 1)
+    (k/zero? 0)]
+  (l/! [:code]
+    [(k/zero? 1)
+     (k/zero? 0)])
+  (l/! [:live]
+    [(k/zero? 1)
+     (k/zero? 0)])]
+ ['(k/arr-map [0 2 0 4 5] k/zero?)
+  (l/! [:code]
+    (k/arr-map [0 2 0 4 5] k/zero?))
+  (l/! [:live]
+    (k/arr-map [0 2 0 4 5] k/zero?))])
+
+;; ### pos?
+
+(display-output-format
+ ['[(k/pos? 1)
+    (k/pos? 0)]
+  (l/! [:code]
+    [(k/pos? 1)
+     (k/pos? 0)])
+  (l/! [:live]
+    [(k/pos? 1)
+     (k/pos? 0)])]
+ ['(k/arr-map [0 2 0 4 5] k/pos?)
+  (l/! [:code]
+    (k/arr-map [0 2 0 4 5] k/pos?))
+  (l/! [:live]
+    (k/arr-map [0 2 0 4 5] k/pos?))])
+
+;; ### neg?
+
+(display-output-format
+ ['[(k/neg? -1)
+    (k/neg? 0)]
+  (l/! [:code]
+    [(k/neg? -1)
+     (k/neg? 0)])
+  (l/! [:live]
+    [(k/neg? -1)
+     (k/neg? 0)])]
+ ['(k/arr-map [0 -2 0 -4 5] k/neg?)
+  (l/! [:code]
+    (k/arr-map [0 -2 0 -4 5] k/neg?))
+  (l/! [:live]
+    (k/arr-map [0 -2 0 -4 5] k/neg?))])
+
+;; ### even?
+
+(display-output-format
+ ['[(k/even? 2)
+    (k/even? 1)]
+  (l/! [:code]
+    [(k/even? 2)
+     (k/even? 1)])
+  (l/! [:live]
+    [(k/even? 2)
+     (k/even? 1)])]
+ ['(k/arr-map [1 2 3 4 5] k/even?)
+  (l/! [:code]
+    (k/arr-map [1 2 3 4 5] k/even?))
+  (l/! [:live]
+    (k/arr-map [1 2 3 4 5] k/even?))])
+
+;; ### odd?
+
+(display-output-format
+ ['[(k/odd? 2)
+    (k/odd? 1)]
+  (l/! [:code]
+    [(k/odd? 2)
+     (k/odd? 1)])
+  (l/! [:live]
+    [(k/odd? 2)
+     (k/odd? 1)])]
+ ['(k/arr-map [1 2 3 4 5] k/odd?)
+  (l/! [:code]
+    (k/arr-map [1 2 3 4 5] k/odd?))
+  (l/! [:live]
+    (k/arr-map [1 2 3 4 5] k/odd?))])
+
+;; ### abs
+
+(display-output-format
+ ['[(k/abs -1) (k/abs 1)]
+  (l/! [:code]
+    [(k/abs -1) (k/abs 1)])
+  (l/! [:live]
+    [(k/abs -1) (k/abs 1)])]
+ ['(k/arr-map [0 -2 0 -4 5] k/abs)
+  (l/! [:code]
+    (k/arr-map [0 -2 0 -4 5] k/abs))
+  (l/! [:live]
+    (k/arr-map [0 -2 0 -4 5] k/abs))])
+
+;; ### max
+
+(display-output-format
+ ['(k/max 1 2 3 2)
+  (l/! [:code]
+    (k/max 1 2 3 2))
+  (l/! [:live]
+    (k/max 1 2 3 2))]
+ ['(k/apply k/max [1 2 3 2])
+  (l/! [:code]
+    (k/apply k/max [1 2 3 2]))
+  (l/! [:live]
+    (k/apply k/max [1 2 3 2]))])
+
+;; ### min
+
+(display-output-format
+ ['(k/min 1 2 3 2)
+  (l/! [:code]
+    (k/min 1 2 3 2))
+  (l/! [:live]
+    (k/min 1 2 3 2))]
+ ['(k/apply k/min [1 2 3 2])
+  (l/! [:code]
+    (k/apply k/min [1 2 3 2]))
+  (l/! [:live]
+    (k/apply k/min [1 2 3 2]))])
+
+;; ### ceil
+
+(display-output-format
+ ['[(k/ceil -1.1) (k/ceil 1.1)]
+  (l/! [:code]
+    [(k/ceil -1.1) (k/ceil 1.1)])
+  (l/! [:live]
+    [(k/ceil -1.1) (k/ceil 1.1)])]
+ ['(k/arr-map [0 -2.1 0 -4.1 5] k/ceil)
+  (l/! [:code]
+    (k/arr-map [0 -2.1 0 -4.1 5] k/ceil))
+  (l/! [:live]
+    (k/arr-map [0 -2.1 0 -4.1 5] k/ceil))])
+
+;; ### floor
+
+(display-output-format
+ ['[(k/floor -1.1) (k/floor 1.1)]
+  (l/! [:code]
+    [(k/floor -1.1) (k/floor 1.1)])
+  (l/! [:live]
+    [(k/floor -1.1) (k/floor 1.1)])]
+ ['(k/arr-map [0 -2.1 0 -4.1 5] k/floor)
+  (l/! [:code]
+    (k/arr-map [0 -2.1 0 -4.1 5] k/floor))
+  (l/! [:live]
+    (k/arr-map [0 -2.1 0 -4.1 5] k/floor))])
+
+;; ### sqrt
+
+(display-output-format
+ ['[(k/sqrt -1) (k/sqrt 1)]
+  (l/! [:code]
+    [(k/sqrt -1) (k/sqrt 1)])
+  (l/! [:live]
+    [(k/sqrt -1) (k/sqrt 1)])]
+ ['(k/arr-map [0 -2 0 -4 5] k/sqrt)
+  (l/! [:code]
+    (k/arr-map [0 -2 0 -4 5] k/sqrt))
+  (l/! [:live]
+    (k/arr-map [0 -2 0 -4 5] k/sqrt))])
+
+;; ### sin
+
+(display-output-format
+ ['[(k/sin (/ 3.14159 4))
+    (k/sin (/ 3.14159 6))]
+  (l/! [:code]
+    [(k/sin (/ 3.14159 4))
+     (k/sin (/ 3.14159 6))])
+  (l/! [:live]
+    [(k/sin (/ 3.14159 4))
+     (k/sin (/ 3.14159 6))])]
+ ['(k/arr-map [1 2 3 4 5] k/sin)
+  (l/! [:code]
+    (k/arr-map [1 2 3 4 5] k/sin))
+  (l/! [:live]
+    (k/arr-map [1 2 3 4 5] k/sin))])
+
+;; ### cos
+
+(display-output-format
+ ['[(k/cos (/ 3.14159 4))
+    (k/cos (/ 3.14159 6))]
+  (l/! [:code]
+    [(k/cos (/ 3.14159 4))
+     (k/cos (/ 3.14159 6))])
+  (l/! [:live]
+    [(k/cos (/ 3.14159 4))
+     (k/cos (/ 3.14159 6))])]
+ ['(k/arr-map [1 2 3 4 5] k/cos)
+  (l/! [:code]
+    (k/arr-map [1 2 3 4 5] k/cos))
+  (l/! [:live]
+    (k/arr-map [1 2 3 4 5] k/cos))])
+
+;; ### tan
+
+(display-output-format
+ ['[(k/tan (/ 3.14159 4))
+    (k/tan (/ 3.14159 6))]
+  (l/! [:code]
+    [(k/tan (/ 3.14159 4))
+     (k/tan (/ 3.14159 6))])
+  (l/! [:live]
+    [(k/tan (/ 3.14159 4))
+     (k/tan (/ 3.14159 6))])]
+ ['(k/arr-map [1 2 3 4 5] k/tan)
+  (l/! [:code]
+    (k/arr-map [1 2 3 4 5] k/tan))
+  (l/! [:live]
+    (k/arr-map [1 2 3 4 5] k/tan))])
+
+;; ### asin
+
+(display-output-format
+ ['[(k/asin 0.5)
+    (k/asin 0.8)]
+  (l/! [:code]
+    [(k/asin 0.5)
+     (k/asin 0.8)])
+  (l/! [:live]
+    [(k/asin 0.5)
+     (k/asin 0.8)])]
+ ['(k/arr-map [1 2 3 4 5] k/asin)
+  (l/! [:code]
+    (k/arr-map [1 2 3 4 5] k/asin))
+  (l/! [:live]
+    (k/arr-map [1 2 3 4 5] k/asin))])
+
+;; ### acos
+
+(display-output-format
+ ['[(k/acos 0.5)
+    (k/acos 0.8)]
+  (l/! [:code]
+    [(k/acos 0.5)
+     (k/acos 0.8)])
+  (l/! [:live]
+    [(k/acos 0.5)
+     (k/acos 0.8)])]
+ ['(k/arr-map [1 2 3 4 5] k/acos)
+  (l/! [:code]
+    (k/arr-map [1 2 3 4 5] k/acos))
+  (l/! [:live]
+    (k/arr-map [1 2 3 4 5] k/acos))])
+
+
+;; ### atan
+
+(display-output-format
+ ['[(k/atan 0.5)
+    (k/atan 0.8)]
+  (l/! [:code]
+    [(k/atan 0.5)
+     (k/atan 0.8)])
+  (l/! [:live]
+    [(k/atan 0.5)
+     (k/atan 0.8)])]
+ ['(k/arr-map [1 2 3 4 5] k/atan)
+  (l/! [:code]
+    (k/arr-map [1 2 3 4 5] k/atan))
+  (l/! [:live]
+    (k/arr-map [1 2 3 4 5] k/atan))])
+
+
+;; ### sinh
+
+(display-output-format
+ ['[(k/sinh (/ 3.14159 4))
+    (k/sinh (/ 3.14159 6))]
+  (l/! [:code]
+    [(k/sinh (/ 3.14159 4))
+     (k/sinh (/ 3.14159 6))])
+  (l/! [:live]
+    [(k/sinh (/ 3.14159 4))
+     (k/sinh (/ 3.14159 6))])]
+ ['(k/arr-map [1 2 3 4 5] k/sinh)
+  (l/! [:code]
+    (k/arr-map [1 2 3 4 5] k/sinh))
+  (l/! [:live]
+    (k/arr-map [1 2 3 4 5] k/sinh))])
+
+;; ### cosh
+
+(display-output-format
+ ['[(k/cosh (/ 3.14159 4))
+    (k/cosh (/ 3.14159 6))]
+  (l/! [:code]
+    [(k/cosh (/ 3.14159 4))
+     (k/cosh (/ 3.14159 6))])
+  (l/! [:live]
+    [(k/cosh (/ 3.14159 4))
+     (k/cosh (/ 3.14159 6))])]
+ ['(k/arr-map [1 2 3 4 5] k/cosh)
+  (l/! [:code]
+    (k/arr-map [1 2 3 4 5] k/cosh))
+  (l/! [:live]
+    (k/arr-map [1 2 3 4 5] k/cosh))])
+
+
+;; ### tanh
+
+(display-output-format
+ ['[(k/tanh (/ 3.14159 4))
+    (k/tanh (/ 3.14159 6))]
+  (l/! [:code]
+    [(k/tanh (/ 3.14159 4))
+     (k/tanh (/ 3.14159 6))])
+  (l/! [:live]
+    [(k/tanh (/ 3.14159 4))
+     (k/tanh (/ 3.14159 6))])]
+ ['(k/arr-map [1 2 3 4 5] k/tanh)
+  (l/! [:code]
+    (k/arr-map [1 2 3 4 5] k/tanh))
+  (l/! [:live]
+    (k/arr-map [1 2 3 4 5] k/tanh))])
+
+
+
+;; ### gt-string
+
+(display-output-format
+ ['[(k/gt-string "a" "b")
+    (k/gt-string "A" "a")]
+  (l/! [:code]
+    [(k/gt-string "a" "b")
+     (k/gt-string "A" "a")])
+  (l/! [:live]
+    [(k/gt-string "a" "b")
+     (k/gt-string "A" "a")])])
+
+;; ### lt-string
+
+(display-output-format
+ ['[(k/lt-string "a" "b")
+    (k/lt-string "A" "a")]
+  (l/! [:code]
+    [(k/lt-string "a" "b")
+     (k/lt-string "A" "a")])
+  (l/! [:live]
+    [(k/lt-string "a" "b")
+     (k/lt-string "A" "a")])])
+
+(comment
+  ['(k/arr-foldl [1 2 3 4 5 6] k/sub 0)
+   (l/! [:code]
+     (k/arr-foldl [1 2 3 4 5 6] k/sub 0))
+   (l/! [:live]
+     (k/arr-foldl [1 2 3 4 5 6] k/sub 0))]
+  ['(k/arr-foldl [1 2 3 4 5 6] k/mul 1)
+   (l/! [:code]
+     (k/arr-foldl [1 2 3 4 5 6] k/mul 1))
+   (l/! [:live]
+     (k/arr-foldl [1 2 3 4 5 6] k/mul 1))]
+  ['(k/arr-foldl [1 2 3 4 5 6] k/div 1)
+   (l/! [:code]
+     (k/arr-foldl [1 2 3 4 5 6] k/div 1))
+   (l/! [:live]
+     (k/arr-foldl [1 2 3 4 5 6] k/div 1))])
 
 
 
