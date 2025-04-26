@@ -81,7 +81,7 @@
      :row-vectors (->> forms
                        (mapv (fn [[form code-output rt-output]]
                                [(display-output-clj-code (pr-str form))
-                                (display-output-js-code  (pr-str code-output))
+                                (display-output-js-code  code-output)
                                 (display-output-clj-code (pr-str rt-output))])))}
     {:kind/table true
      :kindly/hide-code true}))
@@ -233,6 +233,54 @@
  ['(tab ["a" 1] ["b" 2] ["c" 3])
   (l/! [:code] (tab ["a" 1] ["b" 2] ["c" 3]))
   (l/! [:live] (tab ["a" 1] ["b" 2] ["c" 3]))])
+
+
+;; # Types - Checks
+
+;; ### Typeof
+
+(display-output-format
+ ['(typeof nil)
+  (l/! [:code] (typeof nil))
+  (l/! [:live] (typeof nil))]
+ ['(typeof undefined)
+  (l/! [:code] (typeof undefined))
+  (l/! [:live] (typeof undefined))]
+ ['(typeof NaN)
+  (l/! [:code] (typeof NaN))
+  (l/! [:live] (typeof NaN))]
+ ['(typeof 1)
+  (l/! [:code] (typeof 1))
+  (l/! [:live] (typeof 1))]
+ ['(typeof true)
+  (l/! [:code] (typeof true))
+  (l/! [:live] (typeof true))]
+ ['(typeof "hello")
+  (l/! [:code] (typeof "hello"))
+  (l/! [:live] (typeof "hello"))]
+ ['(typeof (Symbol "hello"))
+  (l/! [:code] (typeof (Symbol "hello")))
+  (l/! [:live] (typeof (Symbol "hello")))]
+ ['(typeof (BigInt "0x1fffffffffffff"))
+  (l/! [:code] (typeof (BigInt "0x1fffffffffffff")))
+  (l/! [:live] (typeof (BigInt "0x1fffffffffffff")))]
+ ['(typeof #"^[Hh]ello d$")
+  (l/! [:code] (typeof #"^[Hh]ello d$"))
+  (l/! [:live] (typeof #"^[Hh]ello d$"))]
+ ['(typeof [1 2 3])
+  (l/! [:code] (typeof [1 2 3]))
+  (l/! [:live] (typeof [1 2 3]))]
+ ['(typeof {:a 1})
+  (l/! [:code] (typeof {:a 1}))
+  (l/! [:live] (typeof {:a 1}))])
+
+;; ### Instanceof
+
+(display-output-format
+ ['(instanceof #"^[Hh]ello d$" RegExp)
+  (l/! [:code] (instanceof #"^[Hh]ello d$" RegExp))
+  (l/! [:live] (instanceof #"^[Hh]ello d$" RegExp))])
+
 
 
 ;; # Operations - Assignment
@@ -654,6 +702,177 @@
     (b:<< 128 3))])
 
 
+;; # Keywords - Functions
+
+(display-output-format
+ ['(fn [x y] (return (+ x y)))
+  (l/! [:code]
+    (fn [x y] (return (+ x y))))
+  (l/! [:live]
+    (fn [x y] (return (+ x y))))]
+ ['(do (var hello (fn [x y] (return (+ x y))))
+       (hello 1 2))
+  (l/! [:code]
+    (do (var hello (fn [x y] (return (+ x y))))
+        (hello 1 2)))
+  (l/! [:live]
+    (do (var hello (fn [x y] (return (+ x y))))
+        (hello 1 2)))])
+
+;; # Keywords - Blocks
+
+;; ### if block
+
+(display-output-format
+ ['(do (var arr [1 2 3 4 5])
+       (var out)
+       (if (< (x:len arr) 10)
+         (:= out true)
+         (:= out false))
+       out)
+  (l/! [:code]
+    (do (var arr [1 2 3 4 5])
+        (var out)
+        (if (< (x:len arr) 10)
+          (:= out true)
+          (:= out false))
+        out))
+  (l/! [:live]
+    (do (var arr [1 2 3 4 5])
+        (var out)
+        (if (< (x:len arr) 10)
+          (:= out true)
+          (:= out false))
+        out))])
+
+;; ### cond block
+
+(display-output-format
+ ['(do (var arr [1 2 3 4 5])
+       (var out)
+       (cond (< (x:len arr) 5)
+             (:= out "1")
+
+             (< (x:len arr) 10)
+             (:= out "2")
+             
+             :else
+             (:= out "3"))
+       out)
+  (l/! [:code]
+    (do (var arr [1 2 3 4 5])
+       (var out)
+       (cond (< (x:len arr) 5)
+             (:= out "1")
+
+             (< (x:len arr) 10)
+             (:= out "2")
+             
+             :else
+             (:= out "3"))
+       out))
+  (l/! [:live]
+    (do (var arr [1 2 3 4 5])
+       (var out)
+       (cond (< (x:len arr) 5)
+             (:= out "1")
+
+             (< (x:len arr) 10)
+             (:= out "2")
+             
+             :else
+             (:= out "3"))
+       out))])
+
+;; ### while block
+(display-output-format
+ ['(do (var x [])
+       (var i 0)
+       (while (< i 5)
+         (x:arr-push x i)
+         (:++ i))
+       x)
+  (l/! [:code]
+    (do (var x [])
+       (var i 0)
+       (while (< i 5)
+         (x:arr-push x i)
+         (:++ i))
+       x))
+  (l/! [:live]
+    (do (var x [])
+        (var i 0)
+        (while (< i 5)
+          (x:arr-push x i)
+          (:++ i))
+        x))])
+
+;; ### for block
+(display-output-format
+ ['(do (var arr [])
+       (for [(var i 1) (< i 5) (:++ i)]
+         (x:arr-push arr i))
+       arr)
+  (l/! [:code]
+    (do (var arr [])
+       (for [(var i 1) (< i 5) (:++ i)]
+         (x:arr-push arr i))
+       arr))
+  (l/! [:live]
+    (do (var arr [])
+       (for [(var i 1) (< i 5) (:++ i)]
+         (x:arr-push arr i))
+       arr))])
+
+;; ### case block
+(display-output-format
+ ['(do (var arr 1)
+       (var out)
+       (case arr
+         1 (do (:= out 1)
+               (break))
+         2 (do (:= out 2)
+               (break)))
+       out)
+  (l/! [:code]
+    (do (var arr 1)
+        (var out)
+        (case arr
+          1 (do (:= out 1)
+                (break))
+          2 (do (:= out 2)
+                (break)))
+        out))
+  (l/! [:live]
+    (do (var arr 1)
+        (var out)
+        (case arr
+          1 (do (:= out 1)
+                (break))
+          2 (do (:= out 2)
+                (break)))
+        out))])
+
+
+;; ### try/catch block
+(display-output-format
+ ['(do (var out "hello")
+       (try
+         (throw 1)
+         (catch e (:= out "world")))
+       out)
+  (l/! [:code]
+    (do (var out "hello")
+       (try
+         (throw 1)
+         (catch e (:= out "world")))
+       out))
+  (l/! [:live]
+    (do (var out "hello")
+       (try
+         (throw 1)
+         (catch e (:= out "world")))
+       out))])
 
 ;; # Lib - Helpers
 
@@ -685,20 +904,20 @@
 
 
 
-;; Basic arithmetic:
-
-(display-output-table
-  (+ 1 1)
-  (+ 0.1 0.2)
-  (- 8 1)
-  (* 10 2)
-  (/ 35 5)
-  (/ 5 2))
-
-
 ^:kindly/hide-code
 (comment
 
+  
+;; Basic arithmetic:
+
+  (display-output-table
+    (+ 1 1)
+    (+ 0.1 0.2)
+    (- 8 1)
+    (* 10 2)
+    (/ 35 5)
+    (/ 5 2))
+ 
   
   ^:kind/println
   (l/script :js

@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.6.42">
+<meta name="generator" content="quarto-1.7.27">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -21,8 +21,9 @@ ul.task-list li input[type="checkbox"] {
   vertical-align: middle;
 }
 /* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
 pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -33,7 +34,7 @@ div.sourceCode { overflow: auto; }
 }
 @media print {
 pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
 }
 pre.numberSource code
   { counter-reset: source-line 0; }
@@ -65,15 +66,16 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
 <link href="./index.html" rel="prev">
-<script src="site_libs/quarto-html/quarto.js"></script>
+<script src="site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-2f5df379a58b258e96c21c0638c20c03.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-985aa47af68dae11cd4d235c71fb941e.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-7751c40f45fead175fd2dbef1aeb21a2.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-6135bc4aaa090566a7931d6514823b25.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -105,7 +107,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 </head>
 
-<body class="nav-sidebar floating">
+<body class="nav-sidebar floating quarto-light">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
@@ -182,57 +184,72 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#objects" id="toc-objects" class="nav-link" data-scroll-target="#objects"><span class="header-section-number">5.0.2</span> Objects</a></li>
   <li><a href="#objects---tab" id="toc-objects---tab" class="nav-link" data-scroll-target="#objects---tab"><span class="header-section-number">5.0.3</span> Objects - tab</a></li>
   </ul></li>
-  <li><a href="#operations---assignment" id="toc-operations---assignment" class="nav-link" data-scroll-target="#operations---assignment"><span class="header-section-number">6</span> Operations - Assignment</a>
+  <li><a href="#types---checks" id="toc-types---checks" class="nav-link" data-scroll-target="#types---checks"><span class="header-section-number">6</span> Types - Checks</a>
   <ul>
-  <li><a href="#var" id="toc-var" class="nav-link" data-scroll-target="#var"><span class="header-section-number">6.0.1</span> Var</a></li>
-  <li><a href="#const" id="toc-const" class="nav-link" data-scroll-target="#const"><span class="header-section-number">6.0.2</span> Const</a></li>
-  <li><a href="#reassign" id="toc-reassign" class="nav-link" data-scroll-target="#reassign"><span class="header-section-number">6.0.3</span> ReAssign</a></li>
+  <li><a href="#typeof" id="toc-typeof" class="nav-link" data-scroll-target="#typeof"><span class="header-section-number">6.0.1</span> Typeof</a></li>
+  <li><a href="#instanceof" id="toc-instanceof" class="nav-link" data-scroll-target="#instanceof"><span class="header-section-number">6.0.2</span> Instanceof</a></li>
   </ul></li>
-  <li><a href="#operations---logic" id="toc-operations---logic" class="nav-link" data-scroll-target="#operations---logic"><span class="header-section-number">7</span> Operations - Logic</a>
+  <li><a href="#operations---assignment" id="toc-operations---assignment" class="nav-link" data-scroll-target="#operations---assignment"><span class="header-section-number">7</span> Operations - Assignment</a>
   <ul>
-  <li><a href="#negation" id="toc-negation" class="nav-link" data-scroll-target="#negation"><span class="header-section-number">7.0.1</span> Negation</a></li>
-  <li><a href="#or" id="toc-or" class="nav-link" data-scroll-target="#or"><span class="header-section-number">7.0.2</span> Or</a></li>
-  <li><a href="#and" id="toc-and" class="nav-link" data-scroll-target="#and"><span class="header-section-number">7.0.3</span> And</a></li>
-  <li><a href="#ternary" id="toc-ternary" class="nav-link" data-scroll-target="#ternary"><span class="header-section-number">7.0.4</span> Ternary</a></li>
+  <li><a href="#var" id="toc-var" class="nav-link" data-scroll-target="#var"><span class="header-section-number">7.0.1</span> Var</a></li>
+  <li><a href="#const" id="toc-const" class="nav-link" data-scroll-target="#const"><span class="header-section-number">7.0.2</span> Const</a></li>
+  <li><a href="#reassign" id="toc-reassign" class="nav-link" data-scroll-target="#reassign"><span class="header-section-number">7.0.3</span> ReAssign</a></li>
   </ul></li>
-  <li><a href="#operations---math" id="toc-operations---math" class="nav-link" data-scroll-target="#operations---math"><span class="header-section-number">8</span> Operations - Math</a>
+  <li><a href="#operations---logic" id="toc-operations---logic" class="nav-link" data-scroll-target="#operations---logic"><span class="header-section-number">8</span> Operations - Logic</a>
   <ul>
-  <li><a href="#addition" id="toc-addition" class="nav-link" data-scroll-target="#addition"><span class="header-section-number">8.0.1</span> Addition</a></li>
-  <li><a href="#subtraction" id="toc-subtraction" class="nav-link" data-scroll-target="#subtraction"><span class="header-section-number">8.0.2</span> Subtraction</a></li>
-  <li><a href="#multiplication" id="toc-multiplication" class="nav-link" data-scroll-target="#multiplication"><span class="header-section-number">8.0.3</span> Multiplication</a></li>
-  <li><a href="#division" id="toc-division" class="nav-link" data-scroll-target="#division"><span class="header-section-number">8.0.4</span> Division</a></li>
-  <li><a href="#pow" id="toc-pow" class="nav-link" data-scroll-target="#pow"><span class="header-section-number">8.0.5</span> Pow</a></li>
-  <li><a href="#mod" id="toc-mod" class="nav-link" data-scroll-target="#mod"><span class="header-section-number">8.0.6</span> Mod</a></li>
+  <li><a href="#negation" id="toc-negation" class="nav-link" data-scroll-target="#negation"><span class="header-section-number">8.0.1</span> Negation</a></li>
+  <li><a href="#or" id="toc-or" class="nav-link" data-scroll-target="#or"><span class="header-section-number">8.0.2</span> Or</a></li>
+  <li><a href="#and" id="toc-and" class="nav-link" data-scroll-target="#and"><span class="header-section-number">8.0.3</span> And</a></li>
+  <li><a href="#ternary" id="toc-ternary" class="nav-link" data-scroll-target="#ternary"><span class="header-section-number">8.0.4</span> Ternary</a></li>
   </ul></li>
-  <li><a href="#operations---comparison" id="toc-operations---comparison" class="nav-link" data-scroll-target="#operations---comparison"><span class="header-section-number">9</span> Operations - Comparison</a>
+  <li><a href="#operations---math" id="toc-operations---math" class="nav-link" data-scroll-target="#operations---math"><span class="header-section-number">9</span> Operations - Math</a>
   <ul>
-  <li><a href="#equals" id="toc-equals" class="nav-link" data-scroll-target="#equals"><span class="header-section-number">9.0.1</span> Equals</a></li>
-  <li><a href="#triple-equals" id="toc-triple-equals" class="nav-link" data-scroll-target="#triple-equals"><span class="header-section-number">9.0.2</span> Triple Equals</a></li>
-  <li><a href="#not-equals" id="toc-not-equals" class="nav-link" data-scroll-target="#not-equals"><span class="header-section-number">9.0.3</span> Not Equals</a></li>
-  <li><a href="#less-than" id="toc-less-than" class="nav-link" data-scroll-target="#less-than"><span class="header-section-number">9.0.4</span> Less Than</a></li>
-  <li><a href="#less-than-equals" id="toc-less-than-equals" class="nav-link" data-scroll-target="#less-than-equals"><span class="header-section-number">9.0.5</span> Less Than Equals</a></li>
-  <li><a href="#greater-than" id="toc-greater-than" class="nav-link" data-scroll-target="#greater-than"><span class="header-section-number">9.0.6</span> Greater Than</a></li>
-  <li><a href="#greater-than-equals" id="toc-greater-than-equals" class="nav-link" data-scroll-target="#greater-than-equals"><span class="header-section-number">9.0.7</span> Greater Than Equals</a></li>
+  <li><a href="#addition" id="toc-addition" class="nav-link" data-scroll-target="#addition"><span class="header-section-number">9.0.1</span> Addition</a></li>
+  <li><a href="#subtraction" id="toc-subtraction" class="nav-link" data-scroll-target="#subtraction"><span class="header-section-number">9.0.2</span> Subtraction</a></li>
+  <li><a href="#multiplication" id="toc-multiplication" class="nav-link" data-scroll-target="#multiplication"><span class="header-section-number">9.0.3</span> Multiplication</a></li>
+  <li><a href="#division" id="toc-division" class="nav-link" data-scroll-target="#division"><span class="header-section-number">9.0.4</span> Division</a></li>
+  <li><a href="#pow" id="toc-pow" class="nav-link" data-scroll-target="#pow"><span class="header-section-number">9.0.5</span> Pow</a></li>
+  <li><a href="#mod" id="toc-mod" class="nav-link" data-scroll-target="#mod"><span class="header-section-number">9.0.6</span> Mod</a></li>
   </ul></li>
-  <li><a href="#operations---counter" id="toc-operations---counter" class="nav-link" data-scroll-target="#operations---counter"><span class="header-section-number">10</span> Operations - Counter</a>
+  <li><a href="#operations---comparison" id="toc-operations---comparison" class="nav-link" data-scroll-target="#operations---comparison"><span class="header-section-number">10</span> Operations - Comparison</a>
   <ul>
-  <li><a href="#increment" id="toc-increment" class="nav-link" data-scroll-target="#increment"><span class="header-section-number">10.0.1</span> Increment</a></li>
-  <li><a href="#increment-by" id="toc-increment-by" class="nav-link" data-scroll-target="#increment-by"><span class="header-section-number">10.0.2</span> Increment By</a></li>
-  <li><a href="#decrement" id="toc-decrement" class="nav-link" data-scroll-target="#decrement"><span class="header-section-number">10.0.3</span> Decrement</a></li>
-  <li><a href="#decrement-by" id="toc-decrement-by" class="nav-link" data-scroll-target="#decrement-by"><span class="header-section-number">10.0.4</span> Decrement By</a></li>
-  <li><a href="#multiply-by" id="toc-multiply-by" class="nav-link" data-scroll-target="#multiply-by"><span class="header-section-number">10.0.5</span> Multiply By</a></li>
+  <li><a href="#equals" id="toc-equals" class="nav-link" data-scroll-target="#equals"><span class="header-section-number">10.0.1</span> Equals</a></li>
+  <li><a href="#triple-equals" id="toc-triple-equals" class="nav-link" data-scroll-target="#triple-equals"><span class="header-section-number">10.0.2</span> Triple Equals</a></li>
+  <li><a href="#not-equals" id="toc-not-equals" class="nav-link" data-scroll-target="#not-equals"><span class="header-section-number">10.0.3</span> Not Equals</a></li>
+  <li><a href="#less-than" id="toc-less-than" class="nav-link" data-scroll-target="#less-than"><span class="header-section-number">10.0.4</span> Less Than</a></li>
+  <li><a href="#less-than-equals" id="toc-less-than-equals" class="nav-link" data-scroll-target="#less-than-equals"><span class="header-section-number">10.0.5</span> Less Than Equals</a></li>
+  <li><a href="#greater-than" id="toc-greater-than" class="nav-link" data-scroll-target="#greater-than"><span class="header-section-number">10.0.6</span> Greater Than</a></li>
+  <li><a href="#greater-than-equals" id="toc-greater-than-equals" class="nav-link" data-scroll-target="#greater-than-equals"><span class="header-section-number">10.0.7</span> Greater Than Equals</a></li>
   </ul></li>
-  <li><a href="#operations---bitwise" id="toc-operations---bitwise" class="nav-link" data-scroll-target="#operations---bitwise"><span class="header-section-number">11</span> Operations - Bitwise</a>
+  <li><a href="#operations---counter" id="toc-operations---counter" class="nav-link" data-scroll-target="#operations---counter"><span class="header-section-number">11</span> Operations - Counter</a>
   <ul>
-  <li><a href="#bitwise-or" id="toc-bitwise-or" class="nav-link" data-scroll-target="#bitwise-or"><span class="header-section-number">11.0.1</span> Bitwise Or</a></li>
-  <li><a href="#bitwise-and" id="toc-bitwise-and" class="nav-link" data-scroll-target="#bitwise-and"><span class="header-section-number">11.0.2</span> Bitwise And</a></li>
-  <li><a href="#bitwise-xor" id="toc-bitwise-xor" class="nav-link" data-scroll-target="#bitwise-xor"><span class="header-section-number">11.0.3</span> Bitwise Xor</a></li>
-  <li><a href="#bitshift-right" id="toc-bitshift-right" class="nav-link" data-scroll-target="#bitshift-right"><span class="header-section-number">11.0.4</span> Bitshift Right</a></li>
-  <li><a href="#bitshift-left" id="toc-bitshift-left" class="nav-link" data-scroll-target="#bitshift-left"><span class="header-section-number">11.0.5</span> Bitshift Left</a></li>
+  <li><a href="#increment" id="toc-increment" class="nav-link" data-scroll-target="#increment"><span class="header-section-number">11.0.1</span> Increment</a></li>
+  <li><a href="#increment-by" id="toc-increment-by" class="nav-link" data-scroll-target="#increment-by"><span class="header-section-number">11.0.2</span> Increment By</a></li>
+  <li><a href="#decrement" id="toc-decrement" class="nav-link" data-scroll-target="#decrement"><span class="header-section-number">11.0.3</span> Decrement</a></li>
+  <li><a href="#decrement-by" id="toc-decrement-by" class="nav-link" data-scroll-target="#decrement-by"><span class="header-section-number">11.0.4</span> Decrement By</a></li>
+  <li><a href="#multiply-by" id="toc-multiply-by" class="nav-link" data-scroll-target="#multiply-by"><span class="header-section-number">11.0.5</span> Multiply By</a></li>
   </ul></li>
-  <li><a href="#lib---helpers" id="toc-lib---helpers" class="nav-link" data-scroll-target="#lib---helpers"><span class="header-section-number">12</span> Lib - Helpers</a>
+  <li><a href="#operations---bitwise" id="toc-operations---bitwise" class="nav-link" data-scroll-target="#operations---bitwise"><span class="header-section-number">12</span> Operations - Bitwise</a>
   <ul>
-  <li><a href="#forarray" id="toc-forarray" class="nav-link" data-scroll-target="#forarray"><span class="header-section-number">12.0.1</span> for:array</a></li>
+  <li><a href="#bitwise-or" id="toc-bitwise-or" class="nav-link" data-scroll-target="#bitwise-or"><span class="header-section-number">12.0.1</span> Bitwise Or</a></li>
+  <li><a href="#bitwise-and" id="toc-bitwise-and" class="nav-link" data-scroll-target="#bitwise-and"><span class="header-section-number">12.0.2</span> Bitwise And</a></li>
+  <li><a href="#bitwise-xor" id="toc-bitwise-xor" class="nav-link" data-scroll-target="#bitwise-xor"><span class="header-section-number">12.0.3</span> Bitwise Xor</a></li>
+  <li><a href="#bitshift-right" id="toc-bitshift-right" class="nav-link" data-scroll-target="#bitshift-right"><span class="header-section-number">12.0.4</span> Bitshift Right</a></li>
+  <li><a href="#bitshift-left" id="toc-bitshift-left" class="nav-link" data-scroll-target="#bitshift-left"><span class="header-section-number">12.0.5</span> Bitshift Left</a></li>
+  </ul></li>
+  <li><a href="#keywords---functions" id="toc-keywords---functions" class="nav-link" data-scroll-target="#keywords---functions"><span class="header-section-number">13</span> Keywords - Functions</a></li>
+  <li><a href="#keywords---blocks" id="toc-keywords---blocks" class="nav-link" data-scroll-target="#keywords---blocks"><span class="header-section-number">14</span> Keywords - Blocks</a>
+  <ul>
+  <li><a href="#if-block" id="toc-if-block" class="nav-link" data-scroll-target="#if-block"><span class="header-section-number">14.0.1</span> if block</a></li>
+  <li><a href="#cond-block" id="toc-cond-block" class="nav-link" data-scroll-target="#cond-block"><span class="header-section-number">14.0.2</span> cond block</a></li>
+  <li><a href="#while-block" id="toc-while-block" class="nav-link" data-scroll-target="#while-block"><span class="header-section-number">14.0.3</span> while block</a></li>
+  <li><a href="#for-block" id="toc-for-block" class="nav-link" data-scroll-target="#for-block"><span class="header-section-number">14.0.4</span> for block</a></li>
+  <li><a href="#case-block" id="toc-case-block" class="nav-link" data-scroll-target="#case-block"><span class="header-section-number">14.0.5</span> case block</a></li>
+  <li><a href="#trycatch-block" id="toc-trycatch-block" class="nav-link" data-scroll-target="#trycatch-block"><span class="header-section-number">14.0.6</span> try/catch block</a></li>
+  </ul></li>
+  <li><a href="#lib---helpers" id="toc-lib---helpers" class="nav-link" data-scroll-target="#lib---helpers"><span class="header-section-number">15</span> Lib - Helpers</a>
+  <ul>
+  <li><a href="#forarray" id="toc-forarray" class="nav-link" data-scroll-target="#forarray"><span class="header-section-number">15.0.1</span> for:array</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -316,7 +333,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>   <span class="at">:require</span> [[xt.lang.base-lib <span class="at">:as</span> k]]})</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="printedClojure">
-<div class="sourceCode" id="cb9"><pre class="sourceCode clojure code-with-copy"><code class="sourceCode clojure"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>[#rt.basic[<span class="at">:server/basic</span> <span class="at">:js</span> t8cfjkhmrm1t <span class="dv">45527</span> <span class="dv">1</span>]]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb9"><pre class="sourceCode clojure code-with-copy"><code class="sourceCode clojure"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>[#rt.basic[<span class="at">:server/basic</span> <span class="at">:js</span> <span class="dv">1</span>jiajs4x0l277 <span class="dv">64658</span> <span class="dv">1</span>]]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Let us now use these two ways for basic arithmetic.</p>
 <div class="sourceClojure">
@@ -353,7 +370,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tbody>
 <tr class="odd">
 <td><code class="sourceCode clojure"><span class="va">nil</span></code></td>
-<td><code class="sourceCode javascript"><span class="st">"null;"</span></code></td>
+<td><code class="sourceCode javascript"><span class="kw">null</span><span class="op">;</span></code></td>
 <td><code class="sourceCode clojure"><span class="va">nil</span></code></td>
 </tr>
 </tbody>
@@ -376,7 +393,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tbody>
 <tr class="odd">
 <td><code class="sourceCode clojure">undefined</code></td>
-<td><code class="sourceCode javascript"><span class="st">"undefined;"</span></code></td>
+<td><code class="sourceCode javascript"><span class="kw">undefined</span><span class="op">;</span></code></td>
 <td><code class="sourceCode clojure"><span class="va">nil</span></code></td>
 </tr>
 </tbody>
@@ -399,12 +416,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tbody>
 <tr class="odd">
 <td><code class="sourceCode clojure"><span class="va">true</span></code></td>
-<td><code class="sourceCode javascript"><span class="st">"true;"</span></code></td>
+<td><code class="sourceCode javascript"><span class="kw">true</span><span class="op">;</span></code></td>
 <td><code class="sourceCode clojure"><span class="va">true</span></code></td>
 </tr>
 <tr class="even">
 <td><code class="sourceCode clojure"><span class="va">false</span></code></td>
-<td><code class="sourceCode javascript"><span class="st">"false;"</span></code></td>
+<td><code class="sourceCode javascript"><span class="kw">false</span><span class="op">;</span></code></td>
 <td><code class="sourceCode clojure"><span class="va">false</span></code></td>
 </tr>
 </tbody>
@@ -427,12 +444,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tbody>
 <tr class="odd">
 <td><code class="sourceCode clojure"><span class="st">"3"</span></code></td>
-<td><code class="sourceCode javascript"><span class="st">"</span><span class="sc">\"</span><span class="st">3</span><span class="sc">\"</span><span class="st">;"</span></code></td>
+<td><code class="sourceCode javascript"><span class="st">"3"</span><span class="op">;</span></code></td>
 <td><code class="sourceCode clojure"><span class="st">"3"</span></code></td>
 </tr>
 <tr class="even">
 <td><code class="sourceCode clojure"><span class="st">"Hello World"</span></code></td>
-<td><code class="sourceCode javascript"><span class="st">"</span><span class="sc">\"</span><span class="st">Hello World</span><span class="sc">\"</span><span class="st">;"</span></code></td>
+<td><code class="sourceCode javascript"><span class="st">"Hello World"</span><span class="op">;</span></code></td>
 <td><code class="sourceCode clojure"><span class="st">"Hello World"</span></code></td>
 </tr>
 </tbody>
@@ -455,32 +472,32 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tbody>
 <tr class="odd">
 <td><code class="sourceCode clojure"><span class="dv">3</span></code></td>
-<td><code class="sourceCode javascript"><span class="st">"3;"</span></code></td>
+<td><code class="sourceCode javascript"><span class="dv">3</span><span class="op">;</span></code></td>
 <td><code class="sourceCode clojure"><span class="dv">3</span></code></td>
 </tr>
 <tr class="even">
 <td><code class="sourceCode clojure"><span class="fl">1.5</span></code></td>
-<td><code class="sourceCode javascript"><span class="st">"1.5;"</span></code></td>
+<td><code class="sourceCode javascript"><span class="fl">1.5</span><span class="op">;</span></code></td>
 <td><code class="sourceCode clojure"><span class="fl">1.5</span></code></td>
 </tr>
 <tr class="odd">
 <td><code class="sourceCode clojure"><span class="fl">1.54444444444444</span></code></td>
-<td><code class="sourceCode javascript"><span class="st">"1.54444444444444;"</span></code></td>
+<td><code class="sourceCode javascript"><span class="fl">1.54444444444444</span><span class="op">;</span></code></td>
 <td><code class="sourceCode clojure"><span class="fl">1.54444444444444</span></code></td>
 </tr>
 <tr class="even">
 <td><code class="sourceCode clojure">NaN</code></td>
-<td><code class="sourceCode javascript"><span class="st">"NaN;"</span></code></td>
+<td><code class="sourceCode javascript"><span class="kw">NaN</span><span class="op">;</span></code></td>
 <td><code class="sourceCode clojure"><span class="va">nil</span></code></td>
 </tr>
 <tr class="odd">
 <td><code class="sourceCode clojure">Infinity</code></td>
-<td><code class="sourceCode javascript"><span class="st">"Infinity;"</span></code></td>
+<td><code class="sourceCode javascript"><span class="kw">Infinity</span><span class="op">;</span></code></td>
 <td><code class="sourceCode clojure"><span class="va">nil</span></code></td>
 </tr>
 <tr class="even">
 <td><code class="sourceCode clojure">(<span class="kw">-</span> Infinity)</code></td>
-<td><code class="sourceCode javascript"><span class="st">"-Infinity;"</span></code></td>
+<td><code class="sourceCode javascript"><span class="op">-</span><span class="kw">Infinity</span><span class="op">;</span></code></td>
 <td><code class="sourceCode clojure"><span class="st">"-Infinity"</span></code></td>
 </tr>
 </tbody>
@@ -503,7 +520,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tbody>
 <tr class="odd">
 <td><code class="sourceCode clojure">(. (BigInt <span class="st">"0x1fffffffffffff"</span>) (toString))</code></td>
-<td><code class="sourceCode javascript"><span class="st">"BigInt(</span><span class="sc">\"</span><span class="st">0x1fffffffffffff</span><span class="sc">\"</span><span class="st">).toString();"</span></code></td>
+<td><code class="sourceCode javascript"><span class="bu">BigInt</span>(<span class="st">"0x1fffffffffffff"</span>)<span class="op">.</span><span class="fu">toString</span>()<span class="op">;</span></code></td>
 <td><code class="sourceCode clojure"><span class="st">"9007199254740991"</span></code></td>
 </tr>
 </tbody>
@@ -526,7 +543,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tbody>
 <tr class="odd">
 <td><code class="sourceCode clojure">(. (Symbol <span class="st">"hello"</span>) (toString))</code></td>
-<td><code class="sourceCode javascript"><span class="st">"Symbol(</span><span class="sc">\"</span><span class="st">hello</span><span class="sc">\"</span><span class="st">).toString();"</span></code></td>
+<td><code class="sourceCode javascript"><span class="bu">Symbol</span>(<span class="st">"hello"</span>)<span class="op">.</span><span class="fu">toString</span>()<span class="op">;</span></code></td>
 <td><code class="sourceCode clojure"><span class="st">"Symbol(hello)"</span></code></td>
 </tr>
 </tbody>
@@ -552,7 +569,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tbody>
 <tr class="odd">
 <td><code class="sourceCode clojure"><span class="ss">#"^[Hh]ello d$"</span></code></td>
-<td><code class="sourceCode javascript"><span class="st">"/^[Hh]ello d$/;"</span></code></td>
+<td><code class="sourceCode javascript"><span class="ss">/</span><span class="sc">^[Hh]</span><span class="ss">ello d</span><span class="sc">$</span><span class="ss">/</span><span class="op">;</span></code></td>
 <td><code class="sourceCode clojure">&lt;RegExp&gt;
 <span class="kw">/</span>^[Hh]ello d$/</code></td>
 </tr>
@@ -579,12 +596,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tbody>
 <tr class="odd">
 <td><code class="sourceCode clojure">[<span class="dv">1</span> <span class="dv">2</span> <span class="dv">3</span> <span class="dv">4</span>]</code></td>
-<td><code class="sourceCode javascript"><span class="st">"[1,2,3,4];"</span></code></td>
+<td><code class="sourceCode javascript">[<span class="dv">1</span><span class="op">,</span><span class="dv">2</span><span class="op">,</span><span class="dv">3</span><span class="op">,</span><span class="dv">4</span>]<span class="op">;</span></code></td>
 <td><code class="sourceCode clojure">[<span class="dv">1</span> <span class="dv">2</span> <span class="dv">3</span> <span class="dv">4</span>]</code></td>
 </tr>
 <tr class="even">
 <td><code class="sourceCode clojure">[<span class="st">"hello"</span> [<span class="st">"world"</span>]]</code></td>
-<td><code class="sourceCode javascript"><span class="st">"[</span><span class="sc">\"</span><span class="st">hello</span><span class="sc">\"</span><span class="st">,[</span><span class="sc">\"</span><span class="st">world</span><span class="sc">\"</span><span class="st">]];"</span></code></td>
+<td><code class="sourceCode javascript">[<span class="st">"hello"</span><span class="op">,</span>[<span class="st">"world"</span>]]<span class="op">;</span></code></td>
 <td><code class="sourceCode clojure">[<span class="st">"hello"</span> [<span class="st">"world"</span>]]</code></td>
 </tr>
 </tbody>
@@ -607,12 +624,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tbody>
 <tr class="odd">
 <td><code class="sourceCode clojure">{<span class="at">:a</span> <span class="dv">1</span>, <span class="at">:b</span> <span class="dv">2</span>, <span class="at">:c</span> <span class="dv">3</span>}</code></td>
-<td><code class="sourceCode javascript"><span class="st">"{</span><span class="sc">\"</span><span class="st">a</span><span class="sc">\"</span><span class="st">:1,</span><span class="sc">\"</span><span class="st">b</span><span class="sc">\"</span><span class="st">:2,</span><span class="sc">\"</span><span class="st">c</span><span class="sc">\"</span><span class="st">:3};"</span></code></td>
+<td><code class="sourceCode javascript">{<span class="st">"a"</span><span class="op">:</span><span class="dv">1</span><span class="op">,</span><span class="st">"b"</span><span class="op">:</span><span class="dv">2</span><span class="op">,</span><span class="st">"c"</span><span class="op">:</span><span class="dv">3</span>}<span class="op">;</span></code></td>
 <td><code class="sourceCode clojure">{<span class="st">"a"</span> <span class="dv">1</span>, <span class="st">"b"</span> <span class="dv">2</span>, <span class="st">"c"</span> <span class="dv">3</span>}</code></td>
 </tr>
 <tr class="even">
 <td><code class="sourceCode clojure">{<span class="at">:a</span> {<span class="at">:b</span> {<span class="at">:c</span> <span class="dv">3</span>}}}</code></td>
-<td><code class="sourceCode javascript"><span class="st">"{</span><span class="sc">\"</span><span class="st">a</span><span class="sc">\"</span><span class="st">:{</span><span class="sc">\"</span><span class="st">b</span><span class="sc">\"</span><span class="st">:{</span><span class="sc">\"</span><span class="st">c</span><span class="sc">\"</span><span class="st">:3}}};"</span></code></td>
+<td><code class="sourceCode javascript">{<span class="st">"a"</span><span class="op">:</span>{<span class="st">"b"</span><span class="op">:</span>{<span class="st">"c"</span><span class="op">:</span><span class="dv">3</span>}}}<span class="op">;</span></code></td>
 <td><code class="sourceCode clojure">{<span class="st">"a"</span> {<span class="st">"b"</span> {<span class="st">"c"</span> <span class="dv">3</span>}}}</code></td>
 </tr>
 </tbody>
@@ -635,7 +652,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tbody>
 <tr class="odd">
 <td><code class="sourceCode clojure">(tab [<span class="st">"a"</span> <span class="dv">1</span>] [<span class="st">"b"</span> <span class="dv">2</span>] [<span class="st">"c"</span> <span class="dv">3</span>])</code></td>
-<td><code class="sourceCode javascript"><span class="st">"{</span><span class="sc">\"</span><span class="st">a</span><span class="sc">\"</span><span class="st">:1,</span><span class="sc">\"</span><span class="st">b</span><span class="sc">\"</span><span class="st">:2,</span><span class="sc">\"</span><span class="st">c</span><span class="sc">\"</span><span class="st">:3};"</span></code></td>
+<td><code class="sourceCode javascript">{<span class="st">"a"</span><span class="op">:</span><span class="dv">1</span><span class="op">,</span><span class="st">"b"</span><span class="op">:</span><span class="dv">2</span><span class="op">,</span><span class="st">"c"</span><span class="op">:</span><span class="dv">3</span>}<span class="op">;</span></code></td>
 <td><code class="sourceCode clojure">{<span class="st">"a"</span> <span class="dv">1</span>, <span class="st">"b"</span> <span class="dv">2</span>, <span class="st">"c"</span> <span class="dv">3</span>}</code></td>
 </tr>
 </tbody>
@@ -644,10 +661,109 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </section>
 </section>
-<section id="operations---assignment" class="level1" data-number="6">
-<h1 data-number="6"><span class="header-section-number">6</span> Operations - Assignment</h1>
-<section id="var" class="level3" data-number="6.0.1">
-<h3 data-number="6.0.1" class="anchored" data-anchor-id="var"><span class="header-section-number">6.0.1</span> Var</h3>
+<section id="types---checks" class="level1" data-number="6">
+<h1 data-number="6"><span class="header-section-number">6</span> Types - Checks</h1>
+<section id="typeof" class="level3" data-number="6.0.1">
+<h3 data-number="6.0.1" class="anchored" data-anchor-id="typeof"><span class="header-section-number">6.0.1</span> Typeof</h3>
+<div class="clay-table">
+<div class="table-responsive">
+<table class="table table-hover clay-table caption-top" data-quarto-postprocess="true">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th">form</th>
+<th data-quarto-table-cell-role="th">code</th>
+<th data-quarto-table-cell-role="th">live</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code class="sourceCode clojure">(typeof <span class="va">nil</span>)</code></td>
+<td><code class="sourceCode javascript"><span class="kw">typeof</span> <span class="kw">null</span><span class="op">;</span></code></td>
+<td><code class="sourceCode clojure"><span class="st">"object"</span></code></td>
+</tr>
+<tr class="even">
+<td><code class="sourceCode clojure">(typeof undefined)</code></td>
+<td><code class="sourceCode javascript"><span class="kw">typeof</span> <span class="kw">undefined</span><span class="op">;</span></code></td>
+<td><code class="sourceCode clojure"><span class="st">"undefined"</span></code></td>
+</tr>
+<tr class="odd">
+<td><code class="sourceCode clojure">(typeof NaN)</code></td>
+<td><code class="sourceCode javascript"><span class="kw">typeof</span> <span class="kw">NaN</span><span class="op">;</span></code></td>
+<td><code class="sourceCode clojure"><span class="st">"number"</span></code></td>
+</tr>
+<tr class="even">
+<td><code class="sourceCode clojure">(typeof <span class="dv">1</span>)</code></td>
+<td><code class="sourceCode javascript"><span class="kw">typeof</span> <span class="dv">1</span><span class="op">;</span></code></td>
+<td><code class="sourceCode clojure"><span class="st">"number"</span></code></td>
+</tr>
+<tr class="odd">
+<td><code class="sourceCode clojure">(typeof <span class="va">true</span>)</code></td>
+<td><code class="sourceCode javascript"><span class="kw">typeof</span> <span class="kw">true</span><span class="op">;</span></code></td>
+<td><code class="sourceCode clojure"><span class="st">"boolean"</span></code></td>
+</tr>
+<tr class="even">
+<td><code class="sourceCode clojure">(typeof <span class="st">"hello"</span>)</code></td>
+<td><code class="sourceCode javascript"><span class="kw">typeof</span> <span class="st">"hello"</span><span class="op">;</span></code></td>
+<td><code class="sourceCode clojure"><span class="st">"string"</span></code></td>
+</tr>
+<tr class="odd">
+<td><code class="sourceCode clojure">(typeof (Symbol <span class="st">"hello"</span>))</code></td>
+<td><code class="sourceCode javascript"><span class="kw">typeof</span> <span class="bu">Symbol</span>(<span class="st">"hello"</span>)<span class="op">;</span></code></td>
+<td><code class="sourceCode clojure"><span class="st">"symbol"</span></code></td>
+</tr>
+<tr class="even">
+<td><code class="sourceCode clojure">(typeof (BigInt <span class="st">"0x1fffffffffffff"</span>))</code></td>
+<td><code class="sourceCode javascript"><span class="kw">typeof</span> <span class="bu">BigInt</span>(<span class="st">"0x1fffffffffffff"</span>)<span class="op">;</span></code></td>
+<td><code class="sourceCode clojure"><span class="st">"bigint"</span></code></td>
+</tr>
+<tr class="odd">
+<td><code class="sourceCode clojure">(typeof <span class="ss">#"^[Hh]ello d$"</span>)</code></td>
+<td><code class="sourceCode javascript"><span class="kw">typeof</span> <span class="ss">/</span><span class="sc">^[Hh]</span><span class="ss">ello d</span><span class="sc">$</span><span class="ss">/</span><span class="op">;</span></code></td>
+<td><code class="sourceCode clojure"><span class="st">"object"</span></code></td>
+</tr>
+<tr class="even">
+<td><code class="sourceCode clojure">(typeof [<span class="dv">1</span> <span class="dv">2</span> <span class="dv">3</span>])</code></td>
+<td><code class="sourceCode javascript"><span class="kw">typeof</span> [<span class="dv">1</span><span class="op">,</span><span class="dv">2</span><span class="op">,</span><span class="dv">3</span>]<span class="op">;</span></code></td>
+<td><code class="sourceCode clojure"><span class="st">"object"</span></code></td>
+</tr>
+<tr class="odd">
+<td><code class="sourceCode clojure">(typeof {<span class="at">:a</span> <span class="dv">1</span>})</code></td>
+<td><code class="sourceCode javascript"><span class="kw">typeof</span> {<span class="st">"a"</span><span class="op">:</span><span class="dv">1</span>}<span class="op">;</span></code></td>
+<td><code class="sourceCode clojure"><span class="st">"object"</span></code></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</section>
+<section id="instanceof" class="level3" data-number="6.0.2">
+<h3 data-number="6.0.2" class="anchored" data-anchor-id="instanceof"><span class="header-section-number">6.0.2</span> Instanceof</h3>
+<div class="clay-table">
+<div class="table-responsive">
+<table class="table table-hover clay-table caption-top" data-quarto-postprocess="true">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th">form</th>
+<th data-quarto-table-cell-role="th">code</th>
+<th data-quarto-table-cell-role="th">live</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code class="sourceCode clojure">(instanceof <span class="ss">#"^[Hh]ello d$"</span> RegExp)</code></td>
+<td><code class="sourceCode javascript"><span class="ss">/</span><span class="sc">^[Hh]</span><span class="ss">ello d</span><span class="sc">$</span><span class="ss">/</span> <span class="kw">instanceof</span> <span class="bu">RegExp</span><span class="op">;</span></code></td>
+<td><code class="sourceCode clojure"><span class="va">true</span></code></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</section>
+</section>
+<section id="operations---assignment" class="level1" data-number="7">
+<h1 data-number="7"><span class="header-section-number">7</span> Operations - Assignment</h1>
+<section id="var" class="level3" data-number="7.0.1">
+<h3 data-number="7.0.1" class="anchored" data-anchor-id="var"><span class="header-section-number">7.0.1</span> Var</h3>
 <div class="clay-table">
 <div class="table-responsive">
 <table class="table table-hover clay-table caption-top" data-quarto-postprocess="true">
@@ -661,7 +777,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tbody>
 <tr class="odd">
 <td><code class="sourceCode clojure">(<span class="kw">do</span> (var x <span class="dv">1</span>) x)</code></td>
-<td><code class="sourceCode javascript"><span class="st">"let x = 1;</span><span class="sc">\n</span><span class="st">x;"</span></code></td>
+<td><code class="sourceCode javascript"><span class="kw">let</span> x <span class="op">=</span> <span class="dv">1</span><span class="op">;</span>
+x<span class="op">;</span></code></td>
 <td><code class="sourceCode clojure"><span class="dv">1</span></code></td>
 </tr>
 </tbody>
@@ -669,8 +786,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </section>
-<section id="const" class="level3" data-number="6.0.2">
-<h3 data-number="6.0.2" class="anchored" data-anchor-id="const"><span class="header-section-number">6.0.2</span> Const</h3>
+<section id="const" class="level3" data-number="7.0.2">
+<h3 data-number="7.0.2" class="anchored" data-anchor-id="const"><span class="header-section-number">7.0.2</span> Const</h3>
 <div class="clay-table">
 <div class="table-responsive">
 <table class="table table-hover clay-table caption-top" data-quarto-postprocess="true">
@@ -684,7 +801,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tbody>
 <tr class="odd">
 <td><code class="sourceCode clojure">(<span class="kw">do</span> (const x <span class="dv">1</span>) x)</code></td>
-<td><code class="sourceCode javascript"><span class="st">"const x = 1;</span><span class="sc">\n</span><span class="st">x;"</span></code></td>
+<td><code class="sourceCode javascript"><span class="kw">const</span> x <span class="op">=</span> <span class="dv">1</span><span class="op">;</span>
+x<span class="op">;</span></code></td>
 <td><code class="sourceCode clojure"><span class="dv">1</span></code></td>
 </tr>
 </tbody>
@@ -692,8 +810,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </section>
-<section id="reassign" class="level3" data-number="6.0.3">
-<h3 data-number="6.0.3" class="anchored" data-anchor-id="reassign"><span class="header-section-number">6.0.3</span> ReAssign</h3>
+<section id="reassign" class="level3" data-number="7.0.3">
+<h3 data-number="7.0.3" class="anchored" data-anchor-id="reassign"><span class="header-section-number">7.0.3</span> ReAssign</h3>
 <div class="clay-table">
 <div class="table-responsive">
 <table class="table table-hover clay-table caption-top" data-quarto-postprocess="true">
@@ -707,7 +825,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tbody>
 <tr class="odd">
 <td><code class="sourceCode clojure">(<span class="kw">do</span> (var x <span class="dv">1</span>) (:= x <span class="dv">10</span>) x)</code></td>
-<td><code class="sourceCode javascript"><span class="st">"let x = 1;</span><span class="sc">\n</span><span class="st">x = 10;</span><span class="sc">\n</span><span class="st">x;"</span></code></td>
+<td><code class="sourceCode javascript"><span class="kw">let</span> x <span class="op">=</span> <span class="dv">1</span><span class="op">;</span>
+x <span class="op">=</span> <span class="dv">10</span><span class="op">;</span>
+x<span class="op">;</span></code></td>
 <td><code class="sourceCode clojure"><span class="dv">10</span></code></td>
 </tr>
 </tbody>
@@ -716,10 +836,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </section>
 </section>
-<section id="operations---logic" class="level1" data-number="7">
-<h1 data-number="7"><span class="header-section-number">7</span> Operations - Logic</h1>
-<section id="negation" class="level3" data-number="7.0.1">
-<h3 data-number="7.0.1" class="anchored" data-anchor-id="negation"><span class="header-section-number">7.0.1</span> Negation</h3>
+<section id="operations---logic" class="level1" data-number="8">
+<h1 data-number="8"><span class="header-section-number">8</span> Operations - Logic</h1>
+<section id="negation" class="level3" data-number="8.0.1">
+<h3 data-number="8.0.1" class="anchored" data-anchor-id="negation"><span class="header-section-number">8.0.1</span> Negation</h3>
 <div class="clay-table">
 <div class="table-responsive">
 <table class="table table-hover clay-table caption-top" data-quarto-postprocess="true">
@@ -733,22 +853,22 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tbody>
 <tr class="odd">
 <td><code class="sourceCode clojure">(<span class="kw">not</span> <span class="va">true</span>)</code></td>
-<td><code class="sourceCode javascript"><span class="st">"!true;"</span></code></td>
+<td><code class="sourceCode javascript"><span class="op">!</span><span class="kw">true</span><span class="op">;</span></code></td>
 <td><code class="sourceCode clojure"><span class="va">false</span></code></td>
 </tr>
 <tr class="even">
 <td><code class="sourceCode clojure">(<span class="kw">not</span> <span class="va">false</span>)</code></td>
-<td><code class="sourceCode javascript"><span class="st">"!false;"</span></code></td>
+<td><code class="sourceCode javascript"><span class="op">!</span><span class="kw">false</span><span class="op">;</span></code></td>
 <td><code class="sourceCode clojure"><span class="va">true</span></code></td>
 </tr>
 <tr class="odd">
 <td><code class="sourceCode clojure">(<span class="kw">not</span> <span class="dv">1</span>)</code></td>
-<td><code class="sourceCode javascript"><span class="st">"!1;"</span></code></td>
+<td><code class="sourceCode javascript"><span class="op">!</span><span class="dv">1</span><span class="op">;</span></code></td>
 <td><code class="sourceCode clojure"><span class="va">false</span></code></td>
 </tr>
 <tr class="even">
 <td><code class="sourceCode clojure">(<span class="kw">not</span> <span class="dv">0</span>)</code></td>
-<td><code class="sourceCode javascript"><span class="st">"!0;"</span></code></td>
+<td><code class="sourceCode javascript"><span class="op">!</span><span class="dv">0</span><span class="op">;</span></code></td>
 <td><code class="sourceCode clojure"><span class="va">true</span></code></td>
 </tr>
 </tbody>
@@ -756,8 +876,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </section>
-<section id="or" class="level3" data-number="7.0.2">
-<h3 data-number="7.0.2" class="anchored" data-anchor-id="or"><span class="header-section-number">7.0.2</span> Or</h3>
+<section id="or" class="level3" data-number="8.0.2">
+<h3 data-number="8.0.2" class="anchored" data-anchor-id="or"><span class="header-section-number">8.0.2</span> Or</h3>
 <div class="clay-table">
 <div class="table-responsive">
 <table class="table table-hover clay-table caption-top" data-quarto-postprocess="true">
@@ -771,17 +891,17 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tbody>
 <tr class="odd">
 <td><code class="sourceCode clojure">(<span class="kw">or</span> <span class="dv">0</span> <span class="va">false</span>)</code></td>
-<td><code class="sourceCode javascript"><span class="st">"0 || false;"</span></code></td>
+<td><code class="sourceCode javascript"><span class="dv">0</span> <span class="op">||</span> <span class="kw">false</span><span class="op">;</span></code></td>
 <td><code class="sourceCode clojure"><span class="va">false</span></code></td>
 </tr>
 <tr class="even">
 <td><code class="sourceCode clojure">(<span class="kw">or</span> <span class="dv">1</span> <span class="va">false</span>)</code></td>
-<td><code class="sourceCode javascript"><span class="st">"1 || false;"</span></code></td>
+<td><code class="sourceCode javascript"><span class="dv">1</span> <span class="op">||</span> <span class="kw">false</span><span class="op">;</span></code></td>
 <td><code class="sourceCode clojure"><span class="dv">1</span></code></td>
 </tr>
 <tr class="odd">
 <td><code class="sourceCode clojure">(<span class="kw">or</span> <span class="dv">0</span> <span class="va">true</span>)</code></td>
-<td><code class="sourceCode javascript"><span class="st">"0 || true;"</span></code></td>
+<td><code class="sourceCode javascript"><span class="dv">0</span> <span class="op">||</span> <span class="kw">true</span><span class="op">;</span></code></td>
 <td><code class="sourceCode clojure"><span class="va">true</span></code></td>
 </tr>
 </tbody>
@@ -789,8 +909,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </section>
-<section id="and" class="level3" data-number="7.0.3">
-<h3 data-number="7.0.3" class="anchored" data-anchor-id="and"><span class="header-section-number">7.0.3</span> And</h3>
+<section id="and" class="level3" data-number="8.0.3">
+<h3 data-number="8.0.3" class="anchored" data-anchor-id="and"><span class="header-section-number">8.0.3</span> And</h3>
 <div class="clay-table">
 <div class="table-responsive">
 <table class="table table-hover clay-table caption-top" data-quarto-postprocess="true">
@@ -804,17 +924,17 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tbody>
 <tr class="odd">
 <td><code class="sourceCode clojure">(<span class="kw">and</span> <span class="dv">0</span> <span class="va">false</span>)</code></td>
-<td><code class="sourceCode javascript"><span class="st">"0 &amp;&amp; false;"</span></code></td>
+<td><code class="sourceCode javascript"><span class="dv">0</span> <span class="op">&amp;&amp;</span> <span class="kw">false</span><span class="op">;</span></code></td>
 <td><code class="sourceCode clojure"><span class="dv">0</span></code></td>
 </tr>
 <tr class="even">
 <td><code class="sourceCode clojure">(<span class="kw">and</span> <span class="dv">1</span> <span class="va">false</span>)</code></td>
-<td><code class="sourceCode javascript"><span class="st">"1 &amp;&amp; false;"</span></code></td>
+<td><code class="sourceCode javascript"><span class="dv">1</span> <span class="op">&amp;&amp;</span> <span class="kw">false</span><span class="op">;</span></code></td>
 <td><code class="sourceCode clojure"><span class="va">false</span></code></td>
 </tr>
 <tr class="odd">
 <td><code class="sourceCode clojure">(<span class="kw">and</span> <span class="dv">0</span> <span class="va">true</span>)</code></td>
-<td><code class="sourceCode javascript"><span class="st">"0 &amp;&amp; true;"</span></code></td>
+<td><code class="sourceCode javascript"><span class="dv">0</span> <span class="op">&amp;&amp;</span> <span class="kw">true</span><span class="op">;</span></code></td>
 <td><code class="sourceCode clojure"><span class="dv">0</span></code></td>
 </tr>
 </tbody>
@@ -822,8 +942,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </section>
-<section id="ternary" class="level3" data-number="7.0.4">
-<h3 data-number="7.0.4" class="anchored" data-anchor-id="ternary"><span class="header-section-number">7.0.4</span> Ternary</h3>
+<section id="ternary" class="level3" data-number="8.0.4">
+<h3 data-number="8.0.4" class="anchored" data-anchor-id="ternary"><span class="header-section-number">8.0.4</span> Ternary</h3>
 <div class="clay-table">
 <div class="table-responsive">
 <table class="table table-hover clay-table caption-top" data-quarto-postprocess="true">
@@ -837,12 +957,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tbody>
 <tr class="odd">
 <td><code class="sourceCode clojure">(:? <span class="va">true</span> <span class="dv">1</span> <span class="dv">2</span>)</code></td>
-<td><code class="sourceCode javascript"><span class="st">"true ? 1 : 2;"</span></code></td>
+<td><code class="sourceCode javascript"><span class="kw">true</span> <span class="op">?</span> <span class="dv">1</span> <span class="op">:</span> <span class="dv">2</span><span class="op">;</span></code></td>
 <td><code class="sourceCode clojure"><span class="dv">1</span></code></td>
 </tr>
 <tr class="even">
 <td><code class="sourceCode clojure">(:? (<span class="kw">or</span> <span class="dv">0</span> <span class="dv">0</span>) <span class="dv">1</span> <span class="dv">2</span>)</code></td>
-<td><code class="sourceCode javascript"><span class="st">"(0 || 0) ? 1 : 2;"</span></code></td>
+<td><code class="sourceCode javascript">(<span class="dv">0</span> <span class="op">||</span> <span class="dv">0</span>) <span class="op">?</span> <span class="dv">1</span> <span class="op">:</span> <span class="dv">2</span><span class="op">;</span></code></td>
 <td><code class="sourceCode clojure"><span class="dv">2</span></code></td>
 </tr>
 </tbody>
@@ -851,10 +971,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </section>
 </section>
-<section id="operations---math" class="level1" data-number="8">
-<h1 data-number="8"><span class="header-section-number">8</span> Operations - Math</h1>
-<section id="addition" class="level3" data-number="8.0.1">
-<h3 data-number="8.0.1" class="anchored" data-anchor-id="addition"><span class="header-section-number">8.0.1</span> Addition</h3>
+<section id="operations---math" class="level1" data-number="9">
+<h1 data-number="9"><span class="header-section-number">9</span> Operations - Math</h1>
+<section id="addition" class="level3" data-number="9.0.1">
+<h3 data-number="9.0.1" class="anchored" data-anchor-id="addition"><span class="header-section-number">9.0.1</span> Addition</h3>
 <div class="clay-table">
 <div class="table-responsive">
 <table class="table table-hover clay-table caption-top" data-quarto-postprocess="true">
@@ -868,12 +988,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tbody>
 <tr class="odd">
 <td><code class="sourceCode clojure">(<span class="kw">+</span> <span class="dv">1</span> <span class="dv">2</span> <span class="dv">3</span>)</code></td>
-<td><code class="sourceCode javascript"><span class="st">"1 + 2 + 3;"</span></code></td>
+<td><code class="sourceCode javascript"><span class="dv">1</span> <span class="op">+</span> <span class="dv">2</span> <span class="op">+</span> <span class="dv">3</span><span class="op">;</span></code></td>
 <td><code class="sourceCode clojure"><span class="dv">6</span></code></td>
 </tr>
 <tr class="even">
 <td><code class="sourceCode clojure">(<span class="kw">+</span> <span class="dv">1</span> <span class="dv">10</span>)</code></td>
-<td><code class="sourceCode javascript"><span class="st">"1 + 10;"</span></code></td>
+<td><code class="sourceCode javascript"><span class="dv">1</span> <span class="op">+</span> <span class="dv">10</span><span class="op">;</span></code></td>
 <td><code class="sourceCode clojure"><span class="dv">11</span></code></td>
 </tr>
 </tbody>
@@ -881,8 +1001,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </section>
-<section id="subtraction" class="level3" data-number="8.0.2">
-<h3 data-number="8.0.2" class="anchored" data-anchor-id="subtraction"><span class="header-section-number">8.0.2</span> Subtraction</h3>
+<section id="subtraction" class="level3" data-number="9.0.2">
+<h3 data-number="9.0.2" class="anchored" data-anchor-id="subtraction"><span class="header-section-number">9.0.2</span> Subtraction</h3>
 <div class="clay-table">
 <div class="table-responsive">
 <table class="table table-hover clay-table caption-top" data-quarto-postprocess="true">
@@ -896,17 +1016,17 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tbody>
 <tr class="odd">
 <td><code class="sourceCode clojure">(<span class="kw">-</span> <span class="dv">10</span>)</code></td>
-<td><code class="sourceCode javascript"><span class="st">"-10;"</span></code></td>
+<td><code class="sourceCode javascript"><span class="op">-</span><span class="dv">10</span><span class="op">;</span></code></td>
 <td><code class="sourceCode clojure">-<span class="dv">10</span></code></td>
 </tr>
 <tr class="even">
 <td><code class="sourceCode clojure">(<span class="kw">-</span> <span class="dv">10</span> <span class="fl">1.1</span>)</code></td>
-<td><code class="sourceCode javascript"><span class="st">"10 - 1.1;"</span></code></td>
+<td><code class="sourceCode javascript"><span class="dv">10</span> <span class="op">-</span> <span class="fl">1.1</span><span class="op">;</span></code></td>
 <td><code class="sourceCode clojure"><span class="fl">8.9</span></code></td>
 </tr>
 <tr class="odd">
 <td><code class="sourceCode clojure">(<span class="kw">-</span> <span class="dv">4</span> <span class="dv">3</span> <span class="dv">2</span> <span class="fl">1.1</span>)</code></td>
-<td><code class="sourceCode javascript"><span class="st">"4 - 3 - 2 - 1.1;"</span></code></td>
+<td><code class="sourceCode javascript"><span class="dv">4</span> <span class="op">-</span> <span class="dv">3</span> <span class="op">-</span> <span class="dv">2</span> <span class="op">-</span> <span class="fl">1.1</span><span class="op">;</span></code></td>
 <td><code class="sourceCode clojure">-<span class="fl">2.1</span></code></td>
 </tr>
 </tbody>
@@ -914,8 +1034,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </section>
-<section id="multiplication" class="level3" data-number="8.0.3">
-<h3 data-number="8.0.3" class="anchored" data-anchor-id="multiplication"><span class="header-section-number">8.0.3</span> Multiplication</h3>
+<section id="multiplication" class="level3" data-number="9.0.3">
+<h3 data-number="9.0.3" class="anchored" data-anchor-id="multiplication"><span class="header-section-number">9.0.3</span> Multiplication</h3>
 <div class="clay-table">
 <div class="table-responsive">
 <table class="table table-hover clay-table caption-top" data-quarto-postprocess="true">
@@ -929,12 +1049,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tbody>
 <tr class="odd">
 <td><code class="sourceCode clojure">(<span class="kw">*</span> <span class="dv">10</span> <span class="dv">20</span>)</code></td>
-<td><code class="sourceCode javascript"><span class="st">"10 * 20;"</span></code></td>
+<td><code class="sourceCode javascript"><span class="dv">10</span> <span class="op">*</span> <span class="dv">20</span><span class="op">;</span></code></td>
 <td><code class="sourceCode clojure"><span class="dv">200</span></code></td>
 </tr>
 <tr class="even">
 <td><code class="sourceCode clojure">(<span class="kw">*</span> <span class="dv">4</span> <span class="fl">3.3</span> <span class="fl">2.2</span> <span class="fl">1.1</span>)</code></td>
-<td><code class="sourceCode javascript"><span class="st">"4 * 3.3 * 2.2 * 1.1;"</span></code></td>
+<td><code class="sourceCode javascript"><span class="dv">4</span> <span class="op">*</span> <span class="fl">3.3</span> <span class="op">*</span> <span class="fl">2.2</span> <span class="op">*</span> <span class="fl">1.1</span><span class="op">;</span></code></td>
 <td><code class="sourceCode clojure"><span class="fl">31.944000000000003</span></code></td>
 </tr>
 </tbody>
@@ -942,8 +1062,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </section>
-<section id="division" class="level3" data-number="8.0.4">
-<h3 data-number="8.0.4" class="anchored" data-anchor-id="division"><span class="header-section-number">8.0.4</span> Division</h3>
+<section id="division" class="level3" data-number="9.0.4">
+<h3 data-number="9.0.4" class="anchored" data-anchor-id="division"><span class="header-section-number">9.0.4</span> Division</h3>
 <div class="clay-table">
 <div class="table-responsive">
 <table class="table table-hover clay-table caption-top" data-quarto-postprocess="true">
@@ -957,17 +1077,17 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tbody>
 <tr class="odd">
 <td><code class="sourceCode clojure">(<span class="kw">/</span> <span class="dv">10</span>)</code></td>
-<td><code class="sourceCode javascript"><span class="st">"1 / 10;"</span></code></td>
+<td><code class="sourceCode javascript"><span class="dv">1</span> <span class="op">/</span> <span class="dv">10</span><span class="op">;</span></code></td>
 <td><code class="sourceCode clojure"><span class="fl">0.1</span></code></td>
 </tr>
 <tr class="even">
 <td><code class="sourceCode clojure">(<span class="kw">/</span> <span class="dv">10</span> <span class="dv">20</span>)</code></td>
-<td><code class="sourceCode javascript"><span class="st">"10 / 20;"</span></code></td>
+<td><code class="sourceCode javascript"><span class="dv">10</span> <span class="op">/</span> <span class="dv">20</span><span class="op">;</span></code></td>
 <td><code class="sourceCode clojure"><span class="fl">0.5</span></code></td>
 </tr>
 <tr class="odd">
 <td><code class="sourceCode clojure">(<span class="kw">/</span> <span class="dv">4</span> <span class="fl">3.3</span> <span class="fl">2.2</span> <span class="fl">1.1</span>)</code></td>
-<td><code class="sourceCode javascript"><span class="st">"4 / 3.3 / 2.2 / 1.1;"</span></code></td>
+<td><code class="sourceCode javascript"><span class="dv">4</span> <span class="op">/</span> <span class="fl">3.3</span> <span class="op">/</span> <span class="fl">2.2</span> <span class="op">/</span> <span class="fl">1.1</span><span class="op">;</span></code></td>
 <td><code class="sourceCode clojure"><span class="fl">0.5008765339343851</span></code></td>
 </tr>
 </tbody>
@@ -975,8 +1095,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </section>
-<section id="pow" class="level3" data-number="8.0.5">
-<h3 data-number="8.0.5" class="anchored" data-anchor-id="pow"><span class="header-section-number">8.0.5</span> Pow</h3>
+<section id="pow" class="level3" data-number="9.0.5">
+<h3 data-number="9.0.5" class="anchored" data-anchor-id="pow"><span class="header-section-number">9.0.5</span> Pow</h3>
 <div class="clay-table">
 <div class="table-responsive">
 <table class="table table-hover clay-table caption-top" data-quarto-postprocess="true">
@@ -990,12 +1110,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tbody>
 <tr class="odd">
 <td><code class="sourceCode clojure">(pow <span class="dv">10</span> <span class="dv">2</span>)</code></td>
-<td><code class="sourceCode javascript"><span class="st">"10 ^ 2;"</span></code></td>
+<td><code class="sourceCode javascript"><span class="dv">10</span> <span class="op">^</span> <span class="dv">2</span><span class="op">;</span></code></td>
 <td><code class="sourceCode clojure"><span class="dv">8</span></code></td>
 </tr>
 <tr class="even">
 <td><code class="sourceCode clojure">(pow <span class="fl">0.5</span> <span class="fl">0.2</span>)</code></td>
-<td><code class="sourceCode javascript"><span class="st">"0.5 ^ 0.2;"</span></code></td>
+<td><code class="sourceCode javascript"><span class="fl">0.5</span> <span class="op">^</span> <span class="fl">0.2</span><span class="op">;</span></code></td>
 <td><code class="sourceCode clojure"><span class="dv">0</span></code></td>
 </tr>
 </tbody>
@@ -1003,8 +1123,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </section>
-<section id="mod" class="level3" data-number="8.0.6">
-<h3 data-number="8.0.6" class="anchored" data-anchor-id="mod"><span class="header-section-number">8.0.6</span> Mod</h3>
+<section id="mod" class="level3" data-number="9.0.6">
+<h3 data-number="9.0.6" class="anchored" data-anchor-id="mod"><span class="header-section-number">9.0.6</span> Mod</h3>
 <div class="clay-table">
 <div class="table-responsive">
 <table class="table table-hover clay-table caption-top" data-quarto-postprocess="true">
@@ -1018,12 +1138,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tbody>
 <tr class="odd">
 <td><code class="sourceCode clojure">(<span class="kw">mod</span> <span class="dv">1123</span> <span class="dv">7</span>)</code></td>
-<td><code class="sourceCode javascript"><span class="st">"1123 % 7;"</span></code></td>
+<td><code class="sourceCode javascript"><span class="dv">1123</span> <span class="op">%</span> <span class="dv">7</span><span class="op">;</span></code></td>
 <td><code class="sourceCode clojure"><span class="dv">3</span></code></td>
 </tr>
 <tr class="even">
 <td><code class="sourceCode clojure">(<span class="kw">mod</span> <span class="dv">1123</span> <span class="fl">7.1</span>)</code></td>
-<td><code class="sourceCode javascript"><span class="st">"1123 % 7.1;"</span></code></td>
+<td><code class="sourceCode javascript"><span class="dv">1123</span> <span class="op">%</span> <span class="fl">7.1</span><span class="op">;</span></code></td>
 <td><code class="sourceCode clojure"><span class="fl">1.2000000000000561</span></code></td>
 </tr>
 </tbody>
@@ -1032,10 +1152,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </section>
 </section>
-<section id="operations---comparison" class="level1" data-number="9">
-<h1 data-number="9"><span class="header-section-number">9</span> Operations - Comparison</h1>
-<section id="equals" class="level3" data-number="9.0.1">
-<h3 data-number="9.0.1" class="anchored" data-anchor-id="equals"><span class="header-section-number">9.0.1</span> Equals</h3>
+<section id="operations---comparison" class="level1" data-number="10">
+<h1 data-number="10"><span class="header-section-number">10</span> Operations - Comparison</h1>
+<section id="equals" class="level3" data-number="10.0.1">
+<h3 data-number="10.0.1" class="anchored" data-anchor-id="equals"><span class="header-section-number">10.0.1</span> Equals</h3>
 <div class="clay-table">
 <div class="table-responsive">
 <table class="table table-hover clay-table caption-top" data-quarto-postprocess="true">
@@ -1049,17 +1169,17 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tbody>
 <tr class="odd">
 <td><code class="sourceCode clojure">(<span class="kw">==</span> <span class="dv">1</span> <span class="dv">1</span>)</code></td>
-<td><code class="sourceCode javascript"><span class="st">"1 == 1;"</span></code></td>
+<td><code class="sourceCode javascript"><span class="dv">1</span> <span class="op">==</span> <span class="dv">1</span><span class="op">;</span></code></td>
 <td><code class="sourceCode clojure"><span class="va">true</span></code></td>
 </tr>
 <tr class="even">
 <td><code class="sourceCode clojure">(<span class="kw">==</span> <span class="dv">1</span> <span class="st">"1"</span>)</code></td>
-<td><code class="sourceCode javascript"><span class="st">"1 == </span><span class="sc">\"</span><span class="st">1</span><span class="sc">\"</span><span class="st">;"</span></code></td>
+<td><code class="sourceCode javascript"><span class="dv">1</span> <span class="op">==</span> <span class="st">"1"</span><span class="op">;</span></code></td>
 <td><code class="sourceCode clojure"><span class="va">true</span></code></td>
 </tr>
 <tr class="odd">
 <td><code class="sourceCode clojure">(<span class="kw">==</span> <span class="st">"hello"</span> <span class="st">"hello"</span>)</code></td>
-<td><code class="sourceCode javascript"><span class="st">"</span><span class="sc">\"</span><span class="st">hello</span><span class="sc">\"</span><span class="st"> == </span><span class="sc">\"</span><span class="st">hello</span><span class="sc">\"</span><span class="st">;"</span></code></td>
+<td><code class="sourceCode javascript"><span class="st">"hello"</span> <span class="op">==</span> <span class="st">"hello"</span><span class="op">;</span></code></td>
 <td><code class="sourceCode clojure"><span class="va">true</span></code></td>
 </tr>
 </tbody>
@@ -1067,8 +1187,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </section>
-<section id="triple-equals" class="level3" data-number="9.0.2">
-<h3 data-number="9.0.2" class="anchored" data-anchor-id="triple-equals"><span class="header-section-number">9.0.2</span> Triple Equals</h3>
+<section id="triple-equals" class="level3" data-number="10.0.2">
+<h3 data-number="10.0.2" class="anchored" data-anchor-id="triple-equals"><span class="header-section-number">10.0.2</span> Triple Equals</h3>
 <div class="clay-table">
 <div class="table-responsive">
 <table class="table table-hover clay-table caption-top" data-quarto-postprocess="true">
@@ -1082,17 +1202,17 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tbody>
 <tr class="odd">
 <td><code class="sourceCode clojure">(=== <span class="dv">1</span> <span class="dv">1</span>)</code></td>
-<td><code class="sourceCode javascript"><span class="st">"1 === 1;"</span></code></td>
+<td><code class="sourceCode javascript"><span class="dv">1</span> <span class="op">===</span> <span class="dv">1</span><span class="op">;</span></code></td>
 <td><code class="sourceCode clojure"><span class="va">true</span></code></td>
 </tr>
 <tr class="even">
 <td><code class="sourceCode clojure">(=== <span class="dv">1</span> <span class="st">"1"</span>)</code></td>
-<td><code class="sourceCode javascript"><span class="st">"1 === </span><span class="sc">\"</span><span class="st">1</span><span class="sc">\"</span><span class="st">;"</span></code></td>
+<td><code class="sourceCode javascript"><span class="dv">1</span> <span class="op">===</span> <span class="st">"1"</span><span class="op">;</span></code></td>
 <td><code class="sourceCode clojure"><span class="va">false</span></code></td>
 </tr>
 <tr class="odd">
 <td><code class="sourceCode clojure">(=== <span class="st">"hello"</span> <span class="st">"hello"</span>)</code></td>
-<td><code class="sourceCode javascript"><span class="st">"</span><span class="sc">\"</span><span class="st">hello</span><span class="sc">\"</span><span class="st"> === </span><span class="sc">\"</span><span class="st">hello</span><span class="sc">\"</span><span class="st">;"</span></code></td>
+<td><code class="sourceCode javascript"><span class="st">"hello"</span> <span class="op">===</span> <span class="st">"hello"</span><span class="op">;</span></code></td>
 <td><code class="sourceCode clojure"><span class="va">true</span></code></td>
 </tr>
 </tbody>
@@ -1100,8 +1220,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </section>
-<section id="not-equals" class="level3" data-number="9.0.3">
-<h3 data-number="9.0.3" class="anchored" data-anchor-id="not-equals"><span class="header-section-number">9.0.3</span> Not Equals</h3>
+<section id="not-equals" class="level3" data-number="10.0.3">
+<h3 data-number="10.0.3" class="anchored" data-anchor-id="not-equals"><span class="header-section-number">10.0.3</span> Not Equals</h3>
 <div class="clay-table">
 <div class="table-responsive">
 <table class="table table-hover clay-table caption-top" data-quarto-postprocess="true">
@@ -1115,17 +1235,17 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tbody>
 <tr class="odd">
 <td><code class="sourceCode clojure">(<span class="kw">not=</span> <span class="dv">1</span> <span class="dv">2</span>)</code></td>
-<td><code class="sourceCode javascript"><span class="st">"1 != 2;"</span></code></td>
+<td><code class="sourceCode javascript"><span class="dv">1</span> <span class="op">!=</span> <span class="dv">2</span><span class="op">;</span></code></td>
 <td><code class="sourceCode clojure"><span class="va">true</span></code></td>
 </tr>
 <tr class="even">
 <td><code class="sourceCode clojure">(<span class="kw">not=</span> <span class="dv">1</span> <span class="st">"1"</span>)</code></td>
-<td><code class="sourceCode javascript"><span class="st">"1 != </span><span class="sc">\"</span><span class="st">1</span><span class="sc">\"</span><span class="st">;"</span></code></td>
+<td><code class="sourceCode javascript"><span class="dv">1</span> <span class="op">!=</span> <span class="st">"1"</span><span class="op">;</span></code></td>
 <td><code class="sourceCode clojure"><span class="va">false</span></code></td>
 </tr>
 <tr class="odd">
 <td><code class="sourceCode clojure">(<span class="kw">not=</span> <span class="st">"hello"</span> <span class="st">"hello"</span>)</code></td>
-<td><code class="sourceCode javascript"><span class="st">"</span><span class="sc">\"</span><span class="st">hello</span><span class="sc">\"</span><span class="st"> != </span><span class="sc">\"</span><span class="st">hello</span><span class="sc">\"</span><span class="st">;"</span></code></td>
+<td><code class="sourceCode javascript"><span class="st">"hello"</span> <span class="op">!=</span> <span class="st">"hello"</span><span class="op">;</span></code></td>
 <td><code class="sourceCode clojure"><span class="va">false</span></code></td>
 </tr>
 </tbody>
@@ -1133,8 +1253,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </section>
-<section id="less-than" class="level3" data-number="9.0.4">
-<h3 data-number="9.0.4" class="anchored" data-anchor-id="less-than"><span class="header-section-number">9.0.4</span> Less Than</h3>
+<section id="less-than" class="level3" data-number="10.0.4">
+<h3 data-number="10.0.4" class="anchored" data-anchor-id="less-than"><span class="header-section-number">10.0.4</span> Less Than</h3>
 <div class="clay-table">
 <div class="table-responsive">
 <table class="table table-hover clay-table caption-top" data-quarto-postprocess="true">
@@ -1148,17 +1268,17 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tbody>
 <tr class="odd">
 <td><code class="sourceCode clojure">(<span class="kw">&lt;</span> <span class="dv">1</span> <span class="dv">2</span>)</code></td>
-<td><code class="sourceCode javascript"><span class="st">"1 &lt; 2;"</span></code></td>
+<td><code class="sourceCode javascript"><span class="dv">1</span> <span class="op">&lt;</span> <span class="dv">2</span><span class="op">;</span></code></td>
 <td><code class="sourceCode clojure"><span class="va">true</span></code></td>
 </tr>
 <tr class="even">
 <td><code class="sourceCode clojure">(<span class="kw">&lt;</span> <span class="dv">1</span> <span class="dv">1</span>)</code></td>
-<td><code class="sourceCode javascript"><span class="st">"1 &lt; 1;"</span></code></td>
+<td><code class="sourceCode javascript"><span class="dv">1</span> <span class="op">&lt;</span> <span class="dv">1</span><span class="op">;</span></code></td>
 <td><code class="sourceCode clojure"><span class="va">false</span></code></td>
 </tr>
 <tr class="odd">
 <td><code class="sourceCode clojure">(<span class="kw">&lt;</span> <span class="dv">1</span> <span class="st">"2"</span>)</code></td>
-<td><code class="sourceCode javascript"><span class="st">"1 &lt; </span><span class="sc">\"</span><span class="st">2</span><span class="sc">\"</span><span class="st">;"</span></code></td>
+<td><code class="sourceCode javascript"><span class="dv">1</span> <span class="op">&lt;</span> <span class="st">"2"</span><span class="op">;</span></code></td>
 <td><code class="sourceCode clojure"><span class="va">true</span></code></td>
 </tr>
 </tbody>
@@ -1166,8 +1286,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </section>
-<section id="less-than-equals" class="level3" data-number="9.0.5">
-<h3 data-number="9.0.5" class="anchored" data-anchor-id="less-than-equals"><span class="header-section-number">9.0.5</span> Less Than Equals</h3>
+<section id="less-than-equals" class="level3" data-number="10.0.5">
+<h3 data-number="10.0.5" class="anchored" data-anchor-id="less-than-equals"><span class="header-section-number">10.0.5</span> Less Than Equals</h3>
 <div class="clay-table">
 <div class="table-responsive">
 <table class="table table-hover clay-table caption-top" data-quarto-postprocess="true">
@@ -1181,17 +1301,17 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tbody>
 <tr class="odd">
 <td><code class="sourceCode clojure">(<span class="kw">&lt;=</span> <span class="dv">1</span> <span class="dv">2</span>)</code></td>
-<td><code class="sourceCode javascript"><span class="st">"1 &lt;= 2;"</span></code></td>
+<td><code class="sourceCode javascript"><span class="dv">1</span> <span class="op">&lt;=</span> <span class="dv">2</span><span class="op">;</span></code></td>
 <td><code class="sourceCode clojure"><span class="va">true</span></code></td>
 </tr>
 <tr class="even">
 <td><code class="sourceCode clojure">(<span class="kw">&lt;=</span> <span class="dv">1</span> <span class="dv">1</span>)</code></td>
-<td><code class="sourceCode javascript"><span class="st">"1 &lt;= 1;"</span></code></td>
+<td><code class="sourceCode javascript"><span class="dv">1</span> <span class="op">&lt;=</span> <span class="dv">1</span><span class="op">;</span></code></td>
 <td><code class="sourceCode clojure"><span class="va">true</span></code></td>
 </tr>
 <tr class="odd">
 <td><code class="sourceCode clojure">(<span class="kw">&lt;=</span> <span class="dv">1</span> <span class="st">"1"</span>)</code></td>
-<td><code class="sourceCode javascript"><span class="st">"1 &lt;= </span><span class="sc">\"</span><span class="st">1</span><span class="sc">\"</span><span class="st">;"</span></code></td>
+<td><code class="sourceCode javascript"><span class="dv">1</span> <span class="op">&lt;=</span> <span class="st">"1"</span><span class="op">;</span></code></td>
 <td><code class="sourceCode clojure"><span class="va">true</span></code></td>
 </tr>
 </tbody>
@@ -1199,8 +1319,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </section>
-<section id="greater-than" class="level3" data-number="9.0.6">
-<h3 data-number="9.0.6" class="anchored" data-anchor-id="greater-than"><span class="header-section-number">9.0.6</span> Greater Than</h3>
+<section id="greater-than" class="level3" data-number="10.0.6">
+<h3 data-number="10.0.6" class="anchored" data-anchor-id="greater-than"><span class="header-section-number">10.0.6</span> Greater Than</h3>
 <div class="clay-table">
 <div class="table-responsive">
 <table class="table table-hover clay-table caption-top" data-quarto-postprocess="true">
@@ -1214,17 +1334,17 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tbody>
 <tr class="odd">
 <td><code class="sourceCode clojure">(<span class="kw">&gt;</span> <span class="dv">3</span> <span class="dv">2</span>)</code></td>
-<td><code class="sourceCode javascript"><span class="st">"3 &gt; 2;"</span></code></td>
+<td><code class="sourceCode javascript"><span class="dv">3</span> <span class="op">&gt;</span> <span class="dv">2</span><span class="op">;</span></code></td>
 <td><code class="sourceCode clojure"><span class="va">true</span></code></td>
 </tr>
 <tr class="even">
 <td><code class="sourceCode clojure">(<span class="kw">&gt;</span> <span class="dv">3</span> <span class="dv">3</span>)</code></td>
-<td><code class="sourceCode javascript"><span class="st">"3 &gt; 3;"</span></code></td>
+<td><code class="sourceCode javascript"><span class="dv">3</span> <span class="op">&gt;</span> <span class="dv">3</span><span class="op">;</span></code></td>
 <td><code class="sourceCode clojure"><span class="va">false</span></code></td>
 </tr>
 <tr class="odd">
 <td><code class="sourceCode clojure">(<span class="kw">&gt;</span> <span class="dv">3</span> <span class="st">"2"</span>)</code></td>
-<td><code class="sourceCode javascript"><span class="st">"3 &gt; </span><span class="sc">\"</span><span class="st">2</span><span class="sc">\"</span><span class="st">;"</span></code></td>
+<td><code class="sourceCode javascript"><span class="dv">3</span> <span class="op">&gt;</span> <span class="st">"2"</span><span class="op">;</span></code></td>
 <td><code class="sourceCode clojure"><span class="va">true</span></code></td>
 </tr>
 </tbody>
@@ -1232,8 +1352,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </section>
-<section id="greater-than-equals" class="level3" data-number="9.0.7">
-<h3 data-number="9.0.7" class="anchored" data-anchor-id="greater-than-equals"><span class="header-section-number">9.0.7</span> Greater Than Equals</h3>
+<section id="greater-than-equals" class="level3" data-number="10.0.7">
+<h3 data-number="10.0.7" class="anchored" data-anchor-id="greater-than-equals"><span class="header-section-number">10.0.7</span> Greater Than Equals</h3>
 <div class="clay-table">
 <div class="table-responsive">
 <table class="table table-hover clay-table caption-top" data-quarto-postprocess="true">
@@ -1247,17 +1367,17 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tbody>
 <tr class="odd">
 <td><code class="sourceCode clojure">(<span class="kw">&gt;=</span> <span class="dv">3</span> <span class="dv">2</span>)</code></td>
-<td><code class="sourceCode javascript"><span class="st">"3 &gt;= 2;"</span></code></td>
+<td><code class="sourceCode javascript"><span class="dv">3</span> <span class="op">&gt;=</span> <span class="dv">2</span><span class="op">;</span></code></td>
 <td><code class="sourceCode clojure"><span class="va">true</span></code></td>
 </tr>
 <tr class="even">
 <td><code class="sourceCode clojure">(<span class="kw">&gt;=</span> <span class="dv">3</span> <span class="dv">3</span>)</code></td>
-<td><code class="sourceCode javascript"><span class="st">"3 &gt;= 3;"</span></code></td>
+<td><code class="sourceCode javascript"><span class="dv">3</span> <span class="op">&gt;=</span> <span class="dv">3</span><span class="op">;</span></code></td>
 <td><code class="sourceCode clojure"><span class="va">true</span></code></td>
 </tr>
 <tr class="odd">
 <td><code class="sourceCode clojure">(<span class="kw">&gt;=</span> <span class="dv">3</span> <span class="st">"3"</span>)</code></td>
-<td><code class="sourceCode javascript"><span class="st">"3 &gt;= </span><span class="sc">\"</span><span class="st">3</span><span class="sc">\"</span><span class="st">;"</span></code></td>
+<td><code class="sourceCode javascript"><span class="dv">3</span> <span class="op">&gt;=</span> <span class="st">"3"</span><span class="op">;</span></code></td>
 <td><code class="sourceCode clojure"><span class="va">true</span></code></td>
 </tr>
 </tbody>
@@ -1266,10 +1386,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </section>
 </section>
-<section id="operations---counter" class="level1" data-number="10">
-<h1 data-number="10"><span class="header-section-number">10</span> Operations - Counter</h1>
-<section id="increment" class="level3" data-number="10.0.1">
-<h3 data-number="10.0.1" class="anchored" data-anchor-id="increment"><span class="header-section-number">10.0.1</span> Increment</h3>
+<section id="operations---counter" class="level1" data-number="11">
+<h1 data-number="11"><span class="header-section-number">11</span> Operations - Counter</h1>
+<section id="increment" class="level3" data-number="11.0.1">
+<h3 data-number="11.0.1" class="anchored" data-anchor-id="increment"><span class="header-section-number">11.0.1</span> Increment</h3>
 <div class="clay-table">
 <div class="table-responsive">
 <table class="table table-hover clay-table caption-top" data-quarto-postprocess="true">
@@ -1283,7 +1403,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tbody>
 <tr class="odd">
 <td><code class="sourceCode clojure">(<span class="kw">do</span> (var x <span class="dv">1</span>) (:++ x) x)</code></td>
-<td><code class="sourceCode javascript"><span class="st">"let x = 1;</span><span class="sc">\n</span><span class="st">++x;</span><span class="sc">\n</span><span class="st">x;"</span></code></td>
+<td><code class="sourceCode javascript"><span class="kw">let</span> x <span class="op">=</span> <span class="dv">1</span><span class="op">;</span>
+<span class="op">++</span>x<span class="op">;</span>
+x<span class="op">;</span></code></td>
 <td><code class="sourceCode clojure"><span class="dv">2</span></code></td>
 </tr>
 </tbody>
@@ -1291,8 +1413,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </section>
-<section id="increment-by" class="level3" data-number="10.0.2">
-<h3 data-number="10.0.2" class="anchored" data-anchor-id="increment-by"><span class="header-section-number">10.0.2</span> Increment By</h3>
+<section id="increment-by" class="level3" data-number="11.0.2">
+<h3 data-number="11.0.2" class="anchored" data-anchor-id="increment-by"><span class="header-section-number">11.0.2</span> Increment By</h3>
 <div class="clay-table">
 <div class="table-responsive">
 <table class="table table-hover clay-table caption-top" data-quarto-postprocess="true">
@@ -1306,7 +1428,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tbody>
 <tr class="odd">
 <td><code class="sourceCode clojure">(<span class="kw">do</span> (var x <span class="dv">1</span>) (:+= x <span class="dv">10</span>) x)</code></td>
-<td><code class="sourceCode javascript"><span class="st">"let x = 1;</span><span class="sc">\n</span><span class="st">x += 10;</span><span class="sc">\n</span><span class="st">x;"</span></code></td>
+<td><code class="sourceCode javascript"><span class="kw">let</span> x <span class="op">=</span> <span class="dv">1</span><span class="op">;</span>
+x <span class="op">+=</span> <span class="dv">10</span><span class="op">;</span>
+x<span class="op">;</span></code></td>
 <td><code class="sourceCode clojure"><span class="dv">11</span></code></td>
 </tr>
 </tbody>
@@ -1314,8 +1438,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </section>
-<section id="decrement" class="level3" data-number="10.0.3">
-<h3 data-number="10.0.3" class="anchored" data-anchor-id="decrement"><span class="header-section-number">10.0.3</span> Decrement</h3>
+<section id="decrement" class="level3" data-number="11.0.3">
+<h3 data-number="11.0.3" class="anchored" data-anchor-id="decrement"><span class="header-section-number">11.0.3</span> Decrement</h3>
 <div class="clay-table">
 <div class="table-responsive">
 <table class="table table-hover clay-table caption-top" data-quarto-postprocess="true">
@@ -1329,7 +1453,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tbody>
 <tr class="odd">
 <td><code class="sourceCode clojure">(<span class="kw">do</span> (var x <span class="dv">5</span>) (<span class="at">:--</span> x) x)</code></td>
-<td><code class="sourceCode javascript"><span class="st">"let x = 5;</span><span class="sc">\n</span><span class="st">--x;</span><span class="sc">\n</span><span class="st">x;"</span></code></td>
+<td><code class="sourceCode javascript"><span class="kw">let</span> x <span class="op">=</span> <span class="dv">5</span><span class="op">;</span>
+<span class="op">--</span>x<span class="op">;</span>
+x<span class="op">;</span></code></td>
 <td><code class="sourceCode clojure"><span class="dv">4</span></code></td>
 </tr>
 </tbody>
@@ -1337,8 +1463,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </section>
-<section id="decrement-by" class="level3" data-number="10.0.4">
-<h3 data-number="10.0.4" class="anchored" data-anchor-id="decrement-by"><span class="header-section-number">10.0.4</span> Decrement By</h3>
+<section id="decrement-by" class="level3" data-number="11.0.4">
+<h3 data-number="11.0.4" class="anchored" data-anchor-id="decrement-by"><span class="header-section-number">11.0.4</span> Decrement By</h3>
 <div class="clay-table">
 <div class="table-responsive">
 <table class="table table-hover clay-table caption-top" data-quarto-postprocess="true">
@@ -1352,7 +1478,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tbody>
 <tr class="odd">
 <td><code class="sourceCode clojure">(<span class="kw">do</span> (var x <span class="dv">5</span>) (<span class="at">:-</span>= x <span class="dv">50</span>) x)</code></td>
-<td><code class="sourceCode javascript"><span class="st">"let x = 5;</span><span class="sc">\n</span><span class="st">x -= 50;</span><span class="sc">\n</span><span class="st">x;"</span></code></td>
+<td><code class="sourceCode javascript"><span class="kw">let</span> x <span class="op">=</span> <span class="dv">5</span><span class="op">;</span>
+x <span class="op">-=</span> <span class="dv">50</span><span class="op">;</span>
+x<span class="op">;</span></code></td>
 <td><code class="sourceCode clojure">-<span class="dv">45</span></code></td>
 </tr>
 </tbody>
@@ -1360,8 +1488,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </section>
-<section id="multiply-by" class="level3" data-number="10.0.5">
-<h3 data-number="10.0.5" class="anchored" data-anchor-id="multiply-by"><span class="header-section-number">10.0.5</span> Multiply By</h3>
+<section id="multiply-by" class="level3" data-number="11.0.5">
+<h3 data-number="11.0.5" class="anchored" data-anchor-id="multiply-by"><span class="header-section-number">11.0.5</span> Multiply By</h3>
 <div class="clay-table">
 <div class="table-responsive">
 <table class="table table-hover clay-table caption-top" data-quarto-postprocess="true">
@@ -1375,7 +1503,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tbody>
 <tr class="odd">
 <td><code class="sourceCode clojure">(<span class="kw">do</span> (var x <span class="dv">5</span>) (:*= x <span class="dv">50</span>) x)</code></td>
-<td><code class="sourceCode javascript"><span class="st">"let x = 5;</span><span class="sc">\n</span><span class="st">x *= 50;</span><span class="sc">\n</span><span class="st">x;"</span></code></td>
+<td><code class="sourceCode javascript"><span class="kw">let</span> x <span class="op">=</span> <span class="dv">5</span><span class="op">;</span>
+x <span class="op">*=</span> <span class="dv">50</span><span class="op">;</span>
+x<span class="op">;</span></code></td>
 <td><code class="sourceCode clojure"><span class="dv">250</span></code></td>
 </tr>
 </tbody>
@@ -1384,10 +1514,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </section>
 </section>
-<section id="operations---bitwise" class="level1" data-number="11">
-<h1 data-number="11"><span class="header-section-number">11</span> Operations - Bitwise</h1>
-<section id="bitwise-or" class="level3" data-number="11.0.1">
-<h3 data-number="11.0.1" class="anchored" data-anchor-id="bitwise-or"><span class="header-section-number">11.0.1</span> Bitwise Or</h3>
+<section id="operations---bitwise" class="level1" data-number="12">
+<h1 data-number="12"><span class="header-section-number">12</span> Operations - Bitwise</h1>
+<section id="bitwise-or" class="level3" data-number="12.0.1">
+<h3 data-number="12.0.1" class="anchored" data-anchor-id="bitwise-or"><span class="header-section-number">12.0.1</span> Bitwise Or</h3>
 <div class="clay-table">
 <div class="table-responsive">
 <table class="table table-hover clay-table caption-top" data-quarto-postprocess="true">
@@ -1401,17 +1531,17 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tbody>
 <tr class="odd">
 <td><code class="sourceCode clojure">(b:| <span class="dv">7</span> <span class="dv">8</span>)</code></td>
-<td><code class="sourceCode javascript"><span class="st">"7 | 8;"</span></code></td>
+<td><code class="sourceCode javascript"><span class="dv">7</span> <span class="op">|</span> <span class="dv">8</span><span class="op">;</span></code></td>
 <td><code class="sourceCode clojure"><span class="dv">15</span></code></td>
 </tr>
 <tr class="even">
 <td><code class="sourceCode clojure">(b:| <span class="dv">7</span> <span class="dv">7</span>)</code></td>
-<td><code class="sourceCode javascript"><span class="st">"7 | 7;"</span></code></td>
+<td><code class="sourceCode javascript"><span class="dv">7</span> <span class="op">|</span> <span class="dv">7</span><span class="op">;</span></code></td>
 <td><code class="sourceCode clojure"><span class="dv">7</span></code></td>
 </tr>
 <tr class="odd">
 <td><code class="sourceCode clojure">(b:| <span class="dv">7</span> <span class="dv">0</span>)</code></td>
-<td><code class="sourceCode javascript"><span class="st">"7 | 0;"</span></code></td>
+<td><code class="sourceCode javascript"><span class="dv">7</span> <span class="op">|</span> <span class="dv">0</span><span class="op">;</span></code></td>
 <td><code class="sourceCode clojure"><span class="dv">7</span></code></td>
 </tr>
 </tbody>
@@ -1419,8 +1549,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </section>
-<section id="bitwise-and" class="level3" data-number="11.0.2">
-<h3 data-number="11.0.2" class="anchored" data-anchor-id="bitwise-and"><span class="header-section-number">11.0.2</span> Bitwise And</h3>
+<section id="bitwise-and" class="level3" data-number="12.0.2">
+<h3 data-number="12.0.2" class="anchored" data-anchor-id="bitwise-and"><span class="header-section-number">12.0.2</span> Bitwise And</h3>
 <div class="clay-table">
 <div class="table-responsive">
 <table class="table table-hover clay-table caption-top" data-quarto-postprocess="true">
@@ -1434,17 +1564,17 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tbody>
 <tr class="odd">
 <td><code class="sourceCode clojure">(b:&amp; <span class="dv">7</span> <span class="dv">8</span>)</code></td>
-<td><code class="sourceCode javascript"><span class="st">"7 &amp; 8;"</span></code></td>
+<td><code class="sourceCode javascript"><span class="dv">7</span> <span class="op">&amp;</span> <span class="dv">8</span><span class="op">;</span></code></td>
 <td><code class="sourceCode clojure"><span class="dv">0</span></code></td>
 </tr>
 <tr class="even">
 <td><code class="sourceCode clojure">(b:&amp; <span class="dv">7</span> <span class="dv">7</span>)</code></td>
-<td><code class="sourceCode javascript"><span class="st">"7 &amp; 7;"</span></code></td>
+<td><code class="sourceCode javascript"><span class="dv">7</span> <span class="op">&amp;</span> <span class="dv">7</span><span class="op">;</span></code></td>
 <td><code class="sourceCode clojure"><span class="dv">7</span></code></td>
 </tr>
 <tr class="odd">
 <td><code class="sourceCode clojure">(b:&amp; <span class="dv">7</span> <span class="dv">0</span>)</code></td>
-<td><code class="sourceCode javascript"><span class="st">"7 &amp; 0;"</span></code></td>
+<td><code class="sourceCode javascript"><span class="dv">7</span> <span class="op">&amp;</span> <span class="dv">0</span><span class="op">;</span></code></td>
 <td><code class="sourceCode clojure"><span class="dv">0</span></code></td>
 </tr>
 </tbody>
@@ -1452,8 +1582,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </section>
-<section id="bitwise-xor" class="level3" data-number="11.0.3">
-<h3 data-number="11.0.3" class="anchored" data-anchor-id="bitwise-xor"><span class="header-section-number">11.0.3</span> Bitwise Xor</h3>
+<section id="bitwise-xor" class="level3" data-number="12.0.3">
+<h3 data-number="12.0.3" class="anchored" data-anchor-id="bitwise-xor"><span class="header-section-number">12.0.3</span> Bitwise Xor</h3>
 <div class="clay-table">
 <div class="table-responsive">
 <table class="table table-hover clay-table caption-top" data-quarto-postprocess="true">
@@ -1467,17 +1597,17 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tbody>
 <tr class="odd">
 <td><code class="sourceCode clojure">(b<span class="at">:xor</span> <span class="dv">7</span> <span class="dv">8</span>)</code></td>
-<td><code class="sourceCode javascript"><span class="st">"7 ^ 8;"</span></code></td>
+<td><code class="sourceCode javascript"><span class="dv">7</span> <span class="op">^</span> <span class="dv">8</span><span class="op">;</span></code></td>
 <td><code class="sourceCode clojure"><span class="dv">15</span></code></td>
 </tr>
 <tr class="even">
 <td><code class="sourceCode clojure">(b<span class="at">:xor</span> <span class="dv">7</span> <span class="dv">7</span>)</code></td>
-<td><code class="sourceCode javascript"><span class="st">"7 ^ 7;"</span></code></td>
+<td><code class="sourceCode javascript"><span class="dv">7</span> <span class="op">^</span> <span class="dv">7</span><span class="op">;</span></code></td>
 <td><code class="sourceCode clojure"><span class="dv">0</span></code></td>
 </tr>
 <tr class="odd">
 <td><code class="sourceCode clojure">(b<span class="at">:xor</span> <span class="dv">7</span> <span class="dv">0</span>)</code></td>
-<td><code class="sourceCode javascript"><span class="st">"7 ^ 0;"</span></code></td>
+<td><code class="sourceCode javascript"><span class="dv">7</span> <span class="op">^</span> <span class="dv">0</span><span class="op">;</span></code></td>
 <td><code class="sourceCode clojure"><span class="dv">7</span></code></td>
 </tr>
 </tbody>
@@ -1485,8 +1615,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </section>
-<section id="bitshift-right" class="level3" data-number="11.0.4">
-<h3 data-number="11.0.4" class="anchored" data-anchor-id="bitshift-right"><span class="header-section-number">11.0.4</span> Bitshift Right</h3>
+<section id="bitshift-right" class="level3" data-number="12.0.4">
+<h3 data-number="12.0.4" class="anchored" data-anchor-id="bitshift-right"><span class="header-section-number">12.0.4</span> Bitshift Right</h3>
 <div class="clay-table">
 <div class="table-responsive">
 <table class="table table-hover clay-table caption-top" data-quarto-postprocess="true">
@@ -1500,7 +1630,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tbody>
 <tr class="odd">
 <td><code class="sourceCode clojure">(b:&gt;&gt; <span class="dv">128</span> <span class="dv">3</span>)</code></td>
-<td><code class="sourceCode javascript"><span class="st">"128 &gt;&gt; 3;"</span></code></td>
+<td><code class="sourceCode javascript"><span class="dv">128</span> <span class="op">&gt;&gt;</span> <span class="dv">3</span><span class="op">;</span></code></td>
 <td><code class="sourceCode clojure"><span class="dv">16</span></code></td>
 </tr>
 </tbody>
@@ -1508,8 +1638,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </section>
-<section id="bitshift-left" class="level3" data-number="11.0.5">
-<h3 data-number="11.0.5" class="anchored" data-anchor-id="bitshift-left"><span class="header-section-number">11.0.5</span> Bitshift Left</h3>
+<section id="bitshift-left" class="level3" data-number="12.0.5">
+<h3 data-number="12.0.5" class="anchored" data-anchor-id="bitshift-left"><span class="header-section-number">12.0.5</span> Bitshift Left</h3>
 <div class="clay-table">
 <div class="table-responsive">
 <table class="table table-hover clay-table caption-top" data-quarto-postprocess="true">
@@ -1523,7 +1653,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tbody>
 <tr class="odd">
 <td><code class="sourceCode clojure">(b:&lt;&lt; <span class="dv">128</span> <span class="dv">3</span>)</code></td>
-<td><code class="sourceCode javascript"><span class="st">"128 &lt;&lt; 3;"</span></code></td>
+<td><code class="sourceCode javascript"><span class="dv">128</span> <span class="op">&lt;&lt;</span> <span class="dv">3</span><span class="op">;</span></code></td>
 <td><code class="sourceCode clojure"><span class="dv">1024</span></code></td>
 </tr>
 </tbody>
@@ -1532,10 +1662,234 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </section>
 </section>
-<section id="lib---helpers" class="level1" data-number="12">
-<h1 data-number="12"><span class="header-section-number">12</span> Lib - Helpers</h1>
-<section id="forarray" class="level3" data-number="12.0.1">
-<h3 data-number="12.0.1" class="anchored" data-anchor-id="forarray"><span class="header-section-number">12.0.1</span> for:array</h3>
+<section id="keywords---functions" class="level1" data-number="13">
+<h1 data-number="13"><span class="header-section-number">13</span> Keywords - Functions</h1>
+<div class="clay-table">
+<div class="table-responsive">
+<table class="table table-hover clay-table caption-top" data-quarto-postprocess="true">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th">form</th>
+<th data-quarto-table-cell-role="th">code</th>
+<th data-quarto-table-cell-role="th">live</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code class="sourceCode clojure">(<span class="kw">fn</span> [x y] (return (<span class="kw">+</span> x y)))</code></td>
+<td><code class="sourceCode javascript"><span class="kw">function</span> (x<span class="op">,</span>y){
+  <span class="cf">return</span> x <span class="op">+</span> y<span class="op">;</span>
+}</code></td>
+<td><code class="sourceCode clojure">&lt;function&gt;
+function (x,y){
+    return x <span class="kw">+</span> y<span class="co">;</span>
+  }</code></td>
+</tr>
+<tr class="even">
+<td><code class="sourceCode clojure">(<span class="kw">do</span> (var hello (<span class="kw">fn</span> [x y] (return (<span class="kw">+</span> x y)))) (hello <span class="dv">1</span> <span class="dv">2</span>))</code></td>
+<td><code class="sourceCode javascript"><span class="kw">let</span> hello <span class="op">=</span> <span class="kw">function</span> (x<span class="op">,</span>y){
+  <span class="cf">return</span> x <span class="op">+</span> y<span class="op">;</span>
+}<span class="op">;</span>
+<span class="fu">hello</span>(<span class="dv">1</span><span class="op">,</span><span class="dv">2</span>)<span class="op">;</span></code></td>
+<td><code class="sourceCode clojure"><span class="dv">3</span></code></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</section>
+<section id="keywords---blocks" class="level1" data-number="14">
+<h1 data-number="14"><span class="header-section-number">14</span> Keywords - Blocks</h1>
+<section id="if-block" class="level3" data-number="14.0.1">
+<h3 data-number="14.0.1" class="anchored" data-anchor-id="if-block"><span class="header-section-number">14.0.1</span> if block</h3>
+<div class="clay-table">
+<div class="table-responsive">
+<table class="table table-hover clay-table caption-top" data-quarto-postprocess="true">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th">form</th>
+<th data-quarto-table-cell-role="th">code</th>
+<th data-quarto-table-cell-role="th">live</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code class="sourceCode clojure">(<span class="kw">do</span> (var arr [<span class="dv">1</span> <span class="dv">2</span> <span class="dv">3</span> <span class="dv">4</span> <span class="dv">5</span>]) (var out) (<span class="kw">if</span> (<span class="kw">&lt;</span> (x<span class="at">:len</span> arr) <span class="dv">10</span>) (:= out <span class="va">true</span>) (:= out <span class="va">false</span>)) out)</code></td>
+<td><code class="sourceCode javascript"><span class="kw">let</span> arr <span class="op">=</span> [<span class="dv">1</span><span class="op">,</span><span class="dv">2</span><span class="op">,</span><span class="dv">3</span><span class="op">,</span><span class="dv">4</span><span class="op">,</span><span class="dv">5</span>]<span class="op">;</span>
+<span class="kw">let</span> out <span class="op">=</span> <span class="kw">null</span><span class="op">;</span>
+<span class="cf">if</span>(arr<span class="op">.</span><span class="at">length</span> <span class="op">&lt;</span> <span class="dv">10</span>){
+  out <span class="op">=</span> <span class="kw">true</span><span class="op">;</span>
+}
+<span class="cf">else</span>{
+  out <span class="op">=</span> <span class="kw">false</span><span class="op">;</span>
+}
+out<span class="op">;</span></code></td>
+<td><code class="sourceCode clojure"><span class="va">true</span></code></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</section>
+<section id="cond-block" class="level3" data-number="14.0.2">
+<h3 data-number="14.0.2" class="anchored" data-anchor-id="cond-block"><span class="header-section-number">14.0.2</span> cond block</h3>
+<div class="clay-table">
+<div class="table-responsive">
+<table class="table table-hover clay-table caption-top" data-quarto-postprocess="true">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th">form</th>
+<th data-quarto-table-cell-role="th">code</th>
+<th data-quarto-table-cell-role="th">live</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code class="sourceCode clojure">(<span class="kw">do</span> (var arr [<span class="dv">1</span> <span class="dv">2</span> <span class="dv">3</span> <span class="dv">4</span> <span class="dv">5</span>]) (var out) (<span class="kw">cond</span> (<span class="kw">&lt;</span> (x<span class="at">:len</span> arr) <span class="dv">5</span>) (:= out <span class="st">"1"</span>) (<span class="kw">&lt;</span> (x<span class="at">:len</span> arr) <span class="dv">10</span>) (:= out <span class="st">"2"</span>) <span class="at">:else</span> (:= out <span class="st">"3"</span>)) out)</code></td>
+<td><code class="sourceCode javascript"><span class="kw">let</span> arr <span class="op">=</span> [<span class="dv">1</span><span class="op">,</span><span class="dv">2</span><span class="op">,</span><span class="dv">3</span><span class="op">,</span><span class="dv">4</span><span class="op">,</span><span class="dv">5</span>]<span class="op">;</span>
+<span class="kw">let</span> out <span class="op">=</span> <span class="kw">null</span><span class="op">;</span>
+<span class="cf">if</span>(arr<span class="op">.</span><span class="at">length</span> <span class="op">&lt;</span> <span class="dv">5</span>){
+  out <span class="op">=</span> <span class="st">"1"</span><span class="op">;</span>
+}
+<span class="cf">else</span> <span class="cf">if</span>(arr<span class="op">.</span><span class="at">length</span> <span class="op">&lt;</span> <span class="dv">10</span>){
+  out <span class="op">=</span> <span class="st">"2"</span><span class="op">;</span>
+}
+<span class="cf">else</span>{
+  out <span class="op">=</span> <span class="st">"3"</span><span class="op">;</span>
+}
+out<span class="op">;</span></code></td>
+<td><code class="sourceCode clojure"><span class="st">"2"</span></code></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</section>
+<section id="while-block" class="level3" data-number="14.0.3">
+<h3 data-number="14.0.3" class="anchored" data-anchor-id="while-block"><span class="header-section-number">14.0.3</span> while block</h3>
+<div class="clay-table">
+<div class="table-responsive">
+<table class="table table-hover clay-table caption-top" data-quarto-postprocess="true">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th">form</th>
+<th data-quarto-table-cell-role="th">code</th>
+<th data-quarto-table-cell-role="th">live</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code class="sourceCode clojure">(<span class="kw">do</span> (var x []) (var i <span class="dv">0</span>) (<span class="kw">while</span> (<span class="kw">&lt;</span> i <span class="dv">5</span>) (x<span class="at">:arr-push</span> x i) (:++ i)) x)</code></td>
+<td><code class="sourceCode javascript"><span class="kw">let</span> x <span class="op">=</span> []<span class="op">;</span>
+<span class="kw">let</span> i <span class="op">=</span> <span class="dv">0</span><span class="op">;</span>
+<span class="cf">while</span>(i <span class="op">&lt;</span> <span class="dv">5</span>){
+  x<span class="op">.</span><span class="fu">push</span>(i)<span class="op">;</span>
+  <span class="op">++</span>i<span class="op">;</span>
+}
+x<span class="op">;</span></code></td>
+<td><code class="sourceCode clojure">[<span class="dv">0</span> <span class="dv">1</span> <span class="dv">2</span> <span class="dv">3</span> <span class="dv">4</span>]</code></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</section>
+<section id="for-block" class="level3" data-number="14.0.4">
+<h3 data-number="14.0.4" class="anchored" data-anchor-id="for-block"><span class="header-section-number">14.0.4</span> for block</h3>
+<div class="clay-table">
+<div class="table-responsive">
+<table class="table table-hover clay-table caption-top" data-quarto-postprocess="true">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th">form</th>
+<th data-quarto-table-cell-role="th">code</th>
+<th data-quarto-table-cell-role="th">live</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code class="sourceCode clojure">(<span class="kw">do</span> (var arr []) (<span class="kw">for</span> [(var i <span class="dv">1</span>) (<span class="kw">&lt;</span> i <span class="dv">5</span>) (:++ i)] (x<span class="at">:arr-push</span> arr i)) arr)</code></td>
+<td><code class="sourceCode javascript"><span class="kw">let</span> arr <span class="op">=</span> []<span class="op">;</span>
+<span class="cf">for</span>(<span class="kw">let</span> i <span class="op">=</span> <span class="dv">1</span><span class="op">;</span> i <span class="op">&lt;</span> <span class="dv">5</span><span class="op">;</span> <span class="op">++</span>i){
+  arr<span class="op">.</span><span class="fu">push</span>(i)<span class="op">;</span>
+}
+arr<span class="op">;</span></code></td>
+<td><code class="sourceCode clojure">[<span class="dv">1</span> <span class="dv">2</span> <span class="dv">3</span> <span class="dv">4</span>]</code></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</section>
+<section id="case-block" class="level3" data-number="14.0.5">
+<h3 data-number="14.0.5" class="anchored" data-anchor-id="case-block"><span class="header-section-number">14.0.5</span> case block</h3>
+<div class="clay-table">
+<div class="table-responsive">
+<table class="table table-hover clay-table caption-top" data-quarto-postprocess="true">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th">form</th>
+<th data-quarto-table-cell-role="th">code</th>
+<th data-quarto-table-cell-role="th">live</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code class="sourceCode clojure">(<span class="kw">do</span> (var arr <span class="dv">1</span>) (var out) (<span class="kw">case</span> arr <span class="dv">1</span> (<span class="kw">do</span> (:= out <span class="dv">1</span>) (break)) <span class="dv">2</span> (<span class="kw">do</span> (:= out <span class="dv">2</span>) (break))) out)</code></td>
+<td><code class="sourceCode javascript"><span class="kw">let</span> arr <span class="op">=</span> <span class="dv">1</span><span class="op">;</span>
+<span class="kw">let</span> out <span class="op">=</span> <span class="kw">null</span><span class="op">;</span>
+<span class="cf">switch</span>(arr){
+  <span class="cf">case</span> <span class="dv">1</span><span class="op">:</span>
+    out <span class="op">=</span> <span class="dv">1</span><span class="op">;</span>
+    <span class="cf">break</span><span class="op">;</span>
+  
+  <span class="cf">case</span> <span class="dv">2</span><span class="op">:</span>
+    out <span class="op">=</span> <span class="dv">2</span><span class="op">;</span>
+    <span class="cf">break</span><span class="op">;</span>
+}
+out<span class="op">;</span></code></td>
+<td><code class="sourceCode clojure"><span class="dv">1</span></code></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</section>
+<section id="trycatch-block" class="level3" data-number="14.0.6">
+<h3 data-number="14.0.6" class="anchored" data-anchor-id="trycatch-block"><span class="header-section-number">14.0.6</span> try/catch block</h3>
+<div class="clay-table">
+<div class="table-responsive">
+<table class="table table-hover clay-table caption-top" data-quarto-postprocess="true">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th">form</th>
+<th data-quarto-table-cell-role="th">code</th>
+<th data-quarto-table-cell-role="th">live</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code class="sourceCode clojure">(<span class="kw">do</span> (var out <span class="st">"hello"</span>) (<span class="kw">try</span> (<span class="kw">throw</span> <span class="dv">1</span>) (<span class="kw">catch</span> <span class="kw">e</span> (:= out <span class="st">"world"</span>))) out)</code></td>
+<td><code class="sourceCode javascript"><span class="kw">let</span> out <span class="op">=</span> <span class="st">"hello"</span><span class="op">;</span>
+<span class="cf">try</span>{
+  <span class="cf">throw</span> <span class="dv">1</span><span class="op">;</span>
+}
+<span class="cf">catch</span>(e){
+  out <span class="op">=</span> <span class="st">"world"</span><span class="op">;</span>
+}
+out<span class="op">;</span></code></td>
+<td><code class="sourceCode clojure"><span class="st">"world"</span></code></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</section>
+</section>
+<section id="lib---helpers" class="level1" data-number="15">
+<h1 data-number="15"><span class="header-section-number">15</span> Lib - Helpers</h1>
+<section id="forarray" class="level3" data-number="15.0.1">
+<h3 data-number="15.0.1" class="anchored" data-anchor-id="forarray"><span class="header-section-number">15.0.1</span> for:array</h3>
 <div class="clay-table">
 <div class="table-responsive">
 <table class="table table-hover clay-table caption-top" data-quarto-postprocess="true">
@@ -1549,54 +1903,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tbody>
 <tr class="odd">
 <td><code class="sourceCode clojure">(<span class="kw">do</span> (var out := []) (k/for<span class="at">:array</span> [<span class="kw">e</span> [<span class="dv">1</span> <span class="dv">2</span> <span class="dv">3</span> <span class="dv">4</span>]] (<span class="kw">if</span> (<span class="kw">&gt;</span> <span class="kw">e</span> <span class="dv">3</span>) (break)) (x<span class="at">:arr-push</span> out <span class="kw">e</span>)) out)</code></td>
-<td><code class="sourceCode javascript"><span class="st">"let out = [];</span><span class="sc">\n</span><span class="st">for(let e of [1,2,3,4]){</span><span class="sc">\n</span><span class="st">  if(e &gt; 3){</span><span class="sc">\n</span><span class="st">    break;</span><span class="sc">\n</span><span class="st">  }</span><span class="sc">\n</span><span class="st">  out.push(e);</span><span class="sc">\n</span><span class="st">};</span><span class="sc">\n</span><span class="st">out;"</span></code></td>
+<td><code class="sourceCode javascript"><span class="kw">let</span> out <span class="op">=</span> []<span class="op">;</span>
+<span class="cf">for</span>(<span class="kw">let</span> e <span class="kw">of</span> [<span class="dv">1</span><span class="op">,</span><span class="dv">2</span><span class="op">,</span><span class="dv">3</span><span class="op">,</span><span class="dv">4</span>]){
+  <span class="cf">if</span>(e <span class="op">&gt;</span> <span class="dv">3</span>){
+    <span class="cf">break</span><span class="op">;</span>
+  }
+  out<span class="op">.</span><span class="fu">push</span>(e)<span class="op">;</span>
+}<span class="op">;</span>
+out<span class="op">;</span></code></td>
 <td><code class="sourceCode clojure">[<span class="dv">1</span> <span class="dv">2</span> <span class="dv">3</span>]</code></td>
-</tr>
-</tbody>
-</table>
-</div>
-</div>
-<p>Basic arithmetic:</p>
-<div class="clay-table">
-<div class="table-responsive">
-<table class="table table-hover clay-table caption-top" data-quarto-postprocess="true">
-<thead>
-<tr class="header">
-<th data-quarto-table-cell-role="th">form</th>
-<th data-quarto-table-cell-role="th">code</th>
-<th data-quarto-table-cell-role="th">live</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td><code class="sourceCode clojure">(<span class="kw">+</span> <span class="dv">1</span> <span class="dv">1</span>)</code></td>
-<td><code class="sourceCode javascript"><span class="st">"1 + 1;"</span></code></td>
-<td>2</td>
-</tr>
-<tr class="even">
-<td><code class="sourceCode clojure">(<span class="kw">+</span> <span class="fl">0.1</span> <span class="fl">0.2</span>)</code></td>
-<td><code class="sourceCode javascript"><span class="st">"0.1 + 0.2;"</span></code></td>
-<td>0.30000000000000004</td>
-</tr>
-<tr class="odd">
-<td><code class="sourceCode clojure">(<span class="kw">-</span> <span class="dv">8</span> <span class="dv">1</span>)</code></td>
-<td><code class="sourceCode javascript"><span class="st">"8 - 1;"</span></code></td>
-<td>7</td>
-</tr>
-<tr class="even">
-<td><code class="sourceCode clojure">(<span class="kw">*</span> <span class="dv">10</span> <span class="dv">2</span>)</code></td>
-<td><code class="sourceCode javascript"><span class="st">"10 * 2;"</span></code></td>
-<td>20</td>
-</tr>
-<tr class="odd">
-<td><code class="sourceCode clojure">(<span class="kw">/</span> <span class="dv">35</span> <span class="dv">5</span>)</code></td>
-<td><code class="sourceCode javascript"><span class="st">"35 / 5;"</span></code></td>
-<td>7</td>
-</tr>
-<tr class="even">
-<td><code class="sourceCode clojure">(<span class="kw">/</span> <span class="dv">5</span> <span class="dv">2</span>)</code></td>
-<td><code class="sourceCode javascript"><span class="st">"5 / 2;"</span></code></td>
-<td>2.5</td>
 </tr>
 </tbody>
 </table>
@@ -1611,236 +1926,242 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
-window.document.addEventListener("DOMContentLoaded", function (event) {
-  const toggleBodyColorMode = (bsSheetEl) => {
-    const mode = bsSheetEl.getAttribute("data-mode");
-    const bodyEl = window.document.querySelector("body");
-    if (mode === "dark") {
-      bodyEl.classList.add("quarto-dark");
-      bodyEl.classList.remove("quarto-light");
-    } else {
-      bodyEl.classList.add("quarto-light");
-      bodyEl.classList.remove("quarto-dark");
-    }
-  }
-  const toggleBodyColorPrimary = () => {
-    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
-    if (bsSheetEl) {
-      toggleBodyColorMode(bsSheetEl);
-    }
-  }
-  toggleBodyColorPrimary();  
-  const icon = "";
-  const anchorJS = new window.AnchorJS();
-  anchorJS.options = {
-    placement: 'right',
-    icon: icon
-  };
-  anchorJS.add('.anchored');
-  const isCodeAnnotation = (el) => {
-    for (const clz of el.classList) {
-      if (clz.startsWith('code-annotation-')) {                     
-        return true;
-      }
-    }
-    return false;
-  }
-  const onCopySuccess = function(e) {
-    // button target
-    const button = e.trigger;
-    // don't keep focus
-    button.blur();
-    // flash "checked"
-    button.classList.add('code-copy-button-checked');
-    var currentTitle = button.getAttribute("title");
-    button.setAttribute("title", "Copied!");
-    let tooltip;
-    if (window.bootstrap) {
-      button.setAttribute("data-bs-toggle", "tooltip");
-      button.setAttribute("data-bs-placement", "left");
-      button.setAttribute("data-bs-title", "Copied!");
-      tooltip = new bootstrap.Tooltip(button, 
-        { trigger: "manual", 
-          customClass: "code-copy-button-tooltip",
-          offset: [0, -8]});
-      tooltip.show();    
-    }
-    setTimeout(function() {
-      if (tooltip) {
-        tooltip.hide();
-        button.removeAttribute("data-bs-title");
-        button.removeAttribute("data-bs-toggle");
-        button.removeAttribute("data-bs-placement");
-      }
-      button.setAttribute("title", currentTitle);
-      button.classList.remove('code-copy-button-checked');
-    }, 1000);
-    // clear code selection
-    e.clearSelection();
-  }
-  const getTextToCopy = function(trigger) {
-      const codeEl = trigger.previousElementSibling.cloneNode(true);
-      for (const childEl of codeEl.children) {
-        if (isCodeAnnotation(childEl)) {
-          childEl.remove();
-        }
-      }
-      return codeEl.innerText;
-  }
-  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
-    text: getTextToCopy
-  });
-  clipboard.on('success', onCopySuccess);
-  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
-    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
-      text: getTextToCopy,
-      container: window.document.getElementById('quarto-embedded-source-code-modal')
-    });
-    clipboardModal.on('success', onCopySuccess);
-  }
-    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
-    var mailtoRegex = new RegExp(/^mailto:/);
-      var filterRegex = new RegExp('/' + window.location.host + '/');
-    var isInternal = (href) => {
-        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
-    }
-    // Inspect non-navigation links and adorn them if external
- 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
-    for (var i=0; i<links.length; i++) {
-      const link = links[i];
-      if (!isInternal(link.href)) {
-        // undo the damage that might have been done by quarto-nav.js in the case of
-        // links that we want to consider external
-        if (link.dataset.originalHref !== undefined) {
-          link.href = link.dataset.originalHref;
-        }
-      }
-    }
-  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
-    const config = {
-      allowHTML: true,
-      maxWidth: 500,
-      delay: 100,
-      arrow: false,
-      appendTo: function(el) {
-          return el.parentElement;
-      },
-      interactive: true,
-      interactiveBorder: 10,
-      theme: 'quarto',
-      placement: 'bottom-start',
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
     };
-    if (contentFn) {
-      config.content = contentFn;
-    }
-    if (onTriggerFn) {
-      config.onTrigger = onTriggerFn;
-    }
-    if (onUntriggerFn) {
-      config.onUntrigger = onUntriggerFn;
-    }
-    window.tippy(el, config); 
-  }
-  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
-  for (var i=0; i<noterefs.length; i++) {
-    const ref = noterefs[i];
-    tippyHover(ref, function() {
-      // use id or data attribute instead here
-      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
-      try { href = new URL(href).hash; } catch {}
-      const id = href.replace(/^#\/?/, "");
-      const note = window.document.getElementById(id);
-      if (note) {
-        return note.innerHTML;
-      } else {
-        return "";
-      }
-    });
-  }
-  const xrefs = window.document.querySelectorAll('a.quarto-xref');
-  const processXRef = (id, note) => {
-    // Strip column container classes
-    const stripColumnClz = (el) => {
-      el.classList.remove("page-full", "page-columns");
-      if (el.children) {
-        for (const child of el.children) {
-          stripColumnClz(child);
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
         }
       }
+      return false;
     }
-    stripColumnClz(note)
-    if (id === null || id.startsWith('sec-')) {
-      // Special case sections, only their first couple elements
-      const container = document.createElement("div");
-      if (note.children && note.children.length > 2) {
-        container.appendChild(note.children[0].cloneNode(true));
-        for (let i = 1; i < note.children.length; i++) {
-          const child = note.children[i];
-          if (child.tagName === "P" && child.innerText === "") {
-            continue;
-          } else {
-            container.appendChild(child.cloneNode(true));
-            break;
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+        const codeEl = trigger.previousElementSibling.cloneNode(true);
+        for (const childEl of codeEl.children) {
+          if (isCodeAnnotation(childEl)) {
+            childEl.remove();
           }
         }
-        if (window.Quarto?.typesetMath) {
-          window.Quarto.typesetMath(container);
+        return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
         }
-        return container.innerHTML
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
       } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
         if (window.Quarto?.typesetMath) {
           window.Quarto.typesetMath(note);
         }
-        return note.innerHTML;
-      }
-    } else {
-      // Remove any anchor links if they are present
-      const anchorLink = note.querySelector('a.anchorjs-link');
-      if (anchorLink) {
-        anchorLink.remove();
-      }
-      if (window.Quarto?.typesetMath) {
-        window.Quarto.typesetMath(note);
-      }
-      if (note.classList.contains("callout")) {
-        return note.outerHTML;
-      } else {
-        return note.innerHTML;
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
       }
     }
-  }
-  for (var i=0; i<xrefs.length; i++) {
-    const xref = xrefs[i];
-    tippyHover(xref, undefined, function(instance) {
-      instance.disable();
-      let url = xref.getAttribute('href');
-      let hash = undefined; 
-      if (url.startsWith('#')) {
-        hash = url;
-      } else {
-        try { hash = new URL(url).hash; } catch {}
-      }
-      if (hash) {
-        const id = hash.replace(/^#\/?/, "");
-        const note = window.document.getElementById(id);
-        if (note !== null) {
-          try {
-            const html = processXRef(id, note.cloneNode(true));
-            instance.setContent(html);
-          } finally {
-            instance.enable();
-            instance.show();
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
           }
         } else {
-          // See if we can fetch this
-          fetch(url.split('#')[0])
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
           .then(res => res.text())
           .then(html => {
             const parser = new DOMParser();
             const htmlDoc = parser.parseFromString(html, "text/html");
-            const note = htmlDoc.getElementById(id);
+            const note = htmlDoc.querySelector('main.content');
             if (note !== null) {
-              const html = processXRef(id, note);
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
               instance.setContent(html);
             } 
           }).finally(() => {
@@ -1848,185 +2169,161 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
             instance.show();
           });
         }
-      } else {
-        // See if we can fetch a full url (with no hash to target)
-        // This is a special case and we should probably do some content thinning / targeting
-        fetch(url)
-        .then(res => res.text())
-        .then(html => {
-          const parser = new DOMParser();
-          const htmlDoc = parser.parseFromString(html, "text/html");
-          const note = htmlDoc.querySelector('main.content');
-          if (note !== null) {
-            // This should only happen for chapter cross references
-            // (since there is no id in the URL)
-            // remove the first header
-            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
-              note.children[0].remove();
-            }
-            const html = processXRef(null, note);
-            instance.setContent(html);
-          } 
-        }).finally(() => {
-          instance.enable();
-          instance.show();
-        });
-      }
-    }, function(instance) {
-    });
-  }
-      let selectedAnnoteEl;
-      const selectorForAnnotation = ( cell, annotation) => {
-        let cellAttr = 'data-code-cell="' + cell + '"';
-        let lineAttr = 'data-code-annotation="' +  annotation + '"';
-        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
-        return selector;
-      }
-      const selectCodeLines = (annoteEl) => {
-        const doc = window.document;
-        const targetCell = annoteEl.getAttribute("data-target-cell");
-        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
-        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
-        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
-        const lineIds = lines.map((line) => {
-          return targetCell + "-" + line;
-        })
-        let top = null;
-        let height = null;
-        let parent = null;
-        if (lineIds.length > 0) {
-            //compute the position of the single el (top and bottom and make a div)
-            const el = window.document.getElementById(lineIds[0]);
-            top = el.offsetTop;
-            height = el.offsetHeight;
-            parent = el.parentElement.parentElement;
-          if (lineIds.length > 1) {
-            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
-            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
-            height = bottom - top;
-          }
-          if (top !== null && height !== null && parent !== null) {
-            // cook up a div (if necessary) and position it 
-            let div = window.document.getElementById("code-annotation-line-highlight");
-            if (div === null) {
-              div = window.document.createElement("div");
-              div.setAttribute("id", "code-annotation-line-highlight");
-              div.style.position = 'absolute';
-              parent.appendChild(div);
-            }
-            div.style.top = top - 2 + "px";
-            div.style.height = height + 4 + "px";
-            div.style.left = 0;
-            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
-            if (gutterDiv === null) {
-              gutterDiv = window.document.createElement("div");
-              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
-              gutterDiv.style.position = 'absolute';
-              const codeCell = window.document.getElementById(targetCell);
-              const gutter = codeCell.querySelector('.code-annotation-gutter');
-              gutter.appendChild(gutterDiv);
-            }
-            gutterDiv.style.top = top - 2 + "px";
-            gutterDiv.style.height = height + 4 + "px";
-          }
-          selectedAnnoteEl = annoteEl;
-        }
-      };
-      const unselectCodeLines = () => {
-        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
-        elementsIds.forEach((elId) => {
-          const div = window.document.getElementById(elId);
-          if (div) {
-            div.remove();
-          }
-        });
-        selectedAnnoteEl = undefined;
-      };
-        // Handle positioning of the toggle
-    window.addEventListener(
-      "resize",
-      throttle(() => {
-        elRect = undefined;
-        if (selectedAnnoteEl) {
-          selectCodeLines(selectedAnnoteEl);
-        }
-      }, 10)
-    );
-    function throttle(fn, ms) {
-    let throttle = false;
-    let timer;
-      return (...args) => {
-        if(!throttle) { // first call gets through
-            fn.apply(this, args);
-            throttle = true;
-        } else { // all the others get throttled
-            if(timer) clearTimeout(timer); // cancel #2
-            timer = setTimeout(() => {
-              fn.apply(this, args);
-              timer = throttle = false;
-            }, ms);
-        }
-      };
-    }
-      // Attach click handler to the DT
-      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
-      for (const annoteDlNode of annoteDls) {
-        annoteDlNode.addEventListener('click', (event) => {
-          const clickedEl = event.target;
-          if (clickedEl !== selectedAnnoteEl) {
-            unselectCodeLines();
-            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
-            if (activeEl) {
-              activeEl.classList.remove('code-annotation-active');
-            }
-            selectCodeLines(clickedEl);
-            clickedEl.classList.add('code-annotation-active');
-          } else {
-            // Unselect the line
-            unselectCodeLines();
-            clickedEl.classList.remove('code-annotation-active');
-          }
-        });
-      }
-  const findCites = (el) => {
-    const parentEl = el.parentElement;
-    if (parentEl) {
-      const cites = parentEl.dataset.cites;
-      if (cites) {
-        return {
-          el,
-          cites: cites.split(' ')
-        };
-      } else {
-        return findCites(el.parentElement)
-      }
-    } else {
-      return undefined;
-    }
-  };
-  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
-  for (var i=0; i<bibliorefs.length; i++) {
-    const ref = bibliorefs[i];
-    const citeInfo = findCites(ref);
-    if (citeInfo) {
-      tippyHover(citeInfo.el, function() {
-        var popup = window.document.createElement('div');
-        citeInfo.cites.forEach(function(cite) {
-          var citeDiv = window.document.createElement('div');
-          citeDiv.classList.add('hanging-indent');
-          citeDiv.classList.add('csl-entry');
-          var biblioDiv = window.document.getElementById('ref-' + cite);
-          if (biblioDiv) {
-            citeDiv.innerHTML = biblioDiv.innerHTML;
-          }
-          popup.appendChild(citeDiv);
-        });
-        return popup.innerHTML;
+      }, function(instance) {
       });
     }
-  }
-});
-</script>
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
       <a href="./index.html" class="pagination-link" aria-label="Preface">

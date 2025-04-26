@@ -131,7 +131,7 @@ go generate Javascript code, and run it in a Node.js runtime.
 
 ::: {.printedClojure}
 ```clojure
-[#rt.basic[:server/basic :js t8cfjkhmrm1t 45527 1]]
+[#rt.basic[:server/basic :js 1jiajs4x0l277 64658 1]]
 
 ```
 :::
@@ -181,7 +181,7 @@ From the Javascript Runtime perspective, primitives are extremely important to u
 <table class="table table-hover table-responsive clay-table"><thead><tr><th>form</th><th>code</th><th>live</th></tr></thead><tbody><tr><td><span data-qmd="```clj
 nil
 ```"></span></td><td><span data-qmd="```js
-&quot;null;&quot;
+null;
 ```"></span></td><td><span data-qmd="```clj
 nil
 ```"></span></td></tr></tbody></table>
@@ -199,7 +199,7 @@ nil
 <table class="table table-hover table-responsive clay-table"><thead><tr><th>form</th><th>code</th><th>live</th></tr></thead><tbody><tr><td><span data-qmd="```clj
 undefined
 ```"></span></td><td><span data-qmd="```js
-&quot;undefined;&quot;
+undefined;
 ```"></span></td><td><span data-qmd="```clj
 nil
 ```"></span></td></tr></tbody></table>
@@ -217,13 +217,13 @@ nil
 <table class="table table-hover table-responsive clay-table"><thead><tr><th>form</th><th>code</th><th>live</th></tr></thead><tbody><tr><td><span data-qmd="```clj
 true
 ```"></span></td><td><span data-qmd="```js
-&quot;true;&quot;
+true;
 ```"></span></td><td><span data-qmd="```clj
 true
 ```"></span></td></tr><tr><td><span data-qmd="```clj
 false
 ```"></span></td><td><span data-qmd="```js
-&quot;false;&quot;
+false;
 ```"></span></td><td><span data-qmd="```clj
 false
 ```"></span></td></tr></tbody></table>
@@ -241,13 +241,13 @@ false
 <table class="table table-hover table-responsive clay-table"><thead><tr><th>form</th><th>code</th><th>live</th></tr></thead><tbody><tr><td><span data-qmd="```clj
 &quot;3&quot;
 ```"></span></td><td><span data-qmd="```js
-&quot;\&quot;3\&quot;;&quot;
+&quot;3&quot;;
 ```"></span></td><td><span data-qmd="```clj
 &quot;3&quot;
 ```"></span></td></tr><tr><td><span data-qmd="```clj
 &quot;Hello World&quot;
 ```"></span></td><td><span data-qmd="```js
-&quot;\&quot;Hello World\&quot;;&quot;
+&quot;Hello World&quot;;
 ```"></span></td><td><span data-qmd="```clj
 &quot;Hello World&quot;
 ```"></span></td></tr></tbody></table>
@@ -265,37 +265,37 @@ false
 <table class="table table-hover table-responsive clay-table"><thead><tr><th>form</th><th>code</th><th>live</th></tr></thead><tbody><tr><td><span data-qmd="```clj
 3
 ```"></span></td><td><span data-qmd="```js
-&quot;3;&quot;
+3;
 ```"></span></td><td><span data-qmd="```clj
 3
 ```"></span></td></tr><tr><td><span data-qmd="```clj
 1.5
 ```"></span></td><td><span data-qmd="```js
-&quot;1.5;&quot;
+1.5;
 ```"></span></td><td><span data-qmd="```clj
 1.5
 ```"></span></td></tr><tr><td><span data-qmd="```clj
 1.54444444444444
 ```"></span></td><td><span data-qmd="```js
-&quot;1.54444444444444;&quot;
+1.54444444444444;
 ```"></span></td><td><span data-qmd="```clj
 1.54444444444444
 ```"></span></td></tr><tr><td><span data-qmd="```clj
 NaN
 ```"></span></td><td><span data-qmd="```js
-&quot;NaN;&quot;
+NaN;
 ```"></span></td><td><span data-qmd="```clj
 nil
 ```"></span></td></tr><tr><td><span data-qmd="```clj
 Infinity
 ```"></span></td><td><span data-qmd="```js
-&quot;Infinity;&quot;
+Infinity;
 ```"></span></td><td><span data-qmd="```clj
 nil
 ```"></span></td></tr><tr><td><span data-qmd="```clj
 (- Infinity)
 ```"></span></td><td><span data-qmd="```js
-&quot;-Infinity;&quot;
+-Infinity;
 ```"></span></td><td><span data-qmd="```clj
 &quot;-Infinity&quot;
 ```"></span></td></tr></tbody></table>
@@ -313,7 +313,7 @@ nil
 <table class="table table-hover table-responsive clay-table"><thead><tr><th>form</th><th>code</th><th>live</th></tr></thead><tbody><tr><td><span data-qmd="```clj
 (. (BigInt &quot;0x1fffffffffffff&quot;) (toString))
 ```"></span></td><td><span data-qmd="```js
-&quot;BigInt(\&quot;0x1fffffffffffff\&quot;).toString();&quot;
+BigInt(&quot;0x1fffffffffffff&quot;).toString();
 ```"></span></td><td><span data-qmd="```clj
 &quot;9007199254740991&quot;
 ```"></span></td></tr></tbody></table>
@@ -331,7 +331,7 @@ nil
 <table class="table table-hover table-responsive clay-table"><thead><tr><th>form</th><th>code</th><th>live</th></tr></thead><tbody><tr><td><span data-qmd="```clj
 (. (Symbol &quot;hello&quot;) (toString))
 ```"></span></td><td><span data-qmd="```js
-&quot;Symbol(\&quot;hello\&quot;).toString();&quot;
+Symbol(&quot;hello&quot;).toString();
 ```"></span></td><td><span data-qmd="```clj
 &quot;Symbol(hello)&quot;
 ```"></span></td></tr></tbody></table>
@@ -352,7 +352,7 @@ nil
 <table class="table table-hover table-responsive clay-table"><thead><tr><th>form</th><th>code</th><th>live</th></tr></thead><tbody><tr><td><span data-qmd="```clj
 #&quot;^[Hh]ello d$&quot;
 ```"></span></td><td><span data-qmd="```js
-&quot;/^[Hh]ello d$/;&quot;
+/^[Hh]ello d$/;
 ```"></span></td><td><span data-qmd="```clj
 &lt;RegExp&gt;
 /^[Hh]ello d$/
@@ -374,13 +374,13 @@ nil
 <table class="table table-hover table-responsive clay-table"><thead><tr><th>form</th><th>code</th><th>live</th></tr></thead><tbody><tr><td><span data-qmd="```clj
 [1 2 3 4]
 ```"></span></td><td><span data-qmd="```js
-&quot;[1,2,3,4];&quot;
+[1,2,3,4];
 ```"></span></td><td><span data-qmd="```clj
 [1 2 3 4]
 ```"></span></td></tr><tr><td><span data-qmd="```clj
 [&quot;hello&quot; [&quot;world&quot;]]
 ```"></span></td><td><span data-qmd="```js
-&quot;[\&quot;hello\&quot;,[\&quot;world\&quot;]];&quot;
+[&quot;hello&quot;,[&quot;world&quot;]];
 ```"></span></td><td><span data-qmd="```clj
 [&quot;hello&quot; [&quot;world&quot;]]
 ```"></span></td></tr></tbody></table>
@@ -398,13 +398,13 @@ nil
 <table class="table table-hover table-responsive clay-table"><thead><tr><th>form</th><th>code</th><th>live</th></tr></thead><tbody><tr><td><span data-qmd="```clj
 {:a 1, :b 2, :c 3}
 ```"></span></td><td><span data-qmd="```js
-&quot;{\&quot;a\&quot;:1,\&quot;b\&quot;:2,\&quot;c\&quot;:3};&quot;
+{&quot;a&quot;:1,&quot;b&quot;:2,&quot;c&quot;:3};
 ```"></span></td><td><span data-qmd="```clj
 {&quot;a&quot; 1, &quot;b&quot; 2, &quot;c&quot; 3}
 ```"></span></td></tr><tr><td><span data-qmd="```clj
 {:a {:b {:c 3}}}
 ```"></span></td><td><span data-qmd="```js
-&quot;{\&quot;a\&quot;:{\&quot;b\&quot;:{\&quot;c\&quot;:3}}};&quot;
+{&quot;a&quot;:{&quot;b&quot;:{&quot;c&quot;:3}}};
 ```"></span></td><td><span data-qmd="```clj
 {&quot;a&quot; {&quot;b&quot; {&quot;c&quot; 3}}}
 ```"></span></td></tr></tbody></table>
@@ -422,9 +422,108 @@ nil
 <table class="table table-hover table-responsive clay-table"><thead><tr><th>form</th><th>code</th><th>live</th></tr></thead><tbody><tr><td><span data-qmd="```clj
 (tab [&quot;a&quot; 1] [&quot;b&quot; 2] [&quot;c&quot; 3])
 ```"></span></td><td><span data-qmd="```js
-&quot;{\&quot;a\&quot;:1,\&quot;b\&quot;:2,\&quot;c\&quot;:3};&quot;
+{&quot;a&quot;:1,&quot;b&quot;:2,&quot;c&quot;:3};
 ```"></span></td><td><span data-qmd="```clj
 {&quot;a&quot; 1, &quot;b&quot; 2, &quot;c&quot; 3}
+```"></span></td></tr></tbody></table>
+```
+
+:::
+
+
+
+# Types - Checks
+
+
+### Typeof
+
+::: {.clay-table}
+
+```{=html}
+<table class="table table-hover table-responsive clay-table"><thead><tr><th>form</th><th>code</th><th>live</th></tr></thead><tbody><tr><td><span data-qmd="```clj
+(typeof nil)
+```"></span></td><td><span data-qmd="```js
+typeof null;
+```"></span></td><td><span data-qmd="```clj
+&quot;object&quot;
+```"></span></td></tr><tr><td><span data-qmd="```clj
+(typeof undefined)
+```"></span></td><td><span data-qmd="```js
+typeof undefined;
+```"></span></td><td><span data-qmd="```clj
+&quot;undefined&quot;
+```"></span></td></tr><tr><td><span data-qmd="```clj
+(typeof NaN)
+```"></span></td><td><span data-qmd="```js
+typeof NaN;
+```"></span></td><td><span data-qmd="```clj
+&quot;number&quot;
+```"></span></td></tr><tr><td><span data-qmd="```clj
+(typeof 1)
+```"></span></td><td><span data-qmd="```js
+typeof 1;
+```"></span></td><td><span data-qmd="```clj
+&quot;number&quot;
+```"></span></td></tr><tr><td><span data-qmd="```clj
+(typeof true)
+```"></span></td><td><span data-qmd="```js
+typeof true;
+```"></span></td><td><span data-qmd="```clj
+&quot;boolean&quot;
+```"></span></td></tr><tr><td><span data-qmd="```clj
+(typeof &quot;hello&quot;)
+```"></span></td><td><span data-qmd="```js
+typeof &quot;hello&quot;;
+```"></span></td><td><span data-qmd="```clj
+&quot;string&quot;
+```"></span></td></tr><tr><td><span data-qmd="```clj
+(typeof (Symbol &quot;hello&quot;))
+```"></span></td><td><span data-qmd="```js
+typeof Symbol(&quot;hello&quot;);
+```"></span></td><td><span data-qmd="```clj
+&quot;symbol&quot;
+```"></span></td></tr><tr><td><span data-qmd="```clj
+(typeof (BigInt &quot;0x1fffffffffffff&quot;))
+```"></span></td><td><span data-qmd="```js
+typeof BigInt(&quot;0x1fffffffffffff&quot;);
+```"></span></td><td><span data-qmd="```clj
+&quot;bigint&quot;
+```"></span></td></tr><tr><td><span data-qmd="```clj
+(typeof #&quot;^[Hh]ello d$&quot;)
+```"></span></td><td><span data-qmd="```js
+typeof /^[Hh]ello d$/;
+```"></span></td><td><span data-qmd="```clj
+&quot;object&quot;
+```"></span></td></tr><tr><td><span data-qmd="```clj
+(typeof [1 2 3])
+```"></span></td><td><span data-qmd="```js
+typeof [1,2,3];
+```"></span></td><td><span data-qmd="```clj
+&quot;object&quot;
+```"></span></td></tr><tr><td><span data-qmd="```clj
+(typeof {:a 1})
+```"></span></td><td><span data-qmd="```js
+typeof {&quot;a&quot;:1};
+```"></span></td><td><span data-qmd="```clj
+&quot;object&quot;
+```"></span></td></tr></tbody></table>
+```
+
+:::
+
+
+
+### Instanceof
+
+::: {.clay-table}
+
+```{=html}
+<table class="table table-hover table-responsive clay-table"><thead><tr><th>form</th><th>code</th><th>live</th></tr></thead><tbody><tr><td><span data-qmd="```clj
+(instanceof #&quot;^[Hh]ello d$&quot; RegExp)
+```"></span></td><td><span data-qmd="```js
+/^[Hh]ello d$/ instanceof RegExp;
+```"></span></td><td><span data-qmd="```clj
+true
 ```"></span></td></tr></tbody></table>
 ```
 
@@ -443,7 +542,8 @@ nil
 <table class="table table-hover table-responsive clay-table"><thead><tr><th>form</th><th>code</th><th>live</th></tr></thead><tbody><tr><td><span data-qmd="```clj
 (do (var x 1) x)
 ```"></span></td><td><span data-qmd="```js
-&quot;let x = 1;\nx;&quot;
+let x = 1;
+x;
 ```"></span></td><td><span data-qmd="```clj
 1
 ```"></span></td></tr></tbody></table>
@@ -461,7 +561,8 @@ nil
 <table class="table table-hover table-responsive clay-table"><thead><tr><th>form</th><th>code</th><th>live</th></tr></thead><tbody><tr><td><span data-qmd="```clj
 (do (const x 1) x)
 ```"></span></td><td><span data-qmd="```js
-&quot;const x = 1;\nx;&quot;
+const x = 1;
+x;
 ```"></span></td><td><span data-qmd="```clj
 1
 ```"></span></td></tr></tbody></table>
@@ -479,7 +580,9 @@ nil
 <table class="table table-hover table-responsive clay-table"><thead><tr><th>form</th><th>code</th><th>live</th></tr></thead><tbody><tr><td><span data-qmd="```clj
 (do (var x 1) (:= x 10) x)
 ```"></span></td><td><span data-qmd="```js
-&quot;let x = 1;\nx = 10;\nx;&quot;
+let x = 1;
+x = 10;
+x;
 ```"></span></td><td><span data-qmd="```clj
 10
 ```"></span></td></tr></tbody></table>
@@ -500,25 +603,25 @@ nil
 <table class="table table-hover table-responsive clay-table"><thead><tr><th>form</th><th>code</th><th>live</th></tr></thead><tbody><tr><td><span data-qmd="```clj
 (not true)
 ```"></span></td><td><span data-qmd="```js
-&quot;!true;&quot;
+!true;
 ```"></span></td><td><span data-qmd="```clj
 false
 ```"></span></td></tr><tr><td><span data-qmd="```clj
 (not false)
 ```"></span></td><td><span data-qmd="```js
-&quot;!false;&quot;
+!false;
 ```"></span></td><td><span data-qmd="```clj
 true
 ```"></span></td></tr><tr><td><span data-qmd="```clj
 (not 1)
 ```"></span></td><td><span data-qmd="```js
-&quot;!1;&quot;
+!1;
 ```"></span></td><td><span data-qmd="```clj
 false
 ```"></span></td></tr><tr><td><span data-qmd="```clj
 (not 0)
 ```"></span></td><td><span data-qmd="```js
-&quot;!0;&quot;
+!0;
 ```"></span></td><td><span data-qmd="```clj
 true
 ```"></span></td></tr></tbody></table>
@@ -536,19 +639,19 @@ true
 <table class="table table-hover table-responsive clay-table"><thead><tr><th>form</th><th>code</th><th>live</th></tr></thead><tbody><tr><td><span data-qmd="```clj
 (or 0 false)
 ```"></span></td><td><span data-qmd="```js
-&quot;0 || false;&quot;
+0 || false;
 ```"></span></td><td><span data-qmd="```clj
 false
 ```"></span></td></tr><tr><td><span data-qmd="```clj
 (or 1 false)
 ```"></span></td><td><span data-qmd="```js
-&quot;1 || false;&quot;
+1 || false;
 ```"></span></td><td><span data-qmd="```clj
 1
 ```"></span></td></tr><tr><td><span data-qmd="```clj
 (or 0 true)
 ```"></span></td><td><span data-qmd="```js
-&quot;0 || true;&quot;
+0 || true;
 ```"></span></td><td><span data-qmd="```clj
 true
 ```"></span></td></tr></tbody></table>
@@ -566,19 +669,19 @@ true
 <table class="table table-hover table-responsive clay-table"><thead><tr><th>form</th><th>code</th><th>live</th></tr></thead><tbody><tr><td><span data-qmd="```clj
 (and 0 false)
 ```"></span></td><td><span data-qmd="```js
-&quot;0 &amp;&amp; false;&quot;
+0 &amp;&amp; false;
 ```"></span></td><td><span data-qmd="```clj
 0
 ```"></span></td></tr><tr><td><span data-qmd="```clj
 (and 1 false)
 ```"></span></td><td><span data-qmd="```js
-&quot;1 &amp;&amp; false;&quot;
+1 &amp;&amp; false;
 ```"></span></td><td><span data-qmd="```clj
 false
 ```"></span></td></tr><tr><td><span data-qmd="```clj
 (and 0 true)
 ```"></span></td><td><span data-qmd="```js
-&quot;0 &amp;&amp; true;&quot;
+0 &amp;&amp; true;
 ```"></span></td><td><span data-qmd="```clj
 0
 ```"></span></td></tr></tbody></table>
@@ -596,13 +699,13 @@ false
 <table class="table table-hover table-responsive clay-table"><thead><tr><th>form</th><th>code</th><th>live</th></tr></thead><tbody><tr><td><span data-qmd="```clj
 (:? true 1 2)
 ```"></span></td><td><span data-qmd="```js
-&quot;true ? 1 : 2;&quot;
+true ? 1 : 2;
 ```"></span></td><td><span data-qmd="```clj
 1
 ```"></span></td></tr><tr><td><span data-qmd="```clj
 (:? (or 0 0) 1 2)
 ```"></span></td><td><span data-qmd="```js
-&quot;(0 || 0) ? 1 : 2;&quot;
+(0 || 0) ? 1 : 2;
 ```"></span></td><td><span data-qmd="```clj
 2
 ```"></span></td></tr></tbody></table>
@@ -623,13 +726,13 @@ false
 <table class="table table-hover table-responsive clay-table"><thead><tr><th>form</th><th>code</th><th>live</th></tr></thead><tbody><tr><td><span data-qmd="```clj
 (+ 1 2 3)
 ```"></span></td><td><span data-qmd="```js
-&quot;1 + 2 + 3;&quot;
+1 + 2 + 3;
 ```"></span></td><td><span data-qmd="```clj
 6
 ```"></span></td></tr><tr><td><span data-qmd="```clj
 (+ 1 10)
 ```"></span></td><td><span data-qmd="```js
-&quot;1 + 10;&quot;
+1 + 10;
 ```"></span></td><td><span data-qmd="```clj
 11
 ```"></span></td></tr></tbody></table>
@@ -647,19 +750,19 @@ false
 <table class="table table-hover table-responsive clay-table"><thead><tr><th>form</th><th>code</th><th>live</th></tr></thead><tbody><tr><td><span data-qmd="```clj
 (- 10)
 ```"></span></td><td><span data-qmd="```js
-&quot;-10;&quot;
+-10;
 ```"></span></td><td><span data-qmd="```clj
 -10
 ```"></span></td></tr><tr><td><span data-qmd="```clj
 (- 10 1.1)
 ```"></span></td><td><span data-qmd="```js
-&quot;10 - 1.1;&quot;
+10 - 1.1;
 ```"></span></td><td><span data-qmd="```clj
 8.9
 ```"></span></td></tr><tr><td><span data-qmd="```clj
 (- 4 3 2 1.1)
 ```"></span></td><td><span data-qmd="```js
-&quot;4 - 3 - 2 - 1.1;&quot;
+4 - 3 - 2 - 1.1;
 ```"></span></td><td><span data-qmd="```clj
 -2.1
 ```"></span></td></tr></tbody></table>
@@ -677,13 +780,13 @@ false
 <table class="table table-hover table-responsive clay-table"><thead><tr><th>form</th><th>code</th><th>live</th></tr></thead><tbody><tr><td><span data-qmd="```clj
 (* 10 20)
 ```"></span></td><td><span data-qmd="```js
-&quot;10 * 20;&quot;
+10 * 20;
 ```"></span></td><td><span data-qmd="```clj
 200
 ```"></span></td></tr><tr><td><span data-qmd="```clj
 (* 4 3.3 2.2 1.1)
 ```"></span></td><td><span data-qmd="```js
-&quot;4 * 3.3 * 2.2 * 1.1;&quot;
+4 * 3.3 * 2.2 * 1.1;
 ```"></span></td><td><span data-qmd="```clj
 31.944000000000003
 ```"></span></td></tr></tbody></table>
@@ -701,19 +804,19 @@ false
 <table class="table table-hover table-responsive clay-table"><thead><tr><th>form</th><th>code</th><th>live</th></tr></thead><tbody><tr><td><span data-qmd="```clj
 (/ 10)
 ```"></span></td><td><span data-qmd="```js
-&quot;1 / 10;&quot;
+1 / 10;
 ```"></span></td><td><span data-qmd="```clj
 0.1
 ```"></span></td></tr><tr><td><span data-qmd="```clj
 (/ 10 20)
 ```"></span></td><td><span data-qmd="```js
-&quot;10 / 20;&quot;
+10 / 20;
 ```"></span></td><td><span data-qmd="```clj
 0.5
 ```"></span></td></tr><tr><td><span data-qmd="```clj
 (/ 4 3.3 2.2 1.1)
 ```"></span></td><td><span data-qmd="```js
-&quot;4 / 3.3 / 2.2 / 1.1;&quot;
+4 / 3.3 / 2.2 / 1.1;
 ```"></span></td><td><span data-qmd="```clj
 0.5008765339343851
 ```"></span></td></tr></tbody></table>
@@ -731,13 +834,13 @@ false
 <table class="table table-hover table-responsive clay-table"><thead><tr><th>form</th><th>code</th><th>live</th></tr></thead><tbody><tr><td><span data-qmd="```clj
 (pow 10 2)
 ```"></span></td><td><span data-qmd="```js
-&quot;10 ^ 2;&quot;
+10 ^ 2;
 ```"></span></td><td><span data-qmd="```clj
 8
 ```"></span></td></tr><tr><td><span data-qmd="```clj
 (pow 0.5 0.2)
 ```"></span></td><td><span data-qmd="```js
-&quot;0.5 ^ 0.2;&quot;
+0.5 ^ 0.2;
 ```"></span></td><td><span data-qmd="```clj
 0
 ```"></span></td></tr></tbody></table>
@@ -755,13 +858,13 @@ false
 <table class="table table-hover table-responsive clay-table"><thead><tr><th>form</th><th>code</th><th>live</th></tr></thead><tbody><tr><td><span data-qmd="```clj
 (mod 1123 7)
 ```"></span></td><td><span data-qmd="```js
-&quot;1123 % 7;&quot;
+1123 % 7;
 ```"></span></td><td><span data-qmd="```clj
 3
 ```"></span></td></tr><tr><td><span data-qmd="```clj
 (mod 1123 7.1)
 ```"></span></td><td><span data-qmd="```js
-&quot;1123 % 7.1;&quot;
+1123 % 7.1;
 ```"></span></td><td><span data-qmd="```clj
 1.2000000000000561
 ```"></span></td></tr></tbody></table>
@@ -782,19 +885,19 @@ false
 <table class="table table-hover table-responsive clay-table"><thead><tr><th>form</th><th>code</th><th>live</th></tr></thead><tbody><tr><td><span data-qmd="```clj
 (== 1 1)
 ```"></span></td><td><span data-qmd="```js
-&quot;1 == 1;&quot;
+1 == 1;
 ```"></span></td><td><span data-qmd="```clj
 true
 ```"></span></td></tr><tr><td><span data-qmd="```clj
 (== 1 &quot;1&quot;)
 ```"></span></td><td><span data-qmd="```js
-&quot;1 == \&quot;1\&quot;;&quot;
+1 == &quot;1&quot;;
 ```"></span></td><td><span data-qmd="```clj
 true
 ```"></span></td></tr><tr><td><span data-qmd="```clj
 (== &quot;hello&quot; &quot;hello&quot;)
 ```"></span></td><td><span data-qmd="```js
-&quot;\&quot;hello\&quot; == \&quot;hello\&quot;;&quot;
+&quot;hello&quot; == &quot;hello&quot;;
 ```"></span></td><td><span data-qmd="```clj
 true
 ```"></span></td></tr></tbody></table>
@@ -812,19 +915,19 @@ true
 <table class="table table-hover table-responsive clay-table"><thead><tr><th>form</th><th>code</th><th>live</th></tr></thead><tbody><tr><td><span data-qmd="```clj
 (=== 1 1)
 ```"></span></td><td><span data-qmd="```js
-&quot;1 === 1;&quot;
+1 === 1;
 ```"></span></td><td><span data-qmd="```clj
 true
 ```"></span></td></tr><tr><td><span data-qmd="```clj
 (=== 1 &quot;1&quot;)
 ```"></span></td><td><span data-qmd="```js
-&quot;1 === \&quot;1\&quot;;&quot;
+1 === &quot;1&quot;;
 ```"></span></td><td><span data-qmd="```clj
 false
 ```"></span></td></tr><tr><td><span data-qmd="```clj
 (=== &quot;hello&quot; &quot;hello&quot;)
 ```"></span></td><td><span data-qmd="```js
-&quot;\&quot;hello\&quot; === \&quot;hello\&quot;;&quot;
+&quot;hello&quot; === &quot;hello&quot;;
 ```"></span></td><td><span data-qmd="```clj
 true
 ```"></span></td></tr></tbody></table>
@@ -842,19 +945,19 @@ true
 <table class="table table-hover table-responsive clay-table"><thead><tr><th>form</th><th>code</th><th>live</th></tr></thead><tbody><tr><td><span data-qmd="```clj
 (not= 1 2)
 ```"></span></td><td><span data-qmd="```js
-&quot;1 != 2;&quot;
+1 != 2;
 ```"></span></td><td><span data-qmd="```clj
 true
 ```"></span></td></tr><tr><td><span data-qmd="```clj
 (not= 1 &quot;1&quot;)
 ```"></span></td><td><span data-qmd="```js
-&quot;1 != \&quot;1\&quot;;&quot;
+1 != &quot;1&quot;;
 ```"></span></td><td><span data-qmd="```clj
 false
 ```"></span></td></tr><tr><td><span data-qmd="```clj
 (not= &quot;hello&quot; &quot;hello&quot;)
 ```"></span></td><td><span data-qmd="```js
-&quot;\&quot;hello\&quot; != \&quot;hello\&quot;;&quot;
+&quot;hello&quot; != &quot;hello&quot;;
 ```"></span></td><td><span data-qmd="```clj
 false
 ```"></span></td></tr></tbody></table>
@@ -872,19 +975,19 @@ false
 <table class="table table-hover table-responsive clay-table"><thead><tr><th>form</th><th>code</th><th>live</th></tr></thead><tbody><tr><td><span data-qmd="```clj
 (&lt; 1 2)
 ```"></span></td><td><span data-qmd="```js
-&quot;1 &lt; 2;&quot;
+1 &lt; 2;
 ```"></span></td><td><span data-qmd="```clj
 true
 ```"></span></td></tr><tr><td><span data-qmd="```clj
 (&lt; 1 1)
 ```"></span></td><td><span data-qmd="```js
-&quot;1 &lt; 1;&quot;
+1 &lt; 1;
 ```"></span></td><td><span data-qmd="```clj
 false
 ```"></span></td></tr><tr><td><span data-qmd="```clj
 (&lt; 1 &quot;2&quot;)
 ```"></span></td><td><span data-qmd="```js
-&quot;1 &lt; \&quot;2\&quot;;&quot;
+1 &lt; &quot;2&quot;;
 ```"></span></td><td><span data-qmd="```clj
 true
 ```"></span></td></tr></tbody></table>
@@ -902,19 +1005,19 @@ true
 <table class="table table-hover table-responsive clay-table"><thead><tr><th>form</th><th>code</th><th>live</th></tr></thead><tbody><tr><td><span data-qmd="```clj
 (&lt;= 1 2)
 ```"></span></td><td><span data-qmd="```js
-&quot;1 &lt;= 2;&quot;
+1 &lt;= 2;
 ```"></span></td><td><span data-qmd="```clj
 true
 ```"></span></td></tr><tr><td><span data-qmd="```clj
 (&lt;= 1 1)
 ```"></span></td><td><span data-qmd="```js
-&quot;1 &lt;= 1;&quot;
+1 &lt;= 1;
 ```"></span></td><td><span data-qmd="```clj
 true
 ```"></span></td></tr><tr><td><span data-qmd="```clj
 (&lt;= 1 &quot;1&quot;)
 ```"></span></td><td><span data-qmd="```js
-&quot;1 &lt;= \&quot;1\&quot;;&quot;
+1 &lt;= &quot;1&quot;;
 ```"></span></td><td><span data-qmd="```clj
 true
 ```"></span></td></tr></tbody></table>
@@ -932,19 +1035,19 @@ true
 <table class="table table-hover table-responsive clay-table"><thead><tr><th>form</th><th>code</th><th>live</th></tr></thead><tbody><tr><td><span data-qmd="```clj
 (&gt; 3 2)
 ```"></span></td><td><span data-qmd="```js
-&quot;3 &gt; 2;&quot;
+3 &gt; 2;
 ```"></span></td><td><span data-qmd="```clj
 true
 ```"></span></td></tr><tr><td><span data-qmd="```clj
 (&gt; 3 3)
 ```"></span></td><td><span data-qmd="```js
-&quot;3 &gt; 3;&quot;
+3 &gt; 3;
 ```"></span></td><td><span data-qmd="```clj
 false
 ```"></span></td></tr><tr><td><span data-qmd="```clj
 (&gt; 3 &quot;2&quot;)
 ```"></span></td><td><span data-qmd="```js
-&quot;3 &gt; \&quot;2\&quot;;&quot;
+3 &gt; &quot;2&quot;;
 ```"></span></td><td><span data-qmd="```clj
 true
 ```"></span></td></tr></tbody></table>
@@ -962,19 +1065,19 @@ true
 <table class="table table-hover table-responsive clay-table"><thead><tr><th>form</th><th>code</th><th>live</th></tr></thead><tbody><tr><td><span data-qmd="```clj
 (&gt;= 3 2)
 ```"></span></td><td><span data-qmd="```js
-&quot;3 &gt;= 2;&quot;
+3 &gt;= 2;
 ```"></span></td><td><span data-qmd="```clj
 true
 ```"></span></td></tr><tr><td><span data-qmd="```clj
 (&gt;= 3 3)
 ```"></span></td><td><span data-qmd="```js
-&quot;3 &gt;= 3;&quot;
+3 &gt;= 3;
 ```"></span></td><td><span data-qmd="```clj
 true
 ```"></span></td></tr><tr><td><span data-qmd="```clj
 (&gt;= 3 &quot;3&quot;)
 ```"></span></td><td><span data-qmd="```js
-&quot;3 &gt;= \&quot;3\&quot;;&quot;
+3 &gt;= &quot;3&quot;;
 ```"></span></td><td><span data-qmd="```clj
 true
 ```"></span></td></tr></tbody></table>
@@ -995,7 +1098,9 @@ true
 <table class="table table-hover table-responsive clay-table"><thead><tr><th>form</th><th>code</th><th>live</th></tr></thead><tbody><tr><td><span data-qmd="```clj
 (do (var x 1) (:++ x) x)
 ```"></span></td><td><span data-qmd="```js
-&quot;let x = 1;\n++x;\nx;&quot;
+let x = 1;
+++x;
+x;
 ```"></span></td><td><span data-qmd="```clj
 2
 ```"></span></td></tr></tbody></table>
@@ -1013,7 +1118,9 @@ true
 <table class="table table-hover table-responsive clay-table"><thead><tr><th>form</th><th>code</th><th>live</th></tr></thead><tbody><tr><td><span data-qmd="```clj
 (do (var x 1) (:+= x 10) x)
 ```"></span></td><td><span data-qmd="```js
-&quot;let x = 1;\nx += 10;\nx;&quot;
+let x = 1;
+x += 10;
+x;
 ```"></span></td><td><span data-qmd="```clj
 11
 ```"></span></td></tr></tbody></table>
@@ -1031,7 +1138,9 @@ true
 <table class="table table-hover table-responsive clay-table"><thead><tr><th>form</th><th>code</th><th>live</th></tr></thead><tbody><tr><td><span data-qmd="```clj
 (do (var x 5) (:-- x) x)
 ```"></span></td><td><span data-qmd="```js
-&quot;let x = 5;\n--x;\nx;&quot;
+let x = 5;
+--x;
+x;
 ```"></span></td><td><span data-qmd="```clj
 4
 ```"></span></td></tr></tbody></table>
@@ -1049,7 +1158,9 @@ true
 <table class="table table-hover table-responsive clay-table"><thead><tr><th>form</th><th>code</th><th>live</th></tr></thead><tbody><tr><td><span data-qmd="```clj
 (do (var x 5) (:-= x 50) x)
 ```"></span></td><td><span data-qmd="```js
-&quot;let x = 5;\nx -= 50;\nx;&quot;
+let x = 5;
+x -= 50;
+x;
 ```"></span></td><td><span data-qmd="```clj
 -45
 ```"></span></td></tr></tbody></table>
@@ -1067,7 +1178,9 @@ true
 <table class="table table-hover table-responsive clay-table"><thead><tr><th>form</th><th>code</th><th>live</th></tr></thead><tbody><tr><td><span data-qmd="```clj
 (do (var x 5) (:*= x 50) x)
 ```"></span></td><td><span data-qmd="```js
-&quot;let x = 5;\nx *= 50;\nx;&quot;
+let x = 5;
+x *= 50;
+x;
 ```"></span></td><td><span data-qmd="```clj
 250
 ```"></span></td></tr></tbody></table>
@@ -1088,19 +1201,19 @@ true
 <table class="table table-hover table-responsive clay-table"><thead><tr><th>form</th><th>code</th><th>live</th></tr></thead><tbody><tr><td><span data-qmd="```clj
 (b:| 7 8)
 ```"></span></td><td><span data-qmd="```js
-&quot;7 | 8;&quot;
+7 | 8;
 ```"></span></td><td><span data-qmd="```clj
 15
 ```"></span></td></tr><tr><td><span data-qmd="```clj
 (b:| 7 7)
 ```"></span></td><td><span data-qmd="```js
-&quot;7 | 7;&quot;
+7 | 7;
 ```"></span></td><td><span data-qmd="```clj
 7
 ```"></span></td></tr><tr><td><span data-qmd="```clj
 (b:| 7 0)
 ```"></span></td><td><span data-qmd="```js
-&quot;7 | 0;&quot;
+7 | 0;
 ```"></span></td><td><span data-qmd="```clj
 7
 ```"></span></td></tr></tbody></table>
@@ -1118,19 +1231,19 @@ true
 <table class="table table-hover table-responsive clay-table"><thead><tr><th>form</th><th>code</th><th>live</th></tr></thead><tbody><tr><td><span data-qmd="```clj
 (b:&amp; 7 8)
 ```"></span></td><td><span data-qmd="```js
-&quot;7 &amp; 8;&quot;
+7 &amp; 8;
 ```"></span></td><td><span data-qmd="```clj
 0
 ```"></span></td></tr><tr><td><span data-qmd="```clj
 (b:&amp; 7 7)
 ```"></span></td><td><span data-qmd="```js
-&quot;7 &amp; 7;&quot;
+7 &amp; 7;
 ```"></span></td><td><span data-qmd="```clj
 7
 ```"></span></td></tr><tr><td><span data-qmd="```clj
 (b:&amp; 7 0)
 ```"></span></td><td><span data-qmd="```js
-&quot;7 &amp; 0;&quot;
+7 &amp; 0;
 ```"></span></td><td><span data-qmd="```clj
 0
 ```"></span></td></tr></tbody></table>
@@ -1148,19 +1261,19 @@ true
 <table class="table table-hover table-responsive clay-table"><thead><tr><th>form</th><th>code</th><th>live</th></tr></thead><tbody><tr><td><span data-qmd="```clj
 (b:xor 7 8)
 ```"></span></td><td><span data-qmd="```js
-&quot;7 ^ 8;&quot;
+7 ^ 8;
 ```"></span></td><td><span data-qmd="```clj
 15
 ```"></span></td></tr><tr><td><span data-qmd="```clj
 (b:xor 7 7)
 ```"></span></td><td><span data-qmd="```js
-&quot;7 ^ 7;&quot;
+7 ^ 7;
 ```"></span></td><td><span data-qmd="```clj
 0
 ```"></span></td></tr><tr><td><span data-qmd="```clj
 (b:xor 7 0)
 ```"></span></td><td><span data-qmd="```js
-&quot;7 ^ 0;&quot;
+7 ^ 0;
 ```"></span></td><td><span data-qmd="```clj
 7
 ```"></span></td></tr></tbody></table>
@@ -1178,7 +1291,7 @@ true
 <table class="table table-hover table-responsive clay-table"><thead><tr><th>form</th><th>code</th><th>live</th></tr></thead><tbody><tr><td><span data-qmd="```clj
 (b:&gt;&gt; 128 3)
 ```"></span></td><td><span data-qmd="```js
-&quot;128 &gt;&gt; 3;&quot;
+128 &gt;&gt; 3;
 ```"></span></td><td><span data-qmd="```clj
 16
 ```"></span></td></tr></tbody></table>
@@ -1196,9 +1309,199 @@ true
 <table class="table table-hover table-responsive clay-table"><thead><tr><th>form</th><th>code</th><th>live</th></tr></thead><tbody><tr><td><span data-qmd="```clj
 (b:&lt;&lt; 128 3)
 ```"></span></td><td><span data-qmd="```js
-&quot;128 &lt;&lt; 3;&quot;
+128 &lt;&lt; 3;
 ```"></span></td><td><span data-qmd="```clj
 1024
+```"></span></td></tr></tbody></table>
+```
+
+:::
+
+
+
+# Keywords - Functions
+
+::: {.clay-table}
+
+```{=html}
+<table class="table table-hover table-responsive clay-table"><thead><tr><th>form</th><th>code</th><th>live</th></tr></thead><tbody><tr><td><span data-qmd="```clj
+(fn [x y] (return (+ x y)))
+```"></span></td><td><span data-qmd="```js
+function (x,y){
+  return x + y;
+}
+```"></span></td><td><span data-qmd="```clj
+&lt;function&gt;
+function (x,y){
+    return x + y;
+  }
+```"></span></td></tr><tr><td><span data-qmd="```clj
+(do (var hello (fn [x y] (return (+ x y)))) (hello 1 2))
+```"></span></td><td><span data-qmd="```js
+let hello = function (x,y){
+  return x + y;
+};
+hello(1,2);
+```"></span></td><td><span data-qmd="```clj
+3
+```"></span></td></tr></tbody></table>
+```
+
+:::
+
+
+
+# Keywords - Blocks
+
+
+### if block
+
+::: {.clay-table}
+
+```{=html}
+<table class="table table-hover table-responsive clay-table"><thead><tr><th>form</th><th>code</th><th>live</th></tr></thead><tbody><tr><td><span data-qmd="```clj
+(do (var arr [1 2 3 4 5]) (var out) (if (&lt; (x:len arr) 10) (:= out true) (:= out false)) out)
+```"></span></td><td><span data-qmd="```js
+let arr = [1,2,3,4,5];
+let out = null;
+if(arr.length &lt; 10){
+  out = true;
+}
+else{
+  out = false;
+}
+out;
+```"></span></td><td><span data-qmd="```clj
+true
+```"></span></td></tr></tbody></table>
+```
+
+:::
+
+
+
+### cond block
+
+::: {.clay-table}
+
+```{=html}
+<table class="table table-hover table-responsive clay-table"><thead><tr><th>form</th><th>code</th><th>live</th></tr></thead><tbody><tr><td><span data-qmd="```clj
+(do (var arr [1 2 3 4 5]) (var out) (cond (&lt; (x:len arr) 5) (:= out &quot;1&quot;) (&lt; (x:len arr) 10) (:= out &quot;2&quot;) :else (:= out &quot;3&quot;)) out)
+```"></span></td><td><span data-qmd="```js
+let arr = [1,2,3,4,5];
+let out = null;
+if(arr.length &lt; 5){
+  out = &quot;1&quot;;
+}
+else if(arr.length &lt; 10){
+  out = &quot;2&quot;;
+}
+else{
+  out = &quot;3&quot;;
+}
+out;
+```"></span></td><td><span data-qmd="```clj
+&quot;2&quot;
+```"></span></td></tr></tbody></table>
+```
+
+:::
+
+
+
+### while block
+
+::: {.clay-table}
+
+```{=html}
+<table class="table table-hover table-responsive clay-table"><thead><tr><th>form</th><th>code</th><th>live</th></tr></thead><tbody><tr><td><span data-qmd="```clj
+(do (var x []) (var i 0) (while (&lt; i 5) (x:arr-push x i) (:++ i)) x)
+```"></span></td><td><span data-qmd="```js
+let x = [];
+let i = 0;
+while(i &lt; 5){
+  x.push(i);
+  ++i;
+}
+x;
+```"></span></td><td><span data-qmd="```clj
+[0 1 2 3 4]
+```"></span></td></tr></tbody></table>
+```
+
+:::
+
+
+
+### for block
+
+::: {.clay-table}
+
+```{=html}
+<table class="table table-hover table-responsive clay-table"><thead><tr><th>form</th><th>code</th><th>live</th></tr></thead><tbody><tr><td><span data-qmd="```clj
+(do (var arr []) (for [(var i 1) (&lt; i 5) (:++ i)] (x:arr-push arr i)) arr)
+```"></span></td><td><span data-qmd="```js
+let arr = [];
+for(let i = 1; i &lt; 5; ++i){
+  arr.push(i);
+}
+arr;
+```"></span></td><td><span data-qmd="```clj
+[1 2 3 4]
+```"></span></td></tr></tbody></table>
+```
+
+:::
+
+
+
+### case block
+
+::: {.clay-table}
+
+```{=html}
+<table class="table table-hover table-responsive clay-table"><thead><tr><th>form</th><th>code</th><th>live</th></tr></thead><tbody><tr><td><span data-qmd="```clj
+(do (var arr 1) (var out) (case arr 1 (do (:= out 1) (break)) 2 (do (:= out 2) (break))) out)
+```"></span></td><td><span data-qmd="```js
+let arr = 1;
+let out = null;
+switch(arr){
+  case 1:
+    out = 1;
+    break;
+  
+  case 2:
+    out = 2;
+    break;
+}
+out;
+```"></span></td><td><span data-qmd="```clj
+1
+```"></span></td></tr></tbody></table>
+```
+
+:::
+
+
+
+### try/catch block
+
+::: {.clay-table}
+
+```{=html}
+<table class="table table-hover table-responsive clay-table"><thead><tr><th>form</th><th>code</th><th>live</th></tr></thead><tbody><tr><td><span data-qmd="```clj
+(do (var out &quot;hello&quot;) (try (throw 1) (catch e (:= out &quot;world&quot;))) out)
+```"></span></td><td><span data-qmd="```js
+let out = &quot;hello&quot;;
+try{
+  throw 1;
+}
+catch(e){
+  out = &quot;world&quot;;
+}
+out;
+```"></span></td><td><span data-qmd="```clj
+&quot;world&quot;
 ```"></span></td></tr></tbody></table>
 ```
 
@@ -1217,45 +1520,17 @@ true
 <table class="table table-hover table-responsive clay-table"><thead><tr><th>form</th><th>code</th><th>live</th></tr></thead><tbody><tr><td><span data-qmd="```clj
 (do (var out := []) (k/for:array [e [1 2 3 4]] (if (&gt; e 3) (break)) (x:arr-push out e)) out)
 ```"></span></td><td><span data-qmd="```js
-&quot;let out = [];\nfor(let e of [1,2,3,4]){\n  if(e &gt; 3){\n    break;\n  }\n  out.push(e);\n};\nout;&quot;
+let out = [];
+for(let e of [1,2,3,4]){
+  if(e &gt; 3){
+    break;
+  }
+  out.push(e);
+};
+out;
 ```"></span></td><td><span data-qmd="```clj
 [1 2 3]
 ```"></span></td></tr></tbody></table>
-```
-
-:::
-
-
-Basic arithmetic:
-
-::: {.clay-table}
-
-```{=html}
-<table class="table table-hover table-responsive clay-table"><thead><tr><th>form</th><th>code</th><th>live</th></tr></thead><tbody><tr><td><span data-qmd="```clj
-(+ 1 1)
-```"></span></td><td><span data-qmd="```js
-&quot;1 + 1;&quot;
-```"></span></td><td>2</td></tr><tr><td><span data-qmd="```clj
-(+ 0.1 0.2)
-```"></span></td><td><span data-qmd="```js
-&quot;0.1 + 0.2;&quot;
-```"></span></td><td>0.30000000000000004</td></tr><tr><td><span data-qmd="```clj
-(- 8 1)
-```"></span></td><td><span data-qmd="```js
-&quot;8 - 1;&quot;
-```"></span></td><td>7</td></tr><tr><td><span data-qmd="```clj
-(* 10 2)
-```"></span></td><td><span data-qmd="```js
-&quot;10 * 2;&quot;
-```"></span></td><td>20</td></tr><tr><td><span data-qmd="```clj
-(/ 35 5)
-```"></span></td><td><span data-qmd="```js
-&quot;35 / 5;&quot;
-```"></span></td><td>7</td></tr><tr><td><span data-qmd="```clj
-(/ 5 2)
-```"></span></td><td><span data-qmd="```js
-&quot;5 / 2;&quot;
-```"></span></td><td>2.5</td></tr></tbody></table>
 ```
 
 :::

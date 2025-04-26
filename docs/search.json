@@ -54,7 +54,7 @@
     "href": "stdlang_book.walkthrough.html#setup",
     "title": "2  Introduction",
     "section": "",
-    "text": "(ns stdlang-book.walkthrough\n  (:require [std.lang :as l]))\n\n\n\n\n^:kind/println\n(l/script :js\n  {:require [[xt.lang.base-lib :as k]]})\n\n\n#rt:lang[:js]\n\n\n\n(!.js\n  (+ 1 2 3))\n\n\n\"1 + 2 + 3;\"\n\n\n\n\n\n^:kind/println\n(l/script+ [:code :js]\n  {:require [[xt.lang.base-lib :as k]]})\n\n\n[#rt:lang[:js]]\n\n\n\n^:kind/println\n(l/script+ [:live :js]\n  {:runtime :basic\n   :require [[xt.lang.base-lib :as k]]})\n\n\n[#rt.basic[:server/basic :js t8cfjkhmrm1t 45527 1]]\n\n\n\n[ ;; No runtime, just generating code:\n (l/! [:code] (+ 1 2))\n ;; Generating, running in Node.js:\n (l/! [:live] (+ 1 2))]\n\n\n[\"1 + 2;\" 3]",
+    "text": "(ns stdlang-book.walkthrough\n  (:require [std.lang :as l]))\n\n\n\n\n^:kind/println\n(l/script :js\n  {:require [[xt.lang.base-lib :as k]]})\n\n\n#rt:lang[:js]\n\n\n\n(!.js\n  (+ 1 2 3))\n\n\n\"1 + 2 + 3;\"\n\n\n\n\n\n^:kind/println\n(l/script+ [:code :js]\n  {:require [[xt.lang.base-lib :as k]]})\n\n\n[#rt:lang[:js]]\n\n\n\n^:kind/println\n(l/script+ [:live :js]\n  {:runtime :basic\n   :require [[xt.lang.base-lib :as k]]})\n\n\n[#rt.basic[:server/basic :js 1jiajs4x0l277 64658 1]]\n\n\n\n[ ;; No runtime, just generating code:\n (l/! [:code] (+ 1 2))\n ;; Generating, running in Node.js:\n (l/! [:live] (+ 1 2))]\n\n\n[\"1 + 2;\" 3]",
     "crumbs": [
       "<span class='chapter-number'>2</span>  <span class='chapter-title'>Introduction</span>"
     ]
