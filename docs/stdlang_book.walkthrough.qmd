@@ -160,7 +160,7 @@ Let us now use these two ways for basic arithmetic.
 
 
 
-# Primitives
+# Types - Primitives
 
 The seven primitive data types in JavaScript are string, number, bigint, boolean, undefined, symbol, and null.
 We work with examples from: https://www.w3docs.com/learn-javascript/methods-of-primitives.html
@@ -202,24 +202,6 @@ undefined
 &quot;undefined;&quot;
 ```"></span></td><td><span data-qmd="```clj
 nil
-```"></span></td></tr><tr><td><span data-qmd="```clj
-NaN
-```"></span></td><td><span data-qmd="```js
-&quot;NaN;&quot;
-```"></span></td><td><span data-qmd="```clj
-nil
-```"></span></td></tr><tr><td><span data-qmd="```clj
-Infinity
-```"></span></td><td><span data-qmd="```js
-&quot;Infinity;&quot;
-```"></span></td><td><span data-qmd="```clj
-nil
-```"></span></td></tr><tr><td><span data-qmd="```clj
-(- Infinity)
-```"></span></td><td><span data-qmd="```js
-&quot;-Infinity;&quot;
-```"></span></td><td><span data-qmd="```clj
-&quot;-Infinity&quot;
 ```"></span></td></tr></tbody></table>
 ```
 
@@ -298,6 +280,24 @@ false
 &quot;1.54444444444444;&quot;
 ```"></span></td><td><span data-qmd="```clj
 1.54444444444444
+```"></span></td></tr><tr><td><span data-qmd="```clj
+NaN
+```"></span></td><td><span data-qmd="```js
+&quot;NaN;&quot;
+```"></span></td><td><span data-qmd="```clj
+nil
+```"></span></td></tr><tr><td><span data-qmd="```clj
+Infinity
+```"></span></td><td><span data-qmd="```js
+&quot;Infinity;&quot;
+```"></span></td><td><span data-qmd="```clj
+nil
+```"></span></td></tr><tr><td><span data-qmd="```clj
+(- Infinity)
+```"></span></td><td><span data-qmd="```js
+&quot;-Infinity;&quot;
+```"></span></td><td><span data-qmd="```clj
+&quot;-Infinity&quot;
 ```"></span></td></tr></tbody></table>
 ```
 
@@ -341,6 +341,9 @@ false
 
 
 
+# Types - Additional
+
+
 ### Regex
 
 ::: {.clay-table}
@@ -353,6 +356,255 @@ false
 ```"></span></td><td><span data-qmd="```clj
 &lt;RegExp&gt;
 /^[Hh]ello d$/
+```"></span></td></tr></tbody></table>
+```
+
+:::
+
+
+
+# Types - Collection
+
+
+### Arrays
+
+::: {.clay-table}
+
+```{=html}
+<table class="table table-hover table-responsive clay-table"><thead><tr><th>form</th><th>code</th><th>live</th></tr></thead><tbody><tr><td><span data-qmd="```clj
+[1 2 3 4]
+```"></span></td><td><span data-qmd="```js
+&quot;[1,2,3,4];&quot;
+```"></span></td><td><span data-qmd="```clj
+[1 2 3 4]
+```"></span></td></tr><tr><td><span data-qmd="```clj
+[&quot;hello&quot; [&quot;world&quot;]]
+```"></span></td><td><span data-qmd="```js
+&quot;[\&quot;hello\&quot;,[\&quot;world\&quot;]];&quot;
+```"></span></td><td><span data-qmd="```clj
+[&quot;hello&quot; [&quot;world&quot;]]
+```"></span></td></tr></tbody></table>
+```
+
+:::
+
+
+
+### Objects
+
+::: {.clay-table}
+
+```{=html}
+<table class="table table-hover table-responsive clay-table"><thead><tr><th>form</th><th>code</th><th>live</th></tr></thead><tbody><tr><td><span data-qmd="```clj
+{:a 1, :b 2, :c 3}
+```"></span></td><td><span data-qmd="```js
+&quot;{\&quot;a\&quot;:1,\&quot;b\&quot;:2,\&quot;c\&quot;:3};&quot;
+```"></span></td><td><span data-qmd="```clj
+{&quot;a&quot; 1, &quot;b&quot; 2, &quot;c&quot; 3}
+```"></span></td></tr><tr><td><span data-qmd="```clj
+{:a {:b {:c 3}}}
+```"></span></td><td><span data-qmd="```js
+&quot;{\&quot;a\&quot;:{\&quot;b\&quot;:{\&quot;c\&quot;:3}}};&quot;
+```"></span></td><td><span data-qmd="```clj
+{&quot;a&quot; {&quot;b&quot; {&quot;c&quot; 3}}}
+```"></span></td></tr></tbody></table>
+```
+
+:::
+
+
+
+### Objects - tab
+
+::: {.clay-table}
+
+```{=html}
+<table class="table table-hover table-responsive clay-table"><thead><tr><th>form</th><th>code</th><th>live</th></tr></thead><tbody><tr><td><span data-qmd="```clj
+(tab [&quot;a&quot; 1] [&quot;b&quot; 2] [&quot;c&quot; 3])
+```"></span></td><td><span data-qmd="```js
+&quot;{\&quot;a\&quot;:1,\&quot;b\&quot;:2,\&quot;c\&quot;:3};&quot;
+```"></span></td><td><span data-qmd="```clj
+{&quot;a&quot; 1, &quot;b&quot; 2, &quot;c&quot; 3}
+```"></span></td></tr></tbody></table>
+```
+
+:::
+
+
+
+# Operations - Assignment
+
+
+### Var
+
+::: {.clay-table}
+
+```{=html}
+<table class="table table-hover table-responsive clay-table"><thead><tr><th>form</th><th>code</th><th>live</th></tr></thead><tbody><tr><td><span data-qmd="```clj
+(do (var x 1) x)
+```"></span></td><td><span data-qmd="```js
+&quot;let x = 1;\nx;&quot;
+```"></span></td><td><span data-qmd="```clj
+1
+```"></span></td></tr></tbody></table>
+```
+
+:::
+
+
+
+### Const
+
+::: {.clay-table}
+
+```{=html}
+<table class="table table-hover table-responsive clay-table"><thead><tr><th>form</th><th>code</th><th>live</th></tr></thead><tbody><tr><td><span data-qmd="```clj
+(do (const x 1) x)
+```"></span></td><td><span data-qmd="```js
+&quot;const x = 1;\nx;&quot;
+```"></span></td><td><span data-qmd="```clj
+1
+```"></span></td></tr></tbody></table>
+```
+
+:::
+
+
+
+### ReAssign
+
+::: {.clay-table}
+
+```{=html}
+<table class="table table-hover table-responsive clay-table"><thead><tr><th>form</th><th>code</th><th>live</th></tr></thead><tbody><tr><td><span data-qmd="```clj
+(do (var x 1) (:= x 10) x)
+```"></span></td><td><span data-qmd="```js
+&quot;let x = 1;\nx = 10;\nx;&quot;
+```"></span></td><td><span data-qmd="```clj
+10
+```"></span></td></tr></tbody></table>
+```
+
+:::
+
+
+
+# Operations - Logic
+
+
+### Negation
+
+::: {.clay-table}
+
+```{=html}
+<table class="table table-hover table-responsive clay-table"><thead><tr><th>form</th><th>code</th><th>live</th></tr></thead><tbody><tr><td><span data-qmd="```clj
+(not true)
+```"></span></td><td><span data-qmd="```js
+&quot;!true;&quot;
+```"></span></td><td><span data-qmd="```clj
+false
+```"></span></td></tr><tr><td><span data-qmd="```clj
+(not false)
+```"></span></td><td><span data-qmd="```js
+&quot;!false;&quot;
+```"></span></td><td><span data-qmd="```clj
+true
+```"></span></td></tr><tr><td><span data-qmd="```clj
+(not 1)
+```"></span></td><td><span data-qmd="```js
+&quot;!1;&quot;
+```"></span></td><td><span data-qmd="```clj
+false
+```"></span></td></tr><tr><td><span data-qmd="```clj
+(not 0)
+```"></span></td><td><span data-qmd="```js
+&quot;!0;&quot;
+```"></span></td><td><span data-qmd="```clj
+true
+```"></span></td></tr></tbody></table>
+```
+
+:::
+
+
+
+### Or
+
+::: {.clay-table}
+
+```{=html}
+<table class="table table-hover table-responsive clay-table"><thead><tr><th>form</th><th>code</th><th>live</th></tr></thead><tbody><tr><td><span data-qmd="```clj
+(or 0 false)
+```"></span></td><td><span data-qmd="```js
+&quot;0 || false;&quot;
+```"></span></td><td><span data-qmd="```clj
+false
+```"></span></td></tr><tr><td><span data-qmd="```clj
+(or 1 false)
+```"></span></td><td><span data-qmd="```js
+&quot;1 || false;&quot;
+```"></span></td><td><span data-qmd="```clj
+1
+```"></span></td></tr><tr><td><span data-qmd="```clj
+(or 0 true)
+```"></span></td><td><span data-qmd="```js
+&quot;0 || true;&quot;
+```"></span></td><td><span data-qmd="```clj
+true
+```"></span></td></tr></tbody></table>
+```
+
+:::
+
+
+
+### And
+
+::: {.clay-table}
+
+```{=html}
+<table class="table table-hover table-responsive clay-table"><thead><tr><th>form</th><th>code</th><th>live</th></tr></thead><tbody><tr><td><span data-qmd="```clj
+(and 0 false)
+```"></span></td><td><span data-qmd="```js
+&quot;0 &amp;&amp; false;&quot;
+```"></span></td><td><span data-qmd="```clj
+0
+```"></span></td></tr><tr><td><span data-qmd="```clj
+(and 1 false)
+```"></span></td><td><span data-qmd="```js
+&quot;1 &amp;&amp; false;&quot;
+```"></span></td><td><span data-qmd="```clj
+false
+```"></span></td></tr><tr><td><span data-qmd="```clj
+(and 0 true)
+```"></span></td><td><span data-qmd="```js
+&quot;0 &amp;&amp; true;&quot;
+```"></span></td><td><span data-qmd="```clj
+0
+```"></span></td></tr></tbody></table>
+```
+
+:::
+
+
+
+### Ternary
+
+::: {.clay-table}
+
+```{=html}
+<table class="table table-hover table-responsive clay-table"><thead><tr><th>form</th><th>code</th><th>live</th></tr></thead><tbody><tr><td><span data-qmd="```clj
+(:? true 1 2)
+```"></span></td><td><span data-qmd="```js
+&quot;true ? 1 : 2;&quot;
+```"></span></td><td><span data-qmd="```clj
+1
+```"></span></td></tr><tr><td><span data-qmd="```clj
+(:? (or 0 0) 1 2)
+```"></span></td><td><span data-qmd="```js
+&quot;(0 || 0) ? 1 : 2;&quot;
+```"></span></td><td><span data-qmd="```clj
+2
 ```"></span></td></tr></tbody></table>
 ```
 
@@ -469,6 +721,495 @@ false
 
 :::
 
+
+
+### Pow
+
+::: {.clay-table}
+
+```{=html}
+<table class="table table-hover table-responsive clay-table"><thead><tr><th>form</th><th>code</th><th>live</th></tr></thead><tbody><tr><td><span data-qmd="```clj
+(pow 10 2)
+```"></span></td><td><span data-qmd="```js
+&quot;10 ^ 2;&quot;
+```"></span></td><td><span data-qmd="```clj
+8
+```"></span></td></tr><tr><td><span data-qmd="```clj
+(pow 0.5 0.2)
+```"></span></td><td><span data-qmd="```js
+&quot;0.5 ^ 0.2;&quot;
+```"></span></td><td><span data-qmd="```clj
+0
+```"></span></td></tr></tbody></table>
+```
+
+:::
+
+
+
+### Mod
+
+::: {.clay-table}
+
+```{=html}
+<table class="table table-hover table-responsive clay-table"><thead><tr><th>form</th><th>code</th><th>live</th></tr></thead><tbody><tr><td><span data-qmd="```clj
+(mod 1123 7)
+```"></span></td><td><span data-qmd="```js
+&quot;1123 % 7;&quot;
+```"></span></td><td><span data-qmd="```clj
+3
+```"></span></td></tr><tr><td><span data-qmd="```clj
+(mod 1123 7.1)
+```"></span></td><td><span data-qmd="```js
+&quot;1123 % 7.1;&quot;
+```"></span></td><td><span data-qmd="```clj
+1.2000000000000561
+```"></span></td></tr></tbody></table>
+```
+
+:::
+
+
+
+# Operations - Comparison
+
+
+### Equals
+
+::: {.clay-table}
+
+```{=html}
+<table class="table table-hover table-responsive clay-table"><thead><tr><th>form</th><th>code</th><th>live</th></tr></thead><tbody><tr><td><span data-qmd="```clj
+(== 1 1)
+```"></span></td><td><span data-qmd="```js
+&quot;1 == 1;&quot;
+```"></span></td><td><span data-qmd="```clj
+true
+```"></span></td></tr><tr><td><span data-qmd="```clj
+(== 1 &quot;1&quot;)
+```"></span></td><td><span data-qmd="```js
+&quot;1 == \&quot;1\&quot;;&quot;
+```"></span></td><td><span data-qmd="```clj
+true
+```"></span></td></tr><tr><td><span data-qmd="```clj
+(== &quot;hello&quot; &quot;hello&quot;)
+```"></span></td><td><span data-qmd="```js
+&quot;\&quot;hello\&quot; == \&quot;hello\&quot;;&quot;
+```"></span></td><td><span data-qmd="```clj
+true
+```"></span></td></tr></tbody></table>
+```
+
+:::
+
+
+
+### Triple Equals
+
+::: {.clay-table}
+
+```{=html}
+<table class="table table-hover table-responsive clay-table"><thead><tr><th>form</th><th>code</th><th>live</th></tr></thead><tbody><tr><td><span data-qmd="```clj
+(=== 1 1)
+```"></span></td><td><span data-qmd="```js
+&quot;1 === 1;&quot;
+```"></span></td><td><span data-qmd="```clj
+true
+```"></span></td></tr><tr><td><span data-qmd="```clj
+(=== 1 &quot;1&quot;)
+```"></span></td><td><span data-qmd="```js
+&quot;1 === \&quot;1\&quot;;&quot;
+```"></span></td><td><span data-qmd="```clj
+false
+```"></span></td></tr><tr><td><span data-qmd="```clj
+(=== &quot;hello&quot; &quot;hello&quot;)
+```"></span></td><td><span data-qmd="```js
+&quot;\&quot;hello\&quot; === \&quot;hello\&quot;;&quot;
+```"></span></td><td><span data-qmd="```clj
+true
+```"></span></td></tr></tbody></table>
+```
+
+:::
+
+
+
+### Not Equals
+
+::: {.clay-table}
+
+```{=html}
+<table class="table table-hover table-responsive clay-table"><thead><tr><th>form</th><th>code</th><th>live</th></tr></thead><tbody><tr><td><span data-qmd="```clj
+(not= 1 2)
+```"></span></td><td><span data-qmd="```js
+&quot;1 != 2;&quot;
+```"></span></td><td><span data-qmd="```clj
+true
+```"></span></td></tr><tr><td><span data-qmd="```clj
+(not= 1 &quot;1&quot;)
+```"></span></td><td><span data-qmd="```js
+&quot;1 != \&quot;1\&quot;;&quot;
+```"></span></td><td><span data-qmd="```clj
+false
+```"></span></td></tr><tr><td><span data-qmd="```clj
+(not= &quot;hello&quot; &quot;hello&quot;)
+```"></span></td><td><span data-qmd="```js
+&quot;\&quot;hello\&quot; != \&quot;hello\&quot;;&quot;
+```"></span></td><td><span data-qmd="```clj
+false
+```"></span></td></tr></tbody></table>
+```
+
+:::
+
+
+
+### Less Than
+
+::: {.clay-table}
+
+```{=html}
+<table class="table table-hover table-responsive clay-table"><thead><tr><th>form</th><th>code</th><th>live</th></tr></thead><tbody><tr><td><span data-qmd="```clj
+(&lt; 1 2)
+```"></span></td><td><span data-qmd="```js
+&quot;1 &lt; 2;&quot;
+```"></span></td><td><span data-qmd="```clj
+true
+```"></span></td></tr><tr><td><span data-qmd="```clj
+(&lt; 1 1)
+```"></span></td><td><span data-qmd="```js
+&quot;1 &lt; 1;&quot;
+```"></span></td><td><span data-qmd="```clj
+false
+```"></span></td></tr><tr><td><span data-qmd="```clj
+(&lt; 1 &quot;2&quot;)
+```"></span></td><td><span data-qmd="```js
+&quot;1 &lt; \&quot;2\&quot;;&quot;
+```"></span></td><td><span data-qmd="```clj
+true
+```"></span></td></tr></tbody></table>
+```
+
+:::
+
+
+
+### Less Than Equals
+
+::: {.clay-table}
+
+```{=html}
+<table class="table table-hover table-responsive clay-table"><thead><tr><th>form</th><th>code</th><th>live</th></tr></thead><tbody><tr><td><span data-qmd="```clj
+(&lt;= 1 2)
+```"></span></td><td><span data-qmd="```js
+&quot;1 &lt;= 2;&quot;
+```"></span></td><td><span data-qmd="```clj
+true
+```"></span></td></tr><tr><td><span data-qmd="```clj
+(&lt;= 1 1)
+```"></span></td><td><span data-qmd="```js
+&quot;1 &lt;= 1;&quot;
+```"></span></td><td><span data-qmd="```clj
+true
+```"></span></td></tr><tr><td><span data-qmd="```clj
+(&lt;= 1 &quot;1&quot;)
+```"></span></td><td><span data-qmd="```js
+&quot;1 &lt;= \&quot;1\&quot;;&quot;
+```"></span></td><td><span data-qmd="```clj
+true
+```"></span></td></tr></tbody></table>
+```
+
+:::
+
+
+
+### Greater Than
+
+::: {.clay-table}
+
+```{=html}
+<table class="table table-hover table-responsive clay-table"><thead><tr><th>form</th><th>code</th><th>live</th></tr></thead><tbody><tr><td><span data-qmd="```clj
+(&gt; 3 2)
+```"></span></td><td><span data-qmd="```js
+&quot;3 &gt; 2;&quot;
+```"></span></td><td><span data-qmd="```clj
+true
+```"></span></td></tr><tr><td><span data-qmd="```clj
+(&gt; 3 3)
+```"></span></td><td><span data-qmd="```js
+&quot;3 &gt; 3;&quot;
+```"></span></td><td><span data-qmd="```clj
+false
+```"></span></td></tr><tr><td><span data-qmd="```clj
+(&gt; 3 &quot;2&quot;)
+```"></span></td><td><span data-qmd="```js
+&quot;3 &gt; \&quot;2\&quot;;&quot;
+```"></span></td><td><span data-qmd="```clj
+true
+```"></span></td></tr></tbody></table>
+```
+
+:::
+
+
+
+### Greater Than Equals
+
+::: {.clay-table}
+
+```{=html}
+<table class="table table-hover table-responsive clay-table"><thead><tr><th>form</th><th>code</th><th>live</th></tr></thead><tbody><tr><td><span data-qmd="```clj
+(&gt;= 3 2)
+```"></span></td><td><span data-qmd="```js
+&quot;3 &gt;= 2;&quot;
+```"></span></td><td><span data-qmd="```clj
+true
+```"></span></td></tr><tr><td><span data-qmd="```clj
+(&gt;= 3 3)
+```"></span></td><td><span data-qmd="```js
+&quot;3 &gt;= 3;&quot;
+```"></span></td><td><span data-qmd="```clj
+true
+```"></span></td></tr><tr><td><span data-qmd="```clj
+(&gt;= 3 &quot;3&quot;)
+```"></span></td><td><span data-qmd="```js
+&quot;3 &gt;= \&quot;3\&quot;;&quot;
+```"></span></td><td><span data-qmd="```clj
+true
+```"></span></td></tr></tbody></table>
+```
+
+:::
+
+
+
+# Operations - Counter
+
+
+### Increment
+
+::: {.clay-table}
+
+```{=html}
+<table class="table table-hover table-responsive clay-table"><thead><tr><th>form</th><th>code</th><th>live</th></tr></thead><tbody><tr><td><span data-qmd="```clj
+(do (var x 1) (:++ x) x)
+```"></span></td><td><span data-qmd="```js
+&quot;let x = 1;\n++x;\nx;&quot;
+```"></span></td><td><span data-qmd="```clj
+2
+```"></span></td></tr></tbody></table>
+```
+
+:::
+
+
+
+### Increment By
+
+::: {.clay-table}
+
+```{=html}
+<table class="table table-hover table-responsive clay-table"><thead><tr><th>form</th><th>code</th><th>live</th></tr></thead><tbody><tr><td><span data-qmd="```clj
+(do (var x 1) (:+= x 10) x)
+```"></span></td><td><span data-qmd="```js
+&quot;let x = 1;\nx += 10;\nx;&quot;
+```"></span></td><td><span data-qmd="```clj
+11
+```"></span></td></tr></tbody></table>
+```
+
+:::
+
+
+
+### Decrement
+
+::: {.clay-table}
+
+```{=html}
+<table class="table table-hover table-responsive clay-table"><thead><tr><th>form</th><th>code</th><th>live</th></tr></thead><tbody><tr><td><span data-qmd="```clj
+(do (var x 5) (:-- x) x)
+```"></span></td><td><span data-qmd="```js
+&quot;let x = 5;\n--x;\nx;&quot;
+```"></span></td><td><span data-qmd="```clj
+4
+```"></span></td></tr></tbody></table>
+```
+
+:::
+
+
+
+### Decrement By
+
+::: {.clay-table}
+
+```{=html}
+<table class="table table-hover table-responsive clay-table"><thead><tr><th>form</th><th>code</th><th>live</th></tr></thead><tbody><tr><td><span data-qmd="```clj
+(do (var x 5) (:-= x 50) x)
+```"></span></td><td><span data-qmd="```js
+&quot;let x = 5;\nx -= 50;\nx;&quot;
+```"></span></td><td><span data-qmd="```clj
+-45
+```"></span></td></tr></tbody></table>
+```
+
+:::
+
+
+
+### Multiply By
+
+::: {.clay-table}
+
+```{=html}
+<table class="table table-hover table-responsive clay-table"><thead><tr><th>form</th><th>code</th><th>live</th></tr></thead><tbody><tr><td><span data-qmd="```clj
+(do (var x 5) (:*= x 50) x)
+```"></span></td><td><span data-qmd="```js
+&quot;let x = 5;\nx *= 50;\nx;&quot;
+```"></span></td><td><span data-qmd="```clj
+250
+```"></span></td></tr></tbody></table>
+```
+
+:::
+
+
+
+# Operations - Bitwise
+
+
+### Bitwise Or
+
+::: {.clay-table}
+
+```{=html}
+<table class="table table-hover table-responsive clay-table"><thead><tr><th>form</th><th>code</th><th>live</th></tr></thead><tbody><tr><td><span data-qmd="```clj
+(b:| 7 8)
+```"></span></td><td><span data-qmd="```js
+&quot;7 | 8;&quot;
+```"></span></td><td><span data-qmd="```clj
+15
+```"></span></td></tr><tr><td><span data-qmd="```clj
+(b:| 7 7)
+```"></span></td><td><span data-qmd="```js
+&quot;7 | 7;&quot;
+```"></span></td><td><span data-qmd="```clj
+7
+```"></span></td></tr><tr><td><span data-qmd="```clj
+(b:| 7 0)
+```"></span></td><td><span data-qmd="```js
+&quot;7 | 0;&quot;
+```"></span></td><td><span data-qmd="```clj
+7
+```"></span></td></tr></tbody></table>
+```
+
+:::
+
+
+
+### Bitwise And
+
+::: {.clay-table}
+
+```{=html}
+<table class="table table-hover table-responsive clay-table"><thead><tr><th>form</th><th>code</th><th>live</th></tr></thead><tbody><tr><td><span data-qmd="```clj
+(b:&amp; 7 8)
+```"></span></td><td><span data-qmd="```js
+&quot;7 &amp; 8;&quot;
+```"></span></td><td><span data-qmd="```clj
+0
+```"></span></td></tr><tr><td><span data-qmd="```clj
+(b:&amp; 7 7)
+```"></span></td><td><span data-qmd="```js
+&quot;7 &amp; 7;&quot;
+```"></span></td><td><span data-qmd="```clj
+7
+```"></span></td></tr><tr><td><span data-qmd="```clj
+(b:&amp; 7 0)
+```"></span></td><td><span data-qmd="```js
+&quot;7 &amp; 0;&quot;
+```"></span></td><td><span data-qmd="```clj
+0
+```"></span></td></tr></tbody></table>
+```
+
+:::
+
+
+
+### Bitwise Xor
+
+::: {.clay-table}
+
+```{=html}
+<table class="table table-hover table-responsive clay-table"><thead><tr><th>form</th><th>code</th><th>live</th></tr></thead><tbody><tr><td><span data-qmd="```clj
+(b:xor 7 8)
+```"></span></td><td><span data-qmd="```js
+&quot;7 ^ 8;&quot;
+```"></span></td><td><span data-qmd="```clj
+15
+```"></span></td></tr><tr><td><span data-qmd="```clj
+(b:xor 7 7)
+```"></span></td><td><span data-qmd="```js
+&quot;7 ^ 7;&quot;
+```"></span></td><td><span data-qmd="```clj
+0
+```"></span></td></tr><tr><td><span data-qmd="```clj
+(b:xor 7 0)
+```"></span></td><td><span data-qmd="```js
+&quot;7 ^ 0;&quot;
+```"></span></td><td><span data-qmd="```clj
+7
+```"></span></td></tr></tbody></table>
+```
+
+:::
+
+
+
+### Bitshift Right
+
+::: {.clay-table}
+
+```{=html}
+<table class="table table-hover table-responsive clay-table"><thead><tr><th>form</th><th>code</th><th>live</th></tr></thead><tbody><tr><td><span data-qmd="```clj
+(b:&gt;&gt; 128 3)
+```"></span></td><td><span data-qmd="```js
+&quot;128 &gt;&gt; 3;&quot;
+```"></span></td><td><span data-qmd="```clj
+16
+```"></span></td></tr></tbody></table>
+```
+
+:::
+
+
+
+### Bitshift Left
+
+::: {.clay-table}
+
+```{=html}
+<table class="table table-hover table-responsive clay-table"><thead><tr><th>form</th><th>code</th><th>live</th></tr></thead><tbody><tr><td><span data-qmd="```clj
+(b:&lt;&lt; 128 3)
+```"></span></td><td><span data-qmd="```js
+&quot;128 &lt;&lt; 3;&quot;
+```"></span></td><td><span data-qmd="```clj
+1024
+```"></span></td></tr></tbody></table>
+```
+
+:::
+
+
+
+# Lib - Helpers
+
+
+### for:array
 
 ::: {.clay-table}
 

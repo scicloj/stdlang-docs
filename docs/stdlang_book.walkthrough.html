@@ -162,7 +162,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
    
   <ul>
   <li><a href="#setup" id="toc-setup" class="nav-link active" data-scroll-target="#setup"><span class="header-section-number">2.1</span> Setup</a></li>
-  <li><a href="#primitives" id="toc-primitives" class="nav-link" data-scroll-target="#primitives"><span class="header-section-number">3</span> Primitives</a>
+  <li><a href="#types---primitives" id="toc-types---primitives" class="nav-link" data-scroll-target="#types---primitives"><span class="header-section-number">3</span> Types - Primitives</a>
   <ul>
   <li><a href="#null" id="toc-null" class="nav-link" data-scroll-target="#null"><span class="header-section-number">3.0.1</span> Null</a></li>
   <li><a href="#undefined" id="toc-undefined" class="nav-link" data-scroll-target="#undefined"><span class="header-section-number">3.0.2</span> Undefined</a></li>
@@ -171,14 +171,68 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#numbers" id="toc-numbers" class="nav-link" data-scroll-target="#numbers"><span class="header-section-number">3.0.5</span> Numbers</a></li>
   <li><a href="#bigint" id="toc-bigint" class="nav-link" data-scroll-target="#bigint"><span class="header-section-number">3.0.6</span> Bigint</a></li>
   <li><a href="#symbol" id="toc-symbol" class="nav-link" data-scroll-target="#symbol"><span class="header-section-number">3.0.7</span> Symbol</a></li>
-  <li><a href="#regex" id="toc-regex" class="nav-link" data-scroll-target="#regex"><span class="header-section-number">3.0.8</span> Regex</a></li>
   </ul></li>
-  <li><a href="#operations---math" id="toc-operations---math" class="nav-link" data-scroll-target="#operations---math"><span class="header-section-number">4</span> Operations - Math</a>
+  <li><a href="#types---additional" id="toc-types---additional" class="nav-link" data-scroll-target="#types---additional"><span class="header-section-number">4</span> Types - Additional</a>
   <ul>
-  <li><a href="#addition" id="toc-addition" class="nav-link" data-scroll-target="#addition"><span class="header-section-number">4.0.1</span> Addition</a></li>
-  <li><a href="#subtraction" id="toc-subtraction" class="nav-link" data-scroll-target="#subtraction"><span class="header-section-number">4.0.2</span> Subtraction</a></li>
-  <li><a href="#multiplication" id="toc-multiplication" class="nav-link" data-scroll-target="#multiplication"><span class="header-section-number">4.0.3</span> Multiplication</a></li>
-  <li><a href="#division" id="toc-division" class="nav-link" data-scroll-target="#division"><span class="header-section-number">4.0.4</span> Division</a></li>
+  <li><a href="#regex" id="toc-regex" class="nav-link" data-scroll-target="#regex"><span class="header-section-number">4.0.1</span> Regex</a></li>
+  </ul></li>
+  <li><a href="#types---collection" id="toc-types---collection" class="nav-link" data-scroll-target="#types---collection"><span class="header-section-number">5</span> Types - Collection</a>
+  <ul>
+  <li><a href="#arrays" id="toc-arrays" class="nav-link" data-scroll-target="#arrays"><span class="header-section-number">5.0.1</span> Arrays</a></li>
+  <li><a href="#objects" id="toc-objects" class="nav-link" data-scroll-target="#objects"><span class="header-section-number">5.0.2</span> Objects</a></li>
+  <li><a href="#objects---tab" id="toc-objects---tab" class="nav-link" data-scroll-target="#objects---tab"><span class="header-section-number">5.0.3</span> Objects - tab</a></li>
+  </ul></li>
+  <li><a href="#operations---assignment" id="toc-operations---assignment" class="nav-link" data-scroll-target="#operations---assignment"><span class="header-section-number">6</span> Operations - Assignment</a>
+  <ul>
+  <li><a href="#var" id="toc-var" class="nav-link" data-scroll-target="#var"><span class="header-section-number">6.0.1</span> Var</a></li>
+  <li><a href="#const" id="toc-const" class="nav-link" data-scroll-target="#const"><span class="header-section-number">6.0.2</span> Const</a></li>
+  <li><a href="#reassign" id="toc-reassign" class="nav-link" data-scroll-target="#reassign"><span class="header-section-number">6.0.3</span> ReAssign</a></li>
+  </ul></li>
+  <li><a href="#operations---logic" id="toc-operations---logic" class="nav-link" data-scroll-target="#operations---logic"><span class="header-section-number">7</span> Operations - Logic</a>
+  <ul>
+  <li><a href="#negation" id="toc-negation" class="nav-link" data-scroll-target="#negation"><span class="header-section-number">7.0.1</span> Negation</a></li>
+  <li><a href="#or" id="toc-or" class="nav-link" data-scroll-target="#or"><span class="header-section-number">7.0.2</span> Or</a></li>
+  <li><a href="#and" id="toc-and" class="nav-link" data-scroll-target="#and"><span class="header-section-number">7.0.3</span> And</a></li>
+  <li><a href="#ternary" id="toc-ternary" class="nav-link" data-scroll-target="#ternary"><span class="header-section-number">7.0.4</span> Ternary</a></li>
+  </ul></li>
+  <li><a href="#operations---math" id="toc-operations---math" class="nav-link" data-scroll-target="#operations---math"><span class="header-section-number">8</span> Operations - Math</a>
+  <ul>
+  <li><a href="#addition" id="toc-addition" class="nav-link" data-scroll-target="#addition"><span class="header-section-number">8.0.1</span> Addition</a></li>
+  <li><a href="#subtraction" id="toc-subtraction" class="nav-link" data-scroll-target="#subtraction"><span class="header-section-number">8.0.2</span> Subtraction</a></li>
+  <li><a href="#multiplication" id="toc-multiplication" class="nav-link" data-scroll-target="#multiplication"><span class="header-section-number">8.0.3</span> Multiplication</a></li>
+  <li><a href="#division" id="toc-division" class="nav-link" data-scroll-target="#division"><span class="header-section-number">8.0.4</span> Division</a></li>
+  <li><a href="#pow" id="toc-pow" class="nav-link" data-scroll-target="#pow"><span class="header-section-number">8.0.5</span> Pow</a></li>
+  <li><a href="#mod" id="toc-mod" class="nav-link" data-scroll-target="#mod"><span class="header-section-number">8.0.6</span> Mod</a></li>
+  </ul></li>
+  <li><a href="#operations---comparison" id="toc-operations---comparison" class="nav-link" data-scroll-target="#operations---comparison"><span class="header-section-number">9</span> Operations - Comparison</a>
+  <ul>
+  <li><a href="#equals" id="toc-equals" class="nav-link" data-scroll-target="#equals"><span class="header-section-number">9.0.1</span> Equals</a></li>
+  <li><a href="#triple-equals" id="toc-triple-equals" class="nav-link" data-scroll-target="#triple-equals"><span class="header-section-number">9.0.2</span> Triple Equals</a></li>
+  <li><a href="#not-equals" id="toc-not-equals" class="nav-link" data-scroll-target="#not-equals"><span class="header-section-number">9.0.3</span> Not Equals</a></li>
+  <li><a href="#less-than" id="toc-less-than" class="nav-link" data-scroll-target="#less-than"><span class="header-section-number">9.0.4</span> Less Than</a></li>
+  <li><a href="#less-than-equals" id="toc-less-than-equals" class="nav-link" data-scroll-target="#less-than-equals"><span class="header-section-number">9.0.5</span> Less Than Equals</a></li>
+  <li><a href="#greater-than" id="toc-greater-than" class="nav-link" data-scroll-target="#greater-than"><span class="header-section-number">9.0.6</span> Greater Than</a></li>
+  <li><a href="#greater-than-equals" id="toc-greater-than-equals" class="nav-link" data-scroll-target="#greater-than-equals"><span class="header-section-number">9.0.7</span> Greater Than Equals</a></li>
+  </ul></li>
+  <li><a href="#operations---counter" id="toc-operations---counter" class="nav-link" data-scroll-target="#operations---counter"><span class="header-section-number">10</span> Operations - Counter</a>
+  <ul>
+  <li><a href="#increment" id="toc-increment" class="nav-link" data-scroll-target="#increment"><span class="header-section-number">10.0.1</span> Increment</a></li>
+  <li><a href="#increment-by" id="toc-increment-by" class="nav-link" data-scroll-target="#increment-by"><span class="header-section-number">10.0.2</span> Increment By</a></li>
+  <li><a href="#decrement" id="toc-decrement" class="nav-link" data-scroll-target="#decrement"><span class="header-section-number">10.0.3</span> Decrement</a></li>
+  <li><a href="#decrement-by" id="toc-decrement-by" class="nav-link" data-scroll-target="#decrement-by"><span class="header-section-number">10.0.4</span> Decrement By</a></li>
+  <li><a href="#multiply-by" id="toc-multiply-by" class="nav-link" data-scroll-target="#multiply-by"><span class="header-section-number">10.0.5</span> Multiply By</a></li>
+  </ul></li>
+  <li><a href="#operations---bitwise" id="toc-operations---bitwise" class="nav-link" data-scroll-target="#operations---bitwise"><span class="header-section-number">11</span> Operations - Bitwise</a>
+  <ul>
+  <li><a href="#bitwise-or" id="toc-bitwise-or" class="nav-link" data-scroll-target="#bitwise-or"><span class="header-section-number">11.0.1</span> Bitwise Or</a></li>
+  <li><a href="#bitwise-and" id="toc-bitwise-and" class="nav-link" data-scroll-target="#bitwise-and"><span class="header-section-number">11.0.2</span> Bitwise And</a></li>
+  <li><a href="#bitwise-xor" id="toc-bitwise-xor" class="nav-link" data-scroll-target="#bitwise-xor"><span class="header-section-number">11.0.3</span> Bitwise Xor</a></li>
+  <li><a href="#bitshift-right" id="toc-bitshift-right" class="nav-link" data-scroll-target="#bitshift-right"><span class="header-section-number">11.0.4</span> Bitshift Right</a></li>
+  <li><a href="#bitshift-left" id="toc-bitshift-left" class="nav-link" data-scroll-target="#bitshift-left"><span class="header-section-number">11.0.5</span> Bitshift Left</a></li>
+  </ul></li>
+  <li><a href="#lib---helpers" id="toc-lib---helpers" class="nav-link" data-scroll-target="#lib---helpers"><span class="header-section-number">12</span> Lib - Helpers</a>
+  <ul>
+  <li><a href="#forarray" id="toc-forarray" class="nav-link" data-scroll-target="#forarray"><span class="header-section-number">12.0.1</span> for:array</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -275,8 +329,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="sourceCode" id="cb11"><pre class="sourceCode clojure code-with-copy"><code class="sourceCode clojure"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>[<span class="st">"1 + 2;"</span> <span class="dv">3</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
-<section id="primitives" class="level1" data-number="3">
-<h1 data-number="3"><span class="header-section-number">3</span> Primitives</h1>
+<section id="types---primitives" class="level1" data-number="3">
+<h1 data-number="3"><span class="header-section-number">3</span> Types - Primitives</h1>
 <p>The seven primitive data types in JavaScript are string, number, bigint, boolean, undefined, symbol, and null. We work with examples from: https://www.w3docs.com/learn-javascript/methods-of-primitives.html</p>
 <p>From the Javascript Runtime perspective, primitives are extremely important to understand for designing fast programs. They offer the following traits:</p>
 <ol type="1">
@@ -324,21 +378,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <td><code class="sourceCode clojure">undefined</code></td>
 <td><code class="sourceCode javascript"><span class="st">"undefined;"</span></code></td>
 <td><code class="sourceCode clojure"><span class="va">nil</span></code></td>
-</tr>
-<tr class="even">
-<td><code class="sourceCode clojure">NaN</code></td>
-<td><code class="sourceCode javascript"><span class="st">"NaN;"</span></code></td>
-<td><code class="sourceCode clojure"><span class="va">nil</span></code></td>
-</tr>
-<tr class="odd">
-<td><code class="sourceCode clojure">Infinity</code></td>
-<td><code class="sourceCode javascript"><span class="st">"Infinity;"</span></code></td>
-<td><code class="sourceCode clojure"><span class="va">nil</span></code></td>
-</tr>
-<tr class="even">
-<td><code class="sourceCode clojure">(<span class="kw">-</span> Infinity)</code></td>
-<td><code class="sourceCode javascript"><span class="st">"-Infinity;"</span></code></td>
-<td><code class="sourceCode clojure"><span class="st">"-Infinity"</span></code></td>
 </tr>
 </tbody>
 </table>
@@ -429,6 +468,21 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <td><code class="sourceCode javascript"><span class="st">"1.54444444444444;"</span></code></td>
 <td><code class="sourceCode clojure"><span class="fl">1.54444444444444</span></code></td>
 </tr>
+<tr class="even">
+<td><code class="sourceCode clojure">NaN</code></td>
+<td><code class="sourceCode javascript"><span class="st">"NaN;"</span></code></td>
+<td><code class="sourceCode clojure"><span class="va">nil</span></code></td>
+</tr>
+<tr class="odd">
+<td><code class="sourceCode clojure">Infinity</code></td>
+<td><code class="sourceCode javascript"><span class="st">"Infinity;"</span></code></td>
+<td><code class="sourceCode clojure"><span class="va">nil</span></code></td>
+</tr>
+<tr class="even">
+<td><code class="sourceCode clojure">(<span class="kw">-</span> Infinity)</code></td>
+<td><code class="sourceCode javascript"><span class="st">"-Infinity;"</span></code></td>
+<td><code class="sourceCode clojure"><span class="st">"-Infinity"</span></code></td>
+</tr>
 </tbody>
 </table>
 </div>
@@ -480,8 +534,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </section>
-<section id="regex" class="level3" data-number="3.0.8">
-<h3 data-number="3.0.8" class="anchored" data-anchor-id="regex"><span class="header-section-number">3.0.8</span> Regex</h3>
+</section>
+<section id="types---additional" class="level1" data-number="4">
+<h1 data-number="4"><span class="header-section-number">4</span> Types - Additional</h1>
+<section id="regex" class="level3" data-number="4.0.1">
+<h3 data-number="4.0.1" class="anchored" data-anchor-id="regex"><span class="header-section-number">4.0.1</span> Regex</h3>
 <div class="clay-table">
 <div class="table-responsive">
 <table class="table table-hover clay-table caption-top" data-quarto-postprocess="true">
@@ -505,10 +562,299 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </section>
 </section>
-<section id="operations---math" class="level1" data-number="4">
-<h1 data-number="4"><span class="header-section-number">4</span> Operations - Math</h1>
-<section id="addition" class="level3" data-number="4.0.1">
-<h3 data-number="4.0.1" class="anchored" data-anchor-id="addition"><span class="header-section-number">4.0.1</span> Addition</h3>
+<section id="types---collection" class="level1" data-number="5">
+<h1 data-number="5"><span class="header-section-number">5</span> Types - Collection</h1>
+<section id="arrays" class="level3" data-number="5.0.1">
+<h3 data-number="5.0.1" class="anchored" data-anchor-id="arrays"><span class="header-section-number">5.0.1</span> Arrays</h3>
+<div class="clay-table">
+<div class="table-responsive">
+<table class="table table-hover clay-table caption-top" data-quarto-postprocess="true">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th">form</th>
+<th data-quarto-table-cell-role="th">code</th>
+<th data-quarto-table-cell-role="th">live</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code class="sourceCode clojure">[<span class="dv">1</span> <span class="dv">2</span> <span class="dv">3</span> <span class="dv">4</span>]</code></td>
+<td><code class="sourceCode javascript"><span class="st">"[1,2,3,4];"</span></code></td>
+<td><code class="sourceCode clojure">[<span class="dv">1</span> <span class="dv">2</span> <span class="dv">3</span> <span class="dv">4</span>]</code></td>
+</tr>
+<tr class="even">
+<td><code class="sourceCode clojure">[<span class="st">"hello"</span> [<span class="st">"world"</span>]]</code></td>
+<td><code class="sourceCode javascript"><span class="st">"[</span><span class="sc">\"</span><span class="st">hello</span><span class="sc">\"</span><span class="st">,[</span><span class="sc">\"</span><span class="st">world</span><span class="sc">\"</span><span class="st">]];"</span></code></td>
+<td><code class="sourceCode clojure">[<span class="st">"hello"</span> [<span class="st">"world"</span>]]</code></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</section>
+<section id="objects" class="level3" data-number="5.0.2">
+<h3 data-number="5.0.2" class="anchored" data-anchor-id="objects"><span class="header-section-number">5.0.2</span> Objects</h3>
+<div class="clay-table">
+<div class="table-responsive">
+<table class="table table-hover clay-table caption-top" data-quarto-postprocess="true">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th">form</th>
+<th data-quarto-table-cell-role="th">code</th>
+<th data-quarto-table-cell-role="th">live</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code class="sourceCode clojure">{<span class="at">:a</span> <span class="dv">1</span>, <span class="at">:b</span> <span class="dv">2</span>, <span class="at">:c</span> <span class="dv">3</span>}</code></td>
+<td><code class="sourceCode javascript"><span class="st">"{</span><span class="sc">\"</span><span class="st">a</span><span class="sc">\"</span><span class="st">:1,</span><span class="sc">\"</span><span class="st">b</span><span class="sc">\"</span><span class="st">:2,</span><span class="sc">\"</span><span class="st">c</span><span class="sc">\"</span><span class="st">:3};"</span></code></td>
+<td><code class="sourceCode clojure">{<span class="st">"a"</span> <span class="dv">1</span>, <span class="st">"b"</span> <span class="dv">2</span>, <span class="st">"c"</span> <span class="dv">3</span>}</code></td>
+</tr>
+<tr class="even">
+<td><code class="sourceCode clojure">{<span class="at">:a</span> {<span class="at">:b</span> {<span class="at">:c</span> <span class="dv">3</span>}}}</code></td>
+<td><code class="sourceCode javascript"><span class="st">"{</span><span class="sc">\"</span><span class="st">a</span><span class="sc">\"</span><span class="st">:{</span><span class="sc">\"</span><span class="st">b</span><span class="sc">\"</span><span class="st">:{</span><span class="sc">\"</span><span class="st">c</span><span class="sc">\"</span><span class="st">:3}}};"</span></code></td>
+<td><code class="sourceCode clojure">{<span class="st">"a"</span> {<span class="st">"b"</span> {<span class="st">"c"</span> <span class="dv">3</span>}}}</code></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</section>
+<section id="objects---tab" class="level3" data-number="5.0.3">
+<h3 data-number="5.0.3" class="anchored" data-anchor-id="objects---tab"><span class="header-section-number">5.0.3</span> Objects - tab</h3>
+<div class="clay-table">
+<div class="table-responsive">
+<table class="table table-hover clay-table caption-top" data-quarto-postprocess="true">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th">form</th>
+<th data-quarto-table-cell-role="th">code</th>
+<th data-quarto-table-cell-role="th">live</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code class="sourceCode clojure">(tab [<span class="st">"a"</span> <span class="dv">1</span>] [<span class="st">"b"</span> <span class="dv">2</span>] [<span class="st">"c"</span> <span class="dv">3</span>])</code></td>
+<td><code class="sourceCode javascript"><span class="st">"{</span><span class="sc">\"</span><span class="st">a</span><span class="sc">\"</span><span class="st">:1,</span><span class="sc">\"</span><span class="st">b</span><span class="sc">\"</span><span class="st">:2,</span><span class="sc">\"</span><span class="st">c</span><span class="sc">\"</span><span class="st">:3};"</span></code></td>
+<td><code class="sourceCode clojure">{<span class="st">"a"</span> <span class="dv">1</span>, <span class="st">"b"</span> <span class="dv">2</span>, <span class="st">"c"</span> <span class="dv">3</span>}</code></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</section>
+</section>
+<section id="operations---assignment" class="level1" data-number="6">
+<h1 data-number="6"><span class="header-section-number">6</span> Operations - Assignment</h1>
+<section id="var" class="level3" data-number="6.0.1">
+<h3 data-number="6.0.1" class="anchored" data-anchor-id="var"><span class="header-section-number">6.0.1</span> Var</h3>
+<div class="clay-table">
+<div class="table-responsive">
+<table class="table table-hover clay-table caption-top" data-quarto-postprocess="true">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th">form</th>
+<th data-quarto-table-cell-role="th">code</th>
+<th data-quarto-table-cell-role="th">live</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code class="sourceCode clojure">(<span class="kw">do</span> (var x <span class="dv">1</span>) x)</code></td>
+<td><code class="sourceCode javascript"><span class="st">"let x = 1;</span><span class="sc">\n</span><span class="st">x;"</span></code></td>
+<td><code class="sourceCode clojure"><span class="dv">1</span></code></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</section>
+<section id="const" class="level3" data-number="6.0.2">
+<h3 data-number="6.0.2" class="anchored" data-anchor-id="const"><span class="header-section-number">6.0.2</span> Const</h3>
+<div class="clay-table">
+<div class="table-responsive">
+<table class="table table-hover clay-table caption-top" data-quarto-postprocess="true">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th">form</th>
+<th data-quarto-table-cell-role="th">code</th>
+<th data-quarto-table-cell-role="th">live</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code class="sourceCode clojure">(<span class="kw">do</span> (const x <span class="dv">1</span>) x)</code></td>
+<td><code class="sourceCode javascript"><span class="st">"const x = 1;</span><span class="sc">\n</span><span class="st">x;"</span></code></td>
+<td><code class="sourceCode clojure"><span class="dv">1</span></code></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</section>
+<section id="reassign" class="level3" data-number="6.0.3">
+<h3 data-number="6.0.3" class="anchored" data-anchor-id="reassign"><span class="header-section-number">6.0.3</span> ReAssign</h3>
+<div class="clay-table">
+<div class="table-responsive">
+<table class="table table-hover clay-table caption-top" data-quarto-postprocess="true">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th">form</th>
+<th data-quarto-table-cell-role="th">code</th>
+<th data-quarto-table-cell-role="th">live</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code class="sourceCode clojure">(<span class="kw">do</span> (var x <span class="dv">1</span>) (:= x <span class="dv">10</span>) x)</code></td>
+<td><code class="sourceCode javascript"><span class="st">"let x = 1;</span><span class="sc">\n</span><span class="st">x = 10;</span><span class="sc">\n</span><span class="st">x;"</span></code></td>
+<td><code class="sourceCode clojure"><span class="dv">10</span></code></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</section>
+</section>
+<section id="operations---logic" class="level1" data-number="7">
+<h1 data-number="7"><span class="header-section-number">7</span> Operations - Logic</h1>
+<section id="negation" class="level3" data-number="7.0.1">
+<h3 data-number="7.0.1" class="anchored" data-anchor-id="negation"><span class="header-section-number">7.0.1</span> Negation</h3>
+<div class="clay-table">
+<div class="table-responsive">
+<table class="table table-hover clay-table caption-top" data-quarto-postprocess="true">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th">form</th>
+<th data-quarto-table-cell-role="th">code</th>
+<th data-quarto-table-cell-role="th">live</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code class="sourceCode clojure">(<span class="kw">not</span> <span class="va">true</span>)</code></td>
+<td><code class="sourceCode javascript"><span class="st">"!true;"</span></code></td>
+<td><code class="sourceCode clojure"><span class="va">false</span></code></td>
+</tr>
+<tr class="even">
+<td><code class="sourceCode clojure">(<span class="kw">not</span> <span class="va">false</span>)</code></td>
+<td><code class="sourceCode javascript"><span class="st">"!false;"</span></code></td>
+<td><code class="sourceCode clojure"><span class="va">true</span></code></td>
+</tr>
+<tr class="odd">
+<td><code class="sourceCode clojure">(<span class="kw">not</span> <span class="dv">1</span>)</code></td>
+<td><code class="sourceCode javascript"><span class="st">"!1;"</span></code></td>
+<td><code class="sourceCode clojure"><span class="va">false</span></code></td>
+</tr>
+<tr class="even">
+<td><code class="sourceCode clojure">(<span class="kw">not</span> <span class="dv">0</span>)</code></td>
+<td><code class="sourceCode javascript"><span class="st">"!0;"</span></code></td>
+<td><code class="sourceCode clojure"><span class="va">true</span></code></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</section>
+<section id="or" class="level3" data-number="7.0.2">
+<h3 data-number="7.0.2" class="anchored" data-anchor-id="or"><span class="header-section-number">7.0.2</span> Or</h3>
+<div class="clay-table">
+<div class="table-responsive">
+<table class="table table-hover clay-table caption-top" data-quarto-postprocess="true">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th">form</th>
+<th data-quarto-table-cell-role="th">code</th>
+<th data-quarto-table-cell-role="th">live</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code class="sourceCode clojure">(<span class="kw">or</span> <span class="dv">0</span> <span class="va">false</span>)</code></td>
+<td><code class="sourceCode javascript"><span class="st">"0 || false;"</span></code></td>
+<td><code class="sourceCode clojure"><span class="va">false</span></code></td>
+</tr>
+<tr class="even">
+<td><code class="sourceCode clojure">(<span class="kw">or</span> <span class="dv">1</span> <span class="va">false</span>)</code></td>
+<td><code class="sourceCode javascript"><span class="st">"1 || false;"</span></code></td>
+<td><code class="sourceCode clojure"><span class="dv">1</span></code></td>
+</tr>
+<tr class="odd">
+<td><code class="sourceCode clojure">(<span class="kw">or</span> <span class="dv">0</span> <span class="va">true</span>)</code></td>
+<td><code class="sourceCode javascript"><span class="st">"0 || true;"</span></code></td>
+<td><code class="sourceCode clojure"><span class="va">true</span></code></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</section>
+<section id="and" class="level3" data-number="7.0.3">
+<h3 data-number="7.0.3" class="anchored" data-anchor-id="and"><span class="header-section-number">7.0.3</span> And</h3>
+<div class="clay-table">
+<div class="table-responsive">
+<table class="table table-hover clay-table caption-top" data-quarto-postprocess="true">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th">form</th>
+<th data-quarto-table-cell-role="th">code</th>
+<th data-quarto-table-cell-role="th">live</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code class="sourceCode clojure">(<span class="kw">and</span> <span class="dv">0</span> <span class="va">false</span>)</code></td>
+<td><code class="sourceCode javascript"><span class="st">"0 &amp;&amp; false;"</span></code></td>
+<td><code class="sourceCode clojure"><span class="dv">0</span></code></td>
+</tr>
+<tr class="even">
+<td><code class="sourceCode clojure">(<span class="kw">and</span> <span class="dv">1</span> <span class="va">false</span>)</code></td>
+<td><code class="sourceCode javascript"><span class="st">"1 &amp;&amp; false;"</span></code></td>
+<td><code class="sourceCode clojure"><span class="va">false</span></code></td>
+</tr>
+<tr class="odd">
+<td><code class="sourceCode clojure">(<span class="kw">and</span> <span class="dv">0</span> <span class="va">true</span>)</code></td>
+<td><code class="sourceCode javascript"><span class="st">"0 &amp;&amp; true;"</span></code></td>
+<td><code class="sourceCode clojure"><span class="dv">0</span></code></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</section>
+<section id="ternary" class="level3" data-number="7.0.4">
+<h3 data-number="7.0.4" class="anchored" data-anchor-id="ternary"><span class="header-section-number">7.0.4</span> Ternary</h3>
+<div class="clay-table">
+<div class="table-responsive">
+<table class="table table-hover clay-table caption-top" data-quarto-postprocess="true">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th">form</th>
+<th data-quarto-table-cell-role="th">code</th>
+<th data-quarto-table-cell-role="th">live</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code class="sourceCode clojure">(:? <span class="va">true</span> <span class="dv">1</span> <span class="dv">2</span>)</code></td>
+<td><code class="sourceCode javascript"><span class="st">"true ? 1 : 2;"</span></code></td>
+<td><code class="sourceCode clojure"><span class="dv">1</span></code></td>
+</tr>
+<tr class="even">
+<td><code class="sourceCode clojure">(:? (<span class="kw">or</span> <span class="dv">0</span> <span class="dv">0</span>) <span class="dv">1</span> <span class="dv">2</span>)</code></td>
+<td><code class="sourceCode javascript"><span class="st">"(0 || 0) ? 1 : 2;"</span></code></td>
+<td><code class="sourceCode clojure"><span class="dv">2</span></code></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</section>
+</section>
+<section id="operations---math" class="level1" data-number="8">
+<h1 data-number="8"><span class="header-section-number">8</span> Operations - Math</h1>
+<section id="addition" class="level3" data-number="8.0.1">
+<h3 data-number="8.0.1" class="anchored" data-anchor-id="addition"><span class="header-section-number">8.0.1</span> Addition</h3>
 <div class="clay-table">
 <div class="table-responsive">
 <table class="table table-hover clay-table caption-top" data-quarto-postprocess="true">
@@ -535,8 +881,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </section>
-<section id="subtraction" class="level3" data-number="4.0.2">
-<h3 data-number="4.0.2" class="anchored" data-anchor-id="subtraction"><span class="header-section-number">4.0.2</span> Subtraction</h3>
+<section id="subtraction" class="level3" data-number="8.0.2">
+<h3 data-number="8.0.2" class="anchored" data-anchor-id="subtraction"><span class="header-section-number">8.0.2</span> Subtraction</h3>
 <div class="clay-table">
 <div class="table-responsive">
 <table class="table table-hover clay-table caption-top" data-quarto-postprocess="true">
@@ -568,8 +914,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </section>
-<section id="multiplication" class="level3" data-number="4.0.3">
-<h3 data-number="4.0.3" class="anchored" data-anchor-id="multiplication"><span class="header-section-number">4.0.3</span> Multiplication</h3>
+<section id="multiplication" class="level3" data-number="8.0.3">
+<h3 data-number="8.0.3" class="anchored" data-anchor-id="multiplication"><span class="header-section-number">8.0.3</span> Multiplication</h3>
 <div class="clay-table">
 <div class="table-responsive">
 <table class="table table-hover clay-table caption-top" data-quarto-postprocess="true">
@@ -596,8 +942,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </section>
-<section id="division" class="level3" data-number="4.0.4">
-<h3 data-number="4.0.4" class="anchored" data-anchor-id="division"><span class="header-section-number">4.0.4</span> Division</h3>
+<section id="division" class="level3" data-number="8.0.4">
+<h3 data-number="8.0.4" class="anchored" data-anchor-id="division"><span class="header-section-number">8.0.4</span> Division</h3>
 <div class="clay-table">
 <div class="table-responsive">
 <table class="table table-hover clay-table caption-top" data-quarto-postprocess="true">
@@ -628,6 +974,568 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </table>
 </div>
 </div>
+</section>
+<section id="pow" class="level3" data-number="8.0.5">
+<h3 data-number="8.0.5" class="anchored" data-anchor-id="pow"><span class="header-section-number">8.0.5</span> Pow</h3>
+<div class="clay-table">
+<div class="table-responsive">
+<table class="table table-hover clay-table caption-top" data-quarto-postprocess="true">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th">form</th>
+<th data-quarto-table-cell-role="th">code</th>
+<th data-quarto-table-cell-role="th">live</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code class="sourceCode clojure">(pow <span class="dv">10</span> <span class="dv">2</span>)</code></td>
+<td><code class="sourceCode javascript"><span class="st">"10 ^ 2;"</span></code></td>
+<td><code class="sourceCode clojure"><span class="dv">8</span></code></td>
+</tr>
+<tr class="even">
+<td><code class="sourceCode clojure">(pow <span class="fl">0.5</span> <span class="fl">0.2</span>)</code></td>
+<td><code class="sourceCode javascript"><span class="st">"0.5 ^ 0.2;"</span></code></td>
+<td><code class="sourceCode clojure"><span class="dv">0</span></code></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</section>
+<section id="mod" class="level3" data-number="8.0.6">
+<h3 data-number="8.0.6" class="anchored" data-anchor-id="mod"><span class="header-section-number">8.0.6</span> Mod</h3>
+<div class="clay-table">
+<div class="table-responsive">
+<table class="table table-hover clay-table caption-top" data-quarto-postprocess="true">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th">form</th>
+<th data-quarto-table-cell-role="th">code</th>
+<th data-quarto-table-cell-role="th">live</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code class="sourceCode clojure">(<span class="kw">mod</span> <span class="dv">1123</span> <span class="dv">7</span>)</code></td>
+<td><code class="sourceCode javascript"><span class="st">"1123 % 7;"</span></code></td>
+<td><code class="sourceCode clojure"><span class="dv">3</span></code></td>
+</tr>
+<tr class="even">
+<td><code class="sourceCode clojure">(<span class="kw">mod</span> <span class="dv">1123</span> <span class="fl">7.1</span>)</code></td>
+<td><code class="sourceCode javascript"><span class="st">"1123 % 7.1;"</span></code></td>
+<td><code class="sourceCode clojure"><span class="fl">1.2000000000000561</span></code></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</section>
+</section>
+<section id="operations---comparison" class="level1" data-number="9">
+<h1 data-number="9"><span class="header-section-number">9</span> Operations - Comparison</h1>
+<section id="equals" class="level3" data-number="9.0.1">
+<h3 data-number="9.0.1" class="anchored" data-anchor-id="equals"><span class="header-section-number">9.0.1</span> Equals</h3>
+<div class="clay-table">
+<div class="table-responsive">
+<table class="table table-hover clay-table caption-top" data-quarto-postprocess="true">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th">form</th>
+<th data-quarto-table-cell-role="th">code</th>
+<th data-quarto-table-cell-role="th">live</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code class="sourceCode clojure">(<span class="kw">==</span> <span class="dv">1</span> <span class="dv">1</span>)</code></td>
+<td><code class="sourceCode javascript"><span class="st">"1 == 1;"</span></code></td>
+<td><code class="sourceCode clojure"><span class="va">true</span></code></td>
+</tr>
+<tr class="even">
+<td><code class="sourceCode clojure">(<span class="kw">==</span> <span class="dv">1</span> <span class="st">"1"</span>)</code></td>
+<td><code class="sourceCode javascript"><span class="st">"1 == </span><span class="sc">\"</span><span class="st">1</span><span class="sc">\"</span><span class="st">;"</span></code></td>
+<td><code class="sourceCode clojure"><span class="va">true</span></code></td>
+</tr>
+<tr class="odd">
+<td><code class="sourceCode clojure">(<span class="kw">==</span> <span class="st">"hello"</span> <span class="st">"hello"</span>)</code></td>
+<td><code class="sourceCode javascript"><span class="st">"</span><span class="sc">\"</span><span class="st">hello</span><span class="sc">\"</span><span class="st"> == </span><span class="sc">\"</span><span class="st">hello</span><span class="sc">\"</span><span class="st">;"</span></code></td>
+<td><code class="sourceCode clojure"><span class="va">true</span></code></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</section>
+<section id="triple-equals" class="level3" data-number="9.0.2">
+<h3 data-number="9.0.2" class="anchored" data-anchor-id="triple-equals"><span class="header-section-number">9.0.2</span> Triple Equals</h3>
+<div class="clay-table">
+<div class="table-responsive">
+<table class="table table-hover clay-table caption-top" data-quarto-postprocess="true">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th">form</th>
+<th data-quarto-table-cell-role="th">code</th>
+<th data-quarto-table-cell-role="th">live</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code class="sourceCode clojure">(=== <span class="dv">1</span> <span class="dv">1</span>)</code></td>
+<td><code class="sourceCode javascript"><span class="st">"1 === 1;"</span></code></td>
+<td><code class="sourceCode clojure"><span class="va">true</span></code></td>
+</tr>
+<tr class="even">
+<td><code class="sourceCode clojure">(=== <span class="dv">1</span> <span class="st">"1"</span>)</code></td>
+<td><code class="sourceCode javascript"><span class="st">"1 === </span><span class="sc">\"</span><span class="st">1</span><span class="sc">\"</span><span class="st">;"</span></code></td>
+<td><code class="sourceCode clojure"><span class="va">false</span></code></td>
+</tr>
+<tr class="odd">
+<td><code class="sourceCode clojure">(=== <span class="st">"hello"</span> <span class="st">"hello"</span>)</code></td>
+<td><code class="sourceCode javascript"><span class="st">"</span><span class="sc">\"</span><span class="st">hello</span><span class="sc">\"</span><span class="st"> === </span><span class="sc">\"</span><span class="st">hello</span><span class="sc">\"</span><span class="st">;"</span></code></td>
+<td><code class="sourceCode clojure"><span class="va">true</span></code></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</section>
+<section id="not-equals" class="level3" data-number="9.0.3">
+<h3 data-number="9.0.3" class="anchored" data-anchor-id="not-equals"><span class="header-section-number">9.0.3</span> Not Equals</h3>
+<div class="clay-table">
+<div class="table-responsive">
+<table class="table table-hover clay-table caption-top" data-quarto-postprocess="true">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th">form</th>
+<th data-quarto-table-cell-role="th">code</th>
+<th data-quarto-table-cell-role="th">live</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code class="sourceCode clojure">(<span class="kw">not=</span> <span class="dv">1</span> <span class="dv">2</span>)</code></td>
+<td><code class="sourceCode javascript"><span class="st">"1 != 2;"</span></code></td>
+<td><code class="sourceCode clojure"><span class="va">true</span></code></td>
+</tr>
+<tr class="even">
+<td><code class="sourceCode clojure">(<span class="kw">not=</span> <span class="dv">1</span> <span class="st">"1"</span>)</code></td>
+<td><code class="sourceCode javascript"><span class="st">"1 != </span><span class="sc">\"</span><span class="st">1</span><span class="sc">\"</span><span class="st">;"</span></code></td>
+<td><code class="sourceCode clojure"><span class="va">false</span></code></td>
+</tr>
+<tr class="odd">
+<td><code class="sourceCode clojure">(<span class="kw">not=</span> <span class="st">"hello"</span> <span class="st">"hello"</span>)</code></td>
+<td><code class="sourceCode javascript"><span class="st">"</span><span class="sc">\"</span><span class="st">hello</span><span class="sc">\"</span><span class="st"> != </span><span class="sc">\"</span><span class="st">hello</span><span class="sc">\"</span><span class="st">;"</span></code></td>
+<td><code class="sourceCode clojure"><span class="va">false</span></code></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</section>
+<section id="less-than" class="level3" data-number="9.0.4">
+<h3 data-number="9.0.4" class="anchored" data-anchor-id="less-than"><span class="header-section-number">9.0.4</span> Less Than</h3>
+<div class="clay-table">
+<div class="table-responsive">
+<table class="table table-hover clay-table caption-top" data-quarto-postprocess="true">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th">form</th>
+<th data-quarto-table-cell-role="th">code</th>
+<th data-quarto-table-cell-role="th">live</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code class="sourceCode clojure">(<span class="kw">&lt;</span> <span class="dv">1</span> <span class="dv">2</span>)</code></td>
+<td><code class="sourceCode javascript"><span class="st">"1 &lt; 2;"</span></code></td>
+<td><code class="sourceCode clojure"><span class="va">true</span></code></td>
+</tr>
+<tr class="even">
+<td><code class="sourceCode clojure">(<span class="kw">&lt;</span> <span class="dv">1</span> <span class="dv">1</span>)</code></td>
+<td><code class="sourceCode javascript"><span class="st">"1 &lt; 1;"</span></code></td>
+<td><code class="sourceCode clojure"><span class="va">false</span></code></td>
+</tr>
+<tr class="odd">
+<td><code class="sourceCode clojure">(<span class="kw">&lt;</span> <span class="dv">1</span> <span class="st">"2"</span>)</code></td>
+<td><code class="sourceCode javascript"><span class="st">"1 &lt; </span><span class="sc">\"</span><span class="st">2</span><span class="sc">\"</span><span class="st">;"</span></code></td>
+<td><code class="sourceCode clojure"><span class="va">true</span></code></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</section>
+<section id="less-than-equals" class="level3" data-number="9.0.5">
+<h3 data-number="9.0.5" class="anchored" data-anchor-id="less-than-equals"><span class="header-section-number">9.0.5</span> Less Than Equals</h3>
+<div class="clay-table">
+<div class="table-responsive">
+<table class="table table-hover clay-table caption-top" data-quarto-postprocess="true">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th">form</th>
+<th data-quarto-table-cell-role="th">code</th>
+<th data-quarto-table-cell-role="th">live</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code class="sourceCode clojure">(<span class="kw">&lt;=</span> <span class="dv">1</span> <span class="dv">2</span>)</code></td>
+<td><code class="sourceCode javascript"><span class="st">"1 &lt;= 2;"</span></code></td>
+<td><code class="sourceCode clojure"><span class="va">true</span></code></td>
+</tr>
+<tr class="even">
+<td><code class="sourceCode clojure">(<span class="kw">&lt;=</span> <span class="dv">1</span> <span class="dv">1</span>)</code></td>
+<td><code class="sourceCode javascript"><span class="st">"1 &lt;= 1;"</span></code></td>
+<td><code class="sourceCode clojure"><span class="va">true</span></code></td>
+</tr>
+<tr class="odd">
+<td><code class="sourceCode clojure">(<span class="kw">&lt;=</span> <span class="dv">1</span> <span class="st">"1"</span>)</code></td>
+<td><code class="sourceCode javascript"><span class="st">"1 &lt;= </span><span class="sc">\"</span><span class="st">1</span><span class="sc">\"</span><span class="st">;"</span></code></td>
+<td><code class="sourceCode clojure"><span class="va">true</span></code></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</section>
+<section id="greater-than" class="level3" data-number="9.0.6">
+<h3 data-number="9.0.6" class="anchored" data-anchor-id="greater-than"><span class="header-section-number">9.0.6</span> Greater Than</h3>
+<div class="clay-table">
+<div class="table-responsive">
+<table class="table table-hover clay-table caption-top" data-quarto-postprocess="true">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th">form</th>
+<th data-quarto-table-cell-role="th">code</th>
+<th data-quarto-table-cell-role="th">live</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code class="sourceCode clojure">(<span class="kw">&gt;</span> <span class="dv">3</span> <span class="dv">2</span>)</code></td>
+<td><code class="sourceCode javascript"><span class="st">"3 &gt; 2;"</span></code></td>
+<td><code class="sourceCode clojure"><span class="va">true</span></code></td>
+</tr>
+<tr class="even">
+<td><code class="sourceCode clojure">(<span class="kw">&gt;</span> <span class="dv">3</span> <span class="dv">3</span>)</code></td>
+<td><code class="sourceCode javascript"><span class="st">"3 &gt; 3;"</span></code></td>
+<td><code class="sourceCode clojure"><span class="va">false</span></code></td>
+</tr>
+<tr class="odd">
+<td><code class="sourceCode clojure">(<span class="kw">&gt;</span> <span class="dv">3</span> <span class="st">"2"</span>)</code></td>
+<td><code class="sourceCode javascript"><span class="st">"3 &gt; </span><span class="sc">\"</span><span class="st">2</span><span class="sc">\"</span><span class="st">;"</span></code></td>
+<td><code class="sourceCode clojure"><span class="va">true</span></code></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</section>
+<section id="greater-than-equals" class="level3" data-number="9.0.7">
+<h3 data-number="9.0.7" class="anchored" data-anchor-id="greater-than-equals"><span class="header-section-number">9.0.7</span> Greater Than Equals</h3>
+<div class="clay-table">
+<div class="table-responsive">
+<table class="table table-hover clay-table caption-top" data-quarto-postprocess="true">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th">form</th>
+<th data-quarto-table-cell-role="th">code</th>
+<th data-quarto-table-cell-role="th">live</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code class="sourceCode clojure">(<span class="kw">&gt;=</span> <span class="dv">3</span> <span class="dv">2</span>)</code></td>
+<td><code class="sourceCode javascript"><span class="st">"3 &gt;= 2;"</span></code></td>
+<td><code class="sourceCode clojure"><span class="va">true</span></code></td>
+</tr>
+<tr class="even">
+<td><code class="sourceCode clojure">(<span class="kw">&gt;=</span> <span class="dv">3</span> <span class="dv">3</span>)</code></td>
+<td><code class="sourceCode javascript"><span class="st">"3 &gt;= 3;"</span></code></td>
+<td><code class="sourceCode clojure"><span class="va">true</span></code></td>
+</tr>
+<tr class="odd">
+<td><code class="sourceCode clojure">(<span class="kw">&gt;=</span> <span class="dv">3</span> <span class="st">"3"</span>)</code></td>
+<td><code class="sourceCode javascript"><span class="st">"3 &gt;= </span><span class="sc">\"</span><span class="st">3</span><span class="sc">\"</span><span class="st">;"</span></code></td>
+<td><code class="sourceCode clojure"><span class="va">true</span></code></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</section>
+</section>
+<section id="operations---counter" class="level1" data-number="10">
+<h1 data-number="10"><span class="header-section-number">10</span> Operations - Counter</h1>
+<section id="increment" class="level3" data-number="10.0.1">
+<h3 data-number="10.0.1" class="anchored" data-anchor-id="increment"><span class="header-section-number">10.0.1</span> Increment</h3>
+<div class="clay-table">
+<div class="table-responsive">
+<table class="table table-hover clay-table caption-top" data-quarto-postprocess="true">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th">form</th>
+<th data-quarto-table-cell-role="th">code</th>
+<th data-quarto-table-cell-role="th">live</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code class="sourceCode clojure">(<span class="kw">do</span> (var x <span class="dv">1</span>) (:++ x) x)</code></td>
+<td><code class="sourceCode javascript"><span class="st">"let x = 1;</span><span class="sc">\n</span><span class="st">++x;</span><span class="sc">\n</span><span class="st">x;"</span></code></td>
+<td><code class="sourceCode clojure"><span class="dv">2</span></code></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</section>
+<section id="increment-by" class="level3" data-number="10.0.2">
+<h3 data-number="10.0.2" class="anchored" data-anchor-id="increment-by"><span class="header-section-number">10.0.2</span> Increment By</h3>
+<div class="clay-table">
+<div class="table-responsive">
+<table class="table table-hover clay-table caption-top" data-quarto-postprocess="true">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th">form</th>
+<th data-quarto-table-cell-role="th">code</th>
+<th data-quarto-table-cell-role="th">live</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code class="sourceCode clojure">(<span class="kw">do</span> (var x <span class="dv">1</span>) (:+= x <span class="dv">10</span>) x)</code></td>
+<td><code class="sourceCode javascript"><span class="st">"let x = 1;</span><span class="sc">\n</span><span class="st">x += 10;</span><span class="sc">\n</span><span class="st">x;"</span></code></td>
+<td><code class="sourceCode clojure"><span class="dv">11</span></code></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</section>
+<section id="decrement" class="level3" data-number="10.0.3">
+<h3 data-number="10.0.3" class="anchored" data-anchor-id="decrement"><span class="header-section-number">10.0.3</span> Decrement</h3>
+<div class="clay-table">
+<div class="table-responsive">
+<table class="table table-hover clay-table caption-top" data-quarto-postprocess="true">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th">form</th>
+<th data-quarto-table-cell-role="th">code</th>
+<th data-quarto-table-cell-role="th">live</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code class="sourceCode clojure">(<span class="kw">do</span> (var x <span class="dv">5</span>) (<span class="at">:--</span> x) x)</code></td>
+<td><code class="sourceCode javascript"><span class="st">"let x = 5;</span><span class="sc">\n</span><span class="st">--x;</span><span class="sc">\n</span><span class="st">x;"</span></code></td>
+<td><code class="sourceCode clojure"><span class="dv">4</span></code></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</section>
+<section id="decrement-by" class="level3" data-number="10.0.4">
+<h3 data-number="10.0.4" class="anchored" data-anchor-id="decrement-by"><span class="header-section-number">10.0.4</span> Decrement By</h3>
+<div class="clay-table">
+<div class="table-responsive">
+<table class="table table-hover clay-table caption-top" data-quarto-postprocess="true">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th">form</th>
+<th data-quarto-table-cell-role="th">code</th>
+<th data-quarto-table-cell-role="th">live</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code class="sourceCode clojure">(<span class="kw">do</span> (var x <span class="dv">5</span>) (<span class="at">:-</span>= x <span class="dv">50</span>) x)</code></td>
+<td><code class="sourceCode javascript"><span class="st">"let x = 5;</span><span class="sc">\n</span><span class="st">x -= 50;</span><span class="sc">\n</span><span class="st">x;"</span></code></td>
+<td><code class="sourceCode clojure">-<span class="dv">45</span></code></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</section>
+<section id="multiply-by" class="level3" data-number="10.0.5">
+<h3 data-number="10.0.5" class="anchored" data-anchor-id="multiply-by"><span class="header-section-number">10.0.5</span> Multiply By</h3>
+<div class="clay-table">
+<div class="table-responsive">
+<table class="table table-hover clay-table caption-top" data-quarto-postprocess="true">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th">form</th>
+<th data-quarto-table-cell-role="th">code</th>
+<th data-quarto-table-cell-role="th">live</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code class="sourceCode clojure">(<span class="kw">do</span> (var x <span class="dv">5</span>) (:*= x <span class="dv">50</span>) x)</code></td>
+<td><code class="sourceCode javascript"><span class="st">"let x = 5;</span><span class="sc">\n</span><span class="st">x *= 50;</span><span class="sc">\n</span><span class="st">x;"</span></code></td>
+<td><code class="sourceCode clojure"><span class="dv">250</span></code></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</section>
+</section>
+<section id="operations---bitwise" class="level1" data-number="11">
+<h1 data-number="11"><span class="header-section-number">11</span> Operations - Bitwise</h1>
+<section id="bitwise-or" class="level3" data-number="11.0.1">
+<h3 data-number="11.0.1" class="anchored" data-anchor-id="bitwise-or"><span class="header-section-number">11.0.1</span> Bitwise Or</h3>
+<div class="clay-table">
+<div class="table-responsive">
+<table class="table table-hover clay-table caption-top" data-quarto-postprocess="true">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th">form</th>
+<th data-quarto-table-cell-role="th">code</th>
+<th data-quarto-table-cell-role="th">live</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code class="sourceCode clojure">(b:| <span class="dv">7</span> <span class="dv">8</span>)</code></td>
+<td><code class="sourceCode javascript"><span class="st">"7 | 8;"</span></code></td>
+<td><code class="sourceCode clojure"><span class="dv">15</span></code></td>
+</tr>
+<tr class="even">
+<td><code class="sourceCode clojure">(b:| <span class="dv">7</span> <span class="dv">7</span>)</code></td>
+<td><code class="sourceCode javascript"><span class="st">"7 | 7;"</span></code></td>
+<td><code class="sourceCode clojure"><span class="dv">7</span></code></td>
+</tr>
+<tr class="odd">
+<td><code class="sourceCode clojure">(b:| <span class="dv">7</span> <span class="dv">0</span>)</code></td>
+<td><code class="sourceCode javascript"><span class="st">"7 | 0;"</span></code></td>
+<td><code class="sourceCode clojure"><span class="dv">7</span></code></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</section>
+<section id="bitwise-and" class="level3" data-number="11.0.2">
+<h3 data-number="11.0.2" class="anchored" data-anchor-id="bitwise-and"><span class="header-section-number">11.0.2</span> Bitwise And</h3>
+<div class="clay-table">
+<div class="table-responsive">
+<table class="table table-hover clay-table caption-top" data-quarto-postprocess="true">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th">form</th>
+<th data-quarto-table-cell-role="th">code</th>
+<th data-quarto-table-cell-role="th">live</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code class="sourceCode clojure">(b:&amp; <span class="dv">7</span> <span class="dv">8</span>)</code></td>
+<td><code class="sourceCode javascript"><span class="st">"7 &amp; 8;"</span></code></td>
+<td><code class="sourceCode clojure"><span class="dv">0</span></code></td>
+</tr>
+<tr class="even">
+<td><code class="sourceCode clojure">(b:&amp; <span class="dv">7</span> <span class="dv">7</span>)</code></td>
+<td><code class="sourceCode javascript"><span class="st">"7 &amp; 7;"</span></code></td>
+<td><code class="sourceCode clojure"><span class="dv">7</span></code></td>
+</tr>
+<tr class="odd">
+<td><code class="sourceCode clojure">(b:&amp; <span class="dv">7</span> <span class="dv">0</span>)</code></td>
+<td><code class="sourceCode javascript"><span class="st">"7 &amp; 0;"</span></code></td>
+<td><code class="sourceCode clojure"><span class="dv">0</span></code></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</section>
+<section id="bitwise-xor" class="level3" data-number="11.0.3">
+<h3 data-number="11.0.3" class="anchored" data-anchor-id="bitwise-xor"><span class="header-section-number">11.0.3</span> Bitwise Xor</h3>
+<div class="clay-table">
+<div class="table-responsive">
+<table class="table table-hover clay-table caption-top" data-quarto-postprocess="true">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th">form</th>
+<th data-quarto-table-cell-role="th">code</th>
+<th data-quarto-table-cell-role="th">live</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code class="sourceCode clojure">(b<span class="at">:xor</span> <span class="dv">7</span> <span class="dv">8</span>)</code></td>
+<td><code class="sourceCode javascript"><span class="st">"7 ^ 8;"</span></code></td>
+<td><code class="sourceCode clojure"><span class="dv">15</span></code></td>
+</tr>
+<tr class="even">
+<td><code class="sourceCode clojure">(b<span class="at">:xor</span> <span class="dv">7</span> <span class="dv">7</span>)</code></td>
+<td><code class="sourceCode javascript"><span class="st">"7 ^ 7;"</span></code></td>
+<td><code class="sourceCode clojure"><span class="dv">0</span></code></td>
+</tr>
+<tr class="odd">
+<td><code class="sourceCode clojure">(b<span class="at">:xor</span> <span class="dv">7</span> <span class="dv">0</span>)</code></td>
+<td><code class="sourceCode javascript"><span class="st">"7 ^ 0;"</span></code></td>
+<td><code class="sourceCode clojure"><span class="dv">7</span></code></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</section>
+<section id="bitshift-right" class="level3" data-number="11.0.4">
+<h3 data-number="11.0.4" class="anchored" data-anchor-id="bitshift-right"><span class="header-section-number">11.0.4</span> Bitshift Right</h3>
+<div class="clay-table">
+<div class="table-responsive">
+<table class="table table-hover clay-table caption-top" data-quarto-postprocess="true">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th">form</th>
+<th data-quarto-table-cell-role="th">code</th>
+<th data-quarto-table-cell-role="th">live</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code class="sourceCode clojure">(b:&gt;&gt; <span class="dv">128</span> <span class="dv">3</span>)</code></td>
+<td><code class="sourceCode javascript"><span class="st">"128 &gt;&gt; 3;"</span></code></td>
+<td><code class="sourceCode clojure"><span class="dv">16</span></code></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</section>
+<section id="bitshift-left" class="level3" data-number="11.0.5">
+<h3 data-number="11.0.5" class="anchored" data-anchor-id="bitshift-left"><span class="header-section-number">11.0.5</span> Bitshift Left</h3>
+<div class="clay-table">
+<div class="table-responsive">
+<table class="table table-hover clay-table caption-top" data-quarto-postprocess="true">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th">form</th>
+<th data-quarto-table-cell-role="th">code</th>
+<th data-quarto-table-cell-role="th">live</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code class="sourceCode clojure">(b:&lt;&lt; <span class="dv">128</span> <span class="dv">3</span>)</code></td>
+<td><code class="sourceCode javascript"><span class="st">"128 &lt;&lt; 3;"</span></code></td>
+<td><code class="sourceCode clojure"><span class="dv">1024</span></code></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</section>
+</section>
+<section id="lib---helpers" class="level1" data-number="12">
+<h1 data-number="12"><span class="header-section-number">12</span> Lib - Helpers</h1>
+<section id="forarray" class="level3" data-number="12.0.1">
+<h3 data-number="12.0.1" class="anchored" data-anchor-id="forarray"><span class="header-section-number">12.0.1</span> for:array</h3>
 <div class="clay-table">
 <div class="table-responsive">
 <table class="table table-hover clay-table caption-top" data-quarto-postprocess="true">
