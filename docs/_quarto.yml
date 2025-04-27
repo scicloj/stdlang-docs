@@ -6,5 +6,5 @@ format:
   revealjs: {theme: solarized, navigation-mode: vertical, transition: slide, background-transition: fade, incremental: true}
 project: {type: book}
 book:
-  chapters: [index.qmd, stdlang_book.walkthrough_js.qmd, stdlang_book.walkthrough_python.qmd]
+  chapters: [index.qmd, stdlang_book.walkthrough_js.qmd, stdlang_book.walkthrough_lua.qmd, stdlang_book.walkthrough_python.qmd]
   title: std.lang documentation

@@ -27,7 +27,8 @@
 
 ^:kind/println
 (l/script :js
-  {:require [[xt.lang.base-lib :as k]]})
+  {:require [[xt.lang.base-lib :as k]
+             [xt.lang.base-iter :as it]]})
 
 ;; It is now possible to transpile lisp forms to code:
 
@@ -45,7 +46,8 @@
 
 ^:kind/println
 (l/script+ [:code :js]
-  {:require [[xt.lang.base-lib :as k]]})
+  {:require [[xt.lang.base-lib :as k]
+             [xt.lang.base-iter :as it]]})
 
 ;; Here we define `:live` as a way to use the transpiler
 ;; go generate Javascript code, and run it in a Node.js runtime.
@@ -53,7 +55,8 @@
 ^:kind/println
 (l/script+ [:live :js]
   {:runtime :basic
-   :require [[xt.lang.base-lib :as k]]})
+   :require [[xt.lang.base-lib :as k]
+             [xt.lang.base-iter :as it]]})
 
 ;; Let us now use these two ways for basic arithmetic.
 
@@ -1923,7 +1926,6 @@
     (k/sym-pair "hello/world"))
   (l/! [:live]
     (k/sym-pair "hello/world"))])
-
 
 ;; # Base Lib - Math
 
@@ -4110,7 +4112,6 @@
          :f {:g (fn:>)
              :h 2}}}))])
 
-
 ;; ### get-spec
 
 (display-output-format
@@ -4138,4 +4139,384 @@
          :f {:g (fn:>)
              :h 2}}}))])
 
+;; # Iter Lib
 
+;; ## Iter Lib - Util
+
+;; ### for:iter
+
+(display-output-format
+ ['(do
+     (var out  [])
+     (for:iter [e [1 2 3 4]] (x:arr-push out (* 2 e)))
+     out)
+  (l/! [:code]
+    (do
+     (var out  [])
+     (for:iter [e [1 2 3 4]] (x:arr-push out (* 2 e)))
+     out))
+  (l/! [:live]
+    (do
+      (var out  [])
+      (for:iter [e [1 2 3 4]] (x:arr-push out (* 2 e)))
+      out))])
+
+;; ### iter-from-obj
+
+(display-output-format
+ ['(it/arr< (it/iter-from-obj {:a 1 :b 2}))
+  (l/! [:code]
+    (it/arr< (it/iter-from-obj {:a 1 :b 2})))
+  (l/! [:live]
+    (it/arr< (it/iter-from-obj {:a 1 :b 2})))])
+
+;; ### iter-from-arr
+
+(display-output-format
+ ['(it/arr< (it/iter-from-arr [1 2 3 4 5]))
+  (l/! [:code]
+    (it/arr< (it/iter-from-arr [1 2 3 4 5])))
+  (l/! [:live]
+    (it/arr< (it/iter-from-arr [1 2 3 4 5])))])
+
+;; ### iter-from
+
+(display-output-format
+ ['(it/arr< (it/iter-from [1 2 3 4 5]))
+  (l/! [:code]
+    (it/arr< (it/iter-from [1 2 3 4 5])))
+  (l/! [:live]
+    (it/arr< (it/iter-from [1 2 3 4 5])))])
+
+;; ### iter
+
+(display-output-format
+ ['(it/iter [1 2 3 4 5])
+  (l/! [:code]
+    (it/iter [1 2 3 4 5]))
+  (l/! [:live]
+    (it/iter [1 2 3 4 5]))])
+
+
+;; ### iter?
+
+(display-output-format
+ ['(it/iter? (it/iter []))
+  (l/! [:code]
+    (it/iter? (it/iter [])))
+  (l/! [:live]
+    (it/iter? (it/iter [])))])
+
+
+;; ### iter-next
+
+(display-output-format
+ ['(it/iter-next (it/iter [1 2 3]))
+  (l/! [:code]
+    (it/iter-next (it/iter [1 2 3])))
+  (l/! [:live]
+    (it/iter-next (it/iter [1 2 3])))])
+
+;; ### iter-has?
+
+(display-output-format
+ ['[(it/iter-has? 123)
+    (it/iter-has? [1 2 3])]
+  (l/! [:code]
+    [(it/iter-has? 123)
+     (it/iter-has? [1 2 3])])
+  (l/! [:live]
+    [(it/iter-has? 123)
+     (it/iter-has? [1 2 3])])])
+
+;; ### iter-native?
+
+(display-output-format
+ ['[(it/iter-native? (it/iter [1 2 3]))
+    (it/iter-native? 1)]
+  (l/! [:code]
+    [(it/iter-native? (it/iter [1 2 3]))
+     (it/iter-native? 1)])
+  (l/! [:live]
+    [(it/iter-native? (it/iter [1 2 3]))
+    (it/iter-native? 1)])])
+
+;; ### iter-eq
+
+(display-output-format
+ ['(do 
+     (var eq-fn (fn:> [a b] (== a b)))
+     [(it/iter-eq (it/iter [1 2 4 4])
+                  (it/iter [1 2 4 4])
+                  eq-fn)
+      (it/iter-eq (it/iter [1 2 4 4])
+                  (it/iter [1 2 3 4])
+                  eq-fn)
+      (it/iter-eq (it/iter [1 2 4])
+                  (it/iter [1 2 4 4])
+                  eq-fn)
+      (it/iter-eq (it/iter [1 2 4 4])
+                  (it/iter [1 2 4])
+                  eq-fn)])
+  (l/! [:code]
+    (do 
+     (var eq-fn (fn:> [a b] (== a b)))
+     [(it/iter-eq (it/iter [1 2 4 4])
+                  (it/iter [1 2 4 4])
+                  eq-fn)
+      (it/iter-eq (it/iter [1 2 4 4])
+                  (it/iter [1 2 3 4])
+                  eq-fn)
+      (it/iter-eq (it/iter [1 2 4])
+                  (it/iter [1 2 4 4])
+                  eq-fn)
+      (it/iter-eq (it/iter [1 2 4 4])
+                  (it/iter [1 2 4])
+                  eq-fn)]))
+  (l/! [:live]
+    (do 
+     (var eq-fn (fn:> [a b] (== a b)))
+     [(it/iter-eq (it/iter [1 2 4 4])
+                  (it/iter [1 2 4 4])
+                  eq-fn)
+      (it/iter-eq (it/iter [1 2 4 4])
+                  (it/iter [1 2 3 4])
+                  eq-fn)
+      (it/iter-eq (it/iter [1 2 4])
+                  (it/iter [1 2 4 4])
+                  eq-fn)
+      (it/iter-eq (it/iter [1 2 4 4])
+                  (it/iter [1 2 4])
+                  eq-fn)]))])
+
+;; ### iter-null
+
+(display-output-format
+ ['(it/arr< (it/iter-null))
+  (l/! [:code]
+    (it/arr< (it/iter-null)))
+  (l/! [:live]
+    (it/arr< (it/iter-null)))])
+
+;; ### collect
+
+(display-output-format
+ ['(it/collect [1 2 3 4]
+               k/step-push
+               [])
+  (l/! [:code]
+    (it/collect [1 2 3 4]
+                k/step-push
+               []))
+  (l/! [:live]
+    (it/collect [1 2 3 4]
+                k/step-push
+                []))])
+
+;; ### nil<
+
+(display-output-format
+ ['(it/nil< (it/iter [1 2 3 4]))
+  (l/! [:code]
+    (it/nil< (it/iter [1 2 3 4])))
+  (l/! [:live]
+    (it/nil< (it/iter [1 2 3 4])))])
+
+;; ### arr<
+
+(display-output-format
+ ['(it/arr< (it/iter [1 2 3 4]))
+  (l/! [:code]
+    (it/arr< (it/iter [1 2 3 4])))
+  (l/! [:live]
+    (it/arr< (it/iter [1 2 3 4])))])
+
+;; ### obj<
+
+(display-output-format
+ ['(it/obj< (it/iter [["a" 2] ["b" 4]]))
+  (l/! [:code]
+    (it/obj< (it/iter [["a" 2] ["b" 4]])))
+  (l/! [:live]
+    (it/obj< (it/iter [["a" 2] ["b" 4]])))])
+
+
+;; ### take
+
+(display-output-format
+ ['(it/arr< (it/take 4 (it/iter [1 2 3 4 5 6 7])))
+  (l/! [:code]
+    (it/arr< (it/take 4 (it/iter [1 2 3 4 5 6 7]))))
+  (l/! [:live]
+    (it/arr< (it/take 4 (it/iter [1 2 3 4 5 6 7]))))])
+
+;; ### constantly
+
+(display-output-format
+ ['(it/arr< (it/take 4 (it/constantly 1)))
+  (l/! [:code]
+    (it/arr< (it/take 4 (it/constantly 1))))
+  (l/! [:live]
+    (it/arr< (it/take 4 (it/constantly 1))))])
+
+;; ### iterate
+
+(display-output-format
+ ['(it/arr< (it/take 4 (it/iterate k/inc 11)))
+  (l/! [:code]
+    (it/arr< (it/take 4 (it/iterate k/inc 11))))
+  (l/! [:live]
+    (it/arr< (it/take 4 (it/iterate k/inc 11))))])
+
+;; ### repeatedly
+
+(display-output-format
+ ['(it/arr< (it/take 5 (it/repeatedly (fn [] (return 5)))))
+  (l/! [:code]
+    (it/arr< (it/take 5 (it/repeatedly (fn [] (return 5))))))
+  (l/! [:live]
+    (it/arr< (it/take 5 (it/repeatedly (fn [] (return 5))))))])
+
+;; ### cycle
+
+(display-output-format
+ ['(it/arr< (it/take 5 (it/cycle [1 2 3])))
+  (l/! [:code]
+    (it/arr< (it/take 5 (it/cycle [1 2 3]))))
+  (l/! [:live]
+    (it/arr< (it/take 5 (it/cycle [1 2 3]))))])
+
+;; ### range
+
+(display-output-format
+ ['(it/arr< (it/range [-10 -3]))
+  (l/! [:code]
+    (it/arr< (it/range [-10 -3])))
+  (l/! [:live]
+    (it/arr< (it/range [-10 -3])))])
+
+;; ### drop
+
+(display-output-format
+ ['(it/arr< (it/drop 3 (it/range 10)))
+  (l/! [:code]
+    (it/arr< (it/drop 3 (it/range 10))))
+  (l/! [:live]
+    (it/arr< (it/drop 3 (it/range 10))))])
+
+;; ### peek
+
+(display-output-format
+ ['(do
+     (var out := [])
+     (it/nil< (it/peek (fn [e]
+                         (k/step-push out e))
+                       [1 2 3 4 5]))
+     out)
+  (l/! [:code]
+    (do
+     (var out := [])
+     (it/nil< (it/peek (fn [e]
+                         (k/step-push out e))
+                       [1 2 3 4 5]))
+     out))
+  (l/! [:live]
+    (do
+     (var out := [])
+     (it/nil< (it/peek (fn [e]
+                         (k/step-push out e))
+                       [1 2 3 4 5]))
+     out))])
+
+;; ### map
+
+(display-output-format
+ ['(it/arr< (it/map k/inc [1 2 3]))
+  (l/! [:code]
+    (it/arr< (it/map k/inc [1 2 3])))
+  (l/! [:live]
+    (it/arr< (it/map k/inc [1 2 3])))])
+
+;; ### mapcat
+
+(display-output-format
+ ['[(it/arr< (it/mapcat (fn:> [x] [x x]) [1 2 3]))
+    (it/arr< (it/mapcat (fn:> [x] x)
+                       [[1 2 3] [4 5 6]]))
+    (it/arr< (it/mapcat (fn:> [x] (it/range x))
+                       (it/range 4)))
+    (it/arr< (it/mapcat (fn:> [x] x)
+                       [(it/range 3) (it/range 3)]))]
+  (l/! [:code]
+    [(it/arr< (it/mapcat (fn:> [x] [x x]) [1 2 3]))
+    (it/arr< (it/mapcat (fn:> [x] x)
+                       [[1 2 3] [4 5 6]]))
+    (it/arr< (it/mapcat (fn:> [x] (it/range x))
+                       (it/range 4)))
+    (it/arr< (it/mapcat (fn:> [x] x)
+                       [(it/range 3) (it/range 3)]))])
+  (l/! [:live]
+    [(it/arr< (it/mapcat (fn:> [x] [x x]) [1 2 3]))
+    (it/arr< (it/mapcat (fn:> [x] x)
+                       [[1 2 3] [4 5 6]]))
+    (it/arr< (it/mapcat (fn:> [x] (it/range x))
+                       (it/range 4)))
+    (it/arr< (it/mapcat (fn:> [x] x)
+                       [(it/range 3) (it/range 3)]))])])
+
+;; ### concat
+
+(display-output-format
+ ['(it/arr< (it/concat [(it/range 3)
+                        (it/range [4 6])]))
+  (l/! [:code]
+    (it/arr< (it/concat [(it/range 3)
+                         (it/range [4 6])])))
+  (l/! [:live]
+    (it/arr< (it/concat [(it/range 3)
+                       (it/range [4 6])])))])
+
+;; ### filter
+
+(display-output-format
+ ['(it/arr< (it/filter k/odd? [1 2 3 4]))
+  (l/! [:code]
+    (it/arr< (it/filter k/odd? [1 2 3 4])))
+  (l/! [:live]
+    (it/arr< (it/filter k/odd? [1 2 3 4])))])
+
+;; ### keep
+
+(display-output-format
+ ['(it/arr< (it/keep (fn:> [x] (:? (k/odd? x) {:a x}))
+                     [1 2 3 4]))
+  (l/! [:code]
+    (it/arr< (it/keep (fn:> [x] (:? (k/odd? x) {:a x}))
+                      [1 2 3 4])))
+  (l/! [:live]
+    (it/arr< (it/keep (fn:> [x] (:? (k/odd? x) {:a x}))
+                    [1 2 3 4])))])
+
+;; ### partition
+
+(display-output-format
+ ['(it/arr< (it/partition 3 (it/range 10)))
+  (l/! [:code]
+    (it/arr< (it/partition 3 (it/range 10))))
+  (l/! [:live]
+    (it/arr< (it/partition 3 (it/range 10))))])
+
+;; ### take-nth 
+
+(display-output-format
+ ['[(it/arr< (it/take-nth 2 (it/range 10)))
+    (it/arr< (it/take-nth 3 (it/range 10)))
+    (it/arr< (it/take-nth 4 (it/drop 1 (it/range 10))))]
+  (l/! [:code]
+    [(it/arr< (it/take-nth 2 (it/range 10)))
+     (it/arr< (it/take-nth 3 (it/range 10)))
+     (it/arr< (it/take-nth 4 (it/drop 1 (it/range 10))))])
+  (l/! [:live]
+    [(it/arr< (it/take-nth 2 (it/range 10)))
+     (it/arr< (it/take-nth 3 (it/range 10)))
+     (it/arr< (it/take-nth 4 (it/drop 1 (it/range 10))))])])

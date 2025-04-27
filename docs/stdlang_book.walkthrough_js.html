@@ -65,7 +65,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./stdlang_book.walkthrough_python.html" rel="next">
+<link href="./stdlang_book.walkthrough_lua.html" rel="next">
 <link href="./index.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
@@ -156,8 +156,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="./stdlang_book.walkthrough_lua.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Lua Walkthrough</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="./stdlang_book.walkthrough_python.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Python Walkthrough</span></span></a>
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Python Walkthrough</span></span></a>
   </div>
 </li>
     </ul>
@@ -537,6 +543,42 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#get-spec" id="toc-get-spec" class="nav-link" data-scroll-target="#get-spec"><span class="header-section-number">7.4.37</span> get-spec</a></li>
   </ul></li>
   </ul></li>
+  <li><a href="#iter-lib" id="toc-iter-lib" class="nav-link" data-scroll-target="#iter-lib"><span class="header-section-number">8</span> Iter Lib</a>
+  <ul>
+  <li><a href="#iter-lib---util" id="toc-iter-lib---util" class="nav-link" data-scroll-target="#iter-lib---util"><span class="header-section-number">8.1</span> Iter Lib - Util</a>
+  <ul class="collapse">
+  <li><a href="#foriter" id="toc-foriter" class="nav-link" data-scroll-target="#foriter"><span class="header-section-number">8.1.1</span> for:iter</a></li>
+  <li><a href="#iter-from-obj" id="toc-iter-from-obj" class="nav-link" data-scroll-target="#iter-from-obj"><span class="header-section-number">8.1.2</span> iter-from-obj</a></li>
+  <li><a href="#iter-from-arr" id="toc-iter-from-arr" class="nav-link" data-scroll-target="#iter-from-arr"><span class="header-section-number">8.1.3</span> iter-from-arr</a></li>
+  <li><a href="#iter-from" id="toc-iter-from" class="nav-link" data-scroll-target="#iter-from"><span class="header-section-number">8.1.4</span> iter-from</a></li>
+  <li><a href="#iter" id="toc-iter" class="nav-link" data-scroll-target="#iter"><span class="header-section-number">8.1.5</span> iter</a></li>
+  <li><a href="#iter-1" id="toc-iter-1" class="nav-link" data-scroll-target="#iter-1"><span class="header-section-number">8.1.6</span> iter?</a></li>
+  <li><a href="#iter-next" id="toc-iter-next" class="nav-link" data-scroll-target="#iter-next"><span class="header-section-number">8.1.7</span> iter-next</a></li>
+  <li><a href="#iter-has" id="toc-iter-has" class="nav-link" data-scroll-target="#iter-has"><span class="header-section-number">8.1.8</span> iter-has?</a></li>
+  <li><a href="#iter-native" id="toc-iter-native" class="nav-link" data-scroll-target="#iter-native"><span class="header-section-number">8.1.9</span> iter-native?</a></li>
+  <li><a href="#iter-eq" id="toc-iter-eq" class="nav-link" data-scroll-target="#iter-eq"><span class="header-section-number">8.1.10</span> iter-eq</a></li>
+  <li><a href="#iter-null" id="toc-iter-null" class="nav-link" data-scroll-target="#iter-null"><span class="header-section-number">8.1.11</span> iter-null</a></li>
+  <li><a href="#collect" id="toc-collect" class="nav-link" data-scroll-target="#collect"><span class="header-section-number">8.1.12</span> collect</a></li>
+  <li><a href="#nil-1" id="toc-nil-1" class="nav-link" data-scroll-target="#nil-1"><span class="header-section-number">8.1.13</span> nil&lt;</a></li>
+  <li><a href="#arr" id="toc-arr" class="nav-link" data-scroll-target="#arr"><span class="header-section-number">8.1.14</span> arr&lt;</a></li>
+  <li><a href="#obj" id="toc-obj" class="nav-link" data-scroll-target="#obj"><span class="header-section-number">8.1.15</span> obj&lt;</a></li>
+  <li><a href="#take" id="toc-take" class="nav-link" data-scroll-target="#take"><span class="header-section-number">8.1.16</span> take</a></li>
+  <li><a href="#constantly" id="toc-constantly" class="nav-link" data-scroll-target="#constantly"><span class="header-section-number">8.1.17</span> constantly</a></li>
+  <li><a href="#iterate" id="toc-iterate" class="nav-link" data-scroll-target="#iterate"><span class="header-section-number">8.1.18</span> iterate</a></li>
+  <li><a href="#repeatedly" id="toc-repeatedly" class="nav-link" data-scroll-target="#repeatedly"><span class="header-section-number">8.1.19</span> repeatedly</a></li>
+  <li><a href="#cycle" id="toc-cycle" class="nav-link" data-scroll-target="#cycle"><span class="header-section-number">8.1.20</span> cycle</a></li>
+  <li><a href="#range" id="toc-range" class="nav-link" data-scroll-target="#range"><span class="header-section-number">8.1.21</span> range</a></li>
+  <li><a href="#drop" id="toc-drop" class="nav-link" data-scroll-target="#drop"><span class="header-section-number">8.1.22</span> drop</a></li>
+  <li><a href="#peek" id="toc-peek" class="nav-link" data-scroll-target="#peek"><span class="header-section-number">8.1.23</span> peek</a></li>
+  <li><a href="#map" id="toc-map" class="nav-link" data-scroll-target="#map"><span class="header-section-number">8.1.24</span> map</a></li>
+  <li><a href="#mapcat" id="toc-mapcat" class="nav-link" data-scroll-target="#mapcat"><span class="header-section-number">8.1.25</span> mapcat</a></li>
+  <li><a href="#concat" id="toc-concat" class="nav-link" data-scroll-target="#concat"><span class="header-section-number">8.1.26</span> concat</a></li>
+  <li><a href="#filter" id="toc-filter" class="nav-link" data-scroll-target="#filter"><span class="header-section-number">8.1.27</span> filter</a></li>
+  <li><a href="#keep" id="toc-keep" class="nav-link" data-scroll-target="#keep"><span class="header-section-number">8.1.28</span> keep</a></li>
+  <li><a href="#partition" id="toc-partition" class="nav-link" data-scroll-target="#partition"><span class="header-section-number">8.1.29</span> partition</a></li>
+  <li><a href="#take-nth" id="toc-take-nth" class="nav-link" data-scroll-target="#take-nth"><span class="header-section-number">8.1.30</span> take-nth</a></li>
+  </ul></li>
+  </ul></li>
   </ul>
 </nav>
     </div>
@@ -587,7 +629,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="sourceClojure">
 <div class="sourceCode" id="cb2"><pre class="sourceCode clojure code-with-copy"><code class="sourceCode clojure"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>^<span class="at">:kind/println</span></span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>(l/script <span class="at">:js</span></span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>  {<span class="at">:require</span> [[xt.lang.base-lib <span class="at">:as</span> k]]})</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>  {<span class="at">:require</span> [[xt.lang.base-lib <span class="at">:as</span> k]</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>             [xt.lang.base-iter <span class="at">:as</span> it]]})</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="printedClojure">
 <div class="sourceCode" id="cb3"><pre class="sourceCode clojure code-with-copy"><code class="sourceCode clojure"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>#rt<span class="at">:lang</span>[<span class="at">:js</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -606,7 +649,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="sourceClojure">
 <div class="sourceCode" id="cb6"><pre class="sourceCode clojure code-with-copy"><code class="sourceCode clojure"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>^<span class="at">:kind/println</span></span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>(l/script+ [<span class="at">:code</span> <span class="at">:js</span>]</span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>  {<span class="at">:require</span> [[xt.lang.base-lib <span class="at">:as</span> k]]})</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>  {<span class="at">:require</span> [[xt.lang.base-lib <span class="at">:as</span> k]</span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>             [xt.lang.base-iter <span class="at">:as</span> it]]})</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="printedClojure">
 <div class="sourceCode" id="cb7"><pre class="sourceCode clojure code-with-copy"><code class="sourceCode clojure"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>[#rt<span class="at">:lang</span>[<span class="at">:js</span>]]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -616,10 +660,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="sourceCode" id="cb8"><pre class="sourceCode clojure code-with-copy"><code class="sourceCode clojure"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>^<span class="at">:kind/println</span></span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>(l/script+ [<span class="at">:live</span> <span class="at">:js</span>]</span>
 <span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>  {<span class="at">:runtime</span> <span class="at">:basic</span></span>
-<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>   <span class="at">:require</span> [[xt.lang.base-lib <span class="at">:as</span> k]]})</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>   <span class="at">:require</span> [[xt.lang.base-lib <span class="at">:as</span> k]</span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>             [xt.lang.base-iter <span class="at">:as</span> it]]})</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="printedClojure">
-<div class="sourceCode" id="cb9"><pre class="sourceCode clojure code-with-copy"><code class="sourceCode clojure"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>[#rt.basic[<span class="at">:server/basic</span> <span class="at">:js</span> <span class="dv">1</span>jyb01ntw3yox <span class="dv">53477</span> <span class="dv">1</span>]]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb9"><pre class="sourceCode clojure code-with-copy"><code class="sourceCode clojure"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>[#rt.basic[<span class="at">:server/basic</span> <span class="at">:js</span> vbbupw8dnnee <span class="dv">53609</span> <span class="dv">1</span>]]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Let us now use these two ways for basic arithmetic.</p>
 <div class="sourceClojure">
@@ -3129,14 +3174,14 @@ out<span class="op">;</span></code></td>
 <tr class="odd">
 <td><code class="sourceCode clojure">(k/random)</code></td>
 <td><code class="sourceCode javascript"><span class="bu">Math</span><span class="op">.</span><span class="fu">random</span>()<span class="op">;</span></code></td>
-<td><code class="sourceCode clojure"><span class="fl">0.7656764579819733</span></code></td>
+<td><code class="sourceCode clojure"><span class="fl">0.28243072845178885</span></code></td>
 </tr>
 <tr class="even">
 <td><code class="sourceCode clojure">(k/apply k/random [])</code></td>
 <td><code class="sourceCode javascript">(<span class="kw">function</span> (){
   <span class="cf">return</span> <span class="bu">Math</span><span class="op">.</span><span class="fu">random</span>()<span class="op">;</span>
 })<span class="op">.</span><span class="fu">apply</span>(<span class="kw">null</span><span class="op">,</span>[])<span class="op">;</span></code></td>
-<td><code class="sourceCode clojure"><span class="fl">0.38615254246196806</span></code></td>
+<td><code class="sourceCode clojure"><span class="fl">0.32931068676338504</span></code></td>
 </tr>
 </tbody>
 </table>
@@ -3159,14 +3204,14 @@ out<span class="op">;</span></code></td>
 <tr class="odd">
 <td><code class="sourceCode clojure">(k/now-ms)</code></td>
 <td><code class="sourceCode javascript"><span class="bu">Date</span><span class="op">.</span><span class="fu">now</span>()<span class="op">;</span></code></td>
-<td><code class="sourceCode clojure"><span class="dv">1745738935141</span></code></td>
+<td><code class="sourceCode clojure"><span class="dv">1745742148326</span></code></td>
 </tr>
 <tr class="even">
 <td><code class="sourceCode clojure">(k/apply k/now-ms [])</code></td>
 <td><code class="sourceCode javascript">(<span class="kw">function</span> (){
   <span class="cf">return</span> <span class="bu">Date</span><span class="op">.</span><span class="fu">now</span>()<span class="op">;</span>
 })<span class="op">.</span><span class="fu">apply</span>(<span class="kw">null</span><span class="op">,</span>[])<span class="op">;</span></code></td>
-<td><code class="sourceCode clojure"><span class="dv">1745738935159</span></code></td>
+<td><code class="sourceCode clojure"><span class="dv">1745742148343</span></code></td>
 </tr>
 </tbody>
 </table>
@@ -7175,7 +7220,7 @@ out<span class="op">;</span></code></td>
 <tr class="odd">
 <td><code class="sourceCode clojure">(k/arr-shuffle [<span class="dv">1</span> <span class="dv">2</span> <span class="dv">3</span> <span class="dv">4</span> <span class="dv">5</span>])</code></td>
 <td><code class="sourceCode javascript">k<span class="op">.</span><span class="fu">arr_shuffle</span>([<span class="dv">1</span><span class="op">,</span><span class="dv">2</span><span class="op">,</span><span class="dv">3</span><span class="op">,</span><span class="dv">4</span><span class="op">,</span><span class="dv">5</span>])<span class="op">;</span></code></td>
-<td><code class="sourceCode clojure">[<span class="dv">4</span> <span class="dv">5</span> <span class="dv">1</span> <span class="dv">3</span> <span class="dv">2</span>]</code></td>
+<td><code class="sourceCode clojure">[<span class="dv">4</span> <span class="dv">5</span> <span class="dv">3</span> <span class="dv">2</span> <span class="dv">1</span>]</code></td>
 </tr>
 </tbody>
 </table>
@@ -7313,7 +7358,7 @@ out<span class="op">;</span></code></td>
 <tr class="odd">
 <td><code class="sourceCode clojure">(k/arr-random [<span class="dv">1</span> <span class="dv">2</span> <span class="dv">3</span> <span class="dv">4</span>])</code></td>
 <td><code class="sourceCode javascript">k<span class="op">.</span><span class="fu">arr_random</span>([<span class="dv">1</span><span class="op">,</span><span class="dv">2</span><span class="op">,</span><span class="dv">3</span><span class="op">,</span><span class="dv">4</span>])<span class="op">;</span></code></td>
-<td><code class="sourceCode clojure"><span class="dv">4</span></code></td>
+<td><code class="sourceCode clojure"><span class="dv">1</span></code></td>
 </tr>
 </tbody>
 </table>
@@ -7359,7 +7404,7 @@ out<span class="op">;</span></code></td>
 <tr class="odd">
 <td><code class="sourceCode clojure">(k/arr-sample [<span class="st">"left"</span> <span class="st">"right"</span> <span class="st">"up"</span> <span class="st">"down"</span>] [<span class="fl">0.1</span> <span class="fl">0.2</span> <span class="fl">0.3</span> <span class="fl">0.4</span>])</code></td>
 <td><code class="sourceCode javascript">k<span class="op">.</span><span class="fu">arr_sample</span>([<span class="st">"left"</span><span class="op">,</span><span class="st">"right"</span><span class="op">,</span><span class="st">"up"</span><span class="op">,</span><span class="st">"down"</span>]<span class="op">,</span>[<span class="fl">0.1</span><span class="op">,</span><span class="fl">0.2</span><span class="op">,</span><span class="fl">0.3</span><span class="op">,</span><span class="fl">0.4</span>])<span class="op">;</span></code></td>
-<td><code class="sourceCode clojure"><span class="st">"right"</span></code></td>
+<td><code class="sourceCode clojure"><span class="st">"down"</span></code></td>
 </tr>
 </tbody>
 </table>
@@ -8317,6 +8362,752 @@ out<span class="op">;</span></code></td>
 </table>
 </div>
 </div>
+</section>
+</section>
+</section>
+<section id="iter-lib" class="level1" data-number="8">
+<h1 data-number="8"><span class="header-section-number">8</span> Iter Lib</h1>
+<section id="iter-lib---util" class="level2" data-number="8.1">
+<h2 data-number="8.1" class="anchored" data-anchor-id="iter-lib---util"><span class="header-section-number">8.1</span> Iter Lib - Util</h2>
+<section id="foriter" class="level3" data-number="8.1.1">
+<h3 data-number="8.1.1" class="anchored" data-anchor-id="foriter"><span class="header-section-number">8.1.1</span> for:iter</h3>
+<div class="clay-table">
+<div class="table-responsive">
+<table class="table table-hover clay-table caption-top" data-quarto-postprocess="true">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th">form</th>
+<th data-quarto-table-cell-role="th">code</th>
+<th data-quarto-table-cell-role="th">live</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code class="sourceCode clojure">(<span class="kw">do</span> (var out []) (for<span class="at">:iter</span> [<span class="kw">e</span> [<span class="dv">1</span> <span class="dv">2</span> <span class="dv">3</span> <span class="dv">4</span>]] (x<span class="at">:arr-push</span> out (<span class="kw">*</span> <span class="dv">2</span> <span class="kw">e</span>))) out)</code></td>
+<td><code class="sourceCode javascript"><span class="kw">let</span> out <span class="op">=</span> []<span class="op">;</span>
+<span class="cf">for</span>(<span class="kw">let</span> e <span class="kw">of</span> [<span class="dv">1</span><span class="op">,</span><span class="dv">2</span><span class="op">,</span><span class="dv">3</span><span class="op">,</span><span class="dv">4</span>]){
+  out<span class="op">.</span><span class="fu">push</span>(<span class="dv">2</span> <span class="op">*</span> e)<span class="op">;</span>
+}<span class="op">;</span>
+out<span class="op">;</span></code></td>
+<td><code class="sourceCode clojure">[<span class="dv">2</span> <span class="dv">4</span> <span class="dv">6</span> <span class="dv">8</span>]</code></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</section>
+<section id="iter-from-obj" class="level3" data-number="8.1.2">
+<h3 data-number="8.1.2" class="anchored" data-anchor-id="iter-from-obj"><span class="header-section-number">8.1.2</span> iter-from-obj</h3>
+<div class="clay-table">
+<div class="table-responsive">
+<table class="table table-hover clay-table caption-top" data-quarto-postprocess="true">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th">form</th>
+<th data-quarto-table-cell-role="th">code</th>
+<th data-quarto-table-cell-role="th">live</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code class="sourceCode clojure">(it/arr&lt; (it/iter-from-obj {<span class="at">:a</span> <span class="dv">1</span>, <span class="at">:b</span> <span class="dv">2</span>}))</code></td>
+<td><code class="sourceCode javascript">it<span class="op">.</span><span class="fu">arr_lt</span>(<span class="bu">Object</span><span class="op">.</span><span class="fu">entries</span>({<span class="st">"a"</span><span class="op">:</span><span class="dv">1</span><span class="op">,</span><span class="st">"b"</span><span class="op">:</span><span class="dv">2</span>})[<span class="bu">Symbol</span><span class="op">.</span><span class="at">iterator</span>]())<span class="op">;</span></code></td>
+<td><code class="sourceCode clojure">[[<span class="st">"a"</span> <span class="dv">1</span>] [<span class="st">"b"</span> <span class="dv">2</span>]]</code></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</section>
+<section id="iter-from-arr" class="level3" data-number="8.1.3">
+<h3 data-number="8.1.3" class="anchored" data-anchor-id="iter-from-arr"><span class="header-section-number">8.1.3</span> iter-from-arr</h3>
+<div class="clay-table">
+<div class="table-responsive">
+<table class="table table-hover clay-table caption-top" data-quarto-postprocess="true">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th">form</th>
+<th data-quarto-table-cell-role="th">code</th>
+<th data-quarto-table-cell-role="th">live</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code class="sourceCode clojure">(it/arr&lt; (it/iter-from-arr [<span class="dv">1</span> <span class="dv">2</span> <span class="dv">3</span> <span class="dv">4</span> <span class="dv">5</span>]))</code></td>
+<td><code class="sourceCode javascript">it<span class="op">.</span><span class="fu">arr_lt</span>([<span class="dv">1</span><span class="op">,</span><span class="dv">2</span><span class="op">,</span><span class="dv">3</span><span class="op">,</span><span class="dv">4</span><span class="op">,</span><span class="dv">5</span>][<span class="bu">Symbol</span><span class="op">.</span><span class="at">iterator</span>]())<span class="op">;</span></code></td>
+<td><code class="sourceCode clojure">[<span class="dv">1</span> <span class="dv">2</span> <span class="dv">3</span> <span class="dv">4</span> <span class="dv">5</span>]</code></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</section>
+<section id="iter-from" class="level3" data-number="8.1.4">
+<h3 data-number="8.1.4" class="anchored" data-anchor-id="iter-from"><span class="header-section-number">8.1.4</span> iter-from</h3>
+<div class="clay-table">
+<div class="table-responsive">
+<table class="table table-hover clay-table caption-top" data-quarto-postprocess="true">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th">form</th>
+<th data-quarto-table-cell-role="th">code</th>
+<th data-quarto-table-cell-role="th">live</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code class="sourceCode clojure">(it/arr&lt; (it/iter-from [<span class="dv">1</span> <span class="dv">2</span> <span class="dv">3</span> <span class="dv">4</span> <span class="dv">5</span>]))</code></td>
+<td><code class="sourceCode javascript">it<span class="op">.</span><span class="fu">arr_lt</span>([<span class="dv">1</span><span class="op">,</span><span class="dv">2</span><span class="op">,</span><span class="dv">3</span><span class="op">,</span><span class="dv">4</span><span class="op">,</span><span class="dv">5</span>][<span class="bu">Symbol</span><span class="op">.</span><span class="at">iterator</span>]())<span class="op">;</span></code></td>
+<td><code class="sourceCode clojure">[<span class="dv">1</span> <span class="dv">2</span> <span class="dv">3</span> <span class="dv">4</span> <span class="dv">5</span>]</code></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</section>
+<section id="iter" class="level3" data-number="8.1.5">
+<h3 data-number="8.1.5" class="anchored" data-anchor-id="iter"><span class="header-section-number">8.1.5</span> iter</h3>
+<div class="clay-table">
+<div class="table-responsive">
+<table class="table table-hover clay-table caption-top" data-quarto-postprocess="true">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th">form</th>
+<th data-quarto-table-cell-role="th">code</th>
+<th data-quarto-table-cell-role="th">live</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code class="sourceCode clojure">(it/iter [<span class="dv">1</span> <span class="dv">2</span> <span class="dv">3</span> <span class="dv">4</span> <span class="dv">5</span>])</code></td>
+<td><code class="sourceCode javascript">it<span class="op">.</span><span class="fu">iter</span>([<span class="dv">1</span><span class="op">,</span><span class="dv">2</span><span class="op">,</span><span class="dv">3</span><span class="op">,</span><span class="dv">4</span><span class="op">,</span><span class="dv">5</span>])<span class="op">;</span></code></td>
+<td><code class="sourceCode clojure">&lt;Iterator&gt;
+[object Array Iterator]</code></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</section>
+<section id="iter-1" class="level3" data-number="8.1.6">
+<h3 data-number="8.1.6" class="anchored" data-anchor-id="iter-1"><span class="header-section-number">8.1.6</span> iter?</h3>
+<div class="clay-table">
+<div class="table-responsive">
+<table class="table table-hover clay-table caption-top" data-quarto-postprocess="true">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th">form</th>
+<th data-quarto-table-cell-role="th">code</th>
+<th data-quarto-table-cell-role="th">live</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code class="sourceCode clojure">(it/iter? (it/iter []))</code></td>
+<td><code class="sourceCode javascript">it<span class="op">.</span><span class="fu">iterp</span>(it<span class="op">.</span><span class="fu">iter</span>([]))<span class="op">;</span></code></td>
+<td><code class="sourceCode clojure"><span class="va">true</span></code></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</section>
+<section id="iter-next" class="level3" data-number="8.1.7">
+<h3 data-number="8.1.7" class="anchored" data-anchor-id="iter-next"><span class="header-section-number">8.1.7</span> iter-next</h3>
+<div class="clay-table">
+<div class="table-responsive">
+<table class="table table-hover clay-table caption-top" data-quarto-postprocess="true">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th">form</th>
+<th data-quarto-table-cell-role="th">code</th>
+<th data-quarto-table-cell-role="th">live</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code class="sourceCode clojure">(it/iter-next (it/iter [<span class="dv">1</span> <span class="dv">2</span> <span class="dv">3</span>]))</code></td>
+<td><code class="sourceCode javascript">it<span class="op">.</span><span class="fu">iter</span>([<span class="dv">1</span><span class="op">,</span><span class="dv">2</span><span class="op">,</span><span class="dv">3</span>])<span class="op">.</span><span class="fu">next</span>()<span class="op">;</span></code></td>
+<td><code class="sourceCode clojure">{<span class="st">"value"</span> <span class="dv">1</span>, <span class="st">"done"</span> <span class="va">false</span>}</code></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</section>
+<section id="iter-has" class="level3" data-number="8.1.8">
+<h3 data-number="8.1.8" class="anchored" data-anchor-id="iter-has"><span class="header-section-number">8.1.8</span> iter-has?</h3>
+<div class="clay-table">
+<div class="table-responsive">
+<table class="table table-hover clay-table caption-top" data-quarto-postprocess="true">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th">form</th>
+<th data-quarto-table-cell-role="th">code</th>
+<th data-quarto-table-cell-role="th">live</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code class="sourceCode clojure">[(it/iter-has? <span class="dv">123</span>) (it/iter-has? [<span class="dv">1</span> <span class="dv">2</span> <span class="dv">3</span>])]</code></td>
+<td><code class="sourceCode javascript">[
+  <span class="kw">null</span> <span class="op">!=</span> <span class="dv">123</span>[<span class="bu">Symbol</span><span class="op">.</span><span class="at">iterator</span>]<span class="op">,</span>
+  <span class="kw">null</span> <span class="op">!=</span> [<span class="dv">1</span><span class="op">,</span><span class="dv">2</span><span class="op">,</span><span class="dv">3</span>][<span class="bu">Symbol</span><span class="op">.</span><span class="at">iterator</span>]
+]<span class="op">;</span></code></td>
+<td><code class="sourceCode clojure">[<span class="va">false</span> <span class="va">true</span>]</code></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</section>
+<section id="iter-native" class="level3" data-number="8.1.9">
+<h3 data-number="8.1.9" class="anchored" data-anchor-id="iter-native"><span class="header-section-number">8.1.9</span> iter-native?</h3>
+<div class="clay-table">
+<div class="table-responsive">
+<table class="table table-hover clay-table caption-top" data-quarto-postprocess="true">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th">form</th>
+<th data-quarto-table-cell-role="th">code</th>
+<th data-quarto-table-cell-role="th">live</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code class="sourceCode clojure">[(it/iter-native? (it/iter [<span class="dv">1</span> <span class="dv">2</span> <span class="dv">3</span>])) (it/iter-native? <span class="dv">1</span>)]</code></td>
+<td><code class="sourceCode javascript">[
+  <span class="st">"function"</span> <span class="op">==</span> (<span class="kw">typeof</span> it<span class="op">.</span><span class="fu">iter</span>([<span class="dv">1</span><span class="op">,</span><span class="dv">2</span><span class="op">,</span><span class="dv">3</span>])[<span class="st">"next"</span>])<span class="op">,</span>
+  <span class="st">"function"</span> <span class="op">==</span> (<span class="kw">typeof</span> <span class="dv">1</span>[<span class="st">"next"</span>])
+]<span class="op">;</span></code></td>
+<td><code class="sourceCode clojure">[<span class="va">true</span> <span class="va">false</span>]</code></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</section>
+<section id="iter-eq" class="level3" data-number="8.1.10">
+<h3 data-number="8.1.10" class="anchored" data-anchor-id="iter-eq"><span class="header-section-number">8.1.10</span> iter-eq</h3>
+<div class="clay-table">
+<div class="table-responsive">
+<table class="table table-hover clay-table caption-top" data-quarto-postprocess="true">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th">form</th>
+<th data-quarto-table-cell-role="th">code</th>
+<th data-quarto-table-cell-role="th">live</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code class="sourceCode clojure">(<span class="kw">do</span> (var eq-fn (fn:&gt; [a b] (<span class="kw">==</span> a b))) [(it/iter-eq (it/iter [<span class="dv">1</span> <span class="dv">2</span> <span class="dv">4</span> <span class="dv">4</span>]) (it/iter [<span class="dv">1</span> <span class="dv">2</span> <span class="dv">4</span> <span class="dv">4</span>]) eq-fn) (it/iter-eq (it/iter [<span class="dv">1</span> <span class="dv">2</span> <span class="dv">4</span> <span class="dv">4</span>]) (it/iter [<span class="dv">1</span> <span class="dv">2</span> <span class="dv">3</span> <span class="dv">4</span>]) eq-fn) (it/iter-eq (it/iter [<span class="dv">1</span> <span class="dv">2</span> <span class="dv">4</span>]) (it/iter [<span class="dv">1</span> <span class="dv">2</span> <span class="dv">4</span> <span class="dv">4</span>]) eq-fn) (it/iter-eq (it/iter [<span class="dv">1</span> <span class="dv">2</span> <span class="dv">4</span> <span class="dv">4</span>]) (it/iter [<span class="dv">1</span> <span class="dv">2</span> <span class="dv">4</span>]) eq-fn)])</code></td>
+<td><code class="sourceCode javascript"><span class="kw">let</span> eq_fn <span class="op">=</span> <span class="kw">function</span> (a<span class="op">,</span>b){
+  <span class="cf">return</span> a <span class="op">==</span> b<span class="op">;</span>
+}<span class="op">;</span>
+[
+  it<span class="op">.</span><span class="fu">iter_eq</span>(it<span class="op">.</span><span class="fu">iter</span>([<span class="dv">1</span><span class="op">,</span><span class="dv">2</span><span class="op">,</span><span class="dv">4</span><span class="op">,</span><span class="dv">4</span>])<span class="op">,</span>it<span class="op">.</span><span class="fu">iter</span>([<span class="dv">1</span><span class="op">,</span><span class="dv">2</span><span class="op">,</span><span class="dv">4</span><span class="op">,</span><span class="dv">4</span>])<span class="op">,</span>eq_fn)<span class="op">,</span>
+  it<span class="op">.</span><span class="fu">iter_eq</span>(it<span class="op">.</span><span class="fu">iter</span>([<span class="dv">1</span><span class="op">,</span><span class="dv">2</span><span class="op">,</span><span class="dv">4</span><span class="op">,</span><span class="dv">4</span>])<span class="op">,</span>it<span class="op">.</span><span class="fu">iter</span>([<span class="dv">1</span><span class="op">,</span><span class="dv">2</span><span class="op">,</span><span class="dv">3</span><span class="op">,</span><span class="dv">4</span>])<span class="op">,</span>eq_fn)<span class="op">,</span>
+  it<span class="op">.</span><span class="fu">iter_eq</span>(it<span class="op">.</span><span class="fu">iter</span>([<span class="dv">1</span><span class="op">,</span><span class="dv">2</span><span class="op">,</span><span class="dv">4</span>])<span class="op">,</span>it<span class="op">.</span><span class="fu">iter</span>([<span class="dv">1</span><span class="op">,</span><span class="dv">2</span><span class="op">,</span><span class="dv">4</span><span class="op">,</span><span class="dv">4</span>])<span class="op">,</span>eq_fn)<span class="op">,</span>
+  it<span class="op">.</span><span class="fu">iter_eq</span>(it<span class="op">.</span><span class="fu">iter</span>([<span class="dv">1</span><span class="op">,</span><span class="dv">2</span><span class="op">,</span><span class="dv">4</span><span class="op">,</span><span class="dv">4</span>])<span class="op">,</span>it<span class="op">.</span><span class="fu">iter</span>([<span class="dv">1</span><span class="op">,</span><span class="dv">2</span><span class="op">,</span><span class="dv">4</span>])<span class="op">,</span>eq_fn)
+]<span class="op">;</span></code></td>
+<td><code class="sourceCode clojure">[<span class="va">true</span> <span class="va">false</span> <span class="va">false</span> <span class="va">false</span>]</code></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</section>
+<section id="iter-null" class="level3" data-number="8.1.11">
+<h3 data-number="8.1.11" class="anchored" data-anchor-id="iter-null"><span class="header-section-number">8.1.11</span> iter-null</h3>
+<div class="clay-table">
+<div class="table-responsive">
+<table class="table table-hover clay-table caption-top" data-quarto-postprocess="true">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th">form</th>
+<th data-quarto-table-cell-role="th">code</th>
+<th data-quarto-table-cell-role="th">live</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code class="sourceCode clojure">(it/arr&lt; (it/iter-null))</code></td>
+<td><code class="sourceCode javascript">it<span class="op">.</span><span class="fu">arr_lt</span>(it<span class="op">.</span><span class="fu">iter_null</span>())<span class="op">;</span></code></td>
+<td><code class="sourceCode clojure">[]</code></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</section>
+<section id="collect" class="level3" data-number="8.1.12">
+<h3 data-number="8.1.12" class="anchored" data-anchor-id="collect"><span class="header-section-number">8.1.12</span> collect</h3>
+<div class="clay-table">
+<div class="table-responsive">
+<table class="table table-hover clay-table caption-top" data-quarto-postprocess="true">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th">form</th>
+<th data-quarto-table-cell-role="th">code</th>
+<th data-quarto-table-cell-role="th">live</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code class="sourceCode clojure">(it/collect [<span class="dv">1</span> <span class="dv">2</span> <span class="dv">3</span> <span class="dv">4</span>] k/step-push [])</code></td>
+<td><code class="sourceCode javascript">it<span class="op">.</span><span class="fu">collect</span>([<span class="dv">1</span><span class="op">,</span><span class="dv">2</span><span class="op">,</span><span class="dv">3</span><span class="op">,</span><span class="dv">4</span>]<span class="op">,</span>k<span class="op">.</span><span class="at">step_push</span><span class="op">,</span>[])<span class="op">;</span></code></td>
+<td><code class="sourceCode clojure">[<span class="dv">1</span> <span class="dv">2</span> <span class="dv">3</span> <span class="dv">4</span>]</code></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</section>
+<section id="nil-1" class="level3" data-number="8.1.13">
+<h3 data-number="8.1.13" class="anchored" data-anchor-id="nil-1"><span class="header-section-number">8.1.13</span> nil&lt;</h3>
+<div class="clay-table">
+<div class="table-responsive">
+<table class="table table-hover clay-table caption-top" data-quarto-postprocess="true">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th">form</th>
+<th data-quarto-table-cell-role="th">code</th>
+<th data-quarto-table-cell-role="th">live</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code class="sourceCode clojure">(it/nil&lt; (it/iter [<span class="dv">1</span> <span class="dv">2</span> <span class="dv">3</span> <span class="dv">4</span>]))</code></td>
+<td><code class="sourceCode javascript">it<span class="op">.</span><span class="fu">nil_lt</span>(it<span class="op">.</span><span class="fu">iter</span>([<span class="dv">1</span><span class="op">,</span><span class="dv">2</span><span class="op">,</span><span class="dv">3</span><span class="op">,</span><span class="dv">4</span>]))<span class="op">;</span></code></td>
+<td><code class="sourceCode clojure"><span class="va">nil</span></code></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</section>
+<section id="arr" class="level3" data-number="8.1.14">
+<h3 data-number="8.1.14" class="anchored" data-anchor-id="arr"><span class="header-section-number">8.1.14</span> arr&lt;</h3>
+<div class="clay-table">
+<div class="table-responsive">
+<table class="table table-hover clay-table caption-top" data-quarto-postprocess="true">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th">form</th>
+<th data-quarto-table-cell-role="th">code</th>
+<th data-quarto-table-cell-role="th">live</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code class="sourceCode clojure">(it/arr&lt; (it/iter [<span class="dv">1</span> <span class="dv">2</span> <span class="dv">3</span> <span class="dv">4</span>]))</code></td>
+<td><code class="sourceCode javascript">it<span class="op">.</span><span class="fu">arr_lt</span>(it<span class="op">.</span><span class="fu">iter</span>([<span class="dv">1</span><span class="op">,</span><span class="dv">2</span><span class="op">,</span><span class="dv">3</span><span class="op">,</span><span class="dv">4</span>]))<span class="op">;</span></code></td>
+<td><code class="sourceCode clojure">[<span class="dv">1</span> <span class="dv">2</span> <span class="dv">3</span> <span class="dv">4</span>]</code></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</section>
+<section id="obj" class="level3" data-number="8.1.15">
+<h3 data-number="8.1.15" class="anchored" data-anchor-id="obj"><span class="header-section-number">8.1.15</span> obj&lt;</h3>
+<div class="clay-table">
+<div class="table-responsive">
+<table class="table table-hover clay-table caption-top" data-quarto-postprocess="true">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th">form</th>
+<th data-quarto-table-cell-role="th">code</th>
+<th data-quarto-table-cell-role="th">live</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code class="sourceCode clojure">(it/obj&lt; (it/iter [[<span class="st">"a"</span> <span class="dv">2</span>] [<span class="st">"b"</span> <span class="dv">4</span>]]))</code></td>
+<td><code class="sourceCode javascript">it<span class="op">.</span><span class="fu">obj_lt</span>(it<span class="op">.</span><span class="fu">iter</span>([[<span class="st">"a"</span><span class="op">,</span><span class="dv">2</span>]<span class="op">,</span>[<span class="st">"b"</span><span class="op">,</span><span class="dv">4</span>]]))<span class="op">;</span></code></td>
+<td><code class="sourceCode clojure">{<span class="st">"a"</span> <span class="dv">2</span>, <span class="st">"b"</span> <span class="dv">4</span>}</code></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</section>
+<section id="take" class="level3" data-number="8.1.16">
+<h3 data-number="8.1.16" class="anchored" data-anchor-id="take"><span class="header-section-number">8.1.16</span> take</h3>
+<div class="clay-table">
+<div class="table-responsive">
+<table class="table table-hover clay-table caption-top" data-quarto-postprocess="true">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th">form</th>
+<th data-quarto-table-cell-role="th">code</th>
+<th data-quarto-table-cell-role="th">live</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code class="sourceCode clojure">(it/arr&lt; (it/take <span class="dv">4</span> (it/iter [<span class="dv">1</span> <span class="dv">2</span> <span class="dv">3</span> <span class="dv">4</span> <span class="dv">5</span> <span class="dv">6</span> <span class="dv">7</span>])))</code></td>
+<td><code class="sourceCode javascript">it<span class="op">.</span><span class="fu">arr_lt</span>(it<span class="op">.</span><span class="fu">take</span>(<span class="dv">4</span><span class="op">,</span>it<span class="op">.</span><span class="fu">iter</span>([<span class="dv">1</span><span class="op">,</span><span class="dv">2</span><span class="op">,</span><span class="dv">3</span><span class="op">,</span><span class="dv">4</span><span class="op">,</span><span class="dv">5</span><span class="op">,</span><span class="dv">6</span><span class="op">,</span><span class="dv">7</span>])))<span class="op">;</span></code></td>
+<td><code class="sourceCode clojure">[<span class="dv">1</span> <span class="dv">2</span> <span class="dv">3</span> <span class="dv">4</span>]</code></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</section>
+<section id="constantly" class="level3" data-number="8.1.17">
+<h3 data-number="8.1.17" class="anchored" data-anchor-id="constantly"><span class="header-section-number">8.1.17</span> constantly</h3>
+<div class="clay-table">
+<div class="table-responsive">
+<table class="table table-hover clay-table caption-top" data-quarto-postprocess="true">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th">form</th>
+<th data-quarto-table-cell-role="th">code</th>
+<th data-quarto-table-cell-role="th">live</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code class="sourceCode clojure">(it/arr&lt; (it/take <span class="dv">4</span> (it/constantly <span class="dv">1</span>)))</code></td>
+<td><code class="sourceCode javascript">it<span class="op">.</span><span class="fu">arr_lt</span>(it<span class="op">.</span><span class="fu">take</span>(<span class="dv">4</span><span class="op">,</span>it<span class="op">.</span><span class="fu">constantly</span>(<span class="dv">1</span>)))<span class="op">;</span></code></td>
+<td><code class="sourceCode clojure">[<span class="dv">1</span> <span class="dv">1</span> <span class="dv">1</span> <span class="dv">1</span>]</code></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</section>
+<section id="iterate" class="level3" data-number="8.1.18">
+<h3 data-number="8.1.18" class="anchored" data-anchor-id="iterate"><span class="header-section-number">8.1.18</span> iterate</h3>
+<div class="clay-table">
+<div class="table-responsive">
+<table class="table table-hover clay-table caption-top" data-quarto-postprocess="true">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th">form</th>
+<th data-quarto-table-cell-role="th">code</th>
+<th data-quarto-table-cell-role="th">live</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code class="sourceCode clojure">(it/arr&lt; (it/take <span class="dv">4</span> (it/iterate k/inc <span class="dv">11</span>)))</code></td>
+<td><code class="sourceCode javascript">it<span class="op">.</span><span class="fu">arr_lt</span>(it<span class="op">.</span><span class="fu">take</span>(<span class="dv">4</span><span class="op">,</span>it<span class="op">.</span><span class="fu">iterate</span>(<span class="kw">function</span> (x){
+  <span class="cf">return</span> x <span class="op">+</span> <span class="dv">1</span><span class="op">;</span>
+}<span class="op">,</span><span class="dv">11</span>)))<span class="op">;</span></code></td>
+<td><code class="sourceCode clojure">[<span class="dv">11</span> <span class="dv">12</span> <span class="dv">13</span> <span class="dv">14</span>]</code></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</section>
+<section id="repeatedly" class="level3" data-number="8.1.19">
+<h3 data-number="8.1.19" class="anchored" data-anchor-id="repeatedly"><span class="header-section-number">8.1.19</span> repeatedly</h3>
+<div class="clay-table">
+<div class="table-responsive">
+<table class="table table-hover clay-table caption-top" data-quarto-postprocess="true">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th">form</th>
+<th data-quarto-table-cell-role="th">code</th>
+<th data-quarto-table-cell-role="th">live</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code class="sourceCode clojure">(it/arr&lt; (it/take <span class="dv">5</span> (it/repeatedly (<span class="kw">fn</span> [] (return <span class="dv">5</span>)))))</code></td>
+<td><code class="sourceCode javascript">it<span class="op">.</span><span class="fu">arr_lt</span>(it<span class="op">.</span><span class="fu">take</span>(<span class="dv">5</span><span class="op">,</span>it<span class="op">.</span><span class="fu">repeatedly</span>(<span class="kw">function</span> (){
+  <span class="cf">return</span> <span class="dv">5</span><span class="op">;</span>
+})))<span class="op">;</span></code></td>
+<td><code class="sourceCode clojure">[<span class="dv">5</span> <span class="dv">5</span> <span class="dv">5</span> <span class="dv">5</span> <span class="dv">5</span>]</code></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</section>
+<section id="cycle" class="level3" data-number="8.1.20">
+<h3 data-number="8.1.20" class="anchored" data-anchor-id="cycle"><span class="header-section-number">8.1.20</span> cycle</h3>
+<div class="clay-table">
+<div class="table-responsive">
+<table class="table table-hover clay-table caption-top" data-quarto-postprocess="true">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th">form</th>
+<th data-quarto-table-cell-role="th">code</th>
+<th data-quarto-table-cell-role="th">live</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code class="sourceCode clojure">(it/arr&lt; (it/take <span class="dv">5</span> (it/cycle [<span class="dv">1</span> <span class="dv">2</span> <span class="dv">3</span>])))</code></td>
+<td><code class="sourceCode javascript">it<span class="op">.</span><span class="fu">arr_lt</span>(it<span class="op">.</span><span class="fu">take</span>(<span class="dv">5</span><span class="op">,</span>it<span class="op">.</span><span class="fu">cycle</span>([<span class="dv">1</span><span class="op">,</span><span class="dv">2</span><span class="op">,</span><span class="dv">3</span>])))<span class="op">;</span></code></td>
+<td><code class="sourceCode clojure">[<span class="dv">1</span> <span class="dv">2</span> <span class="dv">3</span> <span class="dv">1</span> <span class="dv">2</span>]</code></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</section>
+<section id="range" class="level3" data-number="8.1.21">
+<h3 data-number="8.1.21" class="anchored" data-anchor-id="range"><span class="header-section-number">8.1.21</span> range</h3>
+<div class="clay-table">
+<div class="table-responsive">
+<table class="table table-hover clay-table caption-top" data-quarto-postprocess="true">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th">form</th>
+<th data-quarto-table-cell-role="th">code</th>
+<th data-quarto-table-cell-role="th">live</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code class="sourceCode clojure">(it/arr&lt; (it/range [-<span class="dv">10</span> -<span class="dv">3</span>]))</code></td>
+<td><code class="sourceCode javascript">it<span class="op">.</span><span class="fu">arr_lt</span>(it<span class="op">.</span><span class="fu">range</span>([<span class="op">-</span><span class="dv">10</span><span class="op">,-</span><span class="dv">3</span>]))<span class="op">;</span></code></td>
+<td><code class="sourceCode clojure">[-<span class="dv">10</span> -<span class="dv">9</span> -<span class="dv">8</span> -<span class="dv">7</span> -<span class="dv">6</span> -<span class="dv">5</span> -<span class="dv">4</span>]</code></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</section>
+<section id="drop" class="level3" data-number="8.1.22">
+<h3 data-number="8.1.22" class="anchored" data-anchor-id="drop"><span class="header-section-number">8.1.22</span> drop</h3>
+<div class="clay-table">
+<div class="table-responsive">
+<table class="table table-hover clay-table caption-top" data-quarto-postprocess="true">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th">form</th>
+<th data-quarto-table-cell-role="th">code</th>
+<th data-quarto-table-cell-role="th">live</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code class="sourceCode clojure">(it/arr&lt; (it/drop <span class="dv">3</span> (it/range <span class="dv">10</span>)))</code></td>
+<td><code class="sourceCode javascript">it<span class="op">.</span><span class="fu">arr_lt</span>(it<span class="op">.</span><span class="fu">drop</span>(<span class="dv">3</span><span class="op">,</span>it<span class="op">.</span><span class="fu">range</span>(<span class="dv">10</span>)))<span class="op">;</span></code></td>
+<td><code class="sourceCode clojure">[<span class="dv">3</span> <span class="dv">4</span> <span class="dv">5</span> <span class="dv">6</span> <span class="dv">7</span> <span class="dv">8</span> <span class="dv">9</span>]</code></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</section>
+<section id="peek" class="level3" data-number="8.1.23">
+<h3 data-number="8.1.23" class="anchored" data-anchor-id="peek"><span class="header-section-number">8.1.23</span> peek</h3>
+<div class="clay-table">
+<div class="table-responsive">
+<table class="table table-hover clay-table caption-top" data-quarto-postprocess="true">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th">form</th>
+<th data-quarto-table-cell-role="th">code</th>
+<th data-quarto-table-cell-role="th">live</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code class="sourceCode clojure">(<span class="kw">do</span> (var out := []) (it/nil&lt; (it/peek (<span class="kw">fn</span> [<span class="kw">e</span>] (k/step-push out <span class="kw">e</span>)) [<span class="dv">1</span> <span class="dv">2</span> <span class="dv">3</span> <span class="dv">4</span> <span class="dv">5</span>])) out)</code></td>
+<td><code class="sourceCode javascript"><span class="kw">let</span> out <span class="op">=</span> []<span class="op">;</span>
+it<span class="op">.</span><span class="fu">nil_lt</span>(it<span class="op">.</span><span class="fu">peek</span>(<span class="kw">function</span> (e){
+  k<span class="op">.</span><span class="fu">step_push</span>(out<span class="op">,</span>e)<span class="op">;</span>
+}<span class="op">,</span>[<span class="dv">1</span><span class="op">,</span><span class="dv">2</span><span class="op">,</span><span class="dv">3</span><span class="op">,</span><span class="dv">4</span><span class="op">,</span><span class="dv">5</span>]))<span class="op">;</span>
+out<span class="op">;</span></code></td>
+<td><code class="sourceCode clojure">[<span class="dv">1</span> <span class="dv">2</span> <span class="dv">3</span> <span class="dv">4</span> <span class="dv">5</span>]</code></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</section>
+<section id="map" class="level3" data-number="8.1.24">
+<h3 data-number="8.1.24" class="anchored" data-anchor-id="map"><span class="header-section-number">8.1.24</span> map</h3>
+<div class="clay-table">
+<div class="table-responsive">
+<table class="table table-hover clay-table caption-top" data-quarto-postprocess="true">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th">form</th>
+<th data-quarto-table-cell-role="th">code</th>
+<th data-quarto-table-cell-role="th">live</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code class="sourceCode clojure">(it/arr&lt; (it/map k/inc [<span class="dv">1</span> <span class="dv">2</span> <span class="dv">3</span>]))</code></td>
+<td><code class="sourceCode javascript">it<span class="op">.</span><span class="fu">arr_lt</span>(it<span class="op">.</span><span class="fu">map</span>(<span class="kw">function</span> (x){
+  <span class="cf">return</span> x <span class="op">+</span> <span class="dv">1</span><span class="op">;</span>
+}<span class="op">,</span>[<span class="dv">1</span><span class="op">,</span><span class="dv">2</span><span class="op">,</span><span class="dv">3</span>]))<span class="op">;</span></code></td>
+<td><code class="sourceCode clojure">[<span class="dv">2</span> <span class="dv">3</span> <span class="dv">4</span>]</code></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</section>
+<section id="mapcat" class="level3" data-number="8.1.25">
+<h3 data-number="8.1.25" class="anchored" data-anchor-id="mapcat"><span class="header-section-number">8.1.25</span> mapcat</h3>
+<div class="clay-table">
+<div class="table-responsive">
+<table class="table table-hover clay-table caption-top" data-quarto-postprocess="true">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th">form</th>
+<th data-quarto-table-cell-role="th">code</th>
+<th data-quarto-table-cell-role="th">live</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code class="sourceCode clojure">[(it/arr&lt; (it/mapcat (fn:&gt; [x] [x x]) [<span class="dv">1</span> <span class="dv">2</span> <span class="dv">3</span>])) (it/arr&lt; (it/mapcat (fn:&gt; [x] x) [[<span class="dv">1</span> <span class="dv">2</span> <span class="dv">3</span>] [<span class="dv">4</span> <span class="dv">5</span> <span class="dv">6</span>]])) (it/arr&lt; (it/mapcat (fn:&gt; [x] (it/range x)) (it/range <span class="dv">4</span>))) (it/arr&lt; (it/mapcat (fn:&gt; [x] x) [(it/range <span class="dv">3</span>) (it/range <span class="dv">3</span>)]))]</code></td>
+<td><code class="sourceCode javascript">[
+  it<span class="op">.</span><span class="fu">arr_lt</span>(it<span class="op">.</span><span class="fu">mapcat</span>(<span class="kw">function</span> (x){
+  <span class="cf">return</span> [x<span class="op">,</span>x]<span class="op">;</span>
+}<span class="op">,</span>[<span class="dv">1</span><span class="op">,</span><span class="dv">2</span><span class="op">,</span><span class="dv">3</span>]))<span class="op">,</span>
+  it<span class="op">.</span><span class="fu">arr_lt</span>(it<span class="op">.</span><span class="fu">mapcat</span>(<span class="kw">function</span> (x){
+  <span class="cf">return</span> x<span class="op">;</span>
+}<span class="op">,</span>[[<span class="dv">1</span><span class="op">,</span><span class="dv">2</span><span class="op">,</span><span class="dv">3</span>]<span class="op">,</span>[<span class="dv">4</span><span class="op">,</span><span class="dv">5</span><span class="op">,</span><span class="dv">6</span>]]))<span class="op">,</span>
+  it<span class="op">.</span><span class="fu">arr_lt</span>(it<span class="op">.</span><span class="fu">mapcat</span>(<span class="kw">function</span> (x){
+  <span class="cf">return</span> it<span class="op">.</span><span class="fu">range</span>(x)<span class="op">;</span>
+}<span class="op">,</span>it<span class="op">.</span><span class="fu">range</span>(<span class="dv">4</span>)))<span class="op">,</span>
+  it<span class="op">.</span><span class="fu">arr_lt</span>(it<span class="op">.</span><span class="fu">mapcat</span>(<span class="kw">function</span> (x){
+  <span class="cf">return</span> x<span class="op">;</span>
+}<span class="op">,</span>[it<span class="op">.</span><span class="fu">range</span>(<span class="dv">3</span>)<span class="op">,</span>it<span class="op">.</span><span class="fu">range</span>(<span class="dv">3</span>)]))
+]<span class="op">;</span></code></td>
+<td><code class="sourceCode clojure">[[<span class="dv">1</span> <span class="dv">1</span> <span class="dv">2</span> <span class="dv">2</span> <span class="dv">3</span> <span class="dv">3</span>] [<span class="dv">1</span> <span class="dv">2</span> <span class="dv">3</span> <span class="dv">4</span> <span class="dv">5</span> <span class="dv">6</span>] [<span class="dv">0</span> <span class="dv">0</span> <span class="dv">1</span> <span class="dv">0</span> <span class="dv">1</span> <span class="dv">2</span>] [<span class="dv">0</span> <span class="dv">1</span> <span class="dv">2</span> <span class="dv">0</span> <span class="dv">1</span> <span class="dv">2</span>]]</code></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</section>
+<section id="concat" class="level3" data-number="8.1.26">
+<h3 data-number="8.1.26" class="anchored" data-anchor-id="concat"><span class="header-section-number">8.1.26</span> concat</h3>
+<div class="clay-table">
+<div class="table-responsive">
+<table class="table table-hover clay-table caption-top" data-quarto-postprocess="true">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th">form</th>
+<th data-quarto-table-cell-role="th">code</th>
+<th data-quarto-table-cell-role="th">live</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code class="sourceCode clojure">(it/arr&lt; (it/concat [(it/range <span class="dv">3</span>) (it/range [<span class="dv">4</span> <span class="dv">6</span>])]))</code></td>
+<td><code class="sourceCode javascript">it<span class="op">.</span><span class="fu">arr_lt</span>(it<span class="op">.</span><span class="fu">concat</span>([it<span class="op">.</span><span class="fu">range</span>(<span class="dv">3</span>)<span class="op">,</span>it<span class="op">.</span><span class="fu">range</span>([<span class="dv">4</span><span class="op">,</span><span class="dv">6</span>])]))<span class="op">;</span></code></td>
+<td><code class="sourceCode clojure">[<span class="dv">0</span> <span class="dv">1</span> <span class="dv">2</span> <span class="dv">4</span> <span class="dv">5</span>]</code></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</section>
+<section id="filter" class="level3" data-number="8.1.27">
+<h3 data-number="8.1.27" class="anchored" data-anchor-id="filter"><span class="header-section-number">8.1.27</span> filter</h3>
+<div class="clay-table">
+<div class="table-responsive">
+<table class="table table-hover clay-table caption-top" data-quarto-postprocess="true">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th">form</th>
+<th data-quarto-table-cell-role="th">code</th>
+<th data-quarto-table-cell-role="th">live</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code class="sourceCode clojure">(it/arr&lt; (it/filter k/odd? [<span class="dv">1</span> <span class="dv">2</span> <span class="dv">3</span> <span class="dv">4</span>]))</code></td>
+<td><code class="sourceCode javascript">it<span class="op">.</span><span class="fu">arr_lt</span>(it<span class="op">.</span><span class="fu">filter</span>(<span class="kw">function</span> (x){
+  <span class="cf">return</span> <span class="op">!</span>(<span class="dv">0</span> <span class="op">==</span> (x <span class="op">%</span> <span class="dv">2</span>))<span class="op">;</span>
+}<span class="op">,</span>[<span class="dv">1</span><span class="op">,</span><span class="dv">2</span><span class="op">,</span><span class="dv">3</span><span class="op">,</span><span class="dv">4</span>]))<span class="op">;</span></code></td>
+<td><code class="sourceCode clojure">[<span class="dv">1</span> <span class="dv">3</span>]</code></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</section>
+<section id="keep" class="level3" data-number="8.1.28">
+<h3 data-number="8.1.28" class="anchored" data-anchor-id="keep"><span class="header-section-number">8.1.28</span> keep</h3>
+<div class="clay-table">
+<div class="table-responsive">
+<table class="table table-hover clay-table caption-top" data-quarto-postprocess="true">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th">form</th>
+<th data-quarto-table-cell-role="th">code</th>
+<th data-quarto-table-cell-role="th">live</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code class="sourceCode clojure">(it/arr&lt; (it/keep (fn:&gt; [x] (:? (k/odd? x) {<span class="at">:a</span> x})) [<span class="dv">1</span> <span class="dv">2</span> <span class="dv">3</span> <span class="dv">4</span>]))</code></td>
+<td><code class="sourceCode javascript">it<span class="op">.</span><span class="fu">arr_lt</span>(it<span class="op">.</span><span class="fu">keep</span>(<span class="kw">function</span> (x){
+  <span class="cf">return</span> <span class="op">!</span>(<span class="dv">0</span> <span class="op">==</span> (x <span class="op">%</span> <span class="dv">2</span>)) <span class="op">?</span> {<span class="st">"a"</span><span class="op">:</span>x} <span class="op">:</span> <span class="kw">null</span><span class="op">;</span>
+}<span class="op">,</span>[<span class="dv">1</span><span class="op">,</span><span class="dv">2</span><span class="op">,</span><span class="dv">3</span><span class="op">,</span><span class="dv">4</span>]))<span class="op">;</span></code></td>
+<td><code class="sourceCode clojure">[{<span class="st">"a"</span> <span class="dv">1</span>} {<span class="st">"a"</span> <span class="dv">3</span>}]</code></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</section>
+<section id="partition" class="level3" data-number="8.1.29">
+<h3 data-number="8.1.29" class="anchored" data-anchor-id="partition"><span class="header-section-number">8.1.29</span> partition</h3>
+<div class="clay-table">
+<div class="table-responsive">
+<table class="table table-hover clay-table caption-top" data-quarto-postprocess="true">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th">form</th>
+<th data-quarto-table-cell-role="th">code</th>
+<th data-quarto-table-cell-role="th">live</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code class="sourceCode clojure">(it/arr&lt; (it/partition <span class="dv">3</span> (it/range <span class="dv">10</span>)))</code></td>
+<td><code class="sourceCode javascript">it<span class="op">.</span><span class="fu">arr_lt</span>(it<span class="op">.</span><span class="fu">partition</span>(<span class="dv">3</span><span class="op">,</span>it<span class="op">.</span><span class="fu">range</span>(<span class="dv">10</span>)))<span class="op">;</span></code></td>
+<td><code class="sourceCode clojure">[[<span class="dv">0</span> <span class="dv">1</span> <span class="dv">2</span>] [<span class="dv">4</span> <span class="dv">5</span> <span class="dv">6</span>] [<span class="dv">8</span> <span class="dv">9</span>]]</code></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</section>
+<section id="take-nth" class="level3" data-number="8.1.30">
+<h3 data-number="8.1.30" class="anchored" data-anchor-id="take-nth"><span class="header-section-number">8.1.30</span> take-nth</h3>
+<div class="clay-table">
+<div class="table-responsive">
+<table class="table table-hover clay-table caption-top" data-quarto-postprocess="true">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th">form</th>
+<th data-quarto-table-cell-role="th">code</th>
+<th data-quarto-table-cell-role="th">live</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code class="sourceCode clojure">[(it/arr&lt; (it/take-nth <span class="dv">2</span> (it/range <span class="dv">10</span>))) (it/arr&lt; (it/take-nth <span class="dv">3</span> (it/range <span class="dv">10</span>))) (it/arr&lt; (it/take-nth <span class="dv">4</span> (it/drop <span class="dv">1</span> (it/range <span class="dv">10</span>))))]</code></td>
+<td><code class="sourceCode javascript">[
+  it<span class="op">.</span><span class="fu">arr_lt</span>(it<span class="op">.</span><span class="fu">take_nth</span>(<span class="dv">2</span><span class="op">,</span>it<span class="op">.</span><span class="fu">range</span>(<span class="dv">10</span>)))<span class="op">,</span>
+  it<span class="op">.</span><span class="fu">arr_lt</span>(it<span class="op">.</span><span class="fu">take_nth</span>(<span class="dv">3</span><span class="op">,</span>it<span class="op">.</span><span class="fu">range</span>(<span class="dv">10</span>)))<span class="op">,</span>
+  it<span class="op">.</span><span class="fu">arr_lt</span>(it<span class="op">.</span><span class="fu">take_nth</span>(<span class="dv">4</span><span class="op">,</span>it<span class="op">.</span><span class="fu">drop</span>(<span class="dv">1</span><span class="op">,</span>it<span class="op">.</span><span class="fu">range</span>(<span class="dv">10</span>))))
+]<span class="op">;</span></code></td>
+<td><code class="sourceCode clojure">[[<span class="dv">0</span> <span class="dv">2</span> <span class="dv">4</span> <span class="dv">6</span> <span class="dv">8</span>] [<span class="dv">0</span> <span class="dv">3</span> <span class="dv">6</span> <span class="dv">9</span>] [<span class="dv">1</span> <span class="dv">5</span> <span class="dv">9</span>]]</code></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
 <div style="background-color:grey;height:2px;width:100%;"></div>
 <div><pre><small><small>source: <a href="https://github.com/scicloj/stdlang-docs/blob/main/notebooks/stdlang_book/walkthrough_js.clj">notebooks/stdlang_book/walkthrough_js.clj</a></small></small></pre></div>
 
@@ -8732,8 +9523,8 @@ out<span class="op">;</span></code></td>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./stdlang_book.walkthrough_python.html" class="pagination-link" aria-label="Python Walkthrough">
-        <span class="nav-page-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Python Walkthrough</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./stdlang_book.walkthrough_lua.html" class="pagination-link" aria-label="Lua Walkthrough">
+        <span class="nav-page-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Lua Walkthrough</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
