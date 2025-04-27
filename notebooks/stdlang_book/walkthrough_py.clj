@@ -860,6 +860,11 @@
        :error   (:= out err)})
     out))])
 
+
+^:kindly/hide-code
+(do 
+  (l/annex:restart-all))
+
 ;; ## Base Lib - Util
 
 ;; ### invoke
@@ -929,10 +934,10 @@
     (k/cat "1+2" "+3"))
   (l/! [:live]
     (k/cat "1+2" "+3"))]
- ['(k/apply k/cat ["1+2" "+3"])
+ #_['(k/apply k/cat ["1+2" "+3"])
   (l/! [:code]
     (k/apply k/cat ["1+2" "+3"]))
-  (l/! [:live]
+    (l/! [:live]
     (k/apply k/cat ["1+2" "+3"]))])
 
 
@@ -1274,7 +1279,7 @@
     !:G)
   (l/! [:live]
     !:G)]
- ['(!:G CUSTOM)
+ #_['(!:G CUSTOM)
   (l/! [:code]
     (!:G CUSTOM))
   (l/! [:live]
@@ -1327,6 +1332,9 @@
       (k/global-del "HELLO")
       (k/global-has? "HELLO")))])
 
+^:kindly/hide-code
+(do 
+  (l/annex:restart-all))
 
 ;; ## Base Lib - String
 
@@ -1469,61 +1477,63 @@
   (l/! [:live]
     (k/apply k/to-lowercase ["hello"]))])
 
-;; ### to-fixed
+^:kindly/hide-code
+(comment
+  ;; ### to-fixed
 
-(display-output-format
- ['(k/to-fixed 1.2 3)
-  (l/! [:code]
-    (k/to-fixed 1.2 3))
-  (l/! [:live]
-    (k/to-fixed 1.2 3))]
- ['(k/apply k/to-fixed [1.2 3])
-  (l/! [:code]
-    (k/apply k/to-fixed [1.2 3]))
-  (l/! [:live]
-    (k/apply k/to-fixed [1.2 3]))])
+  (display-output-format
+   #_['(k/to-fixed 1.2 3)
+      (l/! [:code]
+        (k/to-fixed 1.2 3))
+      (l/! [:live]
+        (k/to-fixed 1.2 3))]
+   #_['(k/apply k/to-fixed [1.2 3])
+      (l/! [:code]
+        (k/apply k/to-fixed [1.2 3]))
+      (l/! [:live]
+        (k/apply k/to-fixed [1.2 3]))])
 
-;; ### trim
+  ;; ### trim
 
-(display-output-format
- ['(k/trim " \n  hello \n  ")
-  (l/! [:code]
-    (k/trim " \n  hello \n  "))
-  (l/! [:live]
-    (k/trim " \n  hello \n  "))]
- ['(k/apply k/trim [" \n  hello \n  "])
-  (l/! [:code]
-    (k/apply k/trim [" \n  hello \n  "]))
-  (l/! [:live]
-    (k/apply k/trim [" \n  hello \n  "]))])
+  (display-output-format
+   ['(k/trim " \n  hello \n  ")
+    (l/! [:code]
+      (k/trim " \n  hello \n  "))
+    (l/! [:live]
+      (k/trim " \n  hello \n  "))]
+   ['(k/apply k/trim [" \n  hello \n  "])
+    (l/! [:code]
+      (k/apply k/trim [" \n  hello \n  "]))
+    (l/! [:live]
+      (k/apply k/trim [" \n  hello \n  "]))])
 
-;; ### trim-left
+  ;; ### trim-left
 
-(display-output-format
- ['(k/trim-left " \n  hello \n  ")
-  (l/! [:code]
-    (k/trim-left " \n  hello \n  "))
-  (l/! [:live]
-    (k/trim-left " \n  hello \n  "))]
- ['(k/apply k/trim-left [" \n  hello \n  "])
-  (l/! [:code]
-    (k/apply k/trim-left [" \n  hello \n  "]))
-  (l/! [:live]
-    (k/apply k/trim-left [" \n  hello \n  "]))])
+  (display-output-format
+   ['(k/trim-left " \n  hello \n  ")
+    (l/! [:code]
+      (k/trim-left " \n  hello \n  "))
+    (l/! [:live]
+      (k/trim-left " \n  hello \n  "))]
+   ['(k/apply k/trim-left [" \n  hello \n  "])
+    (l/! [:code]
+      (k/apply k/trim-left [" \n  hello \n  "]))
+    (l/! [:live]
+      (k/apply k/trim-left [" \n  hello \n  "]))])
+  
+  ;; ### trim-right
 
-;; ### trim-right
-
-(display-output-format
- ['(k/trim-right " \n  hello \n  ")
-  (l/! [:code]
-    (k/trim-right " \n  hello \n  "))
-  (l/! [:live]
-    (k/trim-right " \n  hello \n  "))]
- ['(k/apply k/trim-right [" \n  hello \n  "])
-  (l/! [:code]
-    (k/apply k/trim-right [" \n  hello \n  "]))
-  (l/! [:live]
-    (k/apply k/trim-right [" \n  hello \n  "]))])
+  (display-output-format
+   ['(k/trim-right " \n  hello \n  ")
+    (l/! [:code]
+      (k/trim-right " \n  hello \n  "))
+    (l/! [:live]
+      (k/trim-right " \n  hello \n  "))]
+   ['(k/apply k/trim-right [" \n  hello \n  "])
+    (l/! [:code]
+      (k/apply k/trim-right [" \n  hello \n  "]))
+    (l/! [:live]
+      (k/apply k/trim-right [" \n  hello \n  "]))]))
 
 ;; ### starts-with?
 
@@ -1646,33 +1656,35 @@
   (l/! [:live]
     (k/apply k/b64-decode ["aGVsbG8="]))])
 
-;; ### uri-encode
+^:kindly/hide-code
+(comment
+  ;; ### uri-encode
 
-(display-output-format
- ['(k/uri-encode "+.\n ")
-  (l/! [:code]
-    (k/uri-encode "+.\n "))
-  (l/! [:live]
-    (k/uri-encode "+.\n "))]
- ['(k/apply k/uri-encode ["+.\n "])
-  (l/! [:code]
-    (k/apply k/uri-encode ["+.\n "]))
-  (l/! [:live]
-    (k/apply k/uri-encode ["+.\n "]))])
+  (display-output-format
+   ['(k/uri-encode "+.\n ")
+    (l/! [:code]
+      (k/uri-encode "+.\n "))
+    (l/! [:live]
+      (k/uri-encode "+.\n "))]
+   ['(k/apply k/uri-encode ["+.\n "])
+    (l/! [:code]
+      (k/apply k/uri-encode ["+.\n "]))
+    (l/! [:live]
+      (k/apply k/uri-encode ["+.\n "]))])
 
-;; ### uri-decode
+  ;; ### uri-decode
 
-(display-output-format
- ['(k/uri-decode "%2B.%0A%20")
-  (l/! [:code]
-    (k/uri-decode "%2B.%0A%20"))
-  (l/! [:live]
-    (k/uri-decode "%2B.%0A%20"))]
- ['(k/apply k/uri-decode ["%2B.%0A%20"])
-  (l/! [:code]
-    (k/apply k/uri-decode ["%2B.%0A%20"]))
-  (l/! [:live]
-    (k/apply k/uri-decode ["%2B.%0A%20"]))])
+  (display-output-format
+   ['(k/uri-decode "%2B.%0A%20")
+    (l/! [:code]
+      (k/uri-decode "%2B.%0A%20"))
+    (l/! [:live]
+      (k/uri-decode "%2B.%0A%20"))]
+   ['(k/apply k/uri-decode ["%2B.%0A%20"])
+    (l/! [:code]
+      (k/apply k/uri-decode ["%2B.%0A%20"]))
+    (l/! [:live]
+      (k/apply k/uri-decode ["%2B.%0A%20"]))]))
 
 ;; ### js-encode
 
@@ -1754,13 +1766,13 @@
 
 (display-output-format
  ['[(k/sym-ns "hello/world")
-    (k/sym-ns "hello")]
+    #_(k/sym-ns "hello")]
   (l/! [:code]
     '[(k/sym-ns "hello/world")
-      (k/sym-ns "hello")])
+      #_(k/sym-ns "hello")])
   (l/! [:live]
     '[(k/sym-ns "hello/world")
-      (k/sym-ns "hello")])])
+      #_(k/sym-ns "hello")])])
 
 ;; ### sym-pair
 
@@ -1770,7 +1782,6 @@
     (k/sym-pair "hello/world"))
   (l/! [:live]
     (k/sym-pair "hello/world"))])
-
 
 ;; # Base Lib - Math
 
@@ -1989,11 +2000,11 @@
 ;; ### sqrt
 
 (display-output-format
- ['[(k/sqrt -1) (k/sqrt 1)]
+ ['[(k/sqrt 4)(k/sqrt 1)]
   (l/! [:code]
-    [(k/sqrt -1) (k/sqrt 1)])
+    [(k/sqrt 4) (k/sqrt 1)])
   (l/! [:live]
-    [(k/sqrt -1) (k/sqrt 1)])]
+    [(k/sqrt 4) (k/sqrt 1)])]
  ['(k/apply k/sqrt [16])
   (l/! [:code]
     (k/apply k/sqrt [16]))
@@ -2269,11 +2280,11 @@
 ;; ### mix
 
 (display-output-format
- ['(k/mix 100 20 0.1)
+ ['(k/mix 100 20 0.1 nil)
   (l/! [:code]
-    (k/mix 100 20 0.1))
+    (k/mix 100 20 0.1 nil))
   (l/! [:live]
-    (k/mix 100 20 0.1))])
+    (k/mix 100 20 0.1 nil))])
 
 ;; ### sign
 
@@ -2317,9 +2328,7 @@
      (k/clamp 0 5 -1)
      (k/clamp 0 5 4)])])
 
-
 ;; ## Base Lib - Math Bitwise
-
 
 ;; ### bit-and
 
@@ -2564,6 +2573,11 @@
   (l/! [:live]
     (k/apply k/tanh [(/ 3.14159 4)]))])
 
+
+^:kindly/hide-code
+(do 
+  (l/annex:restart-all))
+
 ;; # Base Lib - Collection
 
 ;; ## Base Lib - Sequence
@@ -2649,11 +2663,11 @@
   (l/! [:live]
     [(k/get-idx [1 2 3] 1)
     (k/get-idx [1 2 3] 2)])]
- ['(k/apply k/get-idx [[1 2 3] 1])
+ ['(k/apply k/get-idx [[1 2 3] 1 nil])
   (l/! [:code]
-    (k/apply k/get-idx [[1 2 3] 1]))
+    (k/apply k/get-idx [[1 2 3] 1 nil]))
   (l/! [:live]
-    (k/apply k/get-idx [[1 2 3] 1]))])
+    (k/apply k/get-idx [[1 2 3] 1 nil]))])
 
 ;; ### set-idx
 
@@ -2669,17 +2683,17 @@
     (do (var out := [1 2 3 4 5])
         (k/set-idx out 2 5)
         out))]
- ['(do (var out := [1 2 3 4 5])
-       (k/apply k/set-idx [out 2 5])
-       out)
-  (l/! [:code]
-    (do (var out := [1 2 3 4 5])
-       (k/apply k/set-idx [out 2 5])
-       out))
-  (l/! [:live]
-    (do (var out := [1 2 3 4 5])
-       (k/apply k/set-idx [out 2 5])
-       out))])
+ #_['(do (var out := [1 2 3 4 5])
+         (k/apply k/set-idx [out 2 5])
+         out)
+    (l/! [:code]
+      (do (var out := [1 2 3 4 5])
+          (k/apply k/set-idx [out 2 5])
+          out))
+    (l/! [:live]
+      (do (var out := [1 2 3 4 5])
+          (k/apply k/set-idx [out 2 5])
+          out))])
 
 ;; ### is-empty?
 
@@ -2741,7 +2755,7 @@
     (do (var out := {:a 1 :b 2})
         (k/del-key out "a")
         out))]
- ['(do (var out := {:a 1 :b 2})
+ #_['(do (var out := {:a 1 :b 2})
        (k/apply k/del-key [out "a"])
        out)
   (l/! [:code]
@@ -2764,29 +2778,28 @@
   (l/! [:live]
     [(k/get-key {:a 1} "a")
      (k/get-key {:a 1} "b")])]
- ['(k/apply k/get-key [{:a 1} "a"])
+ #_['(k/apply k/get-key [{:a 1} "a"])
   (l/! [:code]
     (k/apply k/get-key [{:a 1} "a"]))
   (l/! [:live]
     (k/apply k/get-key [{:a 1} "a"]))]
  
- ['(k/apply k/get-key [{:a 1} "b" 2])
+ #_['(k/apply k/get-key [{:a 1} "b" 2])
   (l/! [:code]
     (k/apply k/get-key [{:a 1} "b" 2]))
   (l/! [:live]
     (k/apply k/get-key [{:a 1} "b" 2]))])
 
-
 ;; ### get-path
 
 (display-output-format
- ['[(k/get-path {:a {:b {:c 1}}} ["a" "b" "c"])
+ #_['[(k/get-path {:a {:b {:c 1}}} ["a" "b" "c"] nil)
     (k/get-path {:a 1} ["b"] 2)]
   (l/! [:code]
-    [(k/get-path {:a {:b {:c 1}}} ["a" "b" "c"])
+    [(k/get-path {:a {:b {:c 1}}} ["a" "b" "c"] nil)
     (k/get-path {:a 1} ["b"] 2)])
   (l/! [:live]
-    [(k/get-path {:a {:b {:c 1}}} ["a" "b" "c"])
+    [(k/get-path {:a {:b {:c 1}}} ["a" "b" "c"] nil)
     (k/get-path {:a 1} ["b"] 2)])])
 
 ;; ### set-key
@@ -2803,7 +2816,7 @@
     (do (var out := {:a 1 :b 2})
         (k/set-key out "a" 5)
         out))]
- ['(do (var out := {:a 1 :b 2})
+ #_['(do (var out := {:a 1 :b 2})
        (k/apply k/set-key [out "a" 5])
        out)
   (l/! [:code]
@@ -2840,7 +2853,7 @@
     (do (var out := {})
         (k/copy-key out {:a 1} ["c" "a"])
         out))]
- ['(do (var out := {})
+ #_['(do (var out := {})
        (k/apply k/copy-key [out {:a 1 :b 2} "a"])
        out)
   (l/! [:code]
@@ -3348,25 +3361,25 @@
 ;; ### arr-pushl
 
 (display-output-format
- ['[(k/arr-pushl [1 2 3 4] 5)
+ ['[(k/arr-pushl [1 2 3 4] 5 100)
     (k/arr-pushl [1 2 3 4] 5 4)]
   (l/! [:code]
-    [(k/arr-pushl [1 2 3 4] 5)
+    [(k/arr-pushl [1 2 3 4] 5 100)
      (k/arr-pushl [1 2 3 4] 5 4)])
   (l/! [:live]
-    [(k/arr-pushl [1 2 3 4] 5)
+    [(k/arr-pushl [1 2 3 4] 5 100)
      (k/arr-pushl [1 2 3 4] 5 4)])])
 
 ;; ### arr-pushr
 
 (display-output-format
- ['[(k/arr-pushr [1 2 3 4] 5)
+ ['[(k/arr-pushr [1 2 3 4] 5 100)
     (k/arr-pushr [1 2 3 4] 5 4)]
   (l/! [:code]
-    [(k/arr-pushr [1 2 3 4] 5)
+    [(k/arr-pushr [1 2 3 4] 5 100)
      (k/arr-pushr [1 2 3 4] 5 4)])
   (l/! [:live]
-    [(k/arr-pushr [1 2 3 4] 5)
+    [(k/arr-pushr [1 2 3 4] 5 100)
      (k/arr-pushr [1 2 3 4] 5 4)])])
 
 ;; ### arr-join
@@ -3390,17 +3403,11 @@
 ;; ### arr-repeat
 
 (display-output-format
- ['[(k/arr-repeat "1" 4)
-    (k/arr-repeat (k/inc-fn -1)
-                  4)]
+ ['[(k/arr-repeat "1" 4)]
   (l/! [:code]
-    [(k/arr-repeat "1" 4)
-     (k/arr-repeat (k/inc-fn -1)
-                   4)])
+    [(k/arr-repeat "1" 4)])
   (l/! [:live]
-    [(k/arr-repeat "1" 4)
-     (k/arr-repeat (k/inc-fn -1)
-                  4)])])
+    [(k/arr-repeat "1" 4)])])
 
 ;; ### arr-random
 
