@@ -9,5 +9,5 @@
                                (map #(format "stdlang_book/%s.clj" %))
                                (cons "index.clj"))
              :base-target-path "docs"
-             :book {:title "Std.lang documentation"}
+             :book {:title "std.lang documentation"}
              :clean-up-target-dir true})

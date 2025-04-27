@@ -45,9 +45,6 @@ Copyright © 2025 Scicloj , MIT License
 - [Javascript Walkthrough](stdlang_book.walkthrough_js.html)
 
 
-- [Lua Walkthrough](stdlang_book.walkthrough_lua.html)
-
-
 - [Python Walkthrough](stdlang_book.walkthrough_py.html)
 
 
