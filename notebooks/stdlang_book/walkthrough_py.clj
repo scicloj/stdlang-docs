@@ -1,16 +1,16 @@
-;; # Javascript Walkthrough
+;; # Python Walkthrough
 
-;; Welcome to the walkthrough of std.lang and it's interaction with the javascript runtime.
-;; Ideally, the reader should have at least some experience with both clojure and javascript
+;; Welcome to the walkthrough of std.lang and it's interaction with the python runtime.
+;; Ideally, the reader should have at least some experience with both clojure and python
 ;; in order to get the most out of the tutorial as the library allows for seamless interop between
-;; a clojure runtime and a javascript one - whether it is on the server side - node, quickjs, osascript - as well as on the browser and other embedded js environments.
+;; a clojure runtime and a python one - whether it is on the server side - node, quickjs, osascript - as well as on the browser and other embedded js environments.
 
 
 ;; ## Setup
 
 ;; Let us briefly explore the std.lang transpiler.
 
-(ns stdlang-book.walkthrough-js
+(ns stdlang-book.walkthrough-python
   (:require [std.lang :as l]))
 
 ;; std.lang can be used in different ways:
@@ -26,14 +26,14 @@
 ;; for evaluation.
 
 ^:kind/println
-(l/script :js
-  {:require [[xt.lang.base-lib :as k]]})
+(l/script :python
+  {:require [[xt.lang.base-lib :as k]
+             [xt.lang.base-iter :as it]]})
 
 ;; It is now possible to transpile lisp forms to code:
 
-(!.js
+(!.py
   (+ 1 2 3))
-
 
 ;; If more than one environment is required, `l/script+` is a way to create an annex
 ;; that 
@@ -41,19 +41,21 @@
 ;; In For example, let us define the following two annexes, named `:code` and `:live`.
 
 ;; Here we define `:code` as a way to use the transpiler
-;; to generate Javascript code, but not use it in any runtime.
+;; to generate Python code, but not use it in any runtime.
 
 ^:kind/println
-(l/script+ [:code :js]
-  {:require [[xt.lang.base-lib :as k]]})
+(l/script+ [:code :python]
+  {:require [[xt.lang.base-lib :as k]
+             [xt.lang.base-iter :as it]]})
 
 ;; Here we define `:live` as a way to use the transpiler
-;; go generate Javascript code, and run it in a Node.js runtime.
+;; go generate Python code, and run it in a Node.js runtime.
 
 ^:kind/println
-(l/script+ [:live :js]
+(l/script+ [:live :python]
   {:runtime :basic
-   :require [[xt.lang.base-lib :as k]]})
+   :require [[xt.lang.base-lib :as k]
+             [xt.lang.base-iter :as it]]})
 
 ;; Let us now use these two ways for basic arithmetic.
 
@@ -63,9 +65,9 @@
  (l/! [:live] (+ 1 2))]
 
 ^:kindly/hide-code
-(defn display-output-js-code [code]
+(defn display-output-python-code [code]
   (kind/md
-   (format "```js\n%s\n```" code)))
+   (format "```python\n%s\n```" code)))
 
 ^:kindly/hide-code
 (defn display-output-clj-code [code]
@@ -81,7 +83,7 @@
      :row-vectors (->> forms
                        (mapv (fn [[form code-output rt-output]]
                                [(display-output-clj-code (pr-str form))
-                                (display-output-js-code  code-output)
+                                (display-output-python-code  code-output)
                                 (display-output-clj-code (pr-str rt-output))])))}
     {:kind/table true
      :kindly/hide-code true}))
@@ -96,7 +98,7 @@
      :row-vectors (->> forms
                        (mapv (fn [form]
                                `[(display-output-clj-code (pr-str (quote ~form)))
-                                 (display-output-js-code  (pr-str (l/! [:code] ~form)))
+                                 (display-output-python-code  (pr-str (l/! [:code] ~form)))
                                  (pr-str (l/! [:live] ~form))])))}
     {:kind/table true
      :kindly/hide-code true}))
@@ -105,15 +107,6 @@
 ;; # Types
 
 ;; ## Types - Primitives
-;;
-;; The seven primitive data types in JavaScript are string, number, bigint, boolean, undefined, symbol, and null.
-;; We work with examples from: https://www.w3docs.com/learn-javascript/methods-of-primitives.html
-;;
-;; From the Javascript Runtime perspective, primitives are extremely important to understand for designing fast programs. They offer the following traits:
-;;
-;; 1. Immutability: Once a primitive value is created, it cannot be altered. For instance, when you create a string, you cannot change its individual characters. Any operation that seems to change a primitive actually creates a new primitive. Example:
-;; 2. Memory Efficiency: Primitives are stored directly in the stack memory where the variable is located. This direct storage makes access to primitive values faster and more memory-efficient than objects. Example:
-;; 3. Simple and Fast: Primitives are straightforward in their representation, making them simpler and faster to process compared to objects. They don't have the overhead of object properties and methods. Example:
 
 ;; ### Null
 
@@ -121,13 +114,6 @@
  ['nil
   (l/! [:code] nil)
   (l/! [:live] nil)])
-
-;; ### Undefined
-
-(display-output-format
- ['undefined
-  (l/! [:code] undefined)
-  (l/! [:live] undefined)])
 
 ;; ### Boolean
 
@@ -161,39 +147,8 @@
   (l/! [:live] 1.5)]
  ['1.54444444444444
   (l/! [:code] 1.54444444444444)
-  (l/! [:live] 1.54444444444444)]
- ['NaN
-  (l/! [:code] NaN)
-  (l/! [:live] NaN)]
- ['Infinity
-  (l/! [:code] Infinity)
-  (l/! [:live] Infinity)]
- ['(- Infinity)
-  (l/! [:code] (- Infinity))
-  (l/! [:live] (. (- Infinity)
-                  (toString)))])
+  (l/! [:live] 1.54444444444444)])
 
-;; ### Bigint
-
-(display-output-format
- ['(. (BigInt "0x1fffffffffffff")
-      (toString))
-  (l/! [:code] (. (BigInt "0x1fffffffffffff")
-                  (toString)))
-  (l/! [:live] (. (BigInt "0x1fffffffffffff")
-                  (toString)))])
-
-;; ### Symbol
-
-(display-output-format
- ['(. (Symbol "hello")
-      (toString))
-  (l/! [:code] (. (Symbol "hello")
-                  (toString)))
-  (l/! [:live] (. (Symbol "hello")
-                  (toString)))])
-
-;; ## Types - Additional
 
 ;; ### Regex
 
@@ -202,10 +157,9 @@
   (l/! [:code] #"^[Hh]ello d$")
   (l/! [:live] #"^[Hh]ello d$")])
 
-
 ;; ## Types - Collection
 
-;; ### Arrays
+;; ### Lists
 
 (display-output-format
  ['[1 2 3 4]
@@ -215,7 +169,7 @@
   (l/! [:code] ["hello" ["world"]])
   (l/! [:live] ["hello" ["world"]])])
 
-;; ### Objects
+;; ### Dicts
 
 (display-output-format
  ['{:a 1 :b 2 :c 3}
@@ -224,6 +178,27 @@
  ['{:a {:b {:c 3}}}
   (l/! [:code] {:a {:b {:c 3}}})
   (l/! [:live] {:a {:b {:c 3}}})])
+
+;; ### Tuples
+
+(display-output-format
+ [''(1 2 3 4)
+  (l/! [:code] '(1 2 3 4))
+  (l/! [:live] '(1 2 3 4))]
+ [''("hello" ["world"])
+  (l/! [:code] '("hello" ["world"]))
+  (l/! [:live] '("hello" ["world"]))])
+
+
+;; ### Tuples
+
+(display-output-format
+ [#{1 2 3 4}
+  (l/! [:code] #{1 2 3 4})
+  (l/! [:live] #{1 2 3 4})]
+ [#{"hello" "world"}
+  (l/! [:code] #{"hello" "world"})
+  (l/! [:live] #{"hello" "world"})])
 
 ;; ### Objects - tab
 
@@ -234,51 +209,6 @@
 
 
 ;; ## Types - Checks
-
-;; ### Typeof
-
-(display-output-format
- ['(typeof nil)
-  (l/! [:code] (typeof nil))
-  (l/! [:live] (typeof nil))]
- ['(typeof undefined)
-  (l/! [:code] (typeof undefined))
-  (l/! [:live] (typeof undefined))]
- ['(typeof NaN)
-  (l/! [:code] (typeof NaN))
-  (l/! [:live] (typeof NaN))]
- ['(typeof 1)
-  (l/! [:code] (typeof 1))
-  (l/! [:live] (typeof 1))]
- ['(typeof true)
-  (l/! [:code] (typeof true))
-  (l/! [:live] (typeof true))]
- ['(typeof "hello")
-  (l/! [:code] (typeof "hello"))
-  (l/! [:live] (typeof "hello"))]
- ['(typeof (Symbol "hello"))
-  (l/! [:code] (typeof (Symbol "hello")))
-  (l/! [:live] (typeof (Symbol "hello")))]
- ['(typeof (BigInt "0x1fffffffffffff"))
-  (l/! [:code] (typeof (BigInt "0x1fffffffffffff")))
-  (l/! [:live] (typeof (BigInt "0x1fffffffffffff")))]
- ['(typeof #"^[Hh]ello d$")
-  (l/! [:code] (typeof #"^[Hh]ello d$"))
-  (l/! [:live] (typeof #"^[Hh]ello d$"))]
- ['(typeof [1 2 3])
-  (l/! [:code] (typeof [1 2 3]))
-  (l/! [:live] (typeof [1 2 3]))]
- ['(typeof {:a 1})
-  (l/! [:code] (typeof {:a 1}))
-  (l/! [:live] (typeof {:a 1}))])
-
-;; ### Instanceof
-
-(display-output-format
- ['(instanceof #"^[Hh]ello d$" RegExp)
-  (l/! [:code] (instanceof #"^[Hh]ello d$" RegExp))
-  (l/! [:live] (instanceof #"^[Hh]ello d$" RegExp))])
-
 
 ;; # Operations
 
@@ -295,19 +225,6 @@
   (l/! [:live]
     (do (var x 1)
         x))])
-
-;; ### Const
-
-(display-output-format
- ['(do (const x 1)
-       x)
-  (l/! [:code]
-    (do (const x 1)
-        x))
-  (l/! [:live]
-    (do (const x 1)
-        x))])
-
 
 ;; ### Reassign
 
@@ -460,19 +377,6 @@
   (l/! [:code] (== "hello" "hello"))
   (l/! [:live] (== "hello" "hello"))])
 
-;; ### Triple Equals
-
-(display-output-format
- ['(=== 1 1)
-  (l/! [:code] (=== 1 1))
-  (l/! [:live] (=== 1 1))]
- ['(=== 1 "1")
-  (l/! [:code] (=== 1 "1"))
-  (l/! [:live] (=== 1 "1"))]
- ['(=== "hello" "hello")
-  (l/! [:code] (=== "hello" "hello"))
-  (l/! [:live] (=== "hello" "hello"))])
-
 ;; ### Not Equals
 
 (display-output-format
@@ -494,10 +398,7 @@
   (l/! [:live] (< 1 2))]
  ['(< 1 1)
   (l/! [:code] (< 1 1))
-  (l/! [:live] (< 1 1))]
- ['(< 1 "2")
-  (l/! [:code] (< 1 "2"))
-  (l/! [:live] (< 1 "2"))])
+  (l/! [:live] (< 1 1))])
 
 ;; ### Less Than Equals
 
@@ -507,10 +408,7 @@
   (l/! [:live] (<= 1 2))]
  ['(<= 1 1)
   (l/! [:code] (<= 1 1))
-  (l/! [:live] (<= 1 1))]
- ['(<= 1 "1")
-  (l/! [:code] (<= 1 "1"))
-  (l/! [:live] (<= 1 "1"))])
+  (l/! [:live] (<= 1 1))])
 
 ;; ### Greater Than
 
@@ -520,10 +418,7 @@
   (l/! [:live] (> 3 2))]
  ['(> 3 3)
   (l/! [:code] (> 3 3))
-  (l/! [:live] (> 3 3))]
- ['(> 3 "2")
-  (l/! [:code] (> 3 "2"))
-  (l/! [:live] (> 3 "2"))])
+  (l/! [:live] (> 3 3))])
 
 ;; ### Greater Than Equals
 
@@ -533,10 +428,7 @@
   (l/! [:live] (>= 3 2))]
  ['(>= 3 3)
   (l/! [:code] (>= 3 3))
-  (l/! [:live] (>= 3 3))]
- ['(>= 3 "3")
-  (l/! [:code] (>= 3 "3"))
-  (l/! [:live] (>= 3 "3"))])
+  (l/! [:live] (>= 3 3))])
 
 ;; ## Operations - Counter
 
@@ -967,51 +859,6 @@
       {:success (:= out ret)
        :error   (:= out err)})
     out))])
-
-;; ### for:try
-
-(display-output-format
- ['(do
-     (var out := nil)
-     (k/for:try [[ret err] (do:> (x:err "hello"))]
-       {:success (:= out ret)
-        :error   (:= out err)})
-     out)
-  (l/! [:code]
-    (do
-     (var out := nil)
-     (k/for:try [[ret err] (do:> (x:err "hello"))]
-       {:success (:= out ret)
-        :error   (:= out err)})
-     out))
-  (l/! [:live]
-    (do
-     (var out := nil)
-     (k/for:try [[ret err] (do:> (x:err "hello"))]
-       {:success (:= out ret)
-        :error   (:= out err)})
-     out))])
-
-;; ### for:async
-
-(display-output-format
- ['(do
-     (var out := nil)
-     (k/for:async [[ret err] (+ 1 2 3)]
-       {:success (:= out ret)
-        :error (:= out err)}))
-  (l/! [:code]
-    (do
-      (var out := nil)
-      (k/for:async [[ret err] (+ 1 2 3)]
-        {:success (:= out ret)
-         :error (:= out err)})))
-  (l/! [:live]
-    (do
-      (var out := nil)
-      (k/for:async [[ret err] (+ 1 2 3)]
-        {:success (:= out ret)
-         :error (:= out err)})))])
 
 ;; ## Base Lib - Util
 
@@ -4137,4 +3984,5 @@
          :e "hello"
          :f {:g (fn:>)
              :h 2}}}))])
+
 
