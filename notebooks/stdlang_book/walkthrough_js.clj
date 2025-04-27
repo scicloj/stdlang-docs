@@ -111,7 +111,7 @@
 ;; ## Types - Primitives
 ;;
 ;; The seven primitive data types in JavaScript are string, number, bigint, boolean, undefined, symbol, and null.
-;; We work with examples from: https://www.w3docs.com/learn-javascript/methods-of-primitives.html
+;; We work with examples from: [https://www.w3docs.com/learn-javascript/methods-of-primitives.html](https://www.w3docs.com/learn-javascript/methods-of-primitives.html)
 ;;
 ;; From the Javascript Runtime perspective, primitives are extremely important to understand for designing fast programs. They offer the following traits:
 ;;
