@@ -1831,33 +1831,33 @@
   (l/! [:live]
     (k/apply k/uri-decode ["%2B.%0A%20"]))])
 
-;; ### js-encode
+;; ### json-encode
 
 (display-output-format
- ['(k/js-encode [1 2 {:a [{:b 3}]}])
+ ['(k/json-encode [1 2 {:a [{:b 3}]}])
   (l/! [:code]
-    (k/js-encode [1 2 {:a [{:b 3}]}]))
+    (k/json-encode [1 2 {:a [{:b 3}]}]))
   (l/! [:live]
-    (k/js-encode [1 2 {:a [{:b 3}]}]))]
- ['(k/apply k/js-encode [[1 2 {:a [{:b 3}]}]])
+    (k/json-encode [1 2 {:a [{:b 3}]}]))]
+ ['(k/apply k/json-encode [[1 2 {:a [{:b 3}]}]])
   (l/! [:code]
-    (k/apply k/js-encode [[1 2 {:a [{:b 3}]}]]))
+    (k/apply k/json-encode [[1 2 {:a [{:b 3}]}]]))
   (l/! [:live]
-    (k/apply k/js-encode [[1 2 {:a [{:b 3}]}]]))])
+    (k/apply k/json-encode [[1 2 {:a [{:b 3}]}]]))])
 
-;; ### js-decode
+;; ### json-decode
 
 (display-output-format
- ['(k/js-decode "[1,2,{\"a\":[{\"b\":3}]}]")
+ ['(k/json-decode "[1,2,{\"a\":[{\"b\":3}]}]")
   (l/! [:code]
-    (k/js-decode "[1,2,{\"a\":[{\"b\":3}]}]"))
+    (k/json-decode "[1,2,{\"a\":[{\"b\":3}]}]"))
   (l/! [:live]
-    (k/js-decode "[1,2,{\"a\":[{\"b\":3}]}]"))]
- ['(k/apply k/js-decode ["[1,2,{\"a\":[{\"b\":3}]}]"])
+    (k/json-decode "[1,2,{\"a\":[{\"b\":3}]}]"))]
+ ['(k/apply k/json-decode ["[1,2,{\"a\":[{\"b\":3}]}]"])
   (l/! [:code]
-    (k/apply k/js-decode ["[1,2,{\"a\":[{\"b\":3}]}]"]))
+    (k/apply k/json-decode ["[1,2,{\"a\":[{\"b\":3}]}]"]))
   (l/! [:live]
-    (k/apply k/js-decode ["[1,2,{\"a\":[{\"b\":3}]}]"]))])
+    (k/apply k/json-decode ["[1,2,{\"a\":[{\"b\":3}]}]"]))])
 
 ;; ### json-push
 
