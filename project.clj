@@ -29,15 +29,17 @@
                  [xyz.zcaudate/std.text            "4.0.8"]
                  [xyz.zcaudate/xtalk.db            "4.0.8"]
                  [xyz.zcaudate/xtalk.lang          "4.0.8"]
-                 [xyz.zcaudate/xtalk.system        "4.0.8"]]
+                 [xyz.zcaudate/xtalk.system        "4.0.8"]
+
+                 [rewrite-clj/rewrite-clj          "1.1.49"]]
   :profiles {:dev {:plugins [[lein-ancient "0.6.15"]
                              [lein-exec "0.3.7"]
                              [lein-cljfmt "0.7.0"]
                              [cider/cider-nrepl "0.45.0"]]}
              :repl {:injections ['(try (require 'jvm.tool)
-                                      (require '[std.lib :as h])
-                                      (create-ns '.)
-                                      (catch Throwable t (.printStackTrace t)))]}}
+                                       (require '[std.lib :as h])
+                                       (create-ns '.)
+                                       (catch Throwable t (.printStackTrace t)))]}}
   :jvm-opts
   ["-Xms2048m"
    "-Xmx2048m"
