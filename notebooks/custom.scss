@@ -11,3 +11,8 @@ code {font-family: 'Fira Code Medium', monospace;}
   max-height:400px;
   overflow-y: auto;
 }
+
+.generatedCode .sourceCode {
+  background-color: #eeffee;
+  border-style: none;
+}
