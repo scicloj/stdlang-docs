@@ -1,8 +1,8 @@
-# Std.lang documentation
+# std.lang documentation
 
-This is the documentation for Std.lang, the standard transpiler.
+This is the documentation for std.lang, the general transpiler.
 
-## General info
+## Links and Resources
 
 |              |                                                                                                                                                                                                                                                         |
 |--------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
