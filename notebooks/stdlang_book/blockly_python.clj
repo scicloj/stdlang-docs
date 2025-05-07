@@ -17,20 +17,23 @@
    :require [[xt.lang.base-lib :as k]
              [xt.lang.base-iter :as it]]})
 
+(defn tiles-kw? [e]
+  (and (keyword? e) (= (namespace e) "tiles")))
+
 (defn redef-def [e]
   (if (list? e)
     (cond
       (= (first e) 'def)
       (list 'var (first (second e))
             (list 'fn (into [] (rest (second e))) (redef-def (last e))))
-      (and (keyword? (first e)) (= (namespace (first e)) "tiles"))
-      (redef-def (second e))
-      :else (map redef-def e)) e))
+      (tiles-kw? (first e)) (redef-def (second e))
+      :else (remove tiles-kw? (map redef-def e))) e))
 
 (defmacro ! [o e] (list 'l/! o (redef-def e)))
 
 ^:kind/println
 (! [:code] (do (def (hello x y) (return (:tiles/infix (+ x y))))
+               :tiles/slot
                (hello 1 2)))
 
 ^:kindly/hide-code
@@ -50,7 +53,7 @@
 (defn tiles-render [code]
   [:div
    [:script (str "var xml1 = parse('" code "')")]
-   [:div {:id "blocklyDiv1", :style {:height "150px"}}]
+   [:div {:id "blocklyDiv1", :style {:height "180px"}}]
    [:script "var workspace1 = Blockly.inject('blocklyDiv1',
 {'toolbox': twotiles.toolbox, 'sounds': false})"]
    [:script "const xmlDom1 = Blockly.utils.xml.textToDom(xml1)"]
@@ -58,7 +61,9 @@
 
 ^:kind/hiccup
 (tiles-render '(do (def (hello x y) (return (:tiles/infix (+ x y))))
+                   :tiles/slot
                    (hello 1 2)))
 
 (! [:live] (do (def (hello x y) (return (:tiles/infix (+ x y))))
+               :tiles/slot
                (hello 1 2)))
