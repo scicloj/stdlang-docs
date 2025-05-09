@@ -1,3 +1,4 @@
-["walkthrough_js"
- "walkthrough_lua"
- "walkthrough_py"]
+[#_"walkthrough_js"
+ #_"walkthrough_lua"
+ #_"walkthrough_py"
+ "blockly_python"]
