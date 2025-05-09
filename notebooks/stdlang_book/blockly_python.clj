@@ -1,5 +1,4 @@
 (ns stdlang-book.blockly-python
-  (:refer-clojure :exclude [do])
   (:require [std.lang :as l]))
 
 ^:kindly/hide-code
@@ -11,19 +10,14 @@
 (def md
   (comp kindly/hide-code kind/md))
 
-;; # Resembling Python Syntax
+;; # Python and Clojure Syntax
 
 ;; ## Intro
+(md "That the syntax of a Clojure program can be made to resemble Python is an obvious fact to any Clojurian. It is just a matter of the right Macros. But why doing such a thing?")
 
-(md "It is of course known to Clojurians that, using Macros, one can morph Clojure's syntax to more and more resemble Python syntax. The only thing that remains after such a syntax-morphing with Macros ist the position of the parentheses - tabs, space and newline can exactly be chosen as in Python.")
+(md "This thing is for Clojurians who want to build bridges for people currently using Python. Who want to build a bridge for those people who sometimes realise that when it came to performance, Java would win over Python. Building a bridge for people who have this feeling of unease when thinking about invisible characters in Python. People who already heard about functional programming.")
 
-(md "So, it is not the point of not knowing about this morphing possibility. The point is rather the followig attitude: 'Why would I want this for my programs? I left all this behind me. Why would I go back?'")
-
-(md "The answer to those questions is: You do not want to go back. You want to stick to Clojure syntax. You do not need all this morphing business. But this is not about You. It is not about improving Your value in the job market. On the contrary, it is about giving away your competitive edge.")
-
-(md "It is about building a bridge for people who are currenty doing data anaysis in Python. Buildig a bridge for people who sometimes realize that when it comes to performance and having the choice between Python and Java, the decision will always be in favor of Java, at least in an industry or business context. Building a bridge for people who have this feeling of unease when thinking about those invisible characters that in Python are meaning parts of the syntax.")
-
-(md "So let's write Python syntax where whitespace has no meaning, and let's run all this on the JVM. Let's write code to show to others. Others who are uncertain and reluctant but ready to give something new a try but want familiarity. Let's show an example that everyone knows is easy to make and noone actually makes because for the one who can make it, it is completely useless. But it matters. At least I think so.")
+(md "So let's write Python syntax where whitespace has no meaning, and let's run all this on the JVM. Let's write code to show to others. Others who are uncertain and reluctant but ready to try something new but still want familiarity. Let's show an example that everyone knows is easy to make and no-one actually makes because for the one who can make it, it is completely useless. But it matters. At least I think so.")
 
 ;; ## Code Preamble
 
@@ -93,7 +87,7 @@
            :live         (list 'l/! [:tiles-live] e3)})))
 
 ;; ## The Example
-
+;; We define a function in a syntax that resembles Python
 (def.tl some-py-function
 
   (def (hallo x y)
@@ -102,10 +96,13 @@
 
   )
 
+;; Indeed the generated Python code is similar
 ^:kind/println
 (:python-code some-py-function)
 
+;; The graphical representation also looks Pythonesque
 ^:kind/hiccup
 (:tiles-hiccup some-py-function)
 
+;; We check that the calculation is indeed correct
 (:live some-py-function)
